@@ -1,0 +1,40 @@
+{
+  "name": "marktic/promotion",
+  "type": "library",
+  "license": "MIT",
+  "description": "promotion base objects",
+  "keywords": [],
+  "homepage": "https://github.com/marktic/promotion",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Marktic\\Promotion\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Marktic\\Promotion\\Tests\\": "tests/src",
+      "Marktic\\Promotion\\Tests\\Fixtures\\": "tests/fixtures"
+    }
+  },
+  "require": {
+    "bytic/package-base": "^1.0",
+    "bytic/console": "^1.0",
+    "bytic/orm": "^0.9|^1.0",
+    "bytic/orm-filters": "^0.9|^1.0",
+    "bytic/orm-behaviors": "^0.9|^1.0",
+    "bytic/translation": "^0.9|^1.0",
+    "bytic/models-smart-properties": "^1.0",
+    "bytic/migrations": "^0.12"
+  },
+  "require-dev": {
+    "bytic/phpqatools": "^1.0.11"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
