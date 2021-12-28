@@ -1,10 +1,10 @@
 <?php
 
 
-use Marktic\Promotion\Models\CartPromotions\CartPromotions;
-use Marktic\Promotion\Models\PromotionActions\PromotionActions;
-use Marktic\Promotion\Models\PromotionCodes\PromotionCodes;
-use Marktic\Promotion\Models\PromotionRules\PromotionRules;
+use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotions;
+use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionActions;
+use Marktic\Promotion\Bundle\Models\PromotionCodes\PromotionCodes;
+use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRules;
 use Marktic\Promotion\Utility\PromotionModels;
 
 return [

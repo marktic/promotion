@@ -3,10 +3,10 @@
 namespace Marktic\Promotion\Utility;
 
 use ByTIC\PackageBase\Utility\ModelFinder;
-use Marktic\Promotion\Models\CartPromotions\CartPromotions;
-use Marktic\Promotion\Models\PromotionActions\PromotionActions;
-use Marktic\Promotion\Models\PromotionCodes\PromotionCodes;
-use Marktic\Promotion\Models\PromotionRules\PromotionRules;
+use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotions;
+use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionActions;
+use Marktic\Promotion\Bundle\Models\PromotionCodes\PromotionCodes;
+use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRules;
 use Marktic\Promotion\PromotionServiceProvider;
 use Nip\Records\RecordManager;
 
@@ -20,7 +20,6 @@ class PromotionModels extends ModelFinder
     public const PROMOTION_ACTIONS = 'promotion_actions';
     public const PROMOTION_CODES = 'promotion_codes';
     public const PROMOTION_RULES = 'promotion_rules';
-    protected static $models = [];
 
     /**
      * @return RecordManager|CartPromotions
