@@ -2,14 +2,12 @@
 
 namespace Marktic\Promotion\Utility;
 
-use ByTIC\MediaLibrary\Models\MediaProperties\MediaProperties;
-use ByTIC\MediaLibrary\Models\MediaRecords\MediaRecords;
-use ByTIC\NotifierBuilder\Models\Events\Events;
-use ByTIC\NotifierBuilder\Models\Messages\Messages;
-use ByTIC\NotifierBuilder\Models\Recipients\Recipients;
-use ByTIC\NotifierBuilder\Models\Topics\Topics;
-use ByTIC\NotifierBuilder\NotifierBuilderProvider;
 use ByTIC\PackageBase\Utility\ModelFinder;
+use Marktic\Promotion\Models\CartPromotions\CartPromotions;
+use Marktic\Promotion\Models\PromotionActions\PromotionActions;
+use Marktic\Promotion\Models\PromotionCodes\PromotionCodes;
+use Marktic\Promotion\Models\PromotionRules\PromotionRules;
+use Marktic\Promotion\PromotionServiceProvider;
 use Nip\Records\RecordManager;
 
 /**
@@ -25,39 +23,39 @@ class PromotionModels extends ModelFinder
     protected static $models = [];
 
     /**
-     * @return RecordManager|Events
+     * @return RecordManager|CartPromotions
      */
-    public static function events()
+    public static function promotions()
     {
-        return static::getModels('events', Events::class);
+        return static::getModels(self::PROMOTIONS, CartPromotions::class);
     }
 
     /**
-     * @return RecordManager|Messages
+     * @return RecordManager|PromotionActions
      */
-    public static function messages()
+    public static function promotionActions()
     {
-        return static::getModels('messages', Messages::class);
+        return static::getModels(self::PROMOTION_ACTIONS, PromotionActions::class);
     }
 
     /**
-     * @return RecordManager|Recipients
+     * @return RecordManager|PromotionCodes
      */
-    public static function recipients()
+    public static function promotionCodes()
     {
-        return static::getModels('recipients', Recipients::class);
+        return static::getModels(self::PROMOTION_CODES, PromotionCodes::class);
     }
 
     /**
-     * @return RecordManager|Topics
+     * @return RecordManager|PromotionRules
      */
-    public static function topics()
+    public static function promotionRules()
     {
-        return static::getModels('topics', Topics::class);
+        return static::getModels(self::PROMOTION_RULES, PromotionRules::class);
     }
 
     protected static function packageName(): string
     {
-        return NotifierBuilderProvider::NAME;
+        return PromotionServiceProvider::NAME;
     }
 }
