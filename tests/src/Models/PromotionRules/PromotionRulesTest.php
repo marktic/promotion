@@ -1,8 +1,8 @@
 <?php
 
-namespace Marktic\Promotion\Tests\Models\CartPromotions;
+namespace Marktic\Promotion\Tests\Models\PromotionRules;
 
-use Marktic\Promotion\Models\PromotionRules\PromotionRules;
+use Marktic\Promotion\PromotionRules\Models\PromotionRules;
 use Marktic\Promotion\Tests\Models\AbstractModels\AbstractRepositoryTest;
 
 class PromotionRulesTest extends AbstractRepositoryTest

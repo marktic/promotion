@@ -3,10 +3,10 @@
 namespace Marktic\Promotion\Tests\Models\AbstractModels;
 
 use Exception;
-use Marktic\Promotion\Models\CartPromotions\CartPromotions;
-use Marktic\Promotion\Models\PromotionActions\PromotionActions;
-use Marktic\Promotion\Models\PromotionCodes\PromotionCodes;
-use Marktic\Promotion\Models\PromotionRules\PromotionRules;
+use Marktic\Promotion\CartPromotions\Models\CartPromotions;
+use Marktic\Promotion\PromotionActions\Models\PromotionActions;
+use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
+use Marktic\Promotion\PromotionRules\Models\PromotionRules;
 use Marktic\Promotion\Tests\AbstractTest;
 use Marktic\Promotion\Utility\PromotionModels;
 
