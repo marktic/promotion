@@ -4,6 +4,7 @@ namespace Marktic\Promotion\Tests;
 
 use Bytic\Phpqa\PHPUnit\TestCase;
 use Marktic\Promotion\PromotionServiceProvider;
+use Mockery;
 use Nip\Config\Config;
 use Nip\Container\Utility\Container;
 
@@ -26,5 +27,14 @@ abstract class AbstractTest extends TestCase
         $provider = new PromotionServiceProvider();
         $provider->setContainer($container);
         $provider->register();
+    }
+
+    protected function loadFakeTranslator()
+    {
+        $translator = Mockery::mock('translator');
+        $translator->shouldReceive('trans')->andReturnArg(0);
+
+        $container = Container::container();
+        $container->set('translator', $translator);
     }
 }
