@@ -6,7 +6,7 @@ use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactoryInterface;
 use Marktic\Promotion\PromotionActions\Utils\ActionCommands;
 
-class ActionCommandsRegistry
+class ActionCommandsService
 {
     protected PromotionActionCommandFactoryInterface $factory;
 

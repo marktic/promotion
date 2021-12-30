@@ -8,6 +8,7 @@ use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactoryIn
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactoryInterface;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
+use Marktic\Promotion\PromotionActions\Services\ActionCommandsService;
 use Marktic\Promotion\Utility\PackageConfig;
 
 /**
@@ -23,6 +24,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         parent::register();
         $this->registerActionFactory();
         $this->registerActionCommandsFactory();
+        $this->registerActionCommandsService();
     }
 
     public function migrations(): ?string
@@ -48,7 +50,8 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         return array_merge(
             [
                 PromotionActionFactoryInterface::class,
-                PromotionActionCommandFactoryInterface::class
+                PromotionActionCommandFactoryInterface::class,
+                ActionCommandsService::class
             ],
             parent::provides()
         );
@@ -68,5 +71,10 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
             PromotionActionCommandFactory::class,
             PromotionActionCommandFactoryInterface::class
         );
+    }
+
+    protected function registerActionCommandsService()
+    {
+        $this->getContainer()->set(ActionCommandsService::class, ActionCommandsService::class, true);
     }
 }
