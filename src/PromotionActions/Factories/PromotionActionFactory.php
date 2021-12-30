@@ -2,12 +2,13 @@
 
 namespace Marktic\Promotion\PromotionActions\Factories;
 
+use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
 use Marktic\Promotion\PromotionActions\Models\PromotionActions;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\Records\AbstractModels\RecordManager;
 
-class PromotionActionFactory
+class PromotionActionFactory implements PromotionActionFactoryInterface
 {
 
     /** @var RecordManager|PromotionActions */
@@ -21,11 +22,27 @@ class PromotionActionFactory
         $this->actionsRepository = $actionsRepository ?? PromotionModels::promotionActions();
     }
 
-    public function createFixedDiscount(int $amount, string $channelCode): PromotionActionInterface
+    public function createFixedDiscount(int $amount): PromotionActionInterface
     {
         return $this->createAction(
-            FixedDiscountPromotionActionCommand::TYPE,
-            [$channelCode => ['amount' => $amount]]
+            FixedDiscountActionCommand::NAME,
+            ['amount' => $amount]
+        );
+    }
+
+    public function createAmountDiscount(int $amount): PromotionActionInterface
+    {
+        return $this->createAction(
+            FixedDiscountActionCommand::NAME,
+            ['amount' => $amount]
+        );
+    }
+
+    public function createPercentageDiscount(float $percentage): PromotionActionInterface
+    {
+        return $this->createAction(
+            FixedDiscountActionCommand::NAME,
+            ['amount' => $percentage]
         );
     }
 
@@ -43,4 +60,6 @@ class PromotionActionFactory
     {
         return $this->actionsRepository->getNewRecord();
     }
+
+
 }
