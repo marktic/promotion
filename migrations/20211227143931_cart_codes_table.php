@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class CartPromotionsTable extends AbstractMigration
+final class CartCodesTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -38,17 +38,21 @@ final class CartPromotionsTable extends AbstractMigration
             ])
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
-            ]);
+            ])
+            ->save();
 
         $table
             ->addIndex(['promotion_id'])
             ->addIndex(['code'], ['unique' => true])
+            ->save();
+
+        $table
             ->addForeignKey(
-                'id_promotion_idevent',
+                'promotion_id',
                 'mkt_promotions',
                 'id',
                 ['constraint' => 'mkt_promotions_codes_promotion_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
-            );
-        $table->save();
+            )
+            ->save();
     }
 }

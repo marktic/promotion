@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Promotion\Tests\Models\AbstractModels;
+namespace Marktic\Promotion\Tests\Base\Models;
 
 use Exception;
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
@@ -9,6 +9,8 @@ use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
 use Marktic\Promotion\PromotionRules\Models\PromotionRules;
 use Marktic\Promotion\Tests\AbstractTest;
 use Marktic\Promotion\Utility\PromotionModels;
+
+use const TEST_FIXTURE_PATH;
 
 abstract class AbstractRepositoryTest extends AbstractTest
 {

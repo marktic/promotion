@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class CartPromotionsTable extends AbstractMigration
+final class CartActionsTable extends AbstractMigration
 {
     /**
      * Change Method.
