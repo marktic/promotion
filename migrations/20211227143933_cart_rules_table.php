@@ -19,5 +19,36 @@ final class CartRulesTable extends AbstractMigration
      */
     public function change(): void
     {
+        $table_name = 'mkt_promotions_rules';
+        $exists = $this->hasTable($table_name);
+        if ($exists) {
+            return;
+        }
+        $table = $this->table($table_name);
+        $table
+            ->addColumn('promotion_id', 'integer')
+            ->addColumn('type', 'string', ['null' => false])
+            ->addColumn('configuration', 'json', ['null' => true])
+            ->addColumn('updated_at', 'timestamp', [
+                'default' => 'CURRENT_TIMESTAMP',
+                'update' => 'CURRENT_TIMESTAMP',
+            ])
+            ->addColumn('created_at', 'timestamp', [
+                'default' => 'CURRENT_TIMESTAMP',
+            ])
+            ->save();
+
+        $table
+            ->addIndex(['promotion_id'])
+            ->save();
+
+        $table
+            ->addForeignKey(
+                'promotion_id',
+                'mkt_promotions',
+                'id',
+                ['constraint' => 'mkt_promotions_rules_promotion_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
+            )
+            ->save();
     }
 }
