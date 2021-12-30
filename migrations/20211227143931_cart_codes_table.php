@@ -41,11 +41,14 @@ final class CartPromotionsTable extends AbstractMigration
             ]);
 
         $table
-            ->addIndex(['pool_id'])
-            ->addIndex(['pool'])
-            ->addIndex(['priority'])
-            ->addIndex(['code'], ['unique' => true]);
-
+            ->addIndex(['promotion_id'])
+            ->addIndex(['code'], ['unique' => true])
+            ->addForeignKey(
+                'id_promotion_idevent',
+                'mkt_promotions',
+                'id',
+                ['constraint' => 'mkt_promotions_codes_promotion_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
+            );
         $table->save();
     }
 }
