@@ -3,12 +3,17 @@
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
-use Nip\Controllers\Traits\AbstractControllerTrait;
 
 trait MktPromotionsControllerTrait
 {
     use AbstractControllerTrait;
     use HasModelLister;
+
+    protected function forwardToPoolIndex()
+    {
+        $this->registerViewPaths();
+        $this->forward('poolIndex');
+    }
 
     public function poolIndex()
     {

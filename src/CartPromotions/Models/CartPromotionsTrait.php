@@ -16,11 +16,17 @@ trait CartPromotionsTrait
     protected function initRelationsTrait()
     {
         $this->initRelationsPromotionCodes();
+        $this->initRelationsPromotionActions();
     }
 
     protected function initRelationsPromotionCodes()
     {
-        $this->hasMany(CartPromotions::RELATION_CODES, ['class' => get_class(PromotionModels::promotions())]);
+        $this->hasMany(CartPromotions::RELATION_CODES, ['class' => get_class(PromotionModels::promotionCodes())]);
+    }
+
+    protected function initRelationsPromotionActions()
+    {
+        $this->hasMany(CartPromotions::RELATION_ACTIONS, ['class' => get_class(PromotionModels::promotionActions())]);
     }
 
     protected function generateTable(): string

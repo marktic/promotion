@@ -4,12 +4,12 @@ namespace Marktic\Promotion\Base\Models\Behaviours\HasType;
 
 trait RecordHasType
 {
-    protected string $type;
+    protected ?string $type = null;
 
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }

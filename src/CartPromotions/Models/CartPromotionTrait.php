@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\CartPromotions\Models;
 
+use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
 use Nip\Records\Collections\Collection;
 
@@ -9,6 +10,7 @@ use Nip\Records\Collections\Collection;
  * Trait CartPromotionTrait
  *
  * @method PromotionCode[]|Collection getPromotionCodes
+ * @method PromotionAction[]|Collection getPromotionActions
  */
 trait CartPromotionTrait
 {

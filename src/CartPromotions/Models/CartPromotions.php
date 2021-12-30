@@ -17,5 +17,7 @@ class CartPromotions extends RecordManager
     public const TABLE = 'mkt_promotions';
 
     public const RELATION_CODES = 'PromotionCodes';
+    public const RELATION_ACTIONS = 'PromotionActions';
+
 
 }
