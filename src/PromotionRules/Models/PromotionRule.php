@@ -14,6 +14,13 @@ class PromotionRule extends Record
     use PromotionRuleTrait;
     use CommonRecordTrait;
 
+    public function __construct(array $data = null)
+    {
+        $return = parent::__construct($data);
+        $this->registerCastConfiguration();
+        return $return;
+    }
+
     public function getRegistry()
     {
         // TODO: Implement getRegistry() method.

@@ -23,6 +23,7 @@
     }
   },
   "require": {
+    "ext-json": "*",
     "bytic/package-base": "^1.0",
     "bytic/console": "^1.0",
     "bytic/controllers": "^1.0",

@@ -9,10 +9,17 @@ use Nip\Records\Record;
  * Class PromotionAction
  * @package Marktic\Promotion\Models\PromotionActions
  */
-class PromotionAction extends Record
+class PromotionAction extends Record implements PromotionActionInterface
 {
     use PromotionActionTrait;
     use CommonRecordTrait;
+
+    public function __construct(array $data = null)
+    {
+        $return = parent::__construct($data);
+        $this->registerCastConfiguration();
+        return $return;
+    }
 
     public function getRegistry()
     {
