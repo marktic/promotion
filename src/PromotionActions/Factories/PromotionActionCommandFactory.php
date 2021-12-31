@@ -4,7 +4,7 @@ namespace Marktic\Promotion\PromotionActions\Factories;
 
 use InvalidArgumentException;
 use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
-use Marktic\Promotion\PromotionActions\Utils\ActionCommands;
+use Marktic\Promotion\PromotionActions\DataObjects\PromotionActionType;
 
 class PromotionActionCommandFactory implements PromotionActionCommandFactoryInterface
 {
@@ -12,7 +12,7 @@ class PromotionActionCommandFactory implements PromotionActionCommandFactoryInte
 
     public function __construct()
     {
-        $this->classes = ActionCommands::classes();
+        $this->classes = PromotionActionType::classes();
     }
 
     public function create(string $type): PromotionActionCommandInterface

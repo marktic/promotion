@@ -2,9 +2,9 @@
 
 namespace Marktic\Promotion\PromotionActions\Services;
 
+use Marktic\Promotion\PromotionActions\DataObjects\PromotionActionType;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactoryInterface;
-use Marktic\Promotion\PromotionActions\Utils\ActionCommands;
 
 class ActionCommandsService
 {
@@ -40,6 +40,6 @@ class ActionCommandsService
 
     protected function baseCommandsArray(): array
     {
-        return ActionCommands::classes();
+        return PromotionActionType::classes();
     }
 }

@@ -2,9 +2,11 @@
 
 /** @var CartPromotion $item */
 
+use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionAction;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
-use Marktic\Promotion\PromotionActions\Presentation\ActionHtml;
+use Marktic\Promotion\Utility\PromotionModels;
 
+/** @var PromotionAction[] $actions */
 $actions = $item->getPromotionActions();
 ?>
 <tr>
@@ -19,9 +21,18 @@ $actions = $item->getPromotionActions();
         <?= $item->getUsageLimit(); ?>
     </td>
     <td>
-        <?= $actions->map(function ($action) {
-            return ActionHtml::for($action);
-        })->implode(' '); ?>
+        <?php
+        foreach ($actions as $action) { ?>
+            <?=
+            $this->load(
+                sprintf(
+                    "/%s/modules/types/badge-%s",
+                    PromotionModels::promotionActions()->getController(),
+                    $action->getType()
+                )
+            );
+            ?>
+        <?php } ?>
     </td>
     <td>
     </td>

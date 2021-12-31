@@ -29,6 +29,11 @@ trait CartPromotionsTrait
         $this->hasMany(CartPromotions::RELATION_ACTIONS, ['class' => get_class(PromotionModels::promotionActions())]);
     }
 
+    public function generatePrimaryFK()
+    {
+        return 'promotion_id';
+    }
+
     protected function generateTable(): string
     {
         return PackageConfig::tableName(PromotionModels::PROMOTIONS, CartPromotions::TABLE);

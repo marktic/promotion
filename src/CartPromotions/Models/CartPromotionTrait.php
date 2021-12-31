@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\CartPromotions\Models;
 
+use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
 use Nip\Records\Collections\Collection;
@@ -14,6 +15,8 @@ use Nip\Records\Collections\Collection;
  */
 trait CartPromotionTrait
 {
+    use RecordHasUsage;
+
     protected string $name;
 
     protected string $description;

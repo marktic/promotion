@@ -1,12 +1,12 @@
 <?php
 
-namespace Marktic\Promotion\PromotionActions\Utils;
+namespace Marktic\Promotion\PromotionActions\DataObjects;
 
 use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
 
-class ActionCommands
+class PromotionActionType
 {
     protected static array $classes = [
         FixedDiscountActionCommand::NAME => FixedDiscountActionCommand::class,
