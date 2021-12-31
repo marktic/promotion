@@ -46,8 +46,8 @@ $actions = $item->getPromotionActions();
     </td>
     <td>
         <?php
-        echo _strftime($item->date_start); ?> /
+        echo _strftime($item->valid_from); ?> /
         <?php
-        echo _strftime($item->date_end); ?>
+        echo _strftime($item->valid_to); ?>
     </td>
 </tr>
