@@ -20,6 +20,9 @@ return [
         PromotionModels::PROMOTION_CODES => PromotionCodes::TABLE,
         PromotionModels::PROMOTION_RULES => PromotionRules::TABLE,
     ],
+    'currencies' => [
+        'default' => 'EUR',
+    ],
     'database' => [
         'connection' => 'main',
         'migrations' => true,

@@ -29,7 +29,11 @@ $actions = $item->getPromotionActions();
                     "/%s/modules/types/badge-%s",
                     PromotionModels::promotionActions()->getController(),
                     $action->getType()
-                )
+                ),
+                [
+                    'action' => $action,
+                    'item' => $item,
+                ]
             );
             ?>
         <?php } ?>
