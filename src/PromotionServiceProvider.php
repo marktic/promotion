@@ -22,6 +22,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
     public function register()
     {
         parent::register();
+        $this->registerResources();
         $this->registerActionFactory();
         $this->registerActionCommandsFactory();
         $this->registerActionCommandsService();
@@ -34,6 +35,21 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         }
 
         return null;
+    }
+
+    protected function registerResources()
+    {
+        $folder = __DIR__ . '/Bundle/Resources/lang/';
+        $languages = $this->getContainer()->get('translation.languages');
+
+        $translator = $this->getContainer()->get('translator');
+
+        foreach ($languages as $language) {
+            $path = $folder . $language;
+            if (is_dir($path)) {
+                $translator->addResource('php', $path, $language);
+            }
+        }
     }
 
     protected function registerCommands()
