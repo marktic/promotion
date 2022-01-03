@@ -6,6 +6,11 @@ return [
     'mkt_promotions.labels.title.register' => 'Ai un cod de reducere?',
     'mkt_promotions.labels.add' => 'Adauga cod',
 
+    'mkt_promotions.labels.usage' => 'Usage',
+    'mkt_promotions.labels.exclusive' => 'Exclusive',
+    'mkt_promotions.labels.exclusive.help' => 'doar unul pe client',
+    'mkt_promotions.labels.validity' => 'Validity',
+
     'mkt_promotions.labels.type.amount' => 'Modificare suma',
     'mkt_promotions.labels.type.fixed' => 'Suma exacta',
     'mkt_promotions.labels.type.percentage' => 'Modificare procentuala',

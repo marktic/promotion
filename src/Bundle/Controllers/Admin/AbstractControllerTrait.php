@@ -8,7 +8,7 @@ trait AbstractControllerTrait
 {
     use \Nip\Controllers\Traits\AbstractControllerTrait;
 
-    protected function registerViewPaths(View $view)
+    public function registerViewPaths(View $view)
     {
         parent::registerViewPaths($view);
 

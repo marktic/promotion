@@ -31,6 +31,9 @@ $promotion_repository = PromotionModels::promotions();
     <tr>
         <td class="name">
             <?= $promotion_repository->getLabel('exclusive'); ?>:
+            <small class="d-block">
+                <?= $promotion_repository->getLabel('exclusive.help'); ?>
+            </small>
         </td>
         <td class="value"><?= $this->item->exclusive; ?></td>
     </tr>
