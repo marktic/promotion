@@ -2,8 +2,12 @@
 
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
+use Nip\Controllers\Response\ResponsePayload;
 use Nip\View\View;
 
+/**
+ * @method ResponsePayload payload()
+ */
 trait AbstractControllerTrait
 {
     use \Nip\Controllers\Traits\AbstractControllerTrait;

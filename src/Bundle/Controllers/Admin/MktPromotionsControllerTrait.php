@@ -37,9 +37,15 @@ trait MktPromotionsControllerTrait
     {
         parent::view();
 
-        $promotionCodes = $this->getModelFromRequest()->getPromotionCodes();
+        $promotion = $this->getModelFromRequest();
 
-        $this->payload()->with(['promotion_codes' => $promotionCodes]);
+        $promotionActions = $promotion->getPromotionActions();
+        $promotionCodes = $promotion->getPromotionCodes();
+
+        $this->payload()->with([
+            'promotion_actions' => $promotionActions,
+            'promotion_codes' => $promotionCodes
+        ]);
     }
 
     public function addNewModel(): \Nip\Records\AbstractModels\Record

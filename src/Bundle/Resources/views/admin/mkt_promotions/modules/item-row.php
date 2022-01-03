@@ -4,7 +4,6 @@
 
 use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionAction;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
-use Marktic\Promotion\Utility\PromotionModels;
 
 /** @var PromotionAction[] $actions */
 $actions = $item->getPromotionActions();
@@ -21,28 +20,12 @@ $actions = $item->getPromotionActions();
         <?= $item->getUsageLimit(); ?>
     </td>
     <td>
-        <?php
-        foreach ($actions as $action) { ?>
-            <?=
-            $this->load(
-                sprintf(
-                    "/%s/modules/types/badge-%s",
-                    PromotionModels::promotionActions()->getController(),
-                    $action->getType()
-                ),
-                [
-                    'action' => $action,
-                    'item' => $item,
-                ]
-            );
-            ?>
-        <?php } ?>
+        <?= $this->load('/mkt_promotions_actions/modules/lists/promotion', ['actions' => $actions]); ?>
     </td>
     <td>
     </td>
     <td>
-        <?php
-        echo translator()->trans($item->cumulative); ?>
+        <?= translator()->trans($item->isExclusive() ? 'yes' : 'no'); ?>
     </td>
     <td>
         <?php
