@@ -2,14 +2,18 @@
 
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
+use Nip\View\View;
+
 trait AbstractControllerTrait
 {
     use \Nip\Controllers\Traits\AbstractControllerTrait;
 
-    protected function registerViewPaths()
+    protected function registerViewPaths(View $view)
     {
+        parent::registerViewPaths($view);
+
         $path = __DIR__ . '/../../Resources/views/admin';
-        $this->getView()->addPath($path);
-        $this->getView()->addPath($path, 'MarkticPromotion');
+        $view->addPath($path);
+        $view->addPath($path, 'MarkticPromotion');
     }
 }

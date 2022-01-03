@@ -12,7 +12,7 @@ interface PromotionInterface
 
     public function setDescription(?string $description): void;
 
-    public function getPriority(): int;
+    public function getPriority(): ?int;
 
     public function setPriority(?int $priority): void;
 

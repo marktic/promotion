@@ -5,11 +5,13 @@ namespace Marktic\Promotion\CartPromotions\Models;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
+use Nip\Records\AbstractModels\Record;
 use Nip\Records\Collections\Collection;
 
 /**
  * Trait CartPromotionTrait
  *
+ * @method Record getPromotionPool
  * @method PromotionCode[]|Collection getPromotionCodes
  * @method PromotionAction[]|Collection getPromotionActions
  */
@@ -17,18 +19,22 @@ trait CartPromotionTrait
 {
     use RecordHasUsage;
 
-    protected string $name;
+    protected ?string $pool = null;
+
+    protected ?int $pool_id = null;
+
+    protected ?string $name = null;
 
     protected string $description;
 
-    protected int $priority;
+    protected ?int $priority = null;
 
-    protected bool $exclusive;
+    protected bool $exclusive = false;
 
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -48,7 +54,7 @@ trait CartPromotionTrait
         $this->description = $description;
     }
 
-    public function getPriority(): int
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
@@ -65,6 +71,38 @@ trait CartPromotionTrait
 
     public function setExclusive(?bool $exclusive): void
     {
-        $this->exclusive = $exclusive;
+        $this->exclusive = ($exclusive === true);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPool(): ?string
+    {
+        return $this->pool;
+    }
+
+    /**
+     * @param string|null $pool
+     */
+    public function setPool(?string $pool): void
+    {
+        $this->pool = $pool;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPoolId(): ?int
+    {
+        return $this->pool_id;
+    }
+
+    /**
+     * @param int|null $pool_id
+     */
+    public function setPoolId(?int $pool_id): void
+    {
+        $this->pool_id = $pool_id;
     }
 }

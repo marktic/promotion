@@ -15,8 +15,14 @@ trait CartPromotionsTrait
 
     protected function initRelationsTrait()
     {
+        $this->initRelationsPromotionPool();
         $this->initRelationsPromotionCodes();
         $this->initRelationsPromotionActions();
+    }
+
+    protected function initRelationsPromotionPool()
+    {
+        $this->morphTo(CartPromotions::RELATION_POOL, ['morphPrefix' => 'pool', 'morphTypeField' => 'pool']);
     }
 
     protected function initRelationsPromotionCodes()

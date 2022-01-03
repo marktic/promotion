@@ -4,22 +4,22 @@ namespace Marktic\Promotion\Base\Models\Behaviours\HasUsage;
 
 trait RecordHasUsage
 {
-    protected int $usage_limit;
+    protected ?int $usage_limit = null;
 
-    protected int $used;
+    protected int $used = 0;
 
     /**
      * @return int
      */
-    public function getUsageLimit(): int
+    public function getUsageLimit(): ?int
     {
         return $this->usage_limit;
     }
 
     /**
-     * @param int $usage_limit
+     * @param int|null $usage_limit
      */
-    public function setUsageLimit(int $usage_limit): void
+    public function setUsageLimit(?int $usage_limit): void
     {
         $this->usage_limit = $usage_limit;
     }
