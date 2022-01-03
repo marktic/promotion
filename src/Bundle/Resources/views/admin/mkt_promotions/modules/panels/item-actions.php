@@ -13,5 +13,7 @@ $actionsRepository = PromotionModels::promotionActions();
             <?php echo $actionsRepository->getLabel('title'); ?>
         </h4>
     </div>
-    <?= $this->load('/mkt_promotions_actions/modules/lists/promotion'); ?>
+    <div class="card-body">
+        <?= $this->load('/mkt_promotions_actions/modules/lists/promotion'); ?>
+    </div>
 </div>

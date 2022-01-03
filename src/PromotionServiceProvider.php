@@ -39,10 +39,13 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
 
     protected function registerResources()
     {
+        if (false === $this->getContainer()->has('translator')) {
+            return;
+        }
+        $translator = $this->getContainer()->get('translator');
         $folder = __DIR__ . '/Bundle/Resources/lang/';
         $languages = $this->getContainer()->get('translation.languages');
 
-        $translator = $this->getContainer()->get('translator');
 
         foreach ($languages as $language) {
             $path = $folder . $language;

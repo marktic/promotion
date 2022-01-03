@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\PromotionActions\Services;
 
+use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
 use Marktic\Promotion\PromotionActions\DataObjects\PromotionActionType;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactoryInterface;
@@ -10,6 +11,9 @@ class ActionCommandsService
 {
     protected PromotionActionCommandFactoryInterface $factory;
 
+    /**
+     * @var PromotionActionCommandInterface[]|null
+     */
     protected ?array $commands = null;
 
     /**
@@ -18,6 +22,13 @@ class ActionCommandsService
     public function __construct(PromotionActionCommandFactoryInterface $factory = null)
     {
         $this->factory = $factory ?? new PromotionActionCommandFactory();
+    }
+
+    public function forAction($action): ?PromotionActionCommandInterface
+    {
+        $this->bootCommands();
+
+        return $this->commands[$action->getType()] ?? null;
     }
 
     public function all(): array

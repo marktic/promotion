@@ -24,4 +24,9 @@ class FixedDiscountActionCommand extends DiscountActionCommand
     ): void {
         // TODO: Implement revert() method.
     }
+
+    protected function describeConfigurationValue($label, $value, $prefix = '-', $suffix = null)
+    {
+        return parent::describeConfigurationValue($label, $value, $prefix, $suffix);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\PromotionActions\Commands;
 
+use Marktic\Promotion\Base\Configurations\ModelConfiguration;
 use Marktic\Promotion\Base\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
@@ -18,4 +19,7 @@ interface PromotionActionCommandInterface
         array $configuration,
         PromotionInterface $promotion
     ): void;
+
+    public function describeConfiguration(ModelConfiguration $configuration): string;
+
 }
