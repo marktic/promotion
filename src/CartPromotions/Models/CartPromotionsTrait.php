@@ -18,6 +18,7 @@ trait CartPromotionsTrait
         $this->initRelationsPromotionPool();
         $this->initRelationsPromotionCodes();
         $this->initRelationsPromotionActions();
+        $this->initRelationsPromotionRules();
     }
 
     protected function initRelationsPromotionPool()
@@ -33,6 +34,11 @@ trait CartPromotionsTrait
     protected function initRelationsPromotionActions()
     {
         $this->hasMany(CartPromotions::RELATION_ACTIONS, ['class' => get_class(PromotionModels::promotionActions())]);
+    }
+
+    protected function initRelationsPromotionRules()
+    {
+        $this->hasMany(CartPromotions::RELATION_RULES, ['class' => get_class(PromotionModels::promotionRules())]);
     }
 
     public function generatePrimaryFK()
