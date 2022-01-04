@@ -13,5 +13,5 @@ $rulesRepository = PromotionModels::promotionRules();
             <?php echo $rulesRepository->getLabel('title'); ?>
         </h4>
     </div>
-    <?= $this->load('/mkt_promotions_rules/modules/lists/promotion'); ?>
+    <?= $this->load('/mkt_promotion_rules/modules/lists/promotion'); ?>
 </div>

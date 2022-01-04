@@ -20,7 +20,7 @@ $actions = $item->getPromotionActions();
         <?= $item->getUsageLimit(); ?>
     </td>
     <td>
-        <?= $this->load('/mkt_promotions_actions/modules/lists/promotion', ['actions' => $actions]); ?>
+        <?= $this->load('/mkt_promotion_actions/modules/lists/promotion', ['actions' => $actions]); ?>
     </td>
     <td>
     </td>

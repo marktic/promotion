@@ -9,6 +9,7 @@ use Marktic\Promotion\Utility\PromotionServices;
 
 $configuration = $item->getConfiguration();
 $command = PromotionServices::actionCommands()->forAction($item);
+$actionUrl = $item->compileURL('edit');
 ?>
 <div class="badge bg-light text-start text-dark d-flex">
     <div class="name flex-grow-1">
@@ -19,7 +20,8 @@ $command = PromotionServices::actionCommands()->forAction($item);
             <?= $command->describeConfiguration($configuration); ?>
         </span>
     </div>
-    <a href="<?= $item->compileURL('edit'); ?>" data-bs-toggle="modalForm" data-target="modalForm"
+    <a href="<?= $actionUrl ?>" data-href="<?= $actionUrl ?>"
+       data-bs-toggle="modalForm" data-bs-target="#modalForm"
        class="btn btn-outline-primary btn-xs float-end">
         <?= Icons::edit(); ?>
     </a>

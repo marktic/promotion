@@ -59,15 +59,6 @@ trait MktPromotionsControllerTrait
         return $item;
     }
 
-    public function getModelForm($model, $action = null)
-    {
-        $type = $this->getRequest()->get('type');
-
-        $class = $this->getModelFormClass($model, $action);
-        $form = new $class();
-        $form->setModel($model);
-        return $form;
-    }
 
     protected function forwardToPoolIndex()
     {

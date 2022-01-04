@@ -17,4 +17,5 @@ class PromotionActions extends RecordManager
     public const TABLE = 'mkt_promotions_actions';
     public const CONTROLLER = 'mkt_promotion_actions';
 
+    public const RELATION_POOL = 'Promotion';
 }

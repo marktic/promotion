@@ -2,7 +2,14 @@
 
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
+use Marktic\Promotion\Bundle\Forms\Admin\PromotionActions\BaseForm;
+use Marktic\Promotion\Bundle\Forms\Admin\PromotionActions\FixedDiscountForm;
+use Marktic\Promotion\Bundle\Forms\Admin\PromotionActions\FixedPriceForm;
+use Marktic\Promotion\Bundle\Forms\Admin\PromotionActions\PercentageDiscountForm;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
+use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
+use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
+use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Nip\Records\Record;
 
@@ -37,9 +44,29 @@ trait MktPromotionActionsControllerTrait
     protected function checkItemAccess($item)
     {
         $promotion = $item->getPromotion();
-        $pool = $item->getPromotionPool();
+        $this->checkAndSetForeignModelInRequest($promotion);
+
+        $pool = $promotion->getPromotionPool();
 
         $this->checkPoolAccess($pool);
+    }
+
+    protected function getModelFormClass($model, $action = null): string
+    {
+        $type = $this->getModelFromRequest()->getType();
+
+        switch ($type) {
+            case PercentageDiscountActionCommand::NAME:
+                return PercentageDiscountForm::class;
+
+            case FixedDiscountActionCommand::NAME:
+                return FixedDiscountForm::class;
+
+            case FixedPriceActionCommand::NAME:
+                return FixedPriceForm::class;
+        }
+
+        return BaseForm::class;
     }
 
     /**

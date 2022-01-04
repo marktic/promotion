@@ -14,6 +14,6 @@ $actionsRepository = PromotionModels::promotionActions();
         </h4>
     </div>
     <div class="card-body">
-        <?= $this->load('/mkt_promotions_actions/modules/lists/promotion', ['type' => 'edit']); ?>
+        <?= $this->load('/mkt_promotion_actions/modules/lists/promotion', ['type' => 'edit']); ?>
     </div>
 </div>

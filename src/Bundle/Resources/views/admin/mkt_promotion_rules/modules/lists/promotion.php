@@ -6,7 +6,7 @@ $type = $type ?? 'view';
 <?php foreach ($items as $action) { ?>
     <?=
     $this->load(
-        "/mkt_promotions_rules/modules/item/" . $type,
+        "/mkt_promotion_rules/modules/item/" . $type,
         [
             'item' => $action
         ]
