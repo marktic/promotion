@@ -3,6 +3,7 @@
 namespace Marktic\Promotion\CartPromotions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
+use Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
 use Marktic\Promotion\PromotionRules\Models\PromotionRule;
@@ -12,7 +13,7 @@ use Nip\Records\Collections\Collection;
 /**
  * Trait CartPromotionTrait
  *
- * @method Record getPromotionPool
+ * @method Record|PromotionPoolWithCurrencies getPromotionPool
  * @method PromotionCode[]|Collection getPromotionCodes
  * @method PromotionAction[]|Collection getPromotionActions
  * @method PromotionRule[]|Collection getPromotionRules

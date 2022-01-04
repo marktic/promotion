@@ -27,5 +27,8 @@ trait RecordHasPromotion
         $this->promotion_id = $promotion_id;
     }
 
-
+    public function getPromotionPool()
+    {
+        return $this->getPromotion()->getPromotionPool();
+    }
 }

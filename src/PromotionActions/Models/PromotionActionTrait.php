@@ -16,4 +16,5 @@ trait PromotionActionTrait
     {
         return $this->getType();
     }
+
 }

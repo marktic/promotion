@@ -7,6 +7,7 @@ return [
     'mkt_promotions.labels.add' => 'Adauga cod',
 
     'mkt_promotions.labels.usage' => 'Utilizare',
+    'mkt_promotions.labels.usage_limit' => 'Limită utilizare',
     'mkt_promotions.labels.exclusive' => 'Exclusiv',
     'mkt_promotions.labels.exclusive.help' => 'doar unul pe client',
     'mkt_promotions.labels.validity' => 'Valabilitate',

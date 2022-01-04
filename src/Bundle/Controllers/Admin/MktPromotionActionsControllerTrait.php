@@ -11,7 +11,9 @@ use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
+use Nip\Controllers\Response\ResponsePayload;
 use Nip\Records\Record;
+use Nip\Utility\Url;
 
 /**
  * @method CartPromotion getModelFromRequest()
@@ -20,23 +22,15 @@ trait MktPromotionActionsControllerTrait
 {
     use AbstractControllerTrait;
 
-    public function view()
+    public function edit()
     {
-        parent::view();
-
-        $promotion = $this->getModelFromRequest();
-
-        $promotionActions = $promotion->getPromotionActions();
-        $promotionCodes = $promotion->getPromotionCodes();
-        $promotionRules = $promotion->getPromotionRules();
-
-        $this->payload()->with([
-            'promotion_actions' => $promotionActions,
-            'promotion_rules' => $promotionRules,
-            'promotion_codes' => $promotionCodes
-        ]);
+        $item = $this->getModelFromRequest();
+        $this->setAfterUrl(
+            'after-edit',
+            Url::copyQuery($item->compileURL('edit'), [ResponsePayload::REQUEST_PARAM_FORMAT], $this->getRequest())
+        );
+        parent::edit();
     }
-
 
     /**
      * @param PromotionAction $item

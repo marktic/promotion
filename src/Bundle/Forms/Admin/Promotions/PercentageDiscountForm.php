@@ -2,7 +2,7 @@
 
 namespace Marktic\Promotion\Bundle\Forms\Admin\Promotions;
 
-class PercentageDiscountForm extends AbstractForm
+class PercentageDiscountForm extends AbstractDiscountForm
 {
 
 }
