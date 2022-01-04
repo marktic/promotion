@@ -19,7 +19,8 @@ $command = PromotionServices::actionCommands()->forAction($item);
             <?= $command->describeConfiguration($configuration); ?>
         </span>
     </div>
-    <a href="<?= $item->compileURL('edit'); ?>" class="btn btn-outline-primary btn-xs float-end">
+    <a href="<?= $item->compileURL('edit'); ?>" data-bs-toggle="modalForm" data-target="modalForm"
+       class="btn btn-outline-primary btn-xs float-end">
         <?= Icons::edit(); ?>
     </a>
 </div>

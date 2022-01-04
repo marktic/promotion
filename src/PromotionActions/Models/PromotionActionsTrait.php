@@ -14,4 +14,5 @@ trait PromotionActionsTrait
     {
         return PackageConfig::tableName(PromotionModels::PROMOTION_ACTIONS, PromotionActions::TABLE);
     }
+
 }

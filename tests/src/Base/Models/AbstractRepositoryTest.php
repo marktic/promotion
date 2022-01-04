@@ -27,6 +27,12 @@ abstract class AbstractRepositoryTest extends AbstractTest
         self::assertSame($config['tables'][$repositoryKey], $repository->getTable());
     }
 
+    protected function newRepository()
+    {
+        $class = $this->getRepositoryClass();
+        return new $class();
+    }
+
     abstract protected function getRepositoryClass(): string;
 
     /**

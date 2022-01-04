@@ -16,9 +16,9 @@ return [
     ),
     'tables' => [
         PromotionModels::PROMOTIONS => 'mk_promotions',
-        PromotionModels::PROMOTION_ACTIONS => 'mk_promotion_actions',
-        PromotionModels::PROMOTION_CODES => 'mk_promotion_codes',
-        PromotionModels::PROMOTION_RULES => 'mk_promotion_rules',
+        PromotionModels::PROMOTION_ACTIONS => 'mk_promotions_actions',
+        PromotionModels::PROMOTION_CODES => 'mk_promotions_codes',
+        PromotionModels::PROMOTION_RULES => 'mk_promotions_rules',
     ],
     'database' => [
         'connection' => 'main',

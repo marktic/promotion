@@ -15,5 +15,6 @@ class PromotionRules extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_promotions_rules';
+    public const CONTROLLER = 'mkt_promotion_rules';
 
 }

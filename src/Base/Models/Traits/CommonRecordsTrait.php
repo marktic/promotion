@@ -32,6 +32,10 @@ trait CommonRecordsTrait
 
     protected function generateController(): string
     {
+        if (defined('static::CONTROLLER')) {
+            return static::CONTROLLER;
+        }
+
         return $this->getTable();
     }
 }
