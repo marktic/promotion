@@ -25,7 +25,7 @@ abstract class AbstractForm extends FormModel
     public function getDataFromModel()
     {
         parent::getDataFromModel();
-        $this->initAmounts();
+        $this->getDataFromModelForAmounts();
     }
 
     /**
@@ -42,14 +42,7 @@ abstract class AbstractForm extends FormModel
     public function saveToModel()
     {
         parent::saveToModel();
-
-//        $racesIds = $this->races->getValue();
-//        $this->getModel()->setOption('races', $racesIds);
-//
-//        foreach ($this->_currencies as $currency) {
-//            $amount = $this->getElement('amounts[' . $currency->code . ']')->getValue();
-//            $this->getModel()->getAmount($currency)->setValue($amount);
-//        }
+        $this->saveToModelAmounts();
     }
 
     public function processValidation()
@@ -64,5 +57,11 @@ abstract class AbstractForm extends FormModel
         $configuration = $this->getModel()->getConfiguration();
         $value = $configuration->getWithCurrency('amount', $type);
         $input->setValue($value);
+    }
+
+    protected function saveToModelAmount($amount, $type)
+    {
+        $configuration = $this->getModel()->getConfiguration();
+        $configuration->setWithCurrency('amount', $amount, $type);
     }
 }

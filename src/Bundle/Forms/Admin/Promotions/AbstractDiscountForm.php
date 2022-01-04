@@ -11,6 +11,6 @@ abstract class AbstractDiscountForm extends AbstractForm
     public function getDataFromModel()
     {
         parent::getDataFromModel();
-        $this->initAmounts();
+        $this->getDataFromModelForAmounts();
     }
 }

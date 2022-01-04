@@ -58,6 +58,7 @@ trait FormHasAmounts
 
     protected function getDataFromModelForAmounts()
     {
+        $this->initAmounts();
         $currencies = $this->getPromotionCurrenciesCodes();
         foreach ($currencies as $currency) {
             $input = $this->getAmountElement($currency);
@@ -98,6 +99,19 @@ trait FormHasAmounts
         if ($this->amountType() == 'percentage' && abs($value) > 100) {
             $input->addError(PromotionModels::promotionActions()->getMessage('form.amount.percentage-toobig'));
         }
+    }
+
+    protected function saveToModelAmounts()
+    {
+        $currencies = $this->getPromotionCurrenciesCodes();
+        foreach ($currencies as $currency) {
+            $amount = $this->getAmountElement($currency)->getValue();
+            $this->saveToModelAmount($amount, $currency);
+        }
+    }
+
+    protected function saveToModelAmount($amount, $type)
+    {
     }
 
     protected function amountType(): string
