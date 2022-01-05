@@ -13,5 +13,5 @@ $codesRepository = PromotionModels::promotionCodes();
             <?php echo $codesRepository->getLabel('title'); ?>
         </h4>
     </div>
-    <?= $this->load('/mkt_promotion_codes/modules/lists/promotion'); ?>
+    <?= $this->load('/mkt_promotion_codes/modules/lists/promotion', ['type' => 'edit']); ?>
 </div>

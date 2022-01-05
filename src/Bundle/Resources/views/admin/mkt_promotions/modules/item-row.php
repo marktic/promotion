@@ -28,9 +28,7 @@ $actions = $item->getPromotionActions();
         <?= translator()->trans($item->isExclusive() ? 'yes' : 'no'); ?>
     </td>
     <td>
-        <?php
-        echo _strftime($item->valid_from); ?> /
-        <?php
-        echo _strftime($item->valid_to); ?>
+        <?= $item->getValidFrom(); ?> /
+        <?= $item->getValidTo(); ?>
     </td>
 </tr>

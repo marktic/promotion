@@ -3,6 +3,7 @@
 namespace Marktic\Promotion\CartPromotions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
+use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
 use Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
@@ -21,6 +22,7 @@ use Nip\Records\Collections\Collection;
 trait CartPromotionTrait
 {
     use RecordHasUsage;
+    use RecordHasValidity;
 
     protected ?string $pool = null;
 
@@ -33,6 +35,13 @@ trait CartPromotionTrait
     protected ?int $priority = null;
 
     protected bool $exclusive = false;
+
+    public function __construct(array $data = null)
+    {
+        $return = parent::__construct($data);
+        $this->registerValidityCast();
+        return $return;
+    }
 
     /**
      * @return string

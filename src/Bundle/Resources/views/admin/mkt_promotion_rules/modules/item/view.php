@@ -1,10 +1,10 @@
 <?php
 
-/** @var PromotionAction $item */
-
-use Marktic\Promotion\PromotionActions\Models\PromotionAction;
+use Marktic\Promotion\PromotionRules\Models\PromotionRule;
 use Marktic\Promotion\Utility\PromotionModels;
 use Marktic\Promotion\Utility\PromotionServices;
+
+/** @var PromotionRule $item */
 
 $configuration = $item->getConfiguration();
 $command = PromotionServices::actionCommands()->forAction($item);
