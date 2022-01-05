@@ -2,12 +2,14 @@
 
 namespace Marktic\Promotion\PromotionCodes\Models;
 
+use Marktic\Promotion\Base\Models\Behaviours\HasCode\RecordHasCode;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RecordHasPromotion;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
 
 trait PromotionCodeTrait
 {
+    use RecordHasCode;
     use RecordHasUsage;
     use RecordHasPromotion;
     use RecordHasValidity;
@@ -19,4 +21,8 @@ trait PromotionCodeTrait
         return $return;
     }
 
+    public function getName(): ?string
+    {
+        return $this->getCode();
+    }
 }

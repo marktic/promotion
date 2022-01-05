@@ -17,8 +17,12 @@ $item = $this->item;
         </td>
     </tr>
     <tr>
-        <td class="name"><?= translator()->trans('code'); ?>:</td>
-        <td class="value"><?= $item->code; ?></td>
+        <td class="name">
+            <?= translator()->trans('code'); ?>:
+        </td>
+        <td class="value">
+            <?= $item->getCode(); ?>
+        </td>
     </tr>
     <tr>
         <td class="name">
@@ -49,9 +53,7 @@ $item = $this->item;
             <?= $promotion_repository->getLabel('validity'); ?>:
         </td>
         <td class="value">
-            FROM: <?= _strftime($item->valid_from); ?>
-            <br/>
-            TO: <?= _strftime($item->valid_from); ?>
+            <?= $this->load('/mkt_base/modules/validity', ['item' => $item]); ?>
         </td>
     </tr>
     </tbody>

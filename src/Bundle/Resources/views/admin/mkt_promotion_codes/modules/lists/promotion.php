@@ -19,14 +19,17 @@ $type = $type ?? 'view';
     <?php foreach ($items as $item) { ?>
         <?php $actionUrl = $item->compileURL('edit'); ?>
         <tr>
-            <td><?= $item->code; ?></td>
+            <td>
+                <div class="bg-light fw-bold px-2 font-monospace">
+                    <?= $item->code; ?>
+                </div>
+            </td>
             <td>
                 <?= $item->getUsed(); ?> /
                 <?= $item->getUsageLimit(); ?>
             </td>
             <td>
-                <?= $item->getValidFrom(); ?> /
-                <?= $item->getValidTo(); ?>
+                <?= $this->load('/mkt_base/modules/validity', ['item' => $item]); ?>
             </td>
             <td>
                 <a href="<?= $actionUrl ?>" data-href="<?= $actionUrl ?>"

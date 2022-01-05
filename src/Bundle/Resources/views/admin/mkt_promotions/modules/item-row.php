@@ -14,7 +14,7 @@ $actions = $item->getPromotionActions();
             <?= $item->getName(); ?>
         </a>
     </td>
-    <td><?= $item->code; ?></td>
+    <td><?= $item->getCode(); ?></td>
     <td>
         <?= $item->getUsed(); ?> /
         <?= $item->getUsageLimit(); ?>
@@ -23,12 +23,9 @@ $actions = $item->getPromotionActions();
         <?= $this->load('/mkt_promotion_actions/modules/lists/promotion', ['actions' => $actions]); ?>
     </td>
     <td>
-    </td>
-    <td>
         <?= translator()->trans($item->isExclusive() ? 'yes' : 'no'); ?>
     </td>
     <td>
-        <?= $item->getValidFrom(); ?> /
-        <?= $item->getValidTo(); ?>
+        <?= $this->load('/mkt_base/modules/validity', ['item' => $item]); ?>
     </td>
 </tr>

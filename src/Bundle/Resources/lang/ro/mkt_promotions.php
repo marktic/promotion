@@ -11,6 +11,8 @@ return [
     'mkt_promotions.labels.exclusive' => 'Exclusiv',
     'mkt_promotions.labels.exclusive.help' => 'doar unul pe client',
     'mkt_promotions.labels.validity' => 'Valabilitate',
+    'mkt_promotions.labels.valid_from' => 'De la',
+    'mkt_promotions.labels.valid_to' => 'Pană la',
 
     'mkt_promotions.labels.type.amount' => 'Modificare suma',
     'mkt_promotions.labels.type.fixed' => 'Suma exacta',

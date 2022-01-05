@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\CartPromotions\Models;
 
+use Marktic\Promotion\Base\Models\Behaviours\HasCode\RecordHasCode;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
 use Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies;
@@ -21,6 +22,7 @@ use Nip\Records\Collections\Collection;
  */
 trait CartPromotionTrait
 {
+    use RecordHasCode;
     use RecordHasUsage;
     use RecordHasValidity;
 

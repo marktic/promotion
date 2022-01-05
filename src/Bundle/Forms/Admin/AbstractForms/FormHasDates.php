@@ -12,13 +12,27 @@ trait FormHasDates
 
     protected function validateDates()
     {
-        if ($this->valid_from->getValue() && $this->valid_to->getValue()) {
-            if (!$this->valid_from->isError() && !$this->valid_to->isError()) {
-                if ($this->valid_from->getUnix() > $this->valid_to->getUnix()) {
-                    $this->valid_to->addError($this->getModelMessage('valid_to.to-small'));
-                }
+        $fromElement = $this->getElement('valid_from');
+        $toElement = $this->getElement('valid_to');
+
+        if ($fromElement->isError() || $toElement->isError()) {
+            return;
+        }
+
+        if ($fromElement->hasValue() && $toElement->hasValue()) {
+            if ($fromElement->getUnix() > $toElement->getUnix()) {
+                $toElement->addError($this->getModelMessage('valid_to.to-small'));
+                return;
             }
         }
     }
 
+    protected function saveToModelDates()
+    {
+        $toElement = $this->getElement('valid_to');
+
+        if ($toElement->hasValue()) {
+            $this->getModel()->set('valid_to', $toElement->getValue() . ' 23:59:59');
+        }
+    }
 }

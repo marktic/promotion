@@ -60,14 +60,7 @@ abstract class AbstractForm extends FormModel
     public function saveToModel()
     {
         parent::saveToModel();
-
-//        $racesIds = $this->races->getValue();
-//        $this->getModel()->setOption('races', $racesIds);
-//
-//        foreach ($this->_currencies as $currency) {
-//            $amount = $this->getElement('amounts[' . $currency->code . ']')->getValue();
-//            $this->getModel()->getAmount($currency)->setValue($amount);
-//        }
+        $this->saveToModelDates();
     }
 
     public function processValidation()
