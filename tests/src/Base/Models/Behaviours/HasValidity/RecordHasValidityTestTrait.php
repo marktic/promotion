@@ -13,6 +13,8 @@ trait RecordHasValidityTestTrait
     {
         /** @var Record|RecordHasValidity $record */
         $record = $this->newRecordInstance();
+        self::assertNull($record->getValidFrom());
+        self::assertNull($record->getValidTo());
 
         $record->fill(['valid_from' => null, 'valid_to' => null]);
         self::assertNull($record->getValidFrom());

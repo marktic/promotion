@@ -24,7 +24,7 @@ class PromotionActionFactory implements PromotionActionFactoryInterface
 
     public function createFixedDiscount(int $amount): PromotionActionInterface
     {
-        return $this->createAction(
+        return $this->create(
             FixedDiscountActionCommand::NAME,
             ['amount' => $amount]
         );
@@ -32,7 +32,7 @@ class PromotionActionFactory implements PromotionActionFactoryInterface
 
     public function createAmountDiscount(int $amount): PromotionActionInterface
     {
-        return $this->createAction(
+        return $this->create(
             FixedDiscountActionCommand::NAME,
             ['amount' => $amount]
         );
@@ -40,13 +40,13 @@ class PromotionActionFactory implements PromotionActionFactoryInterface
 
     public function createPercentageDiscount(float $percentage): PromotionActionInterface
     {
-        return $this->createAction(
+        return $this->create(
             FixedDiscountActionCommand::NAME,
             ['amount' => $percentage]
         );
     }
 
-    private function createAction(string $type, array $configuration): PromotionActionInterface
+    public function create(string $type, array $configuration): PromotionActionInterface
     {
         /** @var PromotionActionInterface $action */
         $action = $this->createNew();
@@ -56,7 +56,7 @@ class PromotionActionFactory implements PromotionActionFactoryInterface
         return $action;
     }
 
-    public function createNew(): PromotionActionInterface
+    private function createNew(): PromotionActionInterface
     {
         return $this->actionsRepository->getNewRecord();
     }

@@ -24,7 +24,6 @@ trait PromotionActionsTrait
         $this->initRelationsPromotion();
     }
 
-
     protected function generateTable(): string
     {
         return PackageConfig::tableName(PromotionModels::PROMOTION_ACTIONS, PromotionActions::TABLE);

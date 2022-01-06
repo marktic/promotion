@@ -4,13 +4,13 @@ namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
 use Marktic\Promotion\Bundle\Forms\Admin\Promotions\BaseForm;
-use Marktic\Promotion\Bundle\Forms\Admin\Promotions\FixedDiscountForm;
-use Marktic\Promotion\Bundle\Forms\Admin\Promotions\FixedPriceForm;
-use Marktic\Promotion\Bundle\Forms\Admin\Promotions\PercentageDiscountForm;
+use Marktic\Promotion\Bundle\Forms\Admin\Promotions\DiscountForm;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
+use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
+use Marktic\Promotion\Utility\PromotionFactories;
 use Marktic\Promotion\Utility\PromotionServices;
 use Nip\Records\Record;
 
@@ -54,11 +54,17 @@ trait MktPromotionsControllerTrait
     {
         /** @var CartPromotion $item */
         $item = parent::addNewModel();
+
         $item->setPool($this->getRequest()->get('pool'));
         $item->setPoolId($this->getRequest()->get('pool_id'));
+
+        $type = $this->getRequest()->get('type');
+        $promotionAction = PromotionFactories::actions()->create($type, []);
+
+        $item->getRelation(CartPromotions::RELATION_ACTIONS)->getResults()->add($promotionAction);
+
         return $item;
     }
-
 
     protected function forwardToPoolIndex()
     {
@@ -93,13 +99,9 @@ trait MktPromotionsControllerTrait
 
         switch ($type) {
             case PercentageDiscountActionCommand::NAME:
-                return PercentageDiscountForm::class;
-
             case FixedDiscountActionCommand::NAME:
-                return FixedDiscountForm::class;
-
             case FixedPriceActionCommand::NAME:
-                return FixedPriceForm::class;
+            return DiscountForm::class;
         }
 
         return BaseForm::class;

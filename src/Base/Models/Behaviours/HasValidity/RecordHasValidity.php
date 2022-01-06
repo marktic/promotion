@@ -7,9 +7,9 @@ use DateTime;
 
 trait RecordHasValidity
 {
-    protected ?string $valid_from;
+    protected ?string $valid_from = null;
 
-    protected ?string $valid_to;
+    protected ?string $valid_to = null;
 
     /**
      * @return DateTime|Carbon|null

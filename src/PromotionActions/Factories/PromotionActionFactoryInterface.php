@@ -11,4 +11,6 @@ interface PromotionActionFactoryInterface
     public function createAmountDiscount(int $amount): PromotionActionInterface;
 
     public function createPercentageDiscount(float $percentage): PromotionActionInterface;
+
+    public function create(string $type, array $configuration): PromotionActionInterface;
 }

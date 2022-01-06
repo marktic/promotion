@@ -46,17 +46,6 @@ abstract class AbstractForm extends FormModel
 //        $this->initValues();
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function process(): bool
-    {
-        $this->saveToModel();
-        $this->getModel()->saveRecord();
-//        $this->getModel()->saveAmounts();
-        return true;
-    }
-
     public function saveToModel()
     {
         parent::saveToModel();
@@ -69,7 +58,6 @@ abstract class AbstractForm extends FormModel
 
         $this->validateCode();
         $this->validateUsageLimit();
-        $this->validateValues();
         $this->validateDates();
     }
 }

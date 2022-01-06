@@ -24,28 +24,6 @@ trait FormHasAmounts
         }
     }
 
-    protected function initPromotionCurrencies()
-    {
-        $pool = $this->getModel()->getPromotionPool();
-        if (!method_exists($pool, PromotionPoolWithCurrencies::CURRENCIES_METHOD)) {
-            $this->currencies = [];
-        }
-        $this->currencies = $pool->getPromotionPoolCurrencies();
-    }
-
-    protected function getPromotionCurrenciesCodes(): array
-    {
-        $currencies = $this->hasPromotionCurrencies() ? $this->currencies : [null];
-        return array_map(function ($currency) {
-            return is_object($currency) ? $currency->code : $currency;
-        }, $currencies);
-    }
-
-    protected function hasPromotionCurrencies(): bool
-    {
-        return is_countable($this->currencies) && count($this->currencies) > 0;
-    }
-
     protected function initAmount($type = null)
     {
         $name = $type ? 'amounts[' . $type . ']' : 'amount';
@@ -62,7 +40,8 @@ trait FormHasAmounts
         $currencies = $this->getPromotionCurrenciesCodes();
         foreach ($currencies as $currency) {
             $input = $this->getAmountElement($currency);
-            $this->getDataFromModelForAmount($input, $currency);
+            $value = $this->getDataFromModelForAmount($currency);
+            $input->setValue($value);
         }
     }
 
@@ -72,8 +51,10 @@ trait FormHasAmounts
         return $this->getElement($name);
     }
 
-    protected function getDataFromModelForAmount($input, $type = null)
+    protected function getDataFromModelForAmount($type = null)
     {
+        $configuration = $this->getModelAmounts()->getConfiguration();
+        return $configuration->getWithCurrency('amount', $type);
     }
 
     protected function validateAmounts()
@@ -112,6 +93,35 @@ trait FormHasAmounts
 
     protected function saveToModelAmount($amount, $type)
     {
+        $configuration = $this->getModelAmounts()->getConfiguration();
+        $configuration->setWithCurrency('amount', $amount, $type);
+    }
+
+    protected function getModelAmounts()
+    {
+        return $this->getModel();
+    }
+
+    protected function initPromotionCurrencies()
+    {
+        $pool = $this->getModel()->getPromotionPool();
+        if (!method_exists($pool, PromotionPoolWithCurrencies::CURRENCIES_METHOD)) {
+            $this->currencies = [];
+        }
+        $this->currencies = $pool->getPromotionPoolCurrencies();
+    }
+
+    protected function getPromotionCurrenciesCodes(): array
+    {
+        $currencies = $this->hasPromotionCurrencies() ? $this->currencies : [null];
+        return array_map(function ($currency) {
+            return is_object($currency) ? $currency->code : $currency;
+        }, $currencies);
+    }
+
+    protected function hasPromotionCurrencies(): bool
+    {
+        return is_countable($this->currencies) && count($this->currencies) > 0;
     }
 
     protected function amountType(): string

@@ -15,7 +15,9 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
 
     public function describeConfiguration(ModelConfiguration $configuration): string
     {
-        $return[] = $this->describeConfigurationValue('Base', $configuration->getWithCurrency('amount'));
+        if ($configuration->hasByKey('amount')) {
+            $return[] = $this->describeConfigurationValue('Base', $configuration->get('amount'));
+        }
         $currencies = $configuration->get('amount_c', []);
         foreach ($currencies as $currency => $value) {
             $return[] = $this->describeConfigurationValue($currency, $value);
