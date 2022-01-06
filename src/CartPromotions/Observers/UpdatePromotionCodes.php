@@ -51,6 +51,7 @@ class UpdatePromotionCodes
     {
         $code = PromotionModels::promotionCodes()->getNew();
         $code->populateFromPromotion($this->cartPromotion);
+        $this->copyDataFromPromotion($code);
         $code->save();
         $codes->add($code);
     }
@@ -61,16 +62,21 @@ class UpdatePromotionCodes
      */
     protected function updateFromPromotion($code)
     {
-        $fields = ['code', 'usage_limit', 'valid_from', 'valid_to'];
         $doUpdate = false;
-        if ($this->cartPromotion->getOriginalData('code') == $code->getPropertyRaw('code')) {
+        if ($this->cartPromotion->getOriginal('code') == $code->getPropertyRaw('code')) {
             $doUpdate = true;
         }
-        foreach ($fields as $field) {
-            $code->set($field, $this->cartPromotion->get($field));
-        }
+        $this->copyDataFromPromotion($code);
         if ($doUpdate) {
             $code->save();
+        }
+    }
+
+    protected function copyDataFromPromotion($code)
+    {
+        $fields = ['code', 'usage_limit', 'valid_from', 'valid_to'];
+        foreach ($fields as $field) {
+            $code->set($field, $this->cartPromotion->get($field));
         }
     }
 }

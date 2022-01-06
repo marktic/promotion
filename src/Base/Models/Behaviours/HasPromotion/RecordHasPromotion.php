@@ -34,7 +34,7 @@ trait RecordHasPromotion
 
     public function populateFromPromotion(CartPromotion $promotion)
     {
-        $this->setPromotionId($promotion->getId());
+        $this->setPromotionId($promotion->id);
         $this->getRelation('Promotion')->setResults($promotion);
     }
 }

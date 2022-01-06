@@ -6,18 +6,22 @@ use Marktic\Promotion\CartPromotions\Events\CartPromotionCreated;
 use Marktic\Promotion\CartPromotions\Observers\UpdatePromotionCodes;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
+use Nip\Records\EventManager\Events\Event;
 
 trait CartPromotionsTrait
 {
     protected function bootCartPromotionsTrait()
     {
-        static::created(function ($model) {
+        static::created(function ($event) {
+            /** @var Event $event */
+            $model = $event->getRecord();
             event(new CartPromotionCreated($model));
             UpdatePromotionCodes::for($model);
         });
 
-        static::updating(function ($model) {
-            UpdatePromotionCodes::for($model);
+        static::updating(function ($event) {
+            /** @var Event $event */
+            UpdatePromotionCodes::for($event->getRecord());
         });
     }
 
