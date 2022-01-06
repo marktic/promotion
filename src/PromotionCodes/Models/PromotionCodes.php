@@ -8,6 +8,7 @@ use Nip\Records\RecordManager;
 /**
  * Class PromotionCodes
  * @package Marktic\Promotion\Models\PromotionCodes
+ * @method PromotionCode getNew($data = [])
  */
 class PromotionCodes extends RecordManager
 {

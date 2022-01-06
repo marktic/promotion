@@ -2,11 +2,25 @@
 
 namespace Marktic\Promotion\CartPromotions\Models;
 
+use Marktic\Promotion\CartPromotions\Events\CartPromotionCreated;
+use Marktic\Promotion\CartPromotions\Observers\UpdatePromotionCodes;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
 
 trait CartPromotionsTrait
 {
+    protected function bootCartPromotionsTrait()
+    {
+        static::created(function ($model) {
+            event(new CartPromotionCreated($model));
+            UpdatePromotionCodes::for($model);
+        });
+
+        static::updating(function ($model) {
+            UpdatePromotionCodes::for($model);
+        });
+    }
+
     protected function initRelations()
     {
         parent::initRelations();
