@@ -9,6 +9,8 @@ use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactoryInterface;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
 use Marktic\Promotion\PromotionActions\Services\ActionCommandsService;
+use Marktic\Promotion\PromotionRules\Services\RuleConditionsService;
+use Marktic\Promotion\PromotionRules\Services\RuleConditionsServiceInterface;
 use Marktic\Promotion\Utility\PackageConfig;
 
 /**
@@ -19,6 +21,8 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
 {
     public const NAME = 'mkt_promotion';
 
+    public const SERVICE_RULE_CONDITIONS = 'mkt_promotion.rules.conditions';
+
     public function register()
     {
         parent::register();
@@ -26,6 +30,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         $this->registerActionFactory();
         $this->registerActionCommandsFactory();
         $this->registerActionCommandsService();
+        $this->registerRuleConditionsService();
     }
 
     public function migrations(): ?string
@@ -70,7 +75,9 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
             [
                 PromotionActionFactoryInterface::class,
                 PromotionActionCommandFactoryInterface::class,
-                ActionCommandsService::class
+                ActionCommandsService::class,
+                RuleConditionsServiceInterface::class,
+                static::SERVICE_RULE_CONDITIONS,
             ],
             parent::provides()
         );
@@ -95,5 +102,22 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
     protected function registerActionCommandsService()
     {
         $this->getContainer()->set(ActionCommandsService::class, ActionCommandsService::class, true);
+    }
+
+    protected function registerRuleConditionsService()
+    {
+        $this->getContainer()->set(RuleConditionsServiceInterface::class, RuleConditionsService::class, true);
+
+        $this->getContainer()->set(
+            static::SERVICE_RULE_CONDITIONS,
+            function () {
+                $service = $this->getContainer()->get(RuleConditionsServiceInterface::class);
+                $service->addFromConfig(
+                    PackageConfig::rulesCondition()
+                );
+                return $service;
+            },
+            true
+        );
     }
 }

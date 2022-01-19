@@ -21,12 +21,19 @@ abstract class AbstractTest extends TestCase
         Container::container()->set('config', $config->merge($configNew));
     }
 
-    protected function loadServiceProvider()
+    protected function loadConfigFromFixture($name)
+    {
+        $config = require TEST_FIXTURE_PATH . '/config/' . $name . '.php';
+        $this->loadConfig($config);
+    }
+
+    protected function loadServiceProvider(): PromotionServiceProvider
     {
         $container = Container::container();
         $provider = new PromotionServiceProvider();
         $provider->setContainer($container);
         $provider->register();
+        return $provider;
     }
 
     protected function loadFakeTranslator()

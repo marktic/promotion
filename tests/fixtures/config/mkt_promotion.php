@@ -4,6 +4,7 @@
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\PromotionActions\Models\PromotionActions;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
+use Marktic\Promotion\PromotionRules\Conditions\ItemTotalRuleCondition;
 use Marktic\Promotion\PromotionRules\Models\PromotionRules;
 use Marktic\Promotion\Utility\PromotionModels;
 
@@ -24,4 +25,9 @@ return [
         'connection' => 'main',
         'migrations' => true,
     ],
+    'rules' => [
+        'conditions' => [
+            ItemTotalRuleCondition::class,
+        ]
+    ]
 ];

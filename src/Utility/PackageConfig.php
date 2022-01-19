@@ -31,6 +31,11 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
         return static::instance()->get('currencies.default', $default);
     }
 
+    public static function rulesCondition($default = [])
+    {
+        return static::instance()->get('rules.conditions', $default);
+    }
+
     /**
      * @return string|null
      * @throws Exception

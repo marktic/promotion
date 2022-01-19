@@ -27,4 +27,9 @@ return [
         'connection' => 'main',
         'migrations' => true,
     ],
+    'rules' => [
+        'conditions' => [
+
+        ]
+    ]
 ];
