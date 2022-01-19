@@ -6,6 +6,7 @@ namespace Marktic\Promotion\PromotionRules\Services;
 
 use InvalidArgumentException;
 use Marktic\Promotion\PromotionRules\Conditions\RuleConditionInterface;
+use Marktic\Promotion\PromotionRules\Models\PromotionRule;
 
 class RuleConditionsService
 {
@@ -17,6 +18,15 @@ class RuleConditionsService
     public function all(): array
     {
         return $this->items;
+    }
+
+    /**
+     * @param PromotionRule $rule
+     * @return RuleConditionInterface|null
+     */
+    public function forRule($rule): ?RuleConditionInterface
+    {
+        return $this->get($rule->getType());
     }
 
     /**

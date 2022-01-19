@@ -4,6 +4,7 @@ namespace Marktic\Promotion\Utility;
 
 use Marktic\Promotion\PromotionActions\Services\ActionCommandsService;
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsService;
+use Marktic\Promotion\PromotionServiceProvider;
 use Nip\Container\Utility\Container;
 
 class PromotionServices
@@ -15,6 +16,6 @@ class PromotionServices
 
     public static function ruleConditions(): RuleConditionsService
     {
-        return Container::container()->get(RuleConditionsService::class);
+        return Container::container()->get(PromotionServiceProvider::SERVICE_RULE_CONDITIONS);
     }
 }
