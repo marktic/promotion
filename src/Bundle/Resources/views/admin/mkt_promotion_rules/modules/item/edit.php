@@ -10,7 +10,7 @@ $configuration = $item->getConfiguration();
 $condition = PromotionServices::ruleConditions()->forRule($item);
 $actionUrl = $item->compileURL('edit');
 ?>
-<div class="bg-light text-start text-dark d-flex p-3">
+<div class="bg-white text-start text-dark rounded shadow-xs d-flex p-3">
     <div class="name flex-grow-1">
         <span class="d-block text-uppercase">
             <?= PromotionModels::promotionRules()->translateType($item->getType()) ?>

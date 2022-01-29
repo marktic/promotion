@@ -11,7 +11,7 @@ $configuration = $item->getConfiguration();
 $command = PromotionServices::actionCommands()->forAction($item);
 $actionUrl = $item->compileURL('edit');
 ?>
-<div class="bg-light text-start text-dark d-flex p-3">
+<div class="bg-white text-start text-dark rounded shadow-xs d-flex p-3">
     <div class="name flex-grow-1">
         <h6 class="d-block text-uppercase fw-bold">
             <?= PromotionModels::promotionActions()->translateType($item->getType()) ?>

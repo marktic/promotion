@@ -1,19 +1,17 @@
 <?php
 
+use ByTIC\AdminBase\Widgets\Cards\Card;
 use ByTIC\Icons\Icons;
 use Marktic\Promotion\Utility\PromotionModels;
 
 $actionsRepository = PromotionModels::promotionActions();
 ?>
-<div class="card card-inverse">
-    <div class="card-header">
-        <h4 class="card-title">
-            <?= Icons::list_ul(); ?>
 
-            <?php echo $actionsRepository->getLabel('title'); ?>
-        </h4>
-    </div>
-    <div class="card-body">
-        <?= $this->load('/mkt_promotion_actions/modules/lists/promotion', ['type' => 'edit']); ?>
-    </div>
-</div>
+<?=
+Card::make()
+    ->withView($this)
+    ->withIcon(Icons::list_ul())
+    ->withTitle($actionsRepository->getLabel('title'))
+    ->addHtmlClass('bg-light', 'body')
+    ->withViewContent('/mkt_promotion_actions/modules/lists/promotion', ['type' => 'edit']);
+?>
