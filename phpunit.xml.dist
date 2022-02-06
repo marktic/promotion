@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
-         backupGlobals="false"
-         backupStaticAttributes="false"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
          bootstrap="tests/bootstrap.php"
          failOnRisky="true"
          failOnWarning="true"
-         stopOnError="false"
-         stopOnFailure="false"
          verbose="true">
   <coverage processUncoveredFiles="true">
     <include>
@@ -20,7 +13,7 @@
   </coverage>
   <testsuites>
     <testsuite name="ByTIC Framework Test Suite">
-      <directory suffix="Test.php">./tests/src</directory>
+      <directory>./tests/src</directory>
     </testsuite>
   </testsuites>
   <!-- Filter for coverage reports. -->

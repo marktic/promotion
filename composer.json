@@ -39,7 +39,7 @@
     "bytic/migrations": "^0.12"
   },
   "require-dev": {
-    "bytic/phpqatools": "^1.0.11"
+    "bytic/phpqatools": "^1.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true

@@ -16,9 +16,8 @@ class PromotionRule extends Record
 
     public function __construct(array $data = null)
     {
-        $return = parent::__construct($data);
+        parent::__construct($data);
         $this->registerCastConfiguration();
-        return $return;
     }
 
     public function getRegistry()

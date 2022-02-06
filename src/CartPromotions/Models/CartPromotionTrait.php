@@ -15,10 +15,10 @@ use Nip\Records\Collections\Collection;
 /**
  * Trait CartPromotionTrait
  *
- * @method Record|PromotionPoolWithCurrencies getPromotionPool
- * @method PromotionCode[]|Collection getPromotionCodes
- * @method PromotionAction[]|Collection getPromotionActions
- * @method PromotionRule[]|Collection getPromotionRules
+ * @method Record|PromotionPoolWithCurrencies getPromotionPool()
+ * @method PromotionCode[]|Collection getPromotionCodes()
+ * @method PromotionAction[]|Collection getPromotionActions()
+ * @method PromotionRule[]|Collection getPromotionRules()
  */
 trait CartPromotionTrait
 {

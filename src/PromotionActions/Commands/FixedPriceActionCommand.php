@@ -15,6 +15,7 @@ class FixedPriceActionCommand extends DiscountActionCommand
         PromotionInterface $promotion
     ): bool {
         // TODO: Implement execute() method.
+        return true;
     }
 
     public function revert(

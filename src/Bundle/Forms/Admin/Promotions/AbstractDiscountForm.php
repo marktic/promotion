@@ -4,7 +4,11 @@ namespace Marktic\Promotion\Bundle\Forms\Admin\Promotions;
 
 use Exception;
 use Marktic\Promotion\Bundle\Forms\Admin\AbstractForms\FormHasAmounts;
+use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotion;
 
+/**
+ * @method CartPromotion getModel()
+ */
 abstract class AbstractDiscountForm extends AbstractForm
 {
     protected $promotionAction = null;
@@ -30,9 +34,6 @@ abstract class AbstractDiscountForm extends AbstractForm
         $this->saveToModelAmounts();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function saveModel()
     {
         parent::saveModel();
@@ -41,11 +42,13 @@ abstract class AbstractDiscountForm extends AbstractForm
 
     protected function getModelAmounts()
     {
+        /** @noinspection PhpUnhandledExceptionInspection */
         return $this->getPromotionAction();
     }
 
     /**
      * @return null
+     * @throws Exception
      */
     public function getPromotionAction()
     {
@@ -56,6 +59,9 @@ abstract class AbstractDiscountForm extends AbstractForm
         return $this->promotionAction;
     }
 
+    /**
+     * @throws Exception
+     */
     protected function generatePromotionAction()
     {
         $actions = $this->getModel()->getPromotionActions();

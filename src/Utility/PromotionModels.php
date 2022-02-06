@@ -22,7 +22,7 @@ class PromotionModels extends ModelFinder
     public const PROMOTION_RULES = 'promotion_rules';
 
     /**
-     * @return RecordManager|CartPromotions
+     * @return CartPromotions|RecordManager
      */
     public static function promotions()
     {
@@ -30,7 +30,7 @@ class PromotionModels extends ModelFinder
     }
 
     /**
-     * @return RecordManager|PromotionActions
+     * @return PromotionActions
      */
     public static function promotionActions()
     {
@@ -38,7 +38,7 @@ class PromotionModels extends ModelFinder
     }
 
     /**
-     * @return RecordManager|PromotionCodes
+     * @return PromotionCodes
      */
     public static function promotionCodes()
     {
@@ -46,7 +46,7 @@ class PromotionModels extends ModelFinder
     }
 
     /**
-     * @return RecordManager|PromotionRules
+     * @return PromotionRules|RecordManager
      */
     public static function promotionRules()
     {
