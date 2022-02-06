@@ -11,4 +11,10 @@ trait PromotionRuleTrait
     use RecordHasType;
     use RecordHasConfiguration;
     use RecordHasPromotion;
+
+    public function getName(): ?string
+    {
+        return $this->getType();
+    }
+
 }
