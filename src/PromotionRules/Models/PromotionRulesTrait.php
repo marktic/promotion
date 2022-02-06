@@ -6,6 +6,9 @@ use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RepositoryHasPromotion
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
 
+/**
+ * @method PromotionRule getNew()
+ */
 trait PromotionRulesTrait
 {
     use RepositoryHasPromotion;

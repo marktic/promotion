@@ -7,6 +7,7 @@ use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\PromotionActions\Models\PromotionActions;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
 use Marktic\Promotion\PromotionRules\Models\PromotionRules;
+use Marktic\Promotion\PromotionSessions\Models\PromotionSessions;
 use Marktic\Promotion\Tests\AbstractTest;
 use Marktic\Promotion\Utility\PromotionModels;
 
@@ -51,6 +52,9 @@ abstract class AbstractRepositoryTest extends AbstractTest
                 return PromotionModels::PROMOTION_ACTIONS;
 
             case PromotionRules::class:
+                return PromotionModels::PROMOTION_RULES;
+
+            case PromotionSessions::class:
                 return PromotionModels::PROMOTION_RULES;
         }
 

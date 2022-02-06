@@ -8,6 +8,7 @@ use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionActions;
 use Marktic\Promotion\Bundle\Models\PromotionCodes\PromotionCodes;
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRules;
 use Marktic\Promotion\PromotionServiceProvider;
+use Marktic\Promotion\PromotionSessions\Models\PromotionSessions;
 use Nip\Records\RecordManager;
 
 /**
@@ -20,6 +21,7 @@ class PromotionModels extends ModelFinder
     public const PROMOTION_ACTIONS = 'promotion_actions';
     public const PROMOTION_CODES = 'promotion_codes';
     public const PROMOTION_RULES = 'promotion_rules';
+    public const PROMOTION_SESSIONS = 'promotion_sessions';
 
     /**
      * @return CartPromotions|RecordManager
@@ -51,6 +53,14 @@ class PromotionModels extends ModelFinder
     public static function promotionRules()
     {
         return static::getModels(self::PROMOTION_RULES, PromotionRules::class);
+    }
+
+    /**
+     * @return PromotionSessions|RecordManager
+     */
+    public static function promotionSessions()
+    {
+        return static::getModels(self::PROMOTION_SESSIONS, PromotionSessions::class);
     }
 
     protected static function packageName(): string
