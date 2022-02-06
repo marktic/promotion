@@ -1,5 +1,11 @@
-<div class="d-grid gap-3">
+<?php
 
+use Nip\View\View;
+
+/** @var $this View */
+
+?>
+<div class="d-grid gap-3">
     <?= $this->Flash()->render($this->controller); ?>
 
     <div class="row">
@@ -18,6 +24,7 @@
             <?= $this->load("modules/panels/item-codes"); ?>
         </div>
         <div class="col-md-7">
+            <?= $this->load("modules/panels/item-sessions"); ?>
         </div>
     </div>
 

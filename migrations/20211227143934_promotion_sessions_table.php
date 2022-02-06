@@ -19,7 +19,7 @@ final class PromotionSessionsTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'mkt_promotions_rules';
+        $table_name = 'mkt_promotions_sessions';
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;

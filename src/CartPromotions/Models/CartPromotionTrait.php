@@ -9,6 +9,7 @@ use Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
 use Marktic\Promotion\PromotionRules\Models\PromotionRule;
+use Marktic\Promotion\PromotionSessions\Models\PromotionSession;
 use Nip\Records\AbstractModels\Record;
 use Nip\Records\Collections\Collection;
 
@@ -19,6 +20,7 @@ use Nip\Records\Collections\Collection;
  * @method PromotionCode[]|Collection getPromotionCodes()
  * @method PromotionAction[]|Collection getPromotionActions()
  * @method PromotionRule[]|Collection getPromotionRules()
+ * @method PromotionSession[]|Collection getPromotionSessions()
  */
 trait CartPromotionTrait
 {

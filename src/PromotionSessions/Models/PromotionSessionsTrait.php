@@ -46,10 +46,19 @@ trait PromotionSessionsTrait
     protected function initRelationsTrait()
     {
         $this->initRelationsPromotion();
+        $this->initRelationsSubject();
+    }
+
+    protected function initRelationsSubject()
+    {
+        $this->morphTo(
+            PromotionSessions::RELATION_SUBJECT,
+            ['morphPrefix' => 'subject', 'morphTypeField' => 'subject']
+        );
     }
 
     protected function generateTable(): string
     {
-        return PackageConfig::tableName(PromotionModels::PROMOTION_RULES, PromotionSessions::TABLE);
+        return PackageConfig::tableName(PromotionModels::PROMOTION_SESSIONS, PromotionSessions::TABLE);
     }
 }

@@ -17,4 +17,6 @@ class PromotionSessions extends RecordManager
     public const TABLE = 'mkt_promotions_sessions';
     public const CONTROLLER = 'mkt_promotion_sessions';
 
+    public const RELATION_SUBJECT = 'PromotionSubject';
+
 }

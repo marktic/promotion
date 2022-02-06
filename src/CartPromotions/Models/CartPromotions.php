@@ -20,6 +20,7 @@ class CartPromotions extends RecordManager
     public const RELATION_CODES = 'PromotionCodes';
     public const RELATION_ACTIONS = 'PromotionActions';
     public const RELATION_RULES = 'PromotionRules';
+    public const RELATION_SESSIONS = 'PromotionSessions';
 
 
 }

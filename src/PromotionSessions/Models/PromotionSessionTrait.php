@@ -4,7 +4,12 @@ namespace Marktic\Promotion\PromotionSessions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfiguration;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RecordHasPromotion;
+use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
+use Nip\Records\Record;
 
+/**
+ * @method PromotionSubjectInterface|Record getPromotionSubject()
+ */
 trait PromotionSessionTrait
 {
     use RecordHasConfiguration;

@@ -42,11 +42,13 @@ trait MktPromotionsControllerTrait
         $promotionActions = $promotion->getPromotionActions();
         $promotionCodes = $promotion->getPromotionCodes();
         $promotionRules = $promotion->getPromotionRules();
+        $promotionSessions = $promotion->getPromotionSessions();
 
         $this->payload()->with([
             'promotion_actions' => $promotionActions,
             'promotion_rules' => $promotionRules,
-            'promotion_codes' => $promotionCodes
+            'promotion_codes' => $promotionCodes,
+            'promotion_sessions' => $promotionSessions
         ]);
     }
 
