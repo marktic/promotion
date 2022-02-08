@@ -55,7 +55,7 @@ abstract class AbstractRepositoryTest extends AbstractTest
                 return PromotionModels::PROMOTION_RULES;
 
             case PromotionSessions::class:
-                return PromotionModels::PROMOTION_RULES;
+                return PromotionModels::PROMOTION_SESSIONS;
         }
 
         throw new Exception('Repository key not found');

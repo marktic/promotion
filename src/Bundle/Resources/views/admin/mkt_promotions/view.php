@@ -2,7 +2,7 @@
 
 use Nip\View\View;
 
-/** @var $this View */
+/** @var View $this */
 
 ?>
 <div class="d-grid gap-3">

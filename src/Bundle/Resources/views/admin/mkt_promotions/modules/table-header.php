@@ -1,6 +1,10 @@
 <?php
 
-use Marktic\Promotion\Utility\PromotionModels; ?>
+use Marktic\Promotion\Utility\PromotionModels;
+use Nip\View\View;
+
+/** @var View $this */
+?>
 <thead>
 <tr>
     <th><?= translator()->trans('name'); ?></th>

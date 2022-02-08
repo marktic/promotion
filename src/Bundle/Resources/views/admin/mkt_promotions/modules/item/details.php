@@ -2,7 +2,9 @@
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\Utility\PromotionModels;
+use Nip\View\View;
 
+/** @var View $this */
 $promotion_repository = PromotionModels::promotions();
 
 /** @var CartPromotion $item */

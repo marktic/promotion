@@ -1,3 +1,7 @@
 <?php
 
-echo $this->load('/abstract/edit');
+use Nip\View\View;
+
+/** @var View $this */
+
+?><?= $this->load('/abstract/edit'); ?>

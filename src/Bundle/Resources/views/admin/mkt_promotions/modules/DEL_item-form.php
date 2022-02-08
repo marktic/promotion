@@ -1,6 +1,12 @@
 <?php
 
-$form = $this->form;
+use Nip\Form\AbstractForm;
+use Nip\View\View;
+
+/** @var View $this */
+
+/** @var AbstractForm $form */
+$form = $this->get('form');
 $renderer = $form->getRenderer();
 ?>
 

@@ -3,7 +3,7 @@
 use Marktic\Promotion\Bundle\Models\PromotionSessions\PromotionSession;
 use Nip\View\View;
 
-/** @var $this View */
+/** @var View $this */
 
 /** @var PromotionSession[] $items */
 $items = $items ?? $this->get('promotion_sessions');

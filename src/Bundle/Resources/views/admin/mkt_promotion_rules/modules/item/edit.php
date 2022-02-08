@@ -4,7 +4,9 @@ use ByTIC\Icons\Icons;
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRule;
 use Marktic\Promotion\Utility\PromotionModels;
 use Marktic\Promotion\Utility\PromotionServices;
+use Nip\View\View;
 
+/** @var View $this */
 /** @var PromotionRule $item */
 $configuration = $item->getConfiguration();
 $condition = PromotionServices::ruleConditions()->forRule($item);

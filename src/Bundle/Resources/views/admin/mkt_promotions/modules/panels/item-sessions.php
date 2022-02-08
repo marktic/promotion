@@ -5,7 +5,7 @@ use ByTIC\Icons\Icons;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/** @var $this View */
+/** @var View $this */
 
 $repository = PromotionModels::promotionSessions();
 ?>

@@ -2,8 +2,10 @@
 
 use ByTIC\Icons\Icons;
 use Marktic\Promotion\Utility\PromotionModels;
+use Nip\View\View;
 
-$items = $items ?? $this->promotion_codes;
+/** @var View $this */
+$items = $items ?? $this->get('promotion_codes');
 $type = $type ?? 'view';
 ?>
 <table class="table">

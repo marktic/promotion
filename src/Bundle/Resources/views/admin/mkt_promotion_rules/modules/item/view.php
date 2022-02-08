@@ -3,7 +3,9 @@
 use Marktic\Promotion\PromotionRules\Models\PromotionRule;
 use Marktic\Promotion\Utility\PromotionModels;
 use Marktic\Promotion\Utility\PromotionServices;
+use Nip\View\View;
 
+/** @var View $this */
 /** @var PromotionRule $item */
 
 $configuration = $item->getConfiguration();

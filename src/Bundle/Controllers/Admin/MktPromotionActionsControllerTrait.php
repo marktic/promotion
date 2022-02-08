@@ -12,7 +12,7 @@ use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Nip\Controllers\Response\ResponsePayload;
-use Nip\Records\Record;
+use Nip\Records\AbstractModels\Record;
 use Nip\Utility\Url;
 
 /**

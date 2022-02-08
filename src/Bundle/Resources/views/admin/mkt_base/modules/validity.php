@@ -2,7 +2,9 @@
 
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
 use Marktic\Promotion\Utility\PromotionModels;
+use Nip\View\View;
 
+/** @var View $this */
 /** @var RecordHasValidity $item */
 $validFrom = $item->getValidFrom();
 $validTo = $item->getValidTo();

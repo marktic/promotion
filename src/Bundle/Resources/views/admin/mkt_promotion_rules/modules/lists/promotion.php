@@ -1,6 +1,10 @@
 <?php
 
-$items = $items ?? $this->promotion_rules;
+use Nip\View\View;
+
+/** @var View $this */
+
+$items = $items ?? $this->get('promotion_rules');
 $type = $type ?? 'view';
 ?>
 <?php foreach ($items as $item) { ?>

@@ -15,6 +15,7 @@ class CartPromotions extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_promotions';
+    public const CONTROLLER = 'mkt_promotions';
 
     public const RELATION_POOL = 'PromotionPool';
     public const RELATION_CODES = 'PromotionCodes';
