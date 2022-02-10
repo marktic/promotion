@@ -26,7 +26,7 @@ class PercentageDiscountActionCommand extends DiscountActionCommand
         // TODO: Implement revert() method.
     }
 
-    protected function describeConfigurationValue($label, $value, $prefix = '-', $suffix = '%')
+    protected function describeConfigurationValue($label, $value, $prefix = '-', $suffix = '%'): string
     {
         return parent::describeConfigurationValue($label, $value, $prefix, $suffix);
     }

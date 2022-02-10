@@ -26,7 +26,7 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         return implode(" | ", $return);
     }
 
-    protected function describeConfigurationValue($label, $value, $prefix = '', $suffix = '')
+    protected function describeConfigurationValue($label, $value, $prefix = '', $suffix = ''): string
     {
         return $label . ': ' . $prefix . $value . $suffix;
     }

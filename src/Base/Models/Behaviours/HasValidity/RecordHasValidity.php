@@ -3,7 +3,7 @@
 namespace Marktic\Promotion\Base\Models\Behaviours\HasValidity;
 
 use Carbon\Carbon;
-use DateTime;
+use DateTimeInterface;
 
 trait RecordHasValidity
 {
@@ -12,15 +12,15 @@ trait RecordHasValidity
     protected ?string $valid_to = null;
 
     /**
-     * @return DateTime|Carbon|null
+     * @return DateTimeInterface|Carbon|null
      */
-    public function getValidFrom(): ?DateTime
+    public function getValidFrom(): ?DateTimeInterface
     {
         return $this->getPropertyValue('valid_from');
     }
 
     /**
-     * @param string|DateTime $date
+     * @param string|DateTimeInterface $date
      */
     public function setValidFrom($date): void
     {
@@ -28,15 +28,15 @@ trait RecordHasValidity
     }
 
     /**
-     * @return DateTime|Carbon|null
+     * @return DateTimeInterface|Carbon|null
      */
-    public function getValidTo(): ?DateTime
+    public function getValidTo(): ?DateTimeInterface
     {
         return $this->getPropertyValue('valid_to');
     }
 
     /**
-     * @param string|DateTime $date
+     * @param string|DateTimeInterface $date
      */
     public function setValidTo($date): void
     {

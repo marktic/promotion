@@ -8,7 +8,7 @@ use Nip\Records\Collections\Collection;
 interface PromotionSubjectInterface
 {
 
-    public function getPromotionSubjectTotal(): int;
+    public function getPromotionSubjectTotal(): float;
 
     /**
      * @return Collection|PromotionInterface[]

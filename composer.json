@@ -19,7 +19,8 @@
   "autoload-dev": {
     "psr-4": {
       "Marktic\\Promotion\\Tests\\": "tests/src",
-      "Marktic\\Promotion\\Tests\\Fixtures\\": "tests/fixtures"
+      "Marktic\\Promotion\\Tests\\Fixtures\\": "tests/fixtures",
+      "Marktic\\Promotion\\Tests\\Fixtures\\Application\\Models\\": "tests/fixtures/application/models"
     }
   },
   "require": {

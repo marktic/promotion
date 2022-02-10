@@ -39,4 +39,14 @@ trait RecordHasUsage
     {
         $this->used = $used;
     }
+
+    public function incrementUsed(): void
+    {
+        ++$this->used;
+    }
+
+    public function decrementUsed(): void
+    {
+        --$this->used;
+    }
 }

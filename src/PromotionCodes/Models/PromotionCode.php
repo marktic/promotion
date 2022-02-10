@@ -9,7 +9,7 @@ use Nip\Records\Record;
  * Class PromotionCode
  * @package Marktic\Promotion\Models\PromotionCodes
  */
-class PromotionCode extends Record
+class PromotionCode extends Record implements PromotionCodeInterface
 {
     use PromotionCodeTrait;
     use CommonRecordTrait;

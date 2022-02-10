@@ -20,4 +20,12 @@ trait PromotionSessionTrait
         return 'Promotion Session';
     }
 
+    public function printValue()
+    {
+    }
+
+    public function printReduction()
+    {
+    }
+
 }
