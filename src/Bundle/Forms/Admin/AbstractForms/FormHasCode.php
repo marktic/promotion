@@ -12,14 +12,11 @@ trait FormHasCode
     protected function validateCode()
     {
         $codeElement = $this->getElement('code');
-        if ($codeElement->isError()) {
+        if ($codeElement->isError() || false === $codeElement->hasValue()) {
             return;
         }
 
         $value = $codeElement->getValue();
-        if (empty($value)) {
-            return;
-        }
 
         $this->getModel()->setPropertyValue('code', $value);
         if ($this->getModel()->exists()) {

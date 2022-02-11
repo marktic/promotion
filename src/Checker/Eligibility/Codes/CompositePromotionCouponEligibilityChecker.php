@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Promotion\Checker\Eligibility\Codes;
 
 use Bytic\Assert\Assert;
+use Marktic\Promotion\Checker\Eligibility\EligibilityResponse;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
@@ -27,13 +28,14 @@ class CompositePromotionCouponEligibilityChecker implements PromotionCodeEligibi
     public function isEligible(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
-    ): bool {
+    ): EligibilityResponse {
         foreach ($this->eligibilityCheckers as $promotionCouponEligibilityChecker) {
-            if (!$promotionCouponEligibilityChecker->isEligible($promotionSubject, $promotionCoupon)) {
-                return false;
+            $response = $promotionCouponEligibilityChecker->isEligible($promotionSubject, $promotionCoupon);
+            if ($response->isInvalid()) {
+                return $response;
             }
         }
 
-        return true;
+        return EligibilityResponse::valid();
     }
 }

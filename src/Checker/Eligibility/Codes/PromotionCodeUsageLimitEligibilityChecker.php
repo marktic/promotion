@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Checker\Eligibility\Codes;
 
+use Marktic\Promotion\Checker\Eligibility\EligibilityResponse;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
@@ -12,9 +13,12 @@ class PromotionCodeUsageLimitEligibilityChecker implements PromotionCodeEligibil
     public function isEligible(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
-    ): bool {
+    ): EligibilityResponse {
         $usageLimit = $promotionCoupon->getUsageLimit();
 
-        return $usageLimit === null || $promotionCoupon->getUsed() < $usageLimit;
+        if ($usageLimit !== null || $promotionCoupon->getUsed() > $usageLimit) {
+            return EligibilityResponse::valid();
+        }
+        return EligibilityResponse::invalid('Promotion code usage limit reached');
     }
 }

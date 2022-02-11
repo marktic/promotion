@@ -8,19 +8,20 @@ use Nip\View\View;
 /** @var AbstractForm $form */
 $form = $this->get('form');
 $renderer = $form->getRenderer();
+$currencies = $this->get('currencies');
 ?>
 
-<?php echo $renderer->openTag(); ?>
-<?php echo $renderer->renderHidden(); ?>
+<?= $renderer->openTag(); ?>
+<?= $renderer->renderHidden(); ?>
 
-<?php echo $renderer->renderMessages(); ?>
-<?php echo $renderer->renderRow($form->name); ?>
+<?= $renderer->renderMessages(); ?>
+<?= $renderer->renderRow($form->name); ?>
 <?php echo $form->hasElement('code') ? $renderer->renderRow($form->code) : ''; ?>
 
-<?php echo $renderer->renderRow($form->quantity); ?>
+<?= $renderer->renderRow($form->quantity); ?>
 <?php echo $form->hasElement('uses') ? $renderer->renderRow($form->uses) : ''; ?>
-<?php echo $renderer->renderRow($form->type); ?>
-<?php echo $renderer->renderRow($form->cumulative); ?>
+<?= $renderer->renderRow($form->type); ?>
+<?= $renderer->renderRow($form->cumulative); ?>
 
     <div class="form-group row row-amount">
         <label class="col-form-label col-sm-3">
@@ -28,7 +29,7 @@ $renderer = $form->getRenderer();
         </label>
         <div class="col-sm-9">
             <div class="row">
-                <?php foreach ($this->currencies as $currency) { ?>
+                <?php foreach ($currencies as $currency) { ?>
                     <div class="col-sm-3">
                         <div class="input-group input-group-sm">
                             <?php
@@ -76,16 +77,16 @@ if ($form->hasElement('min_group')) { ?>
             <?php echo translator()->trans('min_group'); ?>
         </label>
         <div class="col-sm-3">
-            <?php echo $renderer->renderElement($form->min_group); ?>
+            <?= $renderer->renderElement($form->min_group); ?>
         </div>
         <label class="control-label col-sm-3">
             <?php echo translator()->trans('max_group'); ?>
         </label>
         <div class="col-sm-3">
-            <?php echo $renderer->renderElement($form->max_group); ?>
+            <?= $renderer->renderElement($form->max_group); ?>
         </div>
     </div>
 <?php } ?>
 
-<?php echo $renderer->renderButtons(); ?>
-<?php echo $renderer->closeTag(); ?>
+<?= $renderer->renderButtons(); ?>
+<?= $renderer->closeTag(); ?>

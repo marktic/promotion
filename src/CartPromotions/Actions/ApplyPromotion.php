@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Promotion\CartPromotions\UseCases;
+namespace Marktic\Promotion\CartPromotions\Actions;
 
 use Marktic\Promotion\Base\Models\PromotionInterface;
 use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
@@ -8,6 +8,8 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class ApplyPromotion
 {
+    protected $registry = [];
+
     public function apply(PromotionSubjectInterface $subject, PromotionInterface $promotion)
     {
         $applyPromotion = false;
@@ -24,7 +26,7 @@ class ApplyPromotion
         }
     }
 
-    private function getActionCommandByType(string $type): PromotionActionCommandInterface
+    protected function getActionCommandByType(string $type): PromotionActionCommandInterface
     {
         return $this->registry->get($type);
     }

@@ -2,7 +2,6 @@
 
 namespace Marktic\Promotion\PromotionCodes\Actions;
 
-use Bytic\Assert\Assert;
 use Marktic\Promotion\Checker\Eligibility\Codes\CompositePromotionCouponEligibilityChecker;
 use Marktic\Promotion\Checker\Eligibility\Codes\PromotionCodeDurationLimitEligibilityChecker;
 use Marktic\Promotion\Checker\Eligibility\Codes\PromotionCodeUsageLimitEligibilityChecker;
@@ -24,11 +23,17 @@ class CheckValidPromotionCode
         $this->promotionCodeRepository = $promotionCodeRepository ?? PromotionModels::promotionCodes();
     }
 
+    /**
+     * @throws InvalidPromotionalCode
+     */
     public static function for(PromotionSubjectInterface $subject, string $promotionCode): ?PromotionCodeInterface
     {
         return (new self())->execute($subject, $promotionCode);
     }
 
+    /**
+     * @throws InvalidPromotionalCode
+     */
     public function execute(PromotionSubjectInterface $subject, string $promotionCode): ?PromotionCodeInterface
     {
         $promotionCode = $this->findPromotionCode($promotionCode);
@@ -37,22 +42,31 @@ class CheckValidPromotionCode
         return $promotionCode;
     }
 
+    /**
+     * @throws InvalidPromotionalCode
+     */
     protected function findPromotionCode($promotionCode)
     {
         $promotionCode = $this->promotionCodeRepository->findOneByCode($promotionCode);
-        Assert::that($promotionCode)
-            ->isObject()
-            ->orFail('Promotion code not found')->orThrow(InvalidPromotionalCode::class);
+
+        if (!is_object($promotionCode)) {
+            throw new InvalidPromotionalCode('Promotion code not found');
+        }
 
         return $promotionCode;
     }
 
+    /**
+     * @throws InvalidPromotionalCode
+     */
     protected function validatePromotionCode(PromotionSubjectInterface $subject, PromotionCodeInterface $promotionCode)
     {
         $checker = $this->buildEligibilityChecker();
-        Assert::that($checker->isEligible($subject, $promotionCode))
-            ->isTrue()
-            ->orFail('Promotion code not eligible')->orThrow(InvalidPromotionalCode::class);
+        $response = $checker->isEligible($subject, $promotionCode);
+
+        if ($response->isInvalid()) {
+            throw new InvalidPromotionalCode($response->message());
+        }
     }
 
     protected function buildEligibilityChecker(): CompositePromotionCouponEligibilityChecker

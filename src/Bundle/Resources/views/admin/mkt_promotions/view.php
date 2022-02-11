@@ -6,7 +6,7 @@ use Nip\View\View;
 
 ?>
 <div class="d-grid gap-3">
-    <?= $this->Flash()->render($this->controller); ?>
+    <?= $this->Flash()->render($this->get('controller')); ?>
 
     <div class="row">
         <div class="col-md-4">

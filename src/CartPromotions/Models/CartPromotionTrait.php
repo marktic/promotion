@@ -42,9 +42,8 @@ trait CartPromotionTrait
 
     public function __construct(array $data = null)
     {
-        $return = parent::__construct($data);
+        parent::__construct($data);
         $this->registerValidityCast();
-        return $return;
     }
 
     /**

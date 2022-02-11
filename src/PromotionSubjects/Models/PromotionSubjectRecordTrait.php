@@ -5,9 +5,11 @@ namespace Marktic\Promotion\PromotionSubjects\Models;
 use Marktic\Promotion\Base\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSession;
 use Nip\Records\Collections\Collection;
+use Nip\Records\Relations\Relation;
 
 /**
  * @method PromotionSession[] getPromotionSessions()
+ * @method Relation getRelation($name)
  */
 trait PromotionSubjectRecordTrait
 {

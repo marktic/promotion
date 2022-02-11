@@ -54,7 +54,7 @@ class PromotionCodeDurationLimitEligibilityCheckerTest extends AbstractTest
 
         $checker = new PromotionCodeDurationLimitEligibilityChecker();
 
-        self::assertSame($result, $checker->isEligible($subject, $code));
+        self::assertSame($result, $checker->isEligible($subject, $code)->isEligible());
     }
 
     /**
