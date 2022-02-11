@@ -5,10 +5,20 @@ namespace Marktic\Promotion\PromotionCodes\Models;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RepositoryHasPromotion;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
+use Nip\Records\AbstractModels\Record;
 
 trait PromotionCodesTrait
 {
     use RepositoryHasPromotion;
+
+    /**
+     * @param string $code
+     * @return PromotionCode|Record
+     */
+    public function findOneByCode(string $code): ?PromotionCodeInterface
+    {
+        return $this->findOneByField('code', $code) ?? null;
+    }
 
     protected function initRelations()
     {

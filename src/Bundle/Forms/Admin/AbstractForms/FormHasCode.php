@@ -11,15 +11,19 @@ trait FormHasCode
 
     protected function validateCode()
     {
-        if (!$this->code->isError()) {
-            $value = $this->code->getValue();
-            if ($this->code->getValue()) {
-                $this->getModel()->code = $value;
-                if ($this->getModel()->exists()) {
-                    $this->code->addError($this->getModelMessage('code.exists'));
-                }
-            }
+        $codeElement = $this->getElement('code');
+        if ($codeElement->isError()) {
+            return;
+        }
+
+        $value = $codeElement->getValue();
+        if (empty($value)) {
+            return;
+        }
+
+        $this->getModel()->setPropertyValue('code', $value);
+        if ($this->getModel()->exists()) {
+            $codeElement->addError($this->getModelMessage('code.exists'));
         }
     }
-
 }

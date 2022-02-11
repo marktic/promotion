@@ -10,7 +10,7 @@ use Nip\Records\RecordManager;
  * @package Marktic\Promotion\Models\PromotionCodes
  * @method PromotionCode getNew($data = [])
  */
-class PromotionCodes extends RecordManager
+class PromotionCodes extends RecordManager implements PromotionCodesRepositoryInterface
 {
     use PromotionCodesTrait;
     use CommonRecordsTrait;

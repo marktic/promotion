@@ -15,7 +15,6 @@ abstract class AbstractForm extends FormModel
         parent::initialize();
 
         $this->setAttrib('id', 'mkt-promotion-rules-form');
-
         $this->addButton('save', translator()->trans('submit'));
     }
 
