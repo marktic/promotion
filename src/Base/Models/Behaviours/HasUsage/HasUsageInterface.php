@@ -9,9 +9,9 @@ interface HasUsageInterface
 
     public function setUsageLimit(?int $usageLimit): void;
 
-    public function getUsed(): int;
+    public function getUsed(): ?int;
 
-    public function setUsed(int $used): void;
+    public function setUsed(?int $used): void;
 
     public function incrementUsed(): void;
 

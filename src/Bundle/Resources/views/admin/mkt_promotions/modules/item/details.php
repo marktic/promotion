@@ -8,7 +8,7 @@ use Nip\View\View;
 $promotion_repository = PromotionModels::promotions();
 
 /** @var CartPromotion $item */
-$item = $this->item;
+$item = $this->get('item');
 ?>
 <table class="details table table-striped table-sm">
     <tbody>

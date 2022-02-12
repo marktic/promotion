@@ -6,10 +6,8 @@ use DateInterval;
 use DateTime;
 use Marktic\Promotion\Checker\Eligibility\Codes\PromotionCodeDurationLimitEligibilityChecker;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
-use Marktic\Promotion\Tests\AbstractTest;
-use Marktic\Promotion\Tests\Fixtures\Application\Models\PromotionSubjects\PromotionSubject;
 
-class PromotionCodeDurationLimitEligibilityCheckerTest extends AbstractTest
+class PromotionCodeDurationLimitEligibilityCheckerTest extends AbstractEligibilityCheckerTest
 {
     /**
      * @test
@@ -48,14 +46,6 @@ class PromotionCodeDurationLimitEligibilityCheckerTest extends AbstractTest
         return $now->format('Y-m-d');
     }
 
-    protected function assertChecker($code, $result)
-    {
-        $subject = new PromotionSubject();
-
-        $checker = new PromotionCodeDurationLimitEligibilityChecker();
-
-        self::assertSame($result, $checker->isEligible($subject, $code)->isEligible());
-    }
 
     /**
      * @test
@@ -111,4 +101,8 @@ class PromotionCodeDurationLimitEligibilityCheckerTest extends AbstractTest
         $this->assertChecker($code, true);
     }
 
+    protected function checkerClass(): string
+    {
+        return PromotionCodeDurationLimitEligibilityChecker::class;
+    }
 }

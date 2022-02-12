@@ -6,7 +6,7 @@ trait RecordHasUsage
 {
     protected ?int $usage_limit = null;
 
-    protected int $used = 0;
+    protected ?int $used = 0;
 
     /**
      * @return int
@@ -27,15 +27,15 @@ trait RecordHasUsage
     /**
      * @return int
      */
-    public function getUsed(): int
+    public function getUsed(): ?int
     {
         return $this->used;
     }
 
     /**
-     * @param int $used
+     * @param int|null $used
      */
-    public function setUsed(int $used): void
+    public function setUsed(?int $used): void
     {
         $this->used = $used;
     }

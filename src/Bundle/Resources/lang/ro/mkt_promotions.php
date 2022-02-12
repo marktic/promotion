@@ -30,14 +30,6 @@ return [
 
     'mkt_promotions.messages.recalculate' => 'Numar de folosiri recalculat',
 
-    'mkt_promotions.messages.form.register.success' => 'Reducere aplicata cu success',
-    'mkt_promotions.messages.form.register.empty' => 'Trebuie sa completati un cod pentru discount',
-    'mkt_promotions.messages.form.register.dnx' => 'Cod inexistent',
-    'mkt_promotions.messages.form.register.bad-race' => 'Cod invalid pentru aceasta cursă.',
-    'mkt_promotions.messages.form.register.bad-date' => 'Perioada de valabilitate pentru codul introdus a expirat.',
-    'mkt_promotions.messages.form.register.bad-count' => 'Codul introdus a depasit numarul maxim de folosiri.',
-    'mkt_promotions.messages.form.register.non-cumulative' => 'Acest discount nu se poate aplica daca există deja alte discounturi aplicate.',
-
     'mkt_promotions.messages.form.code.exists' => 'Cod existent. Va rugam sa folositi un cod unic.',
     'mkt_promotions.messages.form.quantity.bad' => '',
     'mkt_promotions.messages.form.amount.nan' => 'Valoarea trebuie să fie numerica',

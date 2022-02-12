@@ -19,13 +19,20 @@ class PromotionCodeDurationLimitEligibilityChecker implements PromotionCodeEligi
         $now = new DateTime();
         $from = $promotionCoupon->getValidFrom();
         if ($from && $now < $from) {
-            return EligibilityResponse::invalid(TranslatableMessage::create('Promotion code is not yet valid'));
+            return $this->invalidResponse();
         }
 
         $to = $promotionCoupon->getValidTo();
         if ($to && $to < $now) {
-            return EligibilityResponse::invalid('Promotion code is not yet valid');
+            return $this->invalidResponse();
         }
         return EligibilityResponse::valid();
+    }
+
+    protected function invalidResponse(): EligibilityResponse
+    {
+        return EligibilityResponse::invalid(
+            TranslatableMessage::create('mkt_promotion_codes.messages.form.register.bad-date')
+        );
     }
 }

@@ -17,8 +17,9 @@ class PromotionCodeUsageLimitEligibilityChecker implements PromotionCodeEligibil
         $usageLimit = $promotionCoupon->getUsageLimit();
 
         if ($usageLimit !== null || $promotionCoupon->getUsed() > $usageLimit) {
-            return EligibilityResponse::valid();
+            return EligibilityResponse::invalid('Promotion code usage limit reached');
         }
-        return EligibilityResponse::invalid('Promotion code usage limit reached');
+
+        return EligibilityResponse::valid();
     }
 }
