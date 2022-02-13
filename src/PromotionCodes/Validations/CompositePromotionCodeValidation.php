@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\Checker\Eligibility\Codes;
+namespace Marktic\Promotion\PromotionCodes\Validations;
 
 use Bytic\Assert\Assert;
-use Marktic\Promotion\Checker\Eligibility\EligibilityResponse;
+use Marktic\Promotion\Base\Validations\ValidationResult;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
-class CompositePromotionCouponEligibilityChecker implements PromotionCodeEligibilityCheckerInterface
+class CompositePromotionCodeValidation implements PromotionCodeValidationInterface
 {
-    /** @var PromotionCodeEligibilityCheckerInterface[] */
+    /** @var PromotionCodeValidationInterface[] */
     private array $eligibilityCheckers;
 
     /**
-     * @param PromotionCodeEligibilityCheckerInterface[] $promotionCouponEligibilityCheckers
+     * @param PromotionCodeValidationInterface[] $promotionCouponEligibilityCheckers
      */
     public function __construct(array $promotionCouponEligibilityCheckers)
     {
         Assert::notEmpty($promotionCouponEligibilityCheckers);
-        Assert::allIsInstanceOf($promotionCouponEligibilityCheckers, PromotionCodeEligibilityCheckerInterface::class);
+        Assert::allIsInstanceOf($promotionCouponEligibilityCheckers, PromotionCodeValidationInterface::class);
 
         $this->eligibilityCheckers = $promotionCouponEligibilityCheckers;
     }
@@ -28,7 +28,7 @@ class CompositePromotionCouponEligibilityChecker implements PromotionCodeEligibi
     public function isEligible(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
-    ): EligibilityResponse {
+    ): ValidationResult {
         foreach ($this->eligibilityCheckers as $promotionCouponEligibilityChecker) {
             $response = $promotionCouponEligibilityChecker->isEligible($promotionSubject, $promotionCoupon);
             if ($response->isInvalid()) {
@@ -36,6 +36,6 @@ class CompositePromotionCouponEligibilityChecker implements PromotionCodeEligibi
             }
         }
 
-        return EligibilityResponse::valid();
+        return ValidationResult::valid();
     }
 }

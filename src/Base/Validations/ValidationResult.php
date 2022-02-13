@@ -2,21 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\Checker\Eligibility;
+namespace Marktic\Promotion\Base\Validations;
 
-class EligibilityResponse
+use Nip\I18n\TranslatableMessage;
+
+class ValidationResult
 {
-    protected bool $isEligible;
+    protected bool $valid;
 
+    /**
+     * @var null|string|TranslatableMessage
+     */
     protected $message = null;
 
     /**
-     * @param bool $isEligible
+     * @param bool $valid
      * @param null $message
      */
-    public function __construct(bool $isEligible, $message = null)
+    public function __construct(bool $valid, $message = null)
     {
-        $this->isEligible = $isEligible;
+        $this->valid = $valid;
         $this->message = $message;
     }
 
@@ -37,17 +42,12 @@ class EligibilityResponse
 
     public function isValid(): bool
     {
-        return $this->isEligible == true;
+        return $this->valid == true;
     }
 
     public function isInvalid(): bool
     {
-        return $this->isEligible == false;
-    }
-
-    public function isEligible(): bool
-    {
-        return $this->isEligible;
+        return $this->valid == false;
     }
 
     public function message(): ?string

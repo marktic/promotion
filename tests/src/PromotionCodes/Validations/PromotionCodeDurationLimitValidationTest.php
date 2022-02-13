@@ -1,13 +1,13 @@
 <?php
 
-namespace Marktic\Promotion\Tests\Checker\Eligibility\Codes;
+namespace Marktic\Promotion\Tests\PromotionCodes\Validations;
 
 use DateInterval;
 use DateTime;
-use Marktic\Promotion\Checker\Eligibility\Codes\PromotionCodeDurationLimitEligibilityChecker;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeDurationLimitValidation;
 
-class PromotionCodeDurationLimitEligibilityCheckerTest extends AbstractEligibilityCheckerTest
+class PromotionCodeDurationLimitValidationTest extends AbstractValidationTest
 {
     /**
      * @test
@@ -103,6 +103,6 @@ class PromotionCodeDurationLimitEligibilityCheckerTest extends AbstractEligibili
 
     protected function checkerClass(): string
     {
-        return PromotionCodeDurationLimitEligibilityChecker::class;
+        return PromotionCodeDurationLimitValidation::class;
     }
 }

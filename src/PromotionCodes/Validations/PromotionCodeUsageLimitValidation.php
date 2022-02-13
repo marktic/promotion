@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\Checker\Eligibility\Codes;
+namespace Marktic\Promotion\PromotionCodes\Validations;
 
-use Marktic\Promotion\Checker\Eligibility\EligibilityResponse;
+use Marktic\Promotion\Base\Validations\ValidationResult;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
-class PromotionCodeUsageLimitEligibilityChecker implements PromotionCodeEligibilityCheckerInterface
+class PromotionCodeUsageLimitValidation implements PromotionCodeValidationInterface
 {
     public function isEligible(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
-    ): EligibilityResponse {
+    ): ValidationResult {
         $usageLimit = $promotionCoupon->getUsageLimit();
 
         if ($usageLimit !== null || $promotionCoupon->getUsed() > $usageLimit) {
-            return EligibilityResponse::invalid('Promotion code usage limit reached');
+            return ValidationResult::invalid('Promotion code usage limit reached');
         }
 
-        return EligibilityResponse::valid();
+        return ValidationResult::valid();
     }
 }

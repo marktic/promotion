@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\Checker\Eligibility\Codes;
+namespace Marktic\Promotion\PromotionCodes\Validations;
 
-use Marktic\Promotion\Checker\Eligibility\EligibilityResponse;
+use Marktic\Promotion\Base\Validations\ValidationResult;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
-interface PromotionCodeEligibilityCheckerInterface
+interface PromotionCodeValidationInterface
 {
     public function isEligible(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
-    ): EligibilityResponse;
+    ): ValidationResult;
 }

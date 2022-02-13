@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\Checker\Eligibility\Codes;
+namespace Marktic\Promotion\PromotionCodes\Validations;
 
 use DateTime;
-use Marktic\Promotion\Checker\Eligibility\EligibilityResponse;
+use Marktic\Promotion\Base\Validations\ValidationResult;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Nip\I18n\TranslatableMessage;
 
-class PromotionCodeDurationLimitEligibilityChecker implements PromotionCodeEligibilityCheckerInterface
+class PromotionCodeDurationLimitValidation implements PromotionCodeValidationInterface
 {
     public function isEligible(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
-    ): EligibilityResponse {
+    ): ValidationResult {
         $now = new DateTime();
         $from = $promotionCoupon->getValidFrom();
         if ($from && $now < $from) {
@@ -26,12 +26,12 @@ class PromotionCodeDurationLimitEligibilityChecker implements PromotionCodeEligi
         if ($to && $to < $now) {
             return $this->invalidResponse();
         }
-        return EligibilityResponse::valid();
+        return ValidationResult::valid();
     }
 
-    protected function invalidResponse(): EligibilityResponse
+    protected function invalidResponse(): ValidationResult
     {
-        return EligibilityResponse::invalid(
+        return ValidationResult::invalid(
             TranslatableMessage::create('mkt_promotion_codes.messages.form.register.bad-date')
         );
     }

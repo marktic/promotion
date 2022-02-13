@@ -2,14 +2,15 @@
 
 namespace Marktic\Promotion\PromotionCodes\Actions;
 
-use Marktic\Promotion\Checker\Eligibility\Codes\CompositePromotionCouponEligibilityChecker;
-use Marktic\Promotion\Checker\Eligibility\Codes\PromotionCodeDurationLimitEligibilityChecker;
-use Marktic\Promotion\Checker\Eligibility\Codes\PromotionCodeUsageLimitEligibilityChecker;
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
+use Marktic\Promotion\PromotionCodes\Validations\CompositePromotionCodeValidation;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeDurationLimitValidation;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeUsageLimitValidation;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PromotionModels;
+use Nip\I18n\TranslatableMessage;
 
 class CheckValidPromotionCode
 {
@@ -50,7 +51,9 @@ class CheckValidPromotionCode
         $promotionCode = $this->promotionCodeRepository->findOneByCode($promotionCode);
 
         if (!is_object($promotionCode)) {
-            throw new InvalidPromotionalCode('Promotion code not found');
+            throw new InvalidPromotionalCode(
+                TranslatableMessage::create('mkt_promotions.messages.form.register.dnx')
+            );
         }
 
         return $promotionCode;
@@ -69,11 +72,11 @@ class CheckValidPromotionCode
         }
     }
 
-    protected function buildEligibilityChecker(): CompositePromotionCouponEligibilityChecker
+    protected function buildEligibilityChecker(): CompositePromotionCodeValidation
     {
-        return new CompositePromotionCouponEligibilityChecker([
-            new PromotionCodeDurationLimitEligibilityChecker(),
-            new PromotionCodeUsageLimitEligibilityChecker(),
+        return new CompositePromotionCodeValidation([
+            new PromotionCodeDurationLimitValidation(),
+            new PromotionCodeUsageLimitValidation(),
         ]);
     }
 }

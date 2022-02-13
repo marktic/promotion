@@ -1,11 +1,11 @@
 <?php
 
-namespace Marktic\Promotion\Tests\Checker\Eligibility\Codes;
+namespace Marktic\Promotion\Tests\PromotionCodes\Validations;
 
-use Marktic\Promotion\Checker\Eligibility\Codes\PromotionCodeUsageLimitEligibilityChecker;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeUsageLimitValidation;
 
-class PromotionCodeUsageLimitEligibilityCheckerTest extends AbstractEligibilityCheckerTest
+class PromotionCodeUsageLimitValidationTest extends AbstractValidationTest
 {
     /**
      * @test
@@ -45,6 +45,6 @@ class PromotionCodeUsageLimitEligibilityCheckerTest extends AbstractEligibilityC
 
     protected function checkerClass(): string
     {
-        return PromotionCodeUsageLimitEligibilityChecker::class;
+        return PromotionCodeUsageLimitValidation::class;
     }
 }
