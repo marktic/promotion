@@ -5,6 +5,7 @@ namespace Marktic\Promotion\PromotionCodes\Actions;
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
+use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
 use Marktic\Promotion\PromotionCodes\Validations\CompositePromotionCodeValidationValidation;
 use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationDurationLimitValidation;
 use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationUsageLimitValidation;
@@ -12,14 +13,14 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\I18n\TranslatableMessage;
 
-class CheckValidPromotionCode
+class FindAndValidatePromotionCode
 {
     /**
-     * @var PromotionCodes
+     * @var PromotionCodes|PromotionCodesRepositoryInterface
      */
-    protected $promotionCodeRepository;
+    protected PromotionCodesRepositoryInterface $promotionCodeRepository;
 
-    public function __construct($promotionCodeRepository = null)
+    public function __construct(?PromotionCodesRepositoryInterface $promotionCodeRepository = null)
     {
         $this->promotionCodeRepository = $promotionCodeRepository ?? PromotionModels::promotionCodes();
     }

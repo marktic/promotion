@@ -7,9 +7,11 @@ use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotions;
 use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionActions;
 use Marktic\Promotion\Bundle\Models\PromotionCodes\PromotionCodes;
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRules;
+use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
 use Marktic\Promotion\PromotionServiceProvider;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSessions;
 use Nip\Records\RecordManager;
+use Psr\Container\ContainerInterface;
 
 /**
  * Class PromotionModels
@@ -42,7 +44,7 @@ class PromotionModels extends ModelFinder
     /**
      * @return PromotionCodes
      */
-    public static function promotionCodes()
+    public static function promotionCodes(): PromotionCodesRepositoryInterface
     {
         return static::getModels(self::PROMOTION_CODES, PromotionCodes::class);
     }
@@ -61,6 +63,17 @@ class PromotionModels extends ModelFinder
     public static function promotionSessions()
     {
         return static::getModels(self::PROMOTION_SESSIONS, PromotionSessions::class);
+    }
+
+    public static function registerInContainer(ContainerInterface $container)
+    {
+        $container->set(
+            PromotionCodesRepositoryInterface::class,
+            function () {
+                return PromotionModels::promotionCodes();
+            },
+            true
+        );
     }
 
     protected static function packageName(): string

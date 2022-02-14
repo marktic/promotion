@@ -1,10 +1,11 @@
 <?php
 
-namespace Marktic\Promotion\Base\Models;
+namespace Marktic\Promotion\Promotions\Models;
 
+use Marktic\Promotion\Base\Models\Behaviours\HasActions\HasActionsInterface;
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\HasRulesInterface;
 
-interface PromotionInterface extends HasRulesInterface
+interface PromotionInterface extends HasRulesInterface, HasActionsInterface
 {
     public function getName(): ?string;
 

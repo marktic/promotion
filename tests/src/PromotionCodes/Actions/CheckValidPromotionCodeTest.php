@@ -2,7 +2,7 @@
 
 namespace Marktic\Promotion\Tests\PromotionCodes\Actions;
 
-use Marktic\Promotion\PromotionCodes\Actions\CheckValidPromotionCode;
+use Marktic\Promotion\PromotionCodes\Actions\FindAndValidatePromotionCode;
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
 use Marktic\Promotion\Tests\AbstractTest;
@@ -28,7 +28,7 @@ class CheckValidPromotionCodeTest extends AbstractTest
 
         $subject = new PromotionSubject();
 
-        $action = new CheckValidPromotionCode($promotionCodeRepository);
+        $action = new FindAndValidatePromotionCode($promotionCodeRepository);
         $action->execute($subject, $promotionCode);
     }
 }

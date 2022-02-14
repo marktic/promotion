@@ -1,9 +1,9 @@
 <?php
 
-namespace Marktic\Promotion\CartPromotions\Actions;
+namespace Marktic\Promotion\PromotionSubjects\Actions;
 
-use Marktic\Promotion\Base\Models\PromotionInterface;
 use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
+use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class ApplyPromotion
@@ -14,10 +14,10 @@ class ApplyPromotion
     {
         $applyPromotion = false;
 
-        foreach ($promotion->getActions() as $action) {
+        foreach ($promotion->getPromotionActions() as $action) {
             $result = $this
                 ->getActionCommandByType($action->getType())
-                ->execute($subject, $action->getConfiguration(), $promotion);
+                ->execute($subject, (array)$action->getConfiguration(), $promotion);
             $applyPromotion = $applyPromotion || $result;
         }
 

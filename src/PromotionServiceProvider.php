@@ -9,6 +9,7 @@ use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactoryInterface;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
 use Marktic\Promotion\PromotionActions\Services\ActionCommandsService;
+use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsService;
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsServiceInterface;
 use Marktic\Promotion\Utility\PackageConfig;
@@ -27,6 +28,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
     {
         parent::register();
         $this->registerResources();
+        $this->registerModels();
         $this->registerActionFactory();
         $this->registerActionCommandsFactory();
         $this->registerActionCommandsService();
@@ -78,6 +80,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
                 ActionCommandsService::class,
                 RuleConditionsServiceInterface::class,
                 static::SERVICE_RULE_CONDITIONS,
+                PromotionCodesRepositoryInterface::class
             ],
             parent::provides()
         );
@@ -119,5 +122,9 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
             },
             true
         );
+    }
+
+    protected function registerModels()
+    {
     }
 }

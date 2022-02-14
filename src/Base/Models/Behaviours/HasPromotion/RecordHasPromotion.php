@@ -3,9 +3,9 @@
 namespace Marktic\Promotion\Base\Models\Behaviours\HasPromotion;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
+use Marktic\Promotion\Promotions\Models\PromotionInterface;
 
 /**
- * @method CartPromotion|null getPromotion()
  */
 trait RecordHasPromotion
 {
@@ -36,5 +36,13 @@ trait RecordHasPromotion
     {
         $this->setPromotionId($promotion->id);
         $this->getRelation('Promotion')->setResults($promotion);
+    }
+
+    /**
+     * @return CartPromotion|null
+     */
+    public function getPromotion(): ?PromotionInterface
+    {
+        return $this->getRelation('Promotion')->getResults()->current();
     }
 }

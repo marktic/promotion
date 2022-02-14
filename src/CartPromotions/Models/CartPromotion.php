@@ -2,8 +2,8 @@
 
 namespace Marktic\Promotion\CartPromotions\Models;
 
-use Marktic\Promotion\Base\Models\PromotionInterface;
 use Marktic\Promotion\Base\Models\Traits\CommonRecordTrait;
+use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Nip\Records\Record;
 
 /**

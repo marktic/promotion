@@ -3,7 +3,7 @@
 namespace Marktic\Promotion\Bundle\Forms\Admin\PromotionSubjects;
 
 use Marktic\Promotion\Bundle\Library\Form\FormModel;
-use Marktic\Promotion\PromotionCodes\Actions\CheckValidPromotionCode;
+use Marktic\Promotion\PromotionCodes\Actions\FindAndValidatePromotionCode;
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectRecordTrait;
@@ -47,7 +47,7 @@ class ApplyPromotionCodeForm extends FormModel
 
         $value = $element->getValue();
         try {
-            $promotionCode = CheckValidPromotionCode::for($this->getModel(), $value);
+            $promotionCode = FindAndValidatePromotionCode::for($this->getModel(), $value);
         } catch (InvalidPromotionalCode $exception) {
             $element->addError($exception->getMessage());
         }

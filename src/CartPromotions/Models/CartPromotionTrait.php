@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\CartPromotions\Models;
 
+use Marktic\Promotion\Base\Models\Behaviours\HasActions\RecordHasPromotionActions;
 use Marktic\Promotion\Base\Models\Behaviours\HasCode\RecordHasCode;
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\RecordHasPromotionRules;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
@@ -27,6 +28,7 @@ trait CartPromotionTrait
     use RecordHasUsage;
     use RecordHasValidity;
     use RecordHasPromotionRules;
+    use RecordHasPromotionActions;
 
     protected ?string $pool = null;
 
