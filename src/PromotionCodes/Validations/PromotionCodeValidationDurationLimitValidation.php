@@ -10,9 +10,9 @@ use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Nip\I18n\TranslatableMessage;
 
-class PromotionCodeDurationLimitValidation implements PromotionCodeValidationInterface
+class PromotionCodeValidationDurationLimitValidation implements PromotionCodeValidation
 {
-    public function isEligible(
+    public function validate(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
     ): ValidationResult {

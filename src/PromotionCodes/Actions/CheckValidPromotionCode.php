@@ -5,9 +5,9 @@ namespace Marktic\Promotion\PromotionCodes\Actions;
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
-use Marktic\Promotion\PromotionCodes\Validations\CompositePromotionCodeValidation;
-use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeDurationLimitValidation;
-use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeUsageLimitValidation;
+use Marktic\Promotion\PromotionCodes\Validations\CompositePromotionCodeValidationValidation;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationDurationLimitValidation;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationUsageLimitValidation;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\I18n\TranslatableMessage;
@@ -65,18 +65,18 @@ class CheckValidPromotionCode
     protected function validatePromotionCode(PromotionSubjectInterface $subject, PromotionCodeInterface $promotionCode)
     {
         $checker = $this->buildEligibilityChecker();
-        $response = $checker->isEligible($subject, $promotionCode);
+        $response = $checker->validate($subject, $promotionCode);
 
         if ($response->isInvalid()) {
             throw new InvalidPromotionalCode($response->message());
         }
     }
 
-    protected function buildEligibilityChecker(): CompositePromotionCodeValidation
+    protected function buildEligibilityChecker(): CompositePromotionCodeValidationValidation
     {
-        return new CompositePromotionCodeValidation([
-            new PromotionCodeDurationLimitValidation(),
-            new PromotionCodeUsageLimitValidation(),
+        return new CompositePromotionCodeValidationValidation([
+            new PromotionCodeValidationDurationLimitValidation(),
+            new PromotionCodeValidationUsageLimitValidation(),
         ]);
     }
 }

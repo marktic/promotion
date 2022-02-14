@@ -3,12 +3,12 @@
 namespace Marktic\Promotion\CartPromotions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasCode\RecordHasCode;
+use Marktic\Promotion\Base\Models\Behaviours\HasRules\RecordHasPromotionRules;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
 use Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
-use Marktic\Promotion\PromotionRules\Models\PromotionRule;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSession;
 use Nip\Records\AbstractModels\Record;
 use Nip\Records\Collections\Collection;
@@ -19,7 +19,6 @@ use Nip\Records\Collections\Collection;
  * @method Record|PromotionPoolWithCurrencies getPromotionPool()
  * @method PromotionCode[]|Collection getPromotionCodes()
  * @method PromotionAction[]|Collection getPromotionActions()
- * @method PromotionRule[]|Collection getPromotionRules()
  * @method PromotionSession[]|Collection getPromotionSessions()
  */
 trait CartPromotionTrait
@@ -27,6 +26,7 @@ trait CartPromotionTrait
     use RecordHasCode;
     use RecordHasUsage;
     use RecordHasValidity;
+    use RecordHasPromotionRules;
 
     protected ?string $pool = null;
 

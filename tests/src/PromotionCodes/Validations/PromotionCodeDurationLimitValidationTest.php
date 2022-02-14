@@ -5,7 +5,7 @@ namespace Marktic\Promotion\Tests\PromotionCodes\Validations;
 use DateInterval;
 use DateTime;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
-use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeDurationLimitValidation;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationDurationLimitValidation;
 
 class PromotionCodeDurationLimitValidationTest extends AbstractValidationTest
 {
@@ -103,6 +103,6 @@ class PromotionCodeDurationLimitValidationTest extends AbstractValidationTest
 
     protected function checkerClass(): string
     {
-        return PromotionCodeDurationLimitValidation::class;
+        return PromotionCodeValidationDurationLimitValidation::class;
     }
 }

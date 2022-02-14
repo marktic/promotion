@@ -2,7 +2,7 @@
 
 namespace Marktic\Promotion\Tests\PromotionCodes\Validations;
 
-use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationInterface;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidation;
 use Marktic\Promotion\Tests\AbstractTest;
 use Marktic\Promotion\Tests\Fixtures\Application\Models\PromotionSubjects\PromotionSubject;
 
@@ -13,10 +13,10 @@ abstract class AbstractValidationTest extends AbstractTest
         $subject = new PromotionSubject();
         $checker = $this->generateChecker();
 
-        self::assertSame($result, $checker->isEligible($subject, $code)->isValid());
+        self::assertSame($result, $checker->validate($subject, $code)->isValid());
     }
 
-    protected function generateChecker(): PromotionCodeValidationInterface
+    protected function generateChecker(): PromotionCodeValidation
     {
         $class = $this->checkerClass();
         return new $class();

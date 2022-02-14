@@ -2,7 +2,9 @@
 
 namespace Marktic\Promotion\Base\Models;
 
-interface PromotionInterface
+use Marktic\Promotion\Base\Models\Behaviours\HasRules\HasRulesInterface;
+
+interface PromotionInterface extends HasRulesInterface
 {
     public function getName(): ?string;
 

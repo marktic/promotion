@@ -9,28 +9,28 @@ use Marktic\Promotion\Base\Validations\ValidationResult;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
-class CompositePromotionCodeValidation implements PromotionCodeValidationInterface
+class CompositePromotionCodeValidationValidation implements PromotionCodeValidation
 {
-    /** @var PromotionCodeValidationInterface[] */
+    /** @var PromotionCodeValidation[] */
     private array $eligibilityCheckers;
 
     /**
-     * @param PromotionCodeValidationInterface[] $promotionCouponEligibilityCheckers
+     * @param PromotionCodeValidation[] $promotionCouponEligibilityCheckers
      */
     public function __construct(array $promotionCouponEligibilityCheckers)
     {
         Assert::notEmpty($promotionCouponEligibilityCheckers);
-        Assert::allIsInstanceOf($promotionCouponEligibilityCheckers, PromotionCodeValidationInterface::class);
+        Assert::allIsInstanceOf($promotionCouponEligibilityCheckers, PromotionCodeValidation::class);
 
         $this->eligibilityCheckers = $promotionCouponEligibilityCheckers;
     }
 
-    public function isEligible(
+    public function validate(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
     ): ValidationResult {
         foreach ($this->eligibilityCheckers as $promotionCouponEligibilityChecker) {
-            $response = $promotionCouponEligibilityChecker->isEligible($promotionSubject, $promotionCoupon);
+            $response = $promotionCouponEligibilityChecker->validate($promotionSubject, $promotionCoupon);
             if ($response->isInvalid()) {
                 return $response;
             }

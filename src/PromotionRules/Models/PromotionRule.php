@@ -9,7 +9,7 @@ use Nip\Records\Record;
  * Class PromotionRule
  * @package Marktic\Promotion\Models\PromotionRules
  */
-class PromotionRule extends Record
+class PromotionRule extends Record implements PromotionRuleInterface
 {
     use PromotionRuleTrait;
     use CommonRecordTrait;

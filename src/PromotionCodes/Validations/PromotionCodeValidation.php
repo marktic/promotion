@@ -8,9 +8,9 @@ use Marktic\Promotion\Base\Validations\ValidationResult;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
-interface PromotionCodeValidationInterface
+interface PromotionCodeValidation
 {
-    public function isEligible(
+    public function validate(
         PromotionSubjectInterface $promotionSubject,
         PromotionCodeInterface $promotionCoupon
     ): ValidationResult;

@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\CartPromotions\Models;
 
+use Marktic\Promotion\Base\Models\Behaviours\HasRules\RepositoryHasPromotionRules;
 use Marktic\Promotion\CartPromotions\Events\CartPromotionCreated;
 use Marktic\Promotion\CartPromotions\Observers\UpdatePromotionCodes;
 use Marktic\Promotion\Utility\PackageConfig;
@@ -10,6 +11,8 @@ use Nip\Records\EventManager\Events\Event;
 
 trait CartPromotionsTrait
 {
+    use RepositoryHasPromotionRules;
+
     protected function bootCartPromotionsTrait()
     {
         static::created(function ($event) {
@@ -28,10 +31,10 @@ trait CartPromotionsTrait
     protected function initRelations()
     {
         parent::initRelations();
-        $this->initRelationsTrait();
+        $this->initRelationsPromotions();
     }
 
-    protected function initRelationsTrait()
+    protected function initRelationsPromotions()
     {
         $this->initRelationsPromotionPool();
         $this->initRelationsPromotionCodes();
@@ -53,11 +56,6 @@ trait CartPromotionsTrait
     protected function initRelationsPromotionActions()
     {
         $this->hasMany(CartPromotions::RELATION_ACTIONS, ['class' => get_class(PromotionModels::promotionActions())]);
-    }
-
-    protected function initRelationsPromotionRules()
-    {
-        $this->hasMany(CartPromotions::RELATION_RULES, ['class' => get_class(PromotionModels::promotionRules())]);
     }
 
     protected function initRelationsPromotionSessions()

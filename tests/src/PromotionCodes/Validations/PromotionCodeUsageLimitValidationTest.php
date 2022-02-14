@@ -3,7 +3,7 @@
 namespace Marktic\Promotion\Tests\PromotionCodes\Validations;
 
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
-use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeUsageLimitValidation;
+use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationUsageLimitValidation;
 
 class PromotionCodeUsageLimitValidationTest extends AbstractValidationTest
 {
@@ -45,6 +45,6 @@ class PromotionCodeUsageLimitValidationTest extends AbstractValidationTest
 
     protected function checkerClass(): string
     {
-        return PromotionCodeUsageLimitValidation::class;
+        return PromotionCodeValidationUsageLimitValidation::class;
     }
 }
