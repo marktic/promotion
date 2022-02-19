@@ -8,6 +8,7 @@ use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\RecordHasPromotionRules;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
+use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
@@ -31,6 +32,7 @@ trait CartPromotionTrait
     use RecordHasValidity;
     use RecordHasPromotionRules;
     use RecordHasPromotionActions;
+    use TimestampableTrait;
 
     protected ?string $pool = null;
 

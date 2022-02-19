@@ -6,6 +6,7 @@ use Marktic\Promotion\Base\Models\Behaviours\HasCode\RecordHasCode;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RecordHasPromotion;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
+use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 
 trait PromotionCodeTrait
 {
@@ -13,6 +14,7 @@ trait PromotionCodeTrait
     use RecordHasUsage;
     use RecordHasPromotion;
     use RecordHasValidity;
+    use TimestampableTrait;
 
     public function __construct(array $data = null)
     {

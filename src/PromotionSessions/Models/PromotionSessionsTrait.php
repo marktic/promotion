@@ -2,8 +2,8 @@
 
 namespace Marktic\Promotion\PromotionSessions\Models;
 
-use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RepositoryHasPromotion;
+use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;

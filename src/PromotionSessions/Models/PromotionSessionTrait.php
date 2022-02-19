@@ -2,9 +2,9 @@
 
 namespace Marktic\Promotion\PromotionSessions\Models;
 
-use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfiguration;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RecordHasPromotion;
+use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
@@ -19,15 +19,6 @@ trait PromotionSessionTrait
     use RecordHasPromotion;
     use TimestampableTrait;
 
-    /**
-     * @var string
-     */
-    protected static $createTimestamps = ['created'];
-
-    /**
-     * @var string
-     */
-    protected static $updateTimestamps = ['modified'];
 
     public function getName(): ?string
     {

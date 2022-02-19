@@ -6,6 +6,7 @@ use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfigura
 use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RecordHasPromotion;
 use Marktic\Promotion\Base\Models\Behaviours\HasType\RecordHasType;
+use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 
 trait PromotionActionTrait
 {
@@ -13,6 +14,7 @@ trait PromotionActionTrait
     use RecordHasType;
     use RecordHasConfiguration;
     use RecordHasPromotion;
+    use TimestampableTrait;
 
     public function getName(): ?string
     {

@@ -3,6 +3,7 @@
 namespace Marktic\Promotion\PromotionCodes\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RepositoryHasPromotion;
+use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\Records\AbstractModels\Record;
@@ -10,6 +11,7 @@ use Nip\Records\AbstractModels\Record;
 trait PromotionCodesTrait
 {
     use RepositoryHasPromotion;
+    use TimestampableManagerTrait;
 
     /**
      * @param string $code

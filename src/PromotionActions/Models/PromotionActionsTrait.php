@@ -3,6 +3,7 @@
 namespace Marktic\Promotion\PromotionActions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RepositoryHasPromotion;
+use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
 
@@ -12,6 +13,7 @@ use Marktic\Promotion\Utility\PromotionModels;
 trait PromotionActionsTrait
 {
     use RepositoryHasPromotion;
+    use TimestampableManagerTrait;
 
     protected function initRelations()
     {

@@ -4,6 +4,7 @@ namespace Marktic\Promotion\CartPromotions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasActions\RepositoryHasPromotionActions;
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\RepositoryHasPromotionRules;
+use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\CartPromotions\Events\CartPromotionCreated;
 use Marktic\Promotion\CartPromotions\Observers\UpdatePromotionCodes;
 use Marktic\Promotion\Utility\PackageConfig;
@@ -14,6 +15,7 @@ trait CartPromotionsTrait
 {
     use RepositoryHasPromotionRules;
     use RepositoryHasPromotionActions;
+    use TimestampableManagerTrait;
 
     protected function bootCartPromotionsTrait()
     {
