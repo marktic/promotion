@@ -3,8 +3,8 @@
 namespace Marktic\Promotion\Bundle\Forms\Admin\PromotionSubjects;
 
 use Marktic\Promotion\Bundle\Library\Form\FormModel;
-use Marktic\Promotion\PromotionCodes\Actions\FindAndValidatePromotionCode;
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
+use Marktic\Promotion\PromotionSubjects\Actions\PromotionCodes\RedeemPromotionCode;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectRecordTrait;
 use Marktic\Promotion\Utility\PromotionModels;
@@ -14,11 +14,11 @@ use Nip\Records\Record;
 /**
  * @method PromotionSubjectInterface|PromotionSubjectRecordTrait|Record getModel()
  */
-class ApplyPromotionCodeForm extends FormModel
+class RedeemPromotionCodeForm extends FormModel
 {
     /**
      * @param PromotionSubjectInterface|Record $subject
-     * @return ApplyPromotionCodeForm
+     * @return RedeemPromotionCodeForm
      */
     public static function for(PromotionSubjectInterface $subject)
     {
@@ -47,7 +47,7 @@ class ApplyPromotionCodeForm extends FormModel
 
         $value = $element->getValue();
         try {
-            $promotionCode = FindAndValidatePromotionCode::for($this->getModel(), $value);
+            (new RedeemPromotionCode())->for($this->getModel(), $value);
         } catch (InvalidPromotionalCode $exception) {
             $element->addError($exception->getMessage());
         }
@@ -55,8 +55,6 @@ class ApplyPromotionCodeForm extends FormModel
 
     public function process()
     {
-//        $this->_discount->addUse($this->getModel());
-//        $this->getModel()->update();
     }
 
     protected function getDataFromModel()

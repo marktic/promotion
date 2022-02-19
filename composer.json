@@ -38,6 +38,7 @@
     "bytic/translation": "^0.9|^1.0",
     "bytic/models-smart-properties": "^1.0",
     "bytic/migrations": "^0.12",
+    "marktic/pricing": "dev-main",
     "bytic/assert": "^0.1"
   },
   "require-dev": {
