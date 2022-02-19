@@ -56,7 +56,7 @@ class RedeemPromotionCode
         PromotionInterface $promotion
     ): void {
         $result = $this->promotionValidator->execute($promotionSubject, $promotion);
-        if ($result->isValid()) {
+        if ($result->isInvalid()) {
             throw new InvalidPromotionalCode($result->message());
         }
     }
