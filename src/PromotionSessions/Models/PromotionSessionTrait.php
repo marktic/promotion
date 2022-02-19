@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\PromotionSessions\Models;
 
+use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfiguration;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RecordHasPromotion;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
@@ -16,6 +17,17 @@ trait PromotionSessionTrait
 {
     use RecordHasConfiguration;
     use RecordHasPromotion;
+    use TimestampableTrait;
+
+    /**
+     * @var string
+     */
+    protected static $createTimestamps = ['created'];
+
+    /**
+     * @var string
+     */
+    protected static $updateTimestamps = ['modified'];
 
     public function getName(): ?string
     {
@@ -25,7 +37,7 @@ trait PromotionSessionTrait
     public function populateFromSubject(PromotionSubjectInterface $subject)
     {
         $this->setPropertyValue('subject_id', $subject->getId());
-        $this->setPropertyValue('subject_type', $subject->getManager()->getMorphName());
+        $this->setPropertyValue('subject', $subject->getManager()->getMorphName());
     }
 
     /**

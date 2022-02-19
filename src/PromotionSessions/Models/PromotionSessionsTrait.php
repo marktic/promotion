@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\PromotionSessions\Models;
 
+use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RepositoryHasPromotion;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PackageConfig;
@@ -15,6 +16,7 @@ use Nip\Records\Record;
 trait PromotionSessionsTrait
 {
     use RepositoryHasPromotion;
+    use TimestampableManagerTrait;
 
     public function findForSubject(PromotionSubjectInterface $subject): Collection
     {
