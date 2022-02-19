@@ -3,12 +3,12 @@
 namespace Marktic\Promotion\Promotions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasActions\HasActionsInterface;
+use Marktic\Promotion\Base\Models\Behaviours\HasId\HasIdInterface;
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\HasRulesInterface;
 
 /**
- * @method int getId()
  */
-interface PromotionInterface extends HasRulesInterface, HasActionsInterface
+interface PromotionInterface extends HasRulesInterface, HasActionsInterface, HasIdInterface
 {
     public function getName(): ?string;
 

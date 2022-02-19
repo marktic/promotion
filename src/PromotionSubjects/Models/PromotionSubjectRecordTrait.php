@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\PromotionSubjects\Models;
 
+use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSession;
 use Nip\Records\Collections\Collection;
@@ -13,6 +14,7 @@ use Nip\Records\Relations\Relation;
  */
 trait PromotionSubjectRecordTrait
 {
+    use RecordHasId;
 
     public function hasPromotion(PromotionInterface $promotion): bool
     {

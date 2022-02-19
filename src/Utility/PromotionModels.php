@@ -58,7 +58,7 @@ class PromotionModels extends ModelFinder
     }
 
     /**
-     * @return PromotionSessions|RecordManager
+     * @return PromotionSessions
      */
     public static function promotionSessions()
     {
