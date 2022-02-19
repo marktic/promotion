@@ -32,7 +32,7 @@ class RedeemPromotionCodeForm extends FormModel
         parent::initialize();
         $this->setOption('render_messages', false);
 
-        $this->addInput('code', translator()->trans('code'), true);
+        $this->addInput('redeem_code', translator()->trans('code'), true);
 
         $this->addButton('save', PromotionModels::promotionCodes()->getLabel('form.apply-btn'));
     }
@@ -40,7 +40,7 @@ class RedeemPromotionCodeForm extends FormModel
     public function processValidation()
     {
         parent::processValidation();
-        $element = $this->getElement('code');
+        $element = $this->getElement('redeem_code');
         if ($element->isError() || false === $element->hasValue()) {
             return;
         }
@@ -59,7 +59,7 @@ class RedeemPromotionCodeForm extends FormModel
 
     protected function getDataFromModel()
     {
-        $this->setAction($this->getModel()->compileURL('applyPromotionCode'));
+        $this->setAction($this->getModel()->compileURL('redeemPromotionCode'));
 
         parent::getDataFromModel();
     }

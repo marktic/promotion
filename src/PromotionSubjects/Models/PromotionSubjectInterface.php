@@ -3,10 +3,15 @@
 namespace Marktic\Promotion\PromotionSubjects\Models;
 
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
+use Marktic\Promotion\PromotionSessions\Models\PromotionSession;
 use Nip\Records\Collections\Collection;
 
+/**
+ * @method Collection|PromotionSession getPromotionSessions()
+ */
 interface PromotionSubjectInterface
 {
+    public function getId();
 
     public function getPromotionSubjectTotal(): float;
 

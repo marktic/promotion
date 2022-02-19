@@ -53,7 +53,7 @@ class FindAndValidatePromotionCode
 
         if (!is_object($promotionCode)) {
             throw new InvalidPromotionalCode(
-                TranslatableMessage::create('mkt_promotions.messages.form.register.dnx')
+                TranslatableMessage::create('mkt_promotion_codes.messages.form.register.dnx')
             );
         }
 

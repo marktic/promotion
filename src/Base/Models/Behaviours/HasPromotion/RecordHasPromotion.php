@@ -43,6 +43,6 @@ trait RecordHasPromotion
      */
     public function getPromotion(): ?PromotionInterface
     {
-        return $this->getRelation('Promotion')->getResults()->current();
+        return $this->getRelation('Promotion')->getResults();
     }
 }

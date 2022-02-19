@@ -2,7 +2,9 @@
 
 namespace Marktic\Promotion\PromotionActions\Models;
 
-interface PromotionActionInterface
-{
+use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\HasConfigurationInterface;
+use Marktic\Promotion\Base\Models\Behaviours\HasType\HasTypeInterface;
 
+interface PromotionActionInterface extends HasTypeInterface, HasConfigurationInterface
+{
 }

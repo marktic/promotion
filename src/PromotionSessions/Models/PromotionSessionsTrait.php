@@ -25,6 +25,7 @@ trait PromotionSessionsTrait
         return $this->findByQuery($query);
     }
 
+
     /**
      * @param PromotionSubjectInterface|Record $subject
      * @return array

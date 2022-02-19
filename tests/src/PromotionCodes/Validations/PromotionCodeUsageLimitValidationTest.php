@@ -11,10 +11,10 @@ class PromotionCodeUsageLimitValidationTest extends AbstractValidationTest
      * @test
      * @dataProvider data_is_eligible
      */
-    public function code_is_eligible()
+    public function code_is_eligible($used, $limit, $result)
     {
-        $code = $this->generateCode(null, null);
-        $this->assertChecker($code, true);
+        $code = $this->generateCode($used, $limit);
+        $this->assertChecker($code, $result);
     }
 
     protected function generateCode($used = null, $limit = 10): PromotionCode
@@ -33,11 +33,11 @@ class PromotionCodeUsageLimitValidationTest extends AbstractValidationTest
     {
         return [
             [null, null, true],
-            ['', '', true],
             [null, 9, true],
-            ['', 9, true],
+            ['0', 9, true],
             [9, null, true],
             [9, 10, true],
+            ['0', '0', false],
             [9, 9, false],
             [10, 9, false],
         ];

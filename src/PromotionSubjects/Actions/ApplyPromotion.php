@@ -3,31 +3,46 @@
 namespace Marktic\Promotion\PromotionSubjects\Actions;
 
 use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
+use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
+use Marktic\Promotion\PromotionActions\Services\ActionCommandsService;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
+use Marktic\Promotion\PromotionSessions\Actions\CreateSessionForPromotionApplication;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
+use Marktic\Promotion\Utility\PromotionServices;
 
 class ApplyPromotion
 {
-    protected $registry = [];
+    protected ?ActionCommandsService $actionService;
+    protected ?CreateSessionForPromotionApplication $actionSessions;
+
+    public function __construct(
+        ?ActionCommandsService $actionsService = null,
+        ?CreateSessionForPromotionApplication $actionSessions = null
+    ) {
+        $this->actionService = $actionsService ?? PromotionServices::actionCommands();
+        $this->actionSessions = $actionSessions ?? new CreateSessionForPromotionApplication();
+    }
 
     public function apply(PromotionSubjectInterface $subject, PromotionInterface $promotion)
     {
-        $applyPromotion = false;
+        $appliedPromotions = [];
 
         foreach ($promotion->getPromotionActions() as $action) {
             $result = $this
-                ->getActionCommandByType($action->getType())
+                ->getActionCommandfor($action)
                 ->execute($subject, (array)$action->getConfiguration(), $promotion);
-            $applyPromotion = $applyPromotion || $result;
+            if ($result) {
+                $appliedPromotions[] = $action;
+            }
         }
 
-        if ($applyPromotion) {
-            $subject->addPromotion($promotion);
+        if (count($appliedPromotions)) {
+            $this->actionSessions->create($subject, $promotion, $appliedPromotions);
         }
     }
 
-    protected function getActionCommandByType(string $type): PromotionActionCommandInterface
+    protected function getActionCommandFor(PromotionActionInterface $promotionAction): PromotionActionCommandInterface
     {
-        return $this->registry->get($type);
+        return $this->actionService->forAction($promotionAction);
     }
 }

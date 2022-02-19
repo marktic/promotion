@@ -5,6 +5,7 @@ namespace Marktic\Promotion\Bundle\Controllers\Admin;
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
 use Marktic\Promotion\Bundle\Forms\Admin\PromotionSubjects\RedeemPromotionCodeForm;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
+use Marktic\Promotion\Utility\PromotionModels;
 use Nip\Records\Record;
 
 /**
@@ -27,7 +28,7 @@ trait MktPromotionSubjectControllerTrait
         }
 
         $this->flashRedirect(
-            $this->getModelManager()->getMessage('form.register.success'),
+            PromotionModels::promotions()->getMessage('form.register.success'),
             $redirectUrl,
             'success'
         );

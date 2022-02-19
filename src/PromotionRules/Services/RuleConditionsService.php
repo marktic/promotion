@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Marktic\Promotion\PromotionRules\Conditions\RuleConditionInterface;
 use Marktic\Promotion\PromotionRules\Models\PromotionRule;
 
-class RuleConditionsService
+class RuleConditionsService implements RuleConditionsServiceInterface
 {
     /**
      * @var RuleConditionInterface[]

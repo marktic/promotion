@@ -7,7 +7,7 @@ namespace Marktic\Promotion\Base\Validations;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
-interface PromotionValidation
+interface ValidatesPromotion
 {
 
     public function validate(

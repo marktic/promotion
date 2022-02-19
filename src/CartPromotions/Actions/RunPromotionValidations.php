@@ -2,22 +2,22 @@
 
 namespace Marktic\Promotion\CartPromotions\Actions;
 
-use Marktic\Promotion\Base\Validations\PromotionValidation;
+use Marktic\Promotion\Base\Validations\ValidatesPromotion;
 use Marktic\Promotion\Base\Validations\ValidationResult;
-use Marktic\Promotion\PromotionRules\Validations\PromotionRulesValidation;
+use Marktic\Promotion\CartPromotions\Validations\ValidationsFactory;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class RunPromotionValidations
 {
-    protected ?PromotionValidation $promotionValidation;
+    protected ?ValidatesPromotion $promotionValidation;
 
     /**
-     * @param PromotionValidation|null $promotionValidation
+     * @param ValidatesPromotion|null $promotionValidation
      */
-    public function __construct(?PromotionValidation $promotionValidation = null)
+    public function __construct(?ValidatesPromotion $promotionValidation = null)
     {
-        $this->promotionValidation = $promotionValidation ?? new PromotionRulesValidation();
+        $this->promotionValidation = $promotionValidation ?? ValidationsFactory::create();
     }
 
     public function execute(

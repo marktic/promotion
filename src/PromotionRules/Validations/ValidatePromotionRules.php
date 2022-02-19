@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\PromotionRules\Validations;
 
-use Marktic\Promotion\Base\Validations\PromotionValidation;
+use Marktic\Promotion\Base\Validations\ValidatesPromotion;
 use Marktic\Promotion\Base\Validations\ValidationResult;
 use Marktic\Promotion\PromotionRules\Models\PromotionRule;
 use Marktic\Promotion\PromotionRules\Models\PromotionRuleInterface;
@@ -14,7 +14,7 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PromotionServices;
 use Nip\Records\Collections\Collection;
 
-class PromotionRulesValidation implements PromotionValidation
+class ValidatePromotionRules implements ValidatesPromotion
 {
     protected ?RuleConditionsServiceInterface $ruleConditionsService = null;
 
