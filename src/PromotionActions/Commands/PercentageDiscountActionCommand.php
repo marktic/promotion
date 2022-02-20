@@ -14,7 +14,7 @@ class PercentageDiscountActionCommand extends DiscountActionCommand
         array $configuration,
         PromotionInterface $promotion
     ): bool {
-        // TODO: Implement execute() method.
+        $adjustment = $this->createPriceAdjustment($subject, $configuration, $promotion);
         return true;
     }
 
@@ -29,5 +29,15 @@ class PercentageDiscountActionCommand extends DiscountActionCommand
     protected function describeConfigurationValue($label, $value, $prefix = '-', $suffix = '%'): string
     {
         return parent::describeConfigurationValue($label, $value, $prefix, $suffix);
+    }
+
+    protected function createPriceAdjustment(
+        PromotionSubjectInterface $subject,
+        array $configuration,
+        PromotionInterface $promotion
+    ) {
+        $adjustment = parent::createPriceAdjustment($subject, $configuration, $promotion);
+        $adjustment->modifiesPercentage();
+        return $adjustment;
     }
 }
