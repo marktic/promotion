@@ -32,7 +32,7 @@ trait RecordHasPromotion
         return $this->getPromotion()->getPromotionPool();
     }
 
-    public function populateFromPromotion(CartPromotion $promotion)
+    public function populateFromPromotion(PromotionInterface $promotion)
     {
         $this->setPromotionId($promotion->id);
         $this->getRelation('Promotion')->setResults($promotion);

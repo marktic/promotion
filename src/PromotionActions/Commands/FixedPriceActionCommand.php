@@ -14,7 +14,6 @@ class FixedPriceActionCommand extends DiscountActionCommand
         array $configuration,
         PromotionInterface $promotion
     ): bool {
-        // TODO: Implement execute() method.
         return true;
     }
 

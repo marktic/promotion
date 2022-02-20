@@ -7,6 +7,7 @@ use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RecordHasPromotion;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
+use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Nip\Records\Record;
 
@@ -45,6 +46,11 @@ trait PromotionSessionTrait
         }, $actions);
 
         $this->getConfiguration()->set('applied_actions', $actions);
+    }
+
+    public function setPromotionCode(?PromotionCodeInterface $promotionCode)
+    {
+        $this->getConfiguration()->set('promotion_code', $promotionCode ? $promotionCode->getId() : null);
     }
 
     public function printValue()

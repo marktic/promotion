@@ -2,7 +2,10 @@
 
 namespace Marktic\Promotion\PromotionActions\Commands;
 
+use Marktic\Pricing\PriceAdjustments\Factories\PriceAdjustmentFactory;
 use Marktic\Promotion\Base\Configurations\ModelConfiguration;
+use Marktic\Promotion\Promotions\Models\PromotionInterface;
+use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 abstract class DiscountActionCommand implements PromotionActionCommandInterface
 {
@@ -11,6 +14,22 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
     public function getName()
     {
         return static::NAME;
+    }
+
+    public function createPrice(
+        PromotionSubjectInterface $subject,
+        array $configuration,
+        PromotionInterface $promotion
+    ) {
+        $adjustment = PriceAdjustmentFactory::create(
+            [
+                'trigger_type' => $promotion->getManager()->getMorphName(),
+                'trigger_id' => $promotion->getId(),
+                'trigger_code' => $promotion->getCode(),
+            ]
+        )
+            ->get();
+        return $adjustment;
     }
 
     public function describeConfiguration(ModelConfiguration $configuration): string

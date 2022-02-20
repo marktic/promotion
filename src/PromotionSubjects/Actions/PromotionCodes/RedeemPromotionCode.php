@@ -8,6 +8,7 @@ use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Actions\ApplyPromotion;
+use Marktic\Promotion\PromotionSubjects\DataObjects\ApplyPromotionRequest;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class RedeemPromotionCode
@@ -34,8 +35,13 @@ class RedeemPromotionCode
         $promotionCode = $this->validatePromotionCode($promotionSubject, $code);
         $promotion = $promotionCode->getPromotion();
 
+        $request = ApplyPromotionRequest::create();
+        $request->setSubject($promotionSubject);
+        $request->setPromotion($promotion);
+        $request->setPromotionCode($promotionCode);
+
         $this->validatePromotion($promotionSubject, $promotion);
-        $this->applyPromotion($promotionSubject, $promotion);
+        $this->applyPromotion($request);
     }
 
     /**
@@ -61,8 +67,8 @@ class RedeemPromotionCode
         }
     }
 
-    protected function applyPromotion(PromotionSubjectInterface $promotionSubject, ?PromotionInterface $promotion)
+    protected function applyPromotion(ApplyPromotionRequest $applyPromotionRequest): void
     {
-        $this->promotionApplicator->apply($promotionSubject, $promotion);
+        $this->promotionApplicator->apply($applyPromotionRequest);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Marktic\Promotion\PromotionSessions\Actions;
 
-use Marktic\Promotion\Promotions\Models\PromotionInterface;
+use Marktic\Promotion\PromotionSessions\Models\PromotionSession;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSessions;
-use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
+use Marktic\Promotion\PromotionSubjects\DataObjects\ApplyPromotionRequest;
 use Marktic\Promotion\Utility\PromotionModels;
 
 class CreateSessionForPromotionApplication
@@ -19,12 +19,16 @@ class CreateSessionForPromotionApplication
         $this->promotionSessionRepository = $promotionSessionRepository ?? PromotionModels::promotionSessions();
     }
 
-    public function create(PromotionSubjectInterface $subject, PromotionInterface $promotion, $actions)
+    public function createForRequest(ApplyPromotionRequest $request): PromotionSession
     {
         $session = $this->promotionSessionRepository->getNew();
-        $session->populateFromSubject($subject);
-        $session->populateFromPromotion($promotion);
-        $session->setAppliedActions($actions);
+        $session->populateFromSubject($request->getSubject());
+        $session->populateFromPromotion($request->getPromotion());
+        $session->setAppliedActions($request->getAppliedActions());
+        if ($request->hasPromotionCode()) {
+            $session->setPromotionCode($request->getPromotionCode());
+        }
+
         $session->save();
 
         return $session;

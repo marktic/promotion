@@ -24,4 +24,5 @@ class PromotionSession extends Record
     {
         // TODO: Implement getRegistry() method.
     }
+
 }
