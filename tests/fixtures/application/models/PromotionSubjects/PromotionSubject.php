@@ -9,6 +9,11 @@ class PromotionSubject implements PromotionSubjectInterface
 {
     use PromotionSubjectRecordTrait;
 
+    public function priceBeforeAdjustments($currency = null): float
+    {
+        return 100;
+    }
+
     public function getPromotionSubjectTotal(): float
     {
         return 100;
