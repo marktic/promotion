@@ -7,11 +7,13 @@ use Marktic\Promotion\Base\Models\Behaviours\HasCode\HasCodeInterface;
 use Marktic\Promotion\Base\Models\Behaviours\HasId\HasIdInterface;
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\HasRulesInterface;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\HasUsageInterface;
+use Marktic\Promotion\Base\Models\Behaviours\HasValidity\HasValidityInterface;
 
 /**
  */
 interface PromotionInterface
-    extends HasRulesInterface, HasActionsInterface, HasUsageInterface, HasCodeInterface, HasIdInterface
+    extends HasRulesInterface, HasActionsInterface, HasUsageInterface,
+            HasValidityInterface, HasCodeInterface, HasIdInterface
 {
     public function getName(): ?string;
 

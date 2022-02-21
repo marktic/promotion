@@ -3,9 +3,12 @@
 namespace Marktic\Promotion\PromotionActions\Commands;
 
 use Marktic\Pricing\PriceAdjustments\Factories\PriceAdjustmentFactory;
+use Marktic\Pricing\PriceAdjustments\Models\PriceAdjustment;
+use Marktic\Pricing\Saleable\Contracts\SaleableInterface;
 use Marktic\Promotion\Base\Configurations\ModelConfiguration;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
+use Nip\Records\Record;
 
 abstract class DiscountActionCommand implements PromotionActionCommandInterface
 {
@@ -14,6 +17,16 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
     public function getName()
     {
         return static::NAME;
+    }
+
+    public function execute(
+        PromotionSubjectInterface $subject,
+        array $configuration,
+        PromotionInterface $promotion
+    ): bool {
+        $adjustment = $this->createPriceAdjustment($subject, $configuration, $promotion);
+        $adjustment->save();
+        return true;
     }
 
 
@@ -30,6 +43,12 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         return implode(" | ", $return);
     }
 
+    /**
+     * @param PromotionSubjectInterface|SaleableInterface $subject
+     * @param array $configuration
+     * @param PromotionInterface $promotion
+     * @return \Marktic\Pricing\PriceAdjustments\Contracts\PriceAdjustment|PriceAdjustment|Record
+     */
     protected function createPriceAdjustment(
         PromotionSubjectInterface $subject,
         array $configuration,

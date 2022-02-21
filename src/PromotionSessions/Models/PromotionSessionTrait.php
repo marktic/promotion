@@ -50,7 +50,14 @@ trait PromotionSessionTrait
 
     public function setPromotionCode(?PromotionCodeInterface $promotionCode)
     {
-        $this->getConfiguration()->set('promotion_code', $promotionCode ? $promotionCode->getId() : null);
+        if (!($promotionCode instanceof PromotionCodeInterface)) {
+            return;
+        }
+
+        $this->getConfiguration()->set(
+            'promotion_code',
+            ['id' => $promotionCode->getId(), 'code' => $promotionCode->getCode()]
+        );
     }
 
     public function printValue()

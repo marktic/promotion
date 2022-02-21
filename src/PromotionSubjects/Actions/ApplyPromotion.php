@@ -5,11 +5,8 @@ namespace Marktic\Promotion\PromotionSubjects\Actions;
 use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
 use Marktic\Promotion\PromotionActions\Services\ActionCommandsService;
-use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
-use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSessions\Actions\CreateSessionForPromotionApplication;
 use Marktic\Promotion\PromotionSubjects\DataObjects\ApplyPromotionRequest;
-use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PromotionServices;
 
 class ApplyPromotion
@@ -32,18 +29,6 @@ class ApplyPromotion
         if (count($appliedPromotions)) {
             $applyPromotionRequest->setAppliedActions($appliedPromotions);
             $this->applyPromotion($applyPromotionRequest);
-        }
-    }
-
-    public function applyWithCode(
-        PromotionSubjectInterface $subject,
-        PromotionInterface $promotion,
-        PromotionCodeInterface $promotionCode
-    ) {
-        $appliedPromotions = $this->applyActions($subject, $promotion);
-
-        if (count($appliedPromotions)) {
-            $this->applyPromotion($subject, $promotion, $appliedPromotions);
         }
     }
 

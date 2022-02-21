@@ -9,14 +9,6 @@ class PercentageDiscountActionCommand extends DiscountActionCommand
 {
     public const NAME = 'percentage_discount';
 
-    public function execute(
-        PromotionSubjectInterface $subject,
-        array $configuration,
-        PromotionInterface $promotion
-    ): bool {
-        $adjustment = $this->createPriceAdjustment($subject, $configuration, $promotion);
-        return true;
-    }
 
     public function revert(
         PromotionSubjectInterface $subject,
