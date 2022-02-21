@@ -3,12 +3,9 @@
 namespace Marktic\Promotion\PromotionActions\Commands;
 
 use Marktic\Pricing\PriceAdjustments\Factories\PriceAdjustmentFactory;
-use Marktic\Pricing\PriceAdjustments\Models\PriceAdjustment;
-use Marktic\Pricing\Saleable\Contracts\SaleableInterface;
 use Marktic\Promotion\Base\Configurations\ModelConfiguration;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
-use Nip\Records\Record;
 
 abstract class DiscountActionCommand implements PromotionActionCommandInterface
 {
@@ -43,12 +40,6 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         return implode(" | ", $return);
     }
 
-    /**
-     * @param PromotionSubjectInterface|SaleableInterface $subject
-     * @param array $configuration
-     * @param PromotionInterface $promotion
-     * @return \Marktic\Pricing\PriceAdjustments\Contracts\PriceAdjustment|PriceAdjustment|Record
-     */
     protected function createPriceAdjustment(
         PromotionSubjectInterface $subject,
         array $configuration,
@@ -57,6 +48,7 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         $adjustment = PriceAdjustmentFactory::create(
             [
                 'label' => $promotion->getName(),
+                'currency_code' => $subject->getCurrencyCode(),
                 'trigger_type' => $promotion->getManager()->getMorphName(),
                 'trigger_id' => $promotion->getId(),
                 'trigger_code' => $promotion->getCode(),
@@ -65,7 +57,7 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
             ->withSaleable($subject)
             ->get();
         $adjustment->setPropertyValue('value', $configuration['amount'] ?? null);
-        $adjustment->getConfiguration()->set('amount_c', $configuration['amount_c'] ?? []);
+        $adjustment->getConfiguration()->set('value_c', $configuration['amount_c'] ?? []);
         return $adjustment;
     }
 

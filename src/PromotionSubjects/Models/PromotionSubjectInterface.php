@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\PromotionSubjects\Models;
 
+use Marktic\Pricing\Saleable\Contracts\SaleableInterface;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSession;
 use Nip\Records\Collections\Collection;
@@ -9,7 +10,7 @@ use Nip\Records\Collections\Collection;
 /**
  * @method Collection|PromotionSession getPromotionSessions()
  */
-interface PromotionSubjectInterface
+interface PromotionSubjectInterface extends SaleableInterface
 {
     public function getId();
 
