@@ -14,6 +14,9 @@ $type = $type ?? 'view';
     <tr>
         <th></th>
         <th></th>
+        <th>
+            <?= translator()->trans('created'); ?>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -26,7 +29,10 @@ $type = $type ?? 'view';
                 </a>
             </td>
             <td>
-                <?= json_encode($item->getConfiguration()->toArray()); ?> /
+                <?= json_encode($item->getConfiguration()->toArray()); ?>
+            </td>
+            <td>
+                <?= $item->created_at; ?>
             </td>
         </tr>
     <?php } ?>
