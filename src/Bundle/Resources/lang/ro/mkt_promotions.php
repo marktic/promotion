@@ -34,6 +34,7 @@ return [
     'mkt_promotions.messages.form.quantity.bad' => '',
     'mkt_promotions.messages.form.amount.nan' => 'Valoarea trebuie să fie numerica',
     'mkt_promotions.messages.form.amount.percentage-toobig' => 'Valoarea procentuala poate fi intre 0 si 100',
+    'mkt_promotions.messages.form.register.success' => 'Codul de discount a fost adaugat cu succes',
 
     'mkt_promotions.messages.entry-remove.dnx' => 'Eroare stergere discount. Cod de discount invalid',
     'mkt_promotions.messages.entry-remove.success' => 'Discount sters cu succes',
