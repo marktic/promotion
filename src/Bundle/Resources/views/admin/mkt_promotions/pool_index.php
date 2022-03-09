@@ -22,6 +22,7 @@ $addURLParams = [
 $actionCommands = $this->get('actionCommands');
 foreach ($actionCommands as $actionCommand) {
     $action = ActionsFactory::fromArray([
+        'type' => \ByTIC\AdminBase\Screen\Actions\Dto\ButtonAction::TYPE,
         'name' => Action::NAME_CREATE . '-' . $actionCommand->getName(),
         'label' => $modelManager->getLabel('add')
             . ' '
