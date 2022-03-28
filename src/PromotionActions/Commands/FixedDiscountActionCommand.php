@@ -9,23 +9,6 @@ class FixedDiscountActionCommand extends DiscountActionCommand
 {
     public const NAME = 'fixed_discount';
 
-    public function execute(
-        PromotionSubjectInterface $subject,
-        array $configuration,
-        PromotionInterface $promotion
-    ): bool {
-        // TODO: Implement execute() method.
-        return true;
-    }
-
-    public function revert(
-        PromotionSubjectInterface $subject,
-        array $configuration,
-        PromotionInterface $promotion
-    ): void {
-        // TODO: Implement revert() method.
-    }
-
     protected function describeConfigurationValue($label, $value, $prefix = '-', $suffix = null): string
     {
         return parent::describeConfigurationValue($label, $value, $prefix, $suffix);

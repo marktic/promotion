@@ -24,8 +24,8 @@ trait PromotionPoolsRepositoryTrait
             'CartPromotions',
             [
                 'class' => get_class(PromotionModels::promotions()),
-                'morphPrefix' => 'subject',
-                'morphTypeField' => 'subject'
+                'morphPrefix' => 'pool',
+                'morphTypeField' => 'pool'
             ]
         );
     }

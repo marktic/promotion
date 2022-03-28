@@ -9,15 +9,6 @@ class PercentageDiscountActionCommand extends DiscountActionCommand
 {
     public const NAME = 'percentage_discount';
 
-
-    public function revert(
-        PromotionSubjectInterface $subject,
-        array $configuration,
-        PromotionInterface $promotion
-    ): void {
-        // TODO: Implement revert() method.
-    }
-
     protected function describeConfigurationValue($label, $value, $prefix = '-', $suffix = '%'): string
     {
         return parent::describeConfigurationValue($label, $value, $prefix, $suffix);

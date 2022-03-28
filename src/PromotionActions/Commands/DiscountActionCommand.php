@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\PromotionActions\Commands;
 
+use Marktic\Pricing\PriceAdjustments\Contracts\PriceAdjustment as PriceAdjustmentContract;
 use Marktic\Pricing\PriceAdjustments\Factories\PriceAdjustmentFactory;
 use Marktic\Promotion\Base\Configurations\ModelConfiguration;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
@@ -24,6 +25,14 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         $adjustment = $this->createPriceAdjustment($subject, $configuration, $promotion);
         $adjustment->save();
         return true;
+    }
+
+    public function revert(
+        PromotionSubjectInterface $subject,
+        array $configuration,
+        PromotionInterface $promotion
+    ): void {
+        // TODO: Implement revert() method.
     }
 
 
@@ -49,6 +58,7 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
             [
                 'label' => $promotion->getName(),
                 'currency_code' => $subject->getCurrencyCode(),
+                'modification' => $this->getPriceAdjustmentModification(),
                 'trigger_type' => $promotion->getManager()->getMorphName(),
                 'trigger_id' => $promotion->getId(),
                 'trigger_code' => $promotion->getCode(),
@@ -64,5 +74,19 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
     protected function describeConfigurationValue($label, $value, $prefix = '', $suffix = ''): string
     {
         return $label . ': ' . $prefix . $value . $suffix;
+    }
+
+    protected function getPriceAdjustmentModification(): string
+    {
+        switch (static::NAME) {
+            case PercentageDiscountActionCommand::NAME:
+                return PriceAdjustmentContract::MODIFICATION_PERCENTAGE;
+            case FixedDiscountActionCommand::NAME:
+                return PriceAdjustmentContract::MODIFICATION_FIXED;
+            case FixedPriceActionCommand::NAME:
+                return PriceAdjustmentContract::MODIFICATION_AMOUNT;
+            default:
+                throw new \Exception('Unknown discount type');
+        }
     }
 }

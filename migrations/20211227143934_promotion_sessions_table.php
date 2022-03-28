@@ -27,8 +27,8 @@ final class PromotionSessionsTable extends AbstractMigration
         $table = $this->table($table_name);
         $table
             ->addColumn('promotion_id', 'integer')
-            ->addColumn('subject_id', 'integer', ['null' => true])
-            ->addColumn('subject', 'string', ['null' => true])
+            ->addColumn('pool_id', 'integer', ['null' => true])
+            ->addColumn('pool', 'string', ['null' => true])
             ->addColumn('configuration', 'json', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',

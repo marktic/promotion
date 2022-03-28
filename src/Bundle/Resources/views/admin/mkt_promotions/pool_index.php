@@ -28,6 +28,7 @@ foreach ($actionCommands as $actionCommand) {
             . ' '
             . PromotionModels::promotionActions()->translateType($actionCommand->getName()),
         'icon' => Icons::plus(),
+        'class' => 'add-promotion-'.$actionCommand->getName(),
         'url' => $modelManager->compileURL(
             'add',
             array_merge($addURLParams, ['type' => $actionCommand->getName()])
