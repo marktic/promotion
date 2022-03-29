@@ -82,9 +82,9 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
             case PercentageDiscountActionCommand::NAME:
                 return PriceAdjustmentContract::MODIFICATION_PERCENTAGE;
             case FixedDiscountActionCommand::NAME:
-                return PriceAdjustmentContract::MODIFICATION_FIXED;
-            case FixedPriceActionCommand::NAME:
                 return PriceAdjustmentContract::MODIFICATION_AMOUNT;
+            case FixedPriceActionCommand::NAME:
+                return PriceAdjustmentContract::MODIFICATION_FIXED;
             default:
                 throw new \Exception('Unknown discount type');
         }
