@@ -6,6 +6,7 @@ use Marktic\Promotion\Base\Models\Behaviours\HasActions\RepositoryHasPromotionAc
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\RepositoryHasPromotionRules;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\CartPromotions\Events\CartPromotionCreated;
+use Marktic\Promotion\CartPromotions\Observers\DeletePromotionCodes;
 use Marktic\Promotion\CartPromotions\Observers\UpdatePromotionCodes;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
@@ -26,6 +27,10 @@ trait CartPromotionsTrait
             UpdatePromotionCodes::for($model);
         });
 
+        static::deleting(function ($event) {
+            /** @var Event $event */
+            DeletePromotionCodes::for($event->getRecord());
+        });
         static::updating(function ($event) {
             /** @var Event $event */
             UpdatePromotionCodes::for($event->getRecord());
