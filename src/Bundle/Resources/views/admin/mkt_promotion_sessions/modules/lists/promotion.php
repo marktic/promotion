@@ -12,8 +12,12 @@ $type = $type ?? 'view';
 <table class="table">
     <thead>
     <tr>
-        <th></th>
-        <th></th>
+        <th>
+            SUBJECT
+        </th>
+        <th>
+            PARAMS
+        </th>
         <th>
             <?= translator()->trans('created'); ?>
         </th>
@@ -24,9 +28,13 @@ $type = $type ?? 'view';
         <?php $subject = $item->getPromotionSubject(); ?>
         <tr>
             <td>
-                <a href="<?= $subject->getURL(); ?>">
-                    <?= $subject->getName(); ?>
-                </a>
+                <?php if ($subject instanceof \Nip\Records\Record) : ?>
+                    <a href="<?= $subject->getURL(); ?>">
+                        <?= $subject->getName(); ?>
+                    </a>
+                <?php else : ?>
+                    ---
+                <?php endif; ?>
             </td>
             <td>
                 <?= json_encode($item->getConfiguration()->toArray()); ?>
