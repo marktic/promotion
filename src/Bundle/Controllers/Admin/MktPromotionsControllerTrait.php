@@ -60,8 +60,8 @@ trait MktPromotionsControllerTrait
         $item->setPool($this->getRequest()->get('pool'));
         $item->setPoolId($this->getRequest()->get('pool_id'));
 
-        $type = $this->getRequest()->get('type');
-        $promotionAction = PromotionFactories::actions()->create($type, []);
+        $actionType = $this->getRequest()->get('action_type');
+        $promotionAction = PromotionFactories::actions()->create($actionType, []);
 
         $item->getRelation(CartPromotions::RELATION_ACTIONS)->getResults()->add($promotionAction);
 
@@ -97,7 +97,7 @@ trait MktPromotionsControllerTrait
 
     protected function getModelFormClass($model, $action = null): string
     {
-        $type = $this->getRequest()->get('type');
+        $type = $this->getRequest()->get('action_type');
 
         switch ($type) {
             case PercentageDiscountActionCommand::NAME:

@@ -21,19 +21,29 @@ $addURLParams = [
 
 $actionCommands = $this->get('actionCommands');
 foreach ($actionCommands as $actionCommand) {
-    $action = ActionsFactory::fromArray([
-        'type' => \ByTIC\AdminBase\Screen\Actions\Dto\ButtonAction::TYPE,
+    $actionArray = [
         'name' => Action::NAME_CREATE . '-' . $actionCommand->getName(),
-        'label' => $modelManager->getLabel('add')
-            . ' '
-            . PromotionModels::promotionActions()->translateType($actionCommand->getName()),
+        'label' => $modelManager->getLabel('add'),
         'icon' => Icons::plus(),
-        'class' => 'add-promotion-'.$actionCommand->getName(),
+        'class' => 'add-promotion-' . $actionCommand->getName(),
         'url' => $modelManager->compileURL(
             'add',
-            array_merge($addURLParams, ['type' => $actionCommand->getName()])
+            array_merge($addURLParams, ['action_type' => $actionCommand->getName()])
         ),
-    ]);
+    ];
+    $action = $action ?? ActionsFactory::fromArray(
+        array_merge($actionArray, [
+            'type' => \ByTIC\AdminBase\Screen\Actions\Dto\DropdownAction::TYPE,
+        ])
+    );
+    $action->isButton(true);
+    $action->addMenuItem(ActionsFactory::fromArray(
+        array_merge($actionArray,[
+            'label' => $actionArray['label'] . ' ' . PromotionModels::promotionActions()->translateType($actionCommand->getName()),
+        ])
+    ));
+}
+if ($action) {
     $actions->add($action);
 }
 
