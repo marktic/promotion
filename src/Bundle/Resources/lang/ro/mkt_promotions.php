@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'mkt_promotions.labels.title' => 'Coduri de discount',
-    'mkt_promotions.labels.title.singular' => 'Cod de discount',
+    'mkt_promotions.labels.title' => 'Promoții',
+    'mkt_promotions.labels.title.singular' => 'Promoție',
     'mkt_promotions.labels.title.register' => 'Ai un cod de reducere?',
     'mkt_promotions.labels.add' => 'Adauga cod',
 

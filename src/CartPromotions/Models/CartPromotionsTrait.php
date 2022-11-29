@@ -14,6 +14,8 @@ use Nip\Records\EventManager\Events\Event;
 
 trait CartPromotionsTrait
 {
+    use Behaviours\HasType\HasTypeRepository;
+
     use RepositoryHasPromotionRules;
     use RepositoryHasPromotionActions;
     use TimestampableManagerTrait;

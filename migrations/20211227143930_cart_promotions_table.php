@@ -32,6 +32,7 @@ final class CartPromotionsTable extends AbstractMigration
             ->addColumn('name', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('priority', 'integer', [])
             ->addColumn('exclusive', 'integer', ['limit' => 1, 'null' => false, 'default' => 1])
+            ->addColumn('type', 'string', ['null' => false])
             ->addColumn('usage_limit', 'integer', ['null' => true])
             ->addColumn('used', 'integer', [])
             ->addColumn('valid_from', 'datetime', ['null' => true])

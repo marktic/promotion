@@ -26,6 +26,8 @@ use Nip\Records\Collections\Collection;
  */
 trait CartPromotionTrait
 {
+    use Behaviours\HasType\HasTypeRecord;
+
     use RecordHasId;
     use RecordHasCode;
     use RecordHasUsage;
