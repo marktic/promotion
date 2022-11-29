@@ -19,6 +19,7 @@ $actions = $item->getPromotionActions();
         </a>
     </td>
     <td><?= $item->getCode(); ?></td>
+    <td><?= $item->getTypeObject()->getLabelHTML(); ?></td>
     <td>
         <?= $item->getUsed(); ?> /
         <?= $item->getUsageLimit(); ?>

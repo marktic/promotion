@@ -8,6 +8,7 @@ use Nip\View\View;
 <thead>
 <tr>
     <th><?= translator()->trans('name'); ?></th>
+    <th><?= translator()->trans('type'); ?></th>
     <th><?= translator()->trans('code'); ?></th>
     <th><?= translator()->trans('uses'); ?></th>
     <th><?= PromotionModels::promotions()->getLabel('exclusive'); ?></th>

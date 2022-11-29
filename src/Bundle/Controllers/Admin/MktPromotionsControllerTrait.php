@@ -11,6 +11,7 @@ use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
 use Marktic\Promotion\Utility\PromotionFactories;
+use Marktic\Promotion\Utility\PromotionModels;
 use Marktic\Promotion\Utility\PromotionServices;
 use Nip\Records\Record;
 
@@ -29,7 +30,8 @@ trait MktPromotionsControllerTrait
         $this->payload()->with([
             'pool' => $this->getRequest()->get('pool'),
             'pool_id' => $this->getRequest()->get('pool_id'),
-            'actionCommands' => PromotionServices::actionCommands()->all()
+            'actionCommands' => PromotionServices::actionCommands()->all(),
+            'promotionTypes' => PromotionModels::promotions()->getTypes(),
         ]);
     }
 

@@ -4,7 +4,7 @@ return [
     'mkt_promotions.labels.title' => 'Promoții',
     'mkt_promotions.labels.title.singular' => 'Promoție',
     'mkt_promotions.labels.title.register' => 'Ai un cod de reducere?',
-    'mkt_promotions.labels.add' => 'Adauga cod',
+    'mkt_promotions.labels.add' => 'Adauga promoție',
 
     'mkt_promotions.labels.usage' => 'Utilizare',
     'mkt_promotions.labels.usage_limit' => 'Limită utilizare',
@@ -13,6 +13,12 @@ return [
     'mkt_promotions.labels.validity' => 'Valabilitate',
     'mkt_promotions.labels.valid_from' => 'De la',
     'mkt_promotions.labels.valid_to' => 'Pană la',
+
+    'mkt_promotions.types.automatic' => 'Automată',
+    'mkt_promotions.types.automatic.add' => 'Adaugă promoţie automată',
+
+    'mkt_promotions.types.coupon_code' => 'Cupon reducere',
+    'mkt_promotions.types.coupon_code.add' => 'Adaugă cupon reducere',
 
     'mkt_promotions.labels.type.amount' => 'Modificare suma',
     'mkt_promotions.labels.type.fixed' => 'Suma exacta',

@@ -4,7 +4,7 @@ return [
     'mkt_promotions.labels.title' => 'Promotions',
     'mkt_promotions.labels.title.singular' => 'Promotion',
     'mkt_promotions.labels.title.register' => 'Ai un cod de reducere?',
-    'mkt_promotions.labels.add' => 'Adauga cod',
+    'mkt_promotions.labels.add' => 'Add promotion',
 
     'mkt_promotions.labels.usage' => 'Usage',
     'mkt_promotions.labels.usage_limit' => 'Limită utilizare',
