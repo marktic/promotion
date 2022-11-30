@@ -33,10 +33,10 @@ class ItemTotalRuleCondition implements RuleConditionInterface
         $array = $configuration->toArray();
         array_walk(
             $array,
-            function ($key, $value) {
-                return sprintf(
+            function (&$value, $key) {
+                $value = sprintf(
                     '<span class="badge bg-secondary">
-                            <strong>%s:</strong>:
+                            <strong class="text-uppercase">%s</strong>:
                             %s
                         </span>',
                     $key,
