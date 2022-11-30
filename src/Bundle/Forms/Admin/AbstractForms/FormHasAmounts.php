@@ -105,7 +105,7 @@ trait FormHasAmounts
         $configuration->setWithCurrency('amount', $amount, $type);
     }
 
-    protected function getModelAmounts(): \Marktic\Promotion\PromotionActions\Models\PromotionAction
+    protected function getModelAmounts(): PromotionAction
     {
         return $this->getModel();
     }

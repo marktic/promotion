@@ -7,8 +7,6 @@ namespace Marktic\Promotion\Base\Models\Traits;
 use Marktic\Promotion\Utility\PackageConfig;
 use Nip\Database\Connections\Connection;
 
-use function app;
-
 /**
  * Trait HasDatabaseConnectionTrait.
  */
@@ -19,6 +17,6 @@ trait HasDatabaseConnectionTrait
      */
     protected function newDbConnection()
     {
-        return app('db')->connection(PackageConfig::databaseConnection());
+        return \app('db')->connection(PackageConfig::databaseConnection());
     }
 }

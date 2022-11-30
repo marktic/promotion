@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Promotion\PromotionCodes\Actions;
 
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
+use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
@@ -14,6 +15,10 @@ use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationUsageLim
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\I18n\TranslatableMessage;
+
+use Nip\Records\AbstractModels\Record;
+
+use function is_object;
 
 class FindAndValidatePromotionCode
 {
@@ -49,12 +54,14 @@ class FindAndValidatePromotionCode
     /**
      * @throws InvalidPromotionalCode
      */
-    protected function findPromotionCode(string $promotionCode): \Marktic\Promotion\PromotionCodes\Models\PromotionCode|\Nip\Records\AbstractModels\Record
+    protected function findPromotionCode(string $promotionCode): PromotionCode|Record
     {
         $promotionCode = $this->promotionCodeRepository->findOneByCode($promotionCode);
 
-        if (!\is_object($promotionCode)) {
-            throw new InvalidPromotionalCode(TranslatableMessage::create('mkt_promotion_codes.messages.form.register.dnx'));
+        if (!is_object($promotionCode)) {
+            throw new InvalidPromotionalCode(
+                (string)TranslatableMessage::create('mkt_promotion_codes.messages.form.register.dnx')
+            );
         }
 
         return $promotionCode;
@@ -63,8 +70,10 @@ class FindAndValidatePromotionCode
     /**
      * @throws InvalidPromotionalCode
      */
-    protected function validatePromotionCode(PromotionSubjectInterface $subject, PromotionCodeInterface $promotionCode): void
-    {
+    protected function validatePromotionCode(
+        PromotionSubjectInterface $subject,
+        PromotionCodeInterface $promotionCode
+    ): void {
         $checker = $this->buildEligibilityChecker();
         $response = $checker->validate($subject, $promotionCode);
 

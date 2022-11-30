@@ -49,9 +49,6 @@ class ActionHtml
         return PromotionModels::promotionActions()->translate('type.' . $this->action->getType());
     }
 
-    /**
-     * @return false|string
-     */
     protected function renderConfiguration(): string|false
     {
         return json_encode($this->action->getConfiguration()->jsonSerialize());

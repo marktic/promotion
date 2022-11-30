@@ -16,7 +16,7 @@ abstract class AbstractRepositoryTest extends AbstractTest
 {
     public function testGetTableFromConfig(): void
     {
-        $config = require \TEST_FIXTURE_PATH . '/config/mkt_promotion.php';
+        $config = require TEST_FIXTURE_PATH . '/config/mkt_promotion.php';
         $this->loadConfig($config);
 
         $class = $this->getRepositoryClass();

@@ -24,9 +24,6 @@ class ValidationResult
         $this->message = $message;
     }
 
-    /**
-     * @param TranslatableMessage|string $message
-     */
     public static function invalid(string|TranslatableMessage $message): self
     {
         return new self(false, $message);

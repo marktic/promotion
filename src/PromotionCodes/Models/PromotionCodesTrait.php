@@ -15,7 +15,7 @@ trait PromotionCodesTrait
     use RepositoryHasPromotion;
     use TimestampableManagerTrait;
 
-    public function findOneByCode(string $code): PromotionCodeInterface|null
+    public function findOneByCode(string $code): PromotionCodeInterface|Record|null
     {
         return $this->findOneByField('code', $code) ?? null;
     }
@@ -23,7 +23,7 @@ trait PromotionCodesTrait
     /**
      * @return void
      */
-    protected function initRelations()
+    protected function initRelations(): void
     {
         parent::initRelations();
         $this->initRelationsTrait();

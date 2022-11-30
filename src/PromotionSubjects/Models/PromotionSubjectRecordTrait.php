@@ -21,7 +21,7 @@ trait PromotionSubjectRecordTrait
     public function hasPromotion(PromotionInterface $promotion): bool
     {
         return $this->getPromotions()->first(function ($item) use ($promotion) {
-            /** @var PromotionSession $item */
+            /* @var PromotionSession $item */
             return $item->getPromotionId() === $promotion->id;
         }) instanceof PromotionSession;
     }

@@ -10,7 +10,6 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\Records\Collections\Collection;
-use Nip\Records\Record;
 
 /**
  * @method PromotionSession getNew()
@@ -30,9 +29,6 @@ trait PromotionSessionsTrait
         return $this->findByQuery($query);
     }
 
-    /**
-     * @param \Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface $subject
-     */
     public function queryWhereSubject(PromotionSubjectInterface $subject): array
     {
         return [

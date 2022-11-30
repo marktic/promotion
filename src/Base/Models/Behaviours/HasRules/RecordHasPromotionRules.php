@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Base\Models\Behaviours\HasRules;
 
-use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRule;
 use Nip\Records\Collections\Collection;
 
 trait RecordHasPromotionRules
@@ -14,7 +13,7 @@ trait RecordHasPromotionRules
         return $this->getPromotionRules()->count() > 0;
     }
 
-    public function getPromotionRules(): \Nip\Records\AbstractModels\Record|\Nip\Records\Collections\Collection
+    public function getPromotionRules(): \Nip\Records\AbstractModels\Record|Collection
     {
         return $this->getRelation('PromotionRules')->getResults();
     }

@@ -32,11 +32,11 @@ trait CartPromotionsTrait
         });
 
         static::deleting(function ($event) {
-            /** @var Event $event */
+            /* @var Event $event */
             DeletePromotionCodes::for($event->getRecord());
         });
         static::updating(function ($event) {
-            /** @var Event $event */
+            /* @var Event $event */
             UpdatePromotionCodes::for($event->getRecord());
         });
     }

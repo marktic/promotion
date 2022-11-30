@@ -22,7 +22,7 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
     }
 
     /**
-     * @param null|string $default
+     * @param string|null $default
      */
     public static function tableName(string $name, string|null $default = null)
     {
@@ -30,7 +30,7 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
     }
 
     /**
-     * @param null|string $default
+     * @param string|null $default
      *
      * @psalm-param 'EUR'|null $default
      */

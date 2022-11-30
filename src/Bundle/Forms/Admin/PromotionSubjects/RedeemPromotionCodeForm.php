@@ -18,8 +18,6 @@ use Nip\Records\Record;
 class RedeemPromotionCodeForm extends FormModel
 {
     /**
-     * @param PromotionSubjectInterface $subject
-     *
      * @return RedeemPromotionCodeForm
      */
     public static function for(PromotionSubjectInterface $subject)
