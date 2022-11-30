@@ -14,7 +14,7 @@ $actionUrl = $item->compileURL('edit');
 ?>
 <div class="bg-white text-start text-dark rounded shadow-xs d-flex p-3">
     <div class="name flex-grow-1">
-        <span class="d-block text-uppercase">
+        <span class="d-block text-uppercase fw-bold">
             <?= PromotionModels::promotionRules()->translateType($item->getType()); ?>
         </span>
         <span class="d-block mt-1 fw-light">
@@ -24,7 +24,7 @@ $actionUrl = $item->compileURL('edit');
     <div class="actions">
         <a href="<?= $actionUrl; ?>" data-href="<?= $actionUrl; ?>"
            data-bs-toggle="modalForm" data-bs-target="#modalForm"
-           class="btn btn-outline-primary btn-xs float-end">
+           class="btn btn-primary btn-flat btn-xs float-end">
             <?= Icons::edit(); ?>
         </a>
     </div>

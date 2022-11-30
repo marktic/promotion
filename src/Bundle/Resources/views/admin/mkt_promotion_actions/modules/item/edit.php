@@ -24,7 +24,7 @@ $actionUrl = $item->compileURL('edit');
     <div class="actions">
         <a href="<?= $actionUrl; ?>" data-href="<?= $actionUrl; ?>"
            data-bs-toggle="modalForm" data-bs-target="#modalForm"
-           class="btn btn-outline-primary btn-xs float-end">
+           class="btn btn-primary btn-flat btn-xs float-end">
             <?= Icons::edit(); ?>
         </a>
     </div>

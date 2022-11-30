@@ -30,7 +30,22 @@ class ItemTotalRuleCondition implements RuleConditionInterface
 
     public function describeConfiguration(ModelConfiguration $configuration): string
     {
-        return '';
+        $array = $configuration->toArray();
+        array_walk(
+            $array,
+            function ($key, $value) {
+                return sprintf(
+                    '<span class="badge bg-secondary">
+                            <strong>%s:</strong>:
+                            %s
+                        </span>',
+                    $key,
+                    print_r($value, true)
+                );
+            }
+        );
+
+        return implode(' | ', $array);
     }
 
     public function basicConfiguration(): array
