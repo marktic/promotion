@@ -8,12 +8,14 @@ trait RecordHasType
 {
     protected ?string $type = null;
 
-    /**
-     * @return string
-     */
     public function getType(): ?string
     {
         return $this->type;
+    }
+
+    public function isOfType(string $type): bool
+    {
+        return $this->getType() === $type;
     }
 
     public function setType(string $type): void

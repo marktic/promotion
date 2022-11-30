@@ -16,4 +16,6 @@ interface RuleConditionInterface
     public function validate(PromotionSubjectInterface $subject, $configuration): ValidationResult;
 
     public function describeConfiguration(ModelConfiguration $configuration): string;
+
+    public function basicConfiguration(): array;
 }

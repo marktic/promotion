@@ -50,6 +50,7 @@ abstract class AbstractForm extends FormModel
     {
         parent::saveToModel();
         $this->saveToModelDates();
+        $this->saveToModelCode();
     }
 
     /**

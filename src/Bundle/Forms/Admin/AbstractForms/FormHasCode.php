@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Bundle\Forms\Admin\AbstractForms;
 
+use Marktic\Promotion\PromotionCodes\Generator\Codes\UniqueCodeGenerator;
+
 trait FormHasCode
 {
     protected function initCode(): void
@@ -24,5 +26,15 @@ trait FormHasCode
         if ($this->getModel()->exists()) {
             $codeElement->addError($this->getModelMessage('code.exists'));
         }
+    }
+
+    public function saveToModelCode(): void
+    {
+        if (false === empty($this->getModel()->getCode())) {
+            return;
+        }
+        $this->getModel()->setCode(
+            UniqueCodeGenerator::oneFor()
+        );
     }
 }
