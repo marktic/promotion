@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Models\PromotionActions;
 
 /**
- * Class PromotionActions
- * @package Marktic\Promotion\Bundle\Models\PromotionActions
+ * Class PromotionActions.
  */
 class PromotionActions extends \Marktic\Promotion\PromotionActions\Models\PromotionActions
 {

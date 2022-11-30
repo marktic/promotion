@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\Base\Validations;
 
 use Marktic\Promotion\Base\Validations\ValidationResult;
@@ -8,8 +10,7 @@ use Nip\I18n\TranslatableMessage;
 
 class ValidationResultTest extends AbstractTest
 {
-    /** @test */
-    public function can_receive_translatable_messages()
+    public function testCanReceiveTranslatableMessages()
     {
         $response = ValidationResult::invalid(TranslatableMessage::create('test'));
 

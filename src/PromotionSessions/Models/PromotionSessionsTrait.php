@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionSessions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RepositoryHasPromotion;
@@ -24,13 +26,12 @@ trait PromotionSessionsTrait
             'where' => $this->queryWhereSubject($subject),
         ];
         $query = $this->paramsToQuery($params);
+
         return $this->findByQuery($query);
     }
 
-
     /**
      * @param PromotionSubjectInterface|Record $subject
-     * @return array
      */
     public function queryWhereSubject(PromotionSubjectInterface $subject): array
     {

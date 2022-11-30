@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Base\Models\Traits;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 
 /**
- * Trait CommonRecordTrait
- * @package Marktic\Promotion\Models\AbstractModels
+ * Trait CommonRecordTrait.
  */
 trait CommonRecordTrait
 {

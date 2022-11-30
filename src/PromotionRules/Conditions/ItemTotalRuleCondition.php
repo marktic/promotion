@@ -17,6 +17,7 @@ class ItemTotalRuleCondition implements RuleConditionInterface
         if ($subject->getPromotionSubjectTotal() >= $configuration['amount']) {
             return ValidationResult::valid();
         }
+
         return ValidationResult::invalid('The total of the items is not enough');
     }
 

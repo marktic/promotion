@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionActions\Models;
 
 use Marktic\Promotion\Base\Models\Traits\CommonRecordsTrait;
 use Nip\Records\RecordManager;
 
 /**
- * Class PromotionActions
- * @package Marktic\Promotion\Models\PromotionActions
+ * Class PromotionActions.
  */
 class PromotionActions extends RecordManager
 {
-    use PromotionActionsTrait;
     use CommonRecordsTrait;
+    use PromotionActionsTrait;
 
     public const TABLE = 'mkt_promotions_actions';
     public const CONTROLLER = 'mkt_promotion_actions';

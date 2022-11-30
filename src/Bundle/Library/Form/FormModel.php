@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Library\Form;
 
 abstract class FormModel extends \Nip\Form\FormModel
 {
-
     public function initialize()
     {
         parent::initialize();
@@ -23,9 +24,10 @@ abstract class FormModel extends \Nip\Form\FormModel
      */
     public function submited()
     {
-        if (parent::submited() === false) {
+        if (false === parent::submited()) {
             return false;
         }
+
         return isset($_REQUEST['_trigger']) && $_REQUEST['_trigger'] == $this->getElement('_trigger')->getValue();
     }
 }

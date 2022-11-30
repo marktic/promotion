@@ -10,14 +10,7 @@ interface RuleConditionsServiceInterface
 {
     public function all(): array;
 
-    /**
-     * @param RuleConditionInterface $condition
-     */
     public function add(RuleConditionInterface $condition);
 
-    /**
-     * @param string $name
-     * @return RuleConditionInterface
-     */
     public function get(string $name): RuleConditionInterface;
 }

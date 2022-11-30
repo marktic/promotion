@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use Marktic\Promotion\Bundle\Forms\Admin\PromotionActions\BaseForm;
@@ -65,6 +67,7 @@ trait MktPromotionActionsControllerTrait
 
     /**
      * @param Record $pool
+     *
      * @return void
      */
     protected function checkPoolAccess($pool)

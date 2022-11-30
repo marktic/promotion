@@ -1,13 +1,12 @@
 <?php
 
-namespace Marktic\Promotion\Base\Models\Behaviours\HasValidity;
+declare(strict_types=1);
 
-use DateTimeInterface;
+namespace Marktic\Promotion\Base\Models\Behaviours\HasValidity;
 
 interface HasValidityInterface
 {
+    public function getValidFrom(): ?\DateTimeInterface;
 
-    public function getValidFrom(): ?DateTimeInterface;
-
-    public function getValidTo(): ?DateTimeInterface;
+    public function getValidTo(): ?\DateTimeInterface;
 }

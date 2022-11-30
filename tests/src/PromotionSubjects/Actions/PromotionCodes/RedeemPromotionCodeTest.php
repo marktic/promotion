@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionSubjects\Actions\PromotionCodes;
 
 use Marktic\Promotion\Base\Validations\ValidationResult;
@@ -12,27 +14,28 @@ use Marktic\Promotion\PromotionSubjects\Actions\ApplyPromotion;
 use Marktic\Promotion\PromotionSubjects\Actions\PromotionCodes\RedeemPromotionCode;
 use Marktic\Promotion\Tests\AbstractTest;
 use Marktic\Promotion\Tests\Fixtures\Application\Models\PromotionSubjects\PromotionSubject;
-use Mockery;
 
 class RedeemPromotionCodeTest extends AbstractTest
 {
-    public function test_invalid_promotions_throws_exception()
+    public function testInvalidPromotionsThrowsException()
     {
         $promotion = new CartPromotion();
 
-        $promotionCode = Mockery::mock(PromotionCode::class)->makePartial();
+        $promotionCode = \Mockery::mock(PromotionCode::class)->makePartial();
         $promotionCode->shouldReceive('getPromotion')->andReturn($promotion);
 
-        $promotionCodeValidations = Mockery::mock(FindAndValidatePromotionCode::class)->makePartial();
+        $promotionCodeValidations = \Mockery::mock(FindAndValidatePromotionCode::class)->makePartial();
         $promotionCodeValidations->shouldReceive('execute')->once()->andReturn($promotionCode);
 
-        $promotionValidations = Mockery::mock(RunPromotionValidations::class)->makePartial();
+        $promotionValidations = \Mockery::mock(RunPromotionValidations::class)->makePartial();
         $promotionValidations->shouldReceive('execute')->once()->andReturn(ValidationResult::invalid('invalid'));
 
-        $applyPromotion = Mockery::mock(ApplyPromotion::class)->makePartial();
+        $applyPromotion = \Mockery::mock(ApplyPromotion::class)->makePartial();
 
         $redeemPromotionCode = new RedeemPromotionCode(
-            $promotionCodeValidations, $promotionValidations, $applyPromotion
+            $promotionCodeValidations,
+            $promotionValidations,
+            $applyPromotion
         );
 
         static::expectException(InvalidPromotionalCode::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionSubjects\Actions;
 
 use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
@@ -26,7 +28,7 @@ class ApplyPromotion
     {
         $appliedPromotions = $this->applyActions($applyPromotionRequest);
 
-        if (count($appliedPromotions)) {
+        if (\count($appliedPromotions)) {
             $applyPromotionRequest->setAppliedActions($appliedPromotions);
             $this->applyPromotion($applyPromotionRequest);
         }
@@ -40,18 +42,15 @@ class ApplyPromotion
         foreach ($promotion->getPromotionActions() as $action) {
             $result = $this
                 ->getActionCommandfor($action)
-                ->execute($applyPromotionRequest->getSubject(), (array)$action->getConfiguration(), $promotion);
+                ->execute($applyPromotionRequest->getSubject(), (array) $action->getConfiguration(), $promotion);
             if ($result) {
                 $appliedPromotions[] = $action;
             }
         }
+
         return $appliedPromotions;
     }
 
-    /**
-     * @param ApplyPromotionRequest $applyPromotionRequest
-     * @return void
-     */
     protected function applyPromotion(ApplyPromotionRequest $applyPromotionRequest): void
     {
         $this->actionSessions->createForRequest($applyPromotionRequest);

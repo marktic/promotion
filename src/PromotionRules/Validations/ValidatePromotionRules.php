@@ -30,13 +30,12 @@ class ValidatePromotionRules implements ValidatesPromotion
         if ($promotion->hasPromotionRules()) {
             return $this->validatePromotionRules($promotion->getPromotionRules(), $promotionSubject);
         }
+
         return ValidationResult::valid();
     }
 
     /**
      * @param PromotionRule[]|Collection $rules
-     * @param PromotionSubjectInterface $promotionSubject
-     * @return ValidationResult
      */
     protected function validatePromotionRules($rules, PromotionSubjectInterface $promotionSubject): ValidationResult
     {
@@ -58,5 +57,4 @@ class ValidatePromotionRules implements ValidatesPromotion
 
         return $ruleCondition->validate($subject, $rule->getConfiguration());
     }
-
 }

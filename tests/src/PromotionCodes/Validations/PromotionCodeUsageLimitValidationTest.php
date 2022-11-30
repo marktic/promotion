@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionCodes\Validations;
 
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
@@ -8,10 +10,9 @@ use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationUsageLim
 class PromotionCodeUsageLimitValidationTest extends AbstractValidationTest
 {
     /**
-     * @test
      * @dataProvider data_is_eligible
      */
-    public function code_is_eligible($used, $limit, $result)
+    public function testCodeIsEligible($used, $limit, $result)
     {
         $code = $this->generateCode($used, $limit);
         $this->assertChecker($code, $result);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionRules\Models;
 
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRule;

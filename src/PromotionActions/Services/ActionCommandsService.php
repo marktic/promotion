@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionActions\Services;
 
 use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
@@ -34,12 +36,13 @@ class ActionCommandsService
     public function all(): array
     {
         $this->bootCommands();
+
         return $this->commands;
     }
 
     protected function bootCommands()
     {
-        if ($this->commands !== null) {
+        if (null !== $this->commands) {
             return;
         }
         $this->commands = [];

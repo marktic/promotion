@@ -1,17 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests;
 
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsService;
 use Marktic\Promotion\PromotionServiceProvider;
 
 /**
- * Class PromotionSeviceProvider
- * @package ByTIC\NotifierBuilder
+ * Class PromotionSeviceProvider.
  */
 class PromotionServiceProviderTest extends AbstractTest
 {
-    public function test_registerRuleConditionsService()
+    public function testRegisterRuleConditionsService()
     {
         $this->loadConfigFromFixture('mkt_promotion');
         $provider = $this->loadServiceProvider();
@@ -20,6 +21,6 @@ class PromotionServiceProviderTest extends AbstractTest
         $service = $provider->getContainer()->get(PromotionServiceProvider::SERVICE_RULE_CONDITIONS);
         self::assertInstanceOf(RuleConditionsService::class, $service);
 
-        self::assertGreaterThanOrEqual(1, count($service->all()));
+        self::assertGreaterThanOrEqual(1, \count($service->all()));
     }
 }

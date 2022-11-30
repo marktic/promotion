@@ -1,12 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 use ByTIC\Icons\Icons;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/** @var View $this */
-$items = $items ?? $this->get('promotion_codes');
-$type = $type ?? 'view';
+/* @var View $this */
+$items ??= $this->get('promotion_codes');
+$type ??= 'view';
 ?>
 <table class="table">
     <thead>
@@ -34,7 +34,7 @@ $type = $type ?? 'view';
                 <?= $this->load('/mkt_base/modules/validity', ['item' => $item]); ?>
             </td>
             <td>
-                <a href="<?= $actionUrl ?>" data-href="<?= $actionUrl ?>"
+                <a href="<?= $actionUrl; ?>" data-href="<?= $actionUrl; ?>"
                    data-bs-toggle="modalForm" data-bs-target="#modalForm"
                    class="btn btn-outline-primary btn-xs float-end">
                     <?= Icons::edit(); ?>

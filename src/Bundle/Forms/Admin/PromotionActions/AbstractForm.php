@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Forms\Admin\PromotionActions;
 
 use Marktic\Promotion\Bundle\Forms\Admin\AbstractForms\FormHasAmounts;
@@ -39,5 +41,4 @@ abstract class AbstractForm extends FormModel
         parent::processValidation();
         $this->validateAmounts();
     }
-
 }

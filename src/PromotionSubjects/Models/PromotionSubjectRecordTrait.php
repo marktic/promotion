@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionSubjects\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
@@ -10,7 +12,7 @@ use Nip\Records\Relations\Relation;
 
 /**
  * @method PromotionSession[] getPromotionSessions()
- * @method Relation getRelation($name)
+ * @method Relation           getRelation($name)
  */
 trait PromotionSubjectRecordTrait
 {
@@ -19,9 +21,9 @@ trait PromotionSubjectRecordTrait
     public function hasPromotion(PromotionInterface $promotion): bool
     {
         return $this->getPromotions()->first(function ($item) use ($promotion) {
-                /** @var PromotionSession $item */
-                return $item->getPromotionId() === $promotion->id;
-            }) instanceof PromotionSession;
+            /* @var PromotionSession $item */
+            return $item->getPromotionId() === $promotion->id;
+        }) instanceof PromotionSession;
     }
 
     public function getPromotions(): Collection

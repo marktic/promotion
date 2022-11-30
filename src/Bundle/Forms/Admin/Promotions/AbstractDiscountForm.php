@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Forms\Admin\Promotions;
 
-use Exception;
 use Marktic\Promotion\Bundle\Forms\Admin\AbstractForms\FormHasAmounts;
 use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotion;
 
@@ -11,9 +12,8 @@ use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotion;
  */
 abstract class AbstractDiscountForm extends AbstractForm
 {
-    protected $promotionAction = null;
-
     use FormHasAmounts;
+    protected $promotionAction = null;
 
     public function getDataFromModel()
     {
@@ -42,17 +42,18 @@ abstract class AbstractDiscountForm extends AbstractForm
 
     protected function getModelAmounts()
     {
-        /** @noinspection PhpUnhandledExceptionInspection */
+        /* @noinspection PhpUnhandledExceptionInspection */
         return $this->getPromotionAction();
     }
 
     /**
      * @return null
-     * @throws Exception
+     *
+     * @throws \Exception
      */
     public function getPromotionAction()
     {
-        if ($this->promotionAction === null) {
+        if (null === $this->promotionAction) {
             $this->promotionAction = $this->generatePromotionAction();
         }
 
@@ -60,13 +61,13 @@ abstract class AbstractDiscountForm extends AbstractForm
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     protected function generatePromotionAction()
     {
         $actions = $this->getModel()->getPromotionActions();
-        if (count($actions) !== 1) {
-            throw new Exception('There must be one action in the promotion');
+        if (1 !== \count($actions)) {
+            throw new \Exception('There must be one action in the promotion');
         }
 
         return $actions->current();

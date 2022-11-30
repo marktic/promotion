@@ -1,9 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Base\Exceptions;
 
-use Exception;
-
-class PromotionException extends Exception
+class PromotionException extends \Exception
 {
 }

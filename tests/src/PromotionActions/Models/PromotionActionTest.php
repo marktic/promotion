@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionActions\Models;
 
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;

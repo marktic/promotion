@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionSessions\Models;
 
 use Marktic\Promotion\Bundle\Models\PromotionSessions\PromotionSession;
@@ -14,7 +16,7 @@ class PromotionSessionTest extends AbstractRecordTest
 {
     use RecordHasConfigurationTestTrait;
 
-    public function test_setAppliedActions()
+    public function testSetAppliedActions()
     {
         $promotionSession = $this->newRecordInstance();
         $actions = [
@@ -27,7 +29,7 @@ class PromotionSessionTest extends AbstractRecordTest
                 'applied_actions' => [
                     ['id' => 1, 'type' => 'test1'],
                     ['id' => 2, 'type' => 'test2'],
-                ]
+                ],
             ],
             $promotionSession->getConfiguration()->toArray()
         );

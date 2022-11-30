@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\CartPromotions\Models\Behaviours\HasType;
 
 trait HasTypeRepository
@@ -13,6 +15,6 @@ trait HasTypeRepository
 
     public function getTypeItemsDirectory(): string
     {
-        return dirname(dirname(__DIR__)) . '/Types';
+        return \dirname(__DIR__, 2) . '/Types';
     }
 }

@@ -10,7 +10,7 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class CompositeValidatePromotion implements ValidatesPromotion
 {
-    /** @var ValidatesPromotion[] */
+    /* @var ValidatesPromotion[] */
     private array $promotionValidations;
 
     /**

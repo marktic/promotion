@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\Base\Models\Behaviours\HasValidity;
 
 use Carbon\Carbon;
-use DateTime;
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
 use Nip\Records\AbstractModels\Record;
 
@@ -26,14 +27,13 @@ trait RecordHasValidityTestTrait
 
         $date = '2020-03-01 01:02:03';
         $record->fill(['valid_from' => $date, 'valid_to' => $date]);
-        self::assertInstanceOf(DateTime::class, $record->getValidFrom());
-        self::assertSame($date, (string)$record->getValidFrom());
-        self::assertInstanceOf(DateTime::class, $record->getValidTo());
-        self::assertSame($date, (string)$record->getValidTo());
+        self::assertInstanceOf(\DateTime::class, $record->getValidFrom());
+        self::assertSame($date, (string) $record->getValidFrom());
+        self::assertInstanceOf(\DateTime::class, $record->getValidTo());
+        self::assertSame($date, (string) $record->getValidTo());
     }
 
     abstract protected function newRecordInstance(): Record;
-
 
     public function test_setValidity()
     {
@@ -46,10 +46,10 @@ trait RecordHasValidityTestTrait
         $record->setValidFrom($carbon);
         $record->setValidTo($carbon);
 
-        self::assertInstanceOf(DateTime::class, $record->getValidFrom());
-        self::assertSame($date, (string)$record->getValidFrom());
-        self::assertInstanceOf(DateTime::class, $record->getValidTo());
-        self::assertSame($date, (string)$record->getValidTo());
+        self::assertInstanceOf(\DateTime::class, $record->getValidFrom());
+        self::assertSame($date, (string) $record->getValidFrom());
+        self::assertInstanceOf(\DateTime::class, $record->getValidTo());
+        self::assertSame($date, (string) $record->getValidTo());
 
         self::assertSame([], $record->getOriginalData());
     }

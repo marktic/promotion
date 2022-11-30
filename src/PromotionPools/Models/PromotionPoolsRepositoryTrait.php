@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionPools\Models;
 
 use Marktic\Promotion\Utility\PromotionModels;
 
 trait PromotionPoolsRepositoryTrait
 {
-
     protected function initRelations()
     {
         parent::initRelations();
@@ -23,9 +24,9 @@ trait PromotionPoolsRepositoryTrait
         $this->morphMany(
             'CartPromotions',
             [
-                'class' => get_class(PromotionModels::promotions()),
+                'class' => \get_class(PromotionModels::promotions()),
                 'morphPrefix' => 'pool',
-                'morphTypeField' => 'pool'
+                'morphTypeField' => 'pool',
             ]
         );
     }

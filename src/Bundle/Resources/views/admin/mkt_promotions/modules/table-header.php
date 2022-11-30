@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/** @var View $this */
+/* @var View $this */
 ?>
 <thead>
 <tr>

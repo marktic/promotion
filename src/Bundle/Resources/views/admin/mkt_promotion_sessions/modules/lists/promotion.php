@@ -1,13 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 use Marktic\Promotion\Bundle\Models\PromotionSessions\PromotionSession;
 use Nip\View\View;
 
-/** @var View $this */
-
-/** @var PromotionSession[] $items */
-$items = $items ?? $this->get('promotion_sessions');
-$type = $type ?? 'view';
+/* @var View $this */
+/* @var PromotionSession[] $items */
+$items ??= $this->get('promotion_sessions');
+$type ??= 'view';
 ?>
 <table class="table">
     <thead>
@@ -28,13 +27,13 @@ $type = $type ?? 'view';
         <?php $subject = $item->getPromotionSubject(); ?>
         <tr>
             <td>
-                <?php if ($subject instanceof \Nip\Records\Record) : ?>
+                <?php if ($subject instanceof \Nip\Records\Record) { ?>
                     <a href="<?= $subject->getURL(); ?>">
                         <?= $subject->getName(); ?>
                     </a>
-                <?php else : ?>
+                <?php } else { ?>
                     ---
-                <?php endif; ?>
+                <?php } ?>
             </td>
             <td>
                 <?= json_encode($item->getConfiguration()->toArray()); ?>

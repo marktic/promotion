@@ -1,10 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\CartPromotions\Observers;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
-use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
-use Marktic\Promotion\Utility\PromotionModels;
 
 class DeletePromotionCodes
 {
@@ -13,9 +13,6 @@ class DeletePromotionCodes
      */
     protected $cartPromotion;
 
-    /**
-     * @param $cartPromotion
-     */
     public function __construct($cartPromotion)
     {
         $this->cartPromotion = $cartPromotion;

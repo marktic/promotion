@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Base\Models\Behaviours\HasUsage;
 
 trait RecordHasUsage
@@ -16,9 +18,6 @@ trait RecordHasUsage
         return $this->usage_limit;
     }
 
-    /**
-     * @param int|null $usage_limit
-     */
     public function setUsageLimit(?int $usage_limit): void
     {
         $this->usage_limit = $usage_limit;
@@ -32,9 +31,6 @@ trait RecordHasUsage
         return $this->used;
     }
 
-    /**
-     * @param int|null $used
-     */
     public function setUsed(?int $used): void
     {
         $this->used = $used;

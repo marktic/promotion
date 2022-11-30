@@ -53,7 +53,7 @@ final class PromotionSessionsTable extends AbstractMigration
                 [
                     'constraint' => 'mkt_promotions_subject_promotion_id',
                     'delete' => 'NO_ACTION',
-                    'update' => 'NO_ACTION'
+                    'update' => 'NO_ACTION',
                 ]
             )
             ->save();

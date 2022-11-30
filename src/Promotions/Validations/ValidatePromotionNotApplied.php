@@ -11,7 +11,6 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class ValidatePromotionNotApplied implements ValidatesPromotion
 {
-
     public function validate(
         PromotionSubjectInterface $promotionSubject,
         PromotionInterface $promotion

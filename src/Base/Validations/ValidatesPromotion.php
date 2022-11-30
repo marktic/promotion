@@ -9,7 +9,6 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 interface ValidatesPromotion
 {
-
     public function validate(
         PromotionSubjectInterface $promotionSubject,
         PromotionInterface $promotion

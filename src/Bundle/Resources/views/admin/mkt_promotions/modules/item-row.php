@@ -1,15 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionAction;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Nip\View\View;
 
 /**
- * @var View $this
- * @var CartPromotion $item
+ * @var View              $this
+ * @var CartPromotion     $item
  * @var PromotionAction[] $actions
  */
-
 $actions = $item->getPromotionActions();
 ?>
 <tr>

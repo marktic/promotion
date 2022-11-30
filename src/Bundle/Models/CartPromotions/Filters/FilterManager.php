@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Models\CartPromotions\Filters;
 
 use Nip\Records\Filters\FilterManager as CommonFilterManager;
 
 /**
- * Class FilterManager
- * @package Marktic\Promotion\Bundle\Models\CartPromotions\Filters
+ * Class FilterManager.
  */
 class FilterManager extends CommonFilterManager
 {

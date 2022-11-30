@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Base\Models\Behaviours\HasValidity;
 
 use Carbon\Carbon;
-use DateTimeInterface;
 
 trait RecordHasValidity
 {
@@ -12,15 +13,15 @@ trait RecordHasValidity
     protected ?string $valid_to = null;
 
     /**
-     * @return DateTimeInterface|Carbon|null
+     * @return \DateTimeInterface|Carbon|null
      */
-    public function getValidFrom(): ?DateTimeInterface
+    public function getValidFrom(): ?\DateTimeInterface
     {
         return $this->getPropertyValue('valid_from');
     }
 
     /**
-     * @param string|DateTimeInterface $date
+     * @param string|\DateTimeInterface $date
      */
     public function setValidFrom($date): void
     {
@@ -28,15 +29,15 @@ trait RecordHasValidity
     }
 
     /**
-     * @return DateTimeInterface|Carbon|null
+     * @return \DateTimeInterface|Carbon|null
      */
-    public function getValidTo(): ?DateTimeInterface
+    public function getValidTo(): ?\DateTimeInterface
     {
         return $this->getPropertyValue('valid_to');
     }
 
     /**
-     * @param string|DateTimeInterface $date
+     * @param string|\DateTimeInterface $date
      */
     public function setValidTo($date): void
     {

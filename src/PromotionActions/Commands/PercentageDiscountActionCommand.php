@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionActions\Commands;
 
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
@@ -21,6 +23,7 @@ class PercentageDiscountActionCommand extends DiscountActionCommand
     ) {
         $adjustment = parent::createPriceAdjustment($subject, $configuration, $promotion);
         $adjustment->modifiesPercentage();
+
         return $adjustment;
     }
 }

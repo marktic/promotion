@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\CartPromotions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasActions\RepositoryHasPromotionActions;
@@ -16,25 +18,25 @@ trait CartPromotionsTrait
 {
     use Behaviours\HasType\HasTypeRepository;
 
-    use RepositoryHasPromotionRules;
     use RepositoryHasPromotionActions;
+    use RepositoryHasPromotionRules;
     use TimestampableManagerTrait;
 
     protected function bootCartPromotionsTrait()
     {
         static::created(function ($event) {
-            /** @var Event $event */
+            /* @var Event $event */
             $model = $event->getRecord();
             event(new CartPromotionCreated($model));
             UpdatePromotionCodes::for($model);
         });
 
         static::deleting(function ($event) {
-            /** @var Event $event */
+            /* @var Event $event */
             DeletePromotionCodes::for($event->getRecord());
         });
         static::updating(function ($event) {
-            /** @var Event $event */
+            /* @var Event $event */
             UpdatePromotionCodes::for($event->getRecord());
         });
     }
@@ -61,13 +63,12 @@ trait CartPromotionsTrait
 
     protected function initRelationsPromotionCodes()
     {
-        $this->hasMany(CartPromotions::RELATION_CODES, ['class' => get_class(PromotionModels::promotionCodes())]);
+        $this->hasMany(CartPromotions::RELATION_CODES, ['class' => \get_class(PromotionModels::promotionCodes())]);
     }
-
 
     protected function initRelationsPromotionSessions()
     {
-        $this->hasMany(CartPromotions::RELATION_SESSIONS, ['class' => get_class(PromotionModels::promotionSessions())]);
+        $this->hasMany(CartPromotions::RELATION_SESSIONS, ['class' => \get_class(PromotionModels::promotionSessions())]);
     }
 
     public function generatePrimaryFK()

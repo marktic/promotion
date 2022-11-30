@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionCodes\Actions;
 
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
@@ -51,10 +53,8 @@ class FindAndValidatePromotionCode
     {
         $promotionCode = $this->promotionCodeRepository->findOneByCode($promotionCode);
 
-        if (!is_object($promotionCode)) {
-            throw new InvalidPromotionalCode(
-                TranslatableMessage::create('mkt_promotion_codes.messages.form.register.dnx')
-            );
+        if (!\is_object($promotionCode)) {
+            throw new InvalidPromotionalCode(TranslatableMessage::create('mkt_promotion_codes.messages.form.register.dnx'));
         }
 
         return $promotionCode;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\CartPromotions\Actions;
 
 use Marktic\Promotion\Base\Validations\ValidatesPromotion;
@@ -12,9 +14,6 @@ class RunPromotionValidations
 {
     protected ?ValidatesPromotion $promotionValidation;
 
-    /**
-     * @param ValidatesPromotion|null $promotionValidation
-     */
     public function __construct(?ValidatesPromotion $promotionValidation = null)
     {
         $this->promotionValidation = $promotionValidation ?? ValidationsFactory::create();

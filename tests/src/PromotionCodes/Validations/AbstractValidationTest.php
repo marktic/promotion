@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionCodes\Validations;
 
 use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidation;
@@ -19,9 +21,9 @@ abstract class AbstractValidationTest extends AbstractTest
     protected function generateChecker(): PromotionCodeValidation
     {
         $class = $this->checkerClass();
+
         return new $class();
     }
 
     abstract protected function checkerClass(): string;
-
 }

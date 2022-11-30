@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use ByTIC\AdminBase\Screen\Actions\Dto\Action;
 use ByTIC\AdminBase\Screen\Actions\Dto\DropdownAction;
 use ByTIC\AdminBase\Screen\Actions\Factories\ActionsCollectionsFactory;
@@ -11,10 +13,10 @@ use Marktic\Promotion\CartPromotions\Models\Types\CouponCode;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/** @var View $this */
+/* @var View $this */
 $actions = ActionsCollectionsFactory::from($actions ?? []);
 
-/** @var CartPromotions $modelManager */
+/* @var CartPromotions $modelManager */
 $modelManager = $this->get('modelManager');
 
 $addURLParams = [
@@ -35,11 +37,11 @@ foreach ([CouponCode::NAME, Automatic::NAME] as $promotionTypeName) {
                 'add',
                 array_merge($addURLParams, [
                     'type' => $promotionTypeName,
-                    'action_type' => $actionCommand->getName()
+                    'action_type' => $actionCommand->getName(),
                 ])
             ),
         ];
-        $action = $action ?? ActionsFactory::fromArray(
+        $action ??= ActionsFactory::fromArray(
             array_merge($actionArray, [
                 'label' => $promotionType->translate('add'),
                 'type' => DropdownAction::TYPE,
@@ -50,8 +52,8 @@ foreach ([CouponCode::NAME, Automatic::NAME] as $promotionTypeName) {
             ActionsFactory::fromArray(
                 array_merge($actionArray, [
                     'label' => $actionArray['label'] . ' ' . PromotionModels::promotionActions()->translateType(
-                            $actionCommand->getName()
-                        ),
+                        $actionCommand->getName()
+                    ),
                 ])
             )
         );

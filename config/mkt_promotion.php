@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotions;
 use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionActions;
@@ -9,13 +10,13 @@ use Marktic\Promotion\Bundle\Models\PromotionSessions\PromotionSessions;
 use Marktic\Promotion\Utility\PromotionModels;
 
 return [
-    'models' => array(
+    'models' => [
         PromotionModels::PROMOTIONS => CartPromotions::class,
         PromotionModels::PROMOTION_ACTIONS => PromotionActions::class,
         PromotionModels::PROMOTION_CODES => PromotionCodes::class,
         PromotionModels::PROMOTION_RULES => PromotionRules::class,
         PromotionModels::PROMOTION_SESSIONS => PromotionSessions::class,
-    ),
+    ],
     'tables' => [
         PromotionModels::PROMOTIONS => CartPromotions::TABLE,
         PromotionModels::PROMOTION_ACTIONS => PromotionActions::TABLE,
@@ -32,7 +33,6 @@ return [
     ],
     'rules' => [
         'conditions' => [
-
-        ]
-    ]
+        ],
+    ],
 ];

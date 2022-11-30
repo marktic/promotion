@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 use Nip\Form\AbstractForm;
 use Nip\View\View;
 
-/** @var View $this */
-
-/** @var AbstractForm $form */
+/* @var View $this */
+/* @var AbstractForm $form */
 $form = $this->get('form');
 $renderer = $form->getRenderer();
 $currencies = $this->get('currencies');
@@ -16,16 +15,16 @@ $currencies = $this->get('currencies');
 
 <?= $renderer->renderMessages(); ?>
 <?= $renderer->renderRow($form->name); ?>
-<?php echo $form->hasElement('code') ? $renderer->renderRow($form->code) : ''; ?>
+<?= $form->hasElement('code') ? $renderer->renderRow($form->code) : ''; ?>
 
 <?= $renderer->renderRow($form->quantity); ?>
-<?php echo $form->hasElement('uses') ? $renderer->renderRow($form->uses) : ''; ?>
+<?= $form->hasElement('uses') ? $renderer->renderRow($form->uses) : ''; ?>
 <?= $renderer->renderRow($form->type); ?>
 <?= $renderer->renderRow($form->cumulative); ?>
 
     <div class="form-group row row-amount">
         <label class="col-form-label col-sm-3">
-            <?php echo translator()->trans('amount'); ?>
+            <?= translator()->trans('amount'); ?>
         </label>
         <div class="col-sm-9">
             <div class="row">
@@ -36,11 +35,10 @@ $currencies = $this->get('currencies');
                             $amountBase = 'amounts[' . $currency->code . ']'; ?>
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
-                                    <?php echo $currency->code; ?>:
+                                    <?= $currency->code; ?>:
                                 </span>
                             </div>
-                            <?php
-                            echo $form->getElement($amountBase)
+                            <?= $form->getElement($amountBase)
                                 ->addClass('form-control form-control-sm')
                                 ->getRenderer()->renderElement(); ?>
                         </div>
@@ -53,20 +51,16 @@ $currencies = $this->get('currencies');
 
     <div class="form-group row row-entries_start">
         <label class="col-form-label col-sm-3">
-            <?php
-            echo translator()->trans('date_start'); ?>
+            <?= translator()->trans('date_start'); ?>
         </label>
         <div class="col-sm-3">
-            <?php
-            echo $renderer->renderElement($form->date_start); ?>
+            <?= $renderer->renderElement($form->date_start); ?>
         </div>
         <label class="col-form-label col-sm-3">
-            <?php
-            echo translator()->trans('date_end'); ?>
+            <?= translator()->trans('date_end'); ?>
         </label>
         <div class="col-sm-3">
-            <?php
-            echo $renderer->renderElement($form->date_end); ?>
+            <?= $renderer->renderElement($form->date_end); ?>
         </div>
     </div>
 
@@ -74,13 +68,13 @@ $currencies = $this->get('currencies');
 if ($form->hasElement('min_group')) { ?>
     <div class="form-group row row-entries_start">
         <label class="col-form-label col-sm-3">
-            <?php echo translator()->trans('min_group'); ?>
+            <?= translator()->trans('min_group'); ?>
         </label>
         <div class="col-sm-3">
             <?= $renderer->renderElement($form->min_group); ?>
         </div>
         <label class="control-label col-sm-3">
-            <?php echo translator()->trans('max_group'); ?>
+            <?= translator()->trans('max_group'); ?>
         </label>
         <div class="col-sm-3">
             <?= $renderer->renderElement($form->max_group); ?>

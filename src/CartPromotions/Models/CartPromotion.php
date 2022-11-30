@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\CartPromotions\Models;
 
 use Marktic\Promotion\Base\Models\Traits\CommonRecordTrait;
@@ -7,8 +9,7 @@ use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Nip\Records\Record;
 
 /**
- * Class CartPromotion
- * @package Marktic\Promotion\Models\Events
+ * Class CartPromotion.
  */
 class CartPromotion extends Record implements PromotionInterface
 {
@@ -19,5 +20,4 @@ class CartPromotion extends Record implements PromotionInterface
     {
         // TODO: Implement getRegistry() method.
     }
-
 }

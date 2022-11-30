@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Forms\Admin\PromotionSubjects;
 
 use Marktic\Promotion\Bundle\Library\Form\FormModel;
@@ -10,7 +12,6 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectRecordTrait;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\Records\Record;
 
-
 /**
  * @method PromotionSubjectInterface|PromotionSubjectRecordTrait|Record getModel()
  */
@@ -18,12 +19,14 @@ class RedeemPromotionCodeForm extends FormModel
 {
     /**
      * @param PromotionSubjectInterface|Record $subject
+     *
      * @return RedeemPromotionCodeForm
      */
     public static function for(PromotionSubjectInterface $subject)
     {
         $form = new self();
         $form->setModel($subject);
+
         return $form;
     }
 

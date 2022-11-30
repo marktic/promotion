@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
@@ -8,9 +10,6 @@ use Marktic\Promotion\Bundle\Forms\Admin\Promotions\CouponCodeForm;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\CartPromotions\Models\Types\CouponCode;
-use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
-use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
-use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
 use Marktic\Promotion\Utility\PromotionFactories;
 use Marktic\Promotion\Utility\PromotionModels;
 use Marktic\Promotion\Utility\PromotionServices;
@@ -51,13 +50,13 @@ trait MktPromotionsControllerTrait
             'promotion_actions' => $promotionActions,
             'promotion_rules' => $promotionRules,
             'promotion_codes' => $promotionCodes,
-            'promotion_sessions' => $promotionSessions
+            'promotion_sessions' => $promotionSessions,
         ]);
     }
 
     public function addNewModel(): \Nip\Records\AbstractModels\Record
     {
-        /** @var CartPromotion $item */
+        /* @var CartPromotion $item */
         $item = parent::addNewModel();
 
         $item->setPool($this->getRequest()->get('pool'));
@@ -75,7 +74,6 @@ trait MktPromotionsControllerTrait
     {
         $this->forward('poolIndex');
     }
-
 
     /**
      * @inheritDoc
@@ -102,9 +100,10 @@ trait MktPromotionsControllerTrait
     {
         $type = $this->getRequest()->get('type');
 
-        if ($type == CouponCode::NAME) {
+        if (CouponCode::NAME == $type) {
             return CouponCodeForm::class;
         }
+
         return AutomaticForm::class;
     }
 
@@ -120,6 +119,7 @@ trait MktPromotionsControllerTrait
 
     /**
      * @param Record $pool
+     *
      * @return void
      */
     protected function checkPoolAccess($pool)

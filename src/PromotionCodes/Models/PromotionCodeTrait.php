@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionCodes\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasCode\RecordHasCode;
@@ -11,10 +13,10 @@ use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 
 trait PromotionCodeTrait
 {
-    use RecordHasId;
     use RecordHasCode;
-    use RecordHasUsage;
+    use RecordHasId;
     use RecordHasPromotion;
+    use RecordHasUsage;
     use RecordHasValidity;
     use TimestampableTrait;
 

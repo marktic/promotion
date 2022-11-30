@@ -50,7 +50,7 @@ final class CartActionsTable extends AbstractMigration
                 [
                     'constraint' => 'mkt_promotions_actions_promotion_id',
                     'delete' => 'NO_ACTION',
-                    'update' => 'NO_ACTION'
+                    'update' => 'NO_ACTION',
                 ]
             )
             ->save();

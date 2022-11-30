@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
@@ -33,5 +35,4 @@ trait MktPromotionSubjectControllerTrait
             'success'
         );
     }
-
 }

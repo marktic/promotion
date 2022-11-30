@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionActions\Commands;
 
 use Marktic\Promotion\Base\Configurations\ModelConfiguration;
@@ -8,7 +10,6 @@ use Marktic\Promotion\Tests\AbstractTest;
 
 abstract class AbstractDiscountActionCommandTest extends AbstractTest
 {
-
     protected function describeConfigurationOutputs($config = [], $output = '')
     {
         $configuration = new ModelConfiguration($config);
@@ -22,6 +23,7 @@ abstract class AbstractDiscountActionCommandTest extends AbstractTest
     protected function newCommand()
     {
         $class = $this->commandName();
+
         return new $class();
     }
 

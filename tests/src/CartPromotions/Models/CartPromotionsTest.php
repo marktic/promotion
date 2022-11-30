@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\CartPromotions\Models;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
@@ -9,8 +11,7 @@ use Marktic\Promotion\Tests\Base\Models\AbstractRepositoryTest;
 
 class CartPromotionsTest extends AbstractRepositoryTest
 {
-
-    public function test_getTypes()
+    public function testGetTypes()
     {
         $repository = new CartPromotions();
         $types = $repository->getTypes();

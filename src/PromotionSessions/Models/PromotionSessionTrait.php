@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionSessions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfiguration;
@@ -20,7 +22,6 @@ trait PromotionSessionTrait
     use RecordHasPromotion;
     use TimestampableTrait;
 
-
     public function getName(): ?string
     {
         return 'Promotion Session';
@@ -34,6 +35,7 @@ trait PromotionSessionTrait
 
     /**
      * @param PromotionActionInterface[]|PromotionAction[] $actions
+     *
      * @return void
      */
     public function setAppliedActions($actions)
@@ -41,7 +43,7 @@ trait PromotionSessionTrait
         $actions = array_map(function ($action) {
             return [
                 'id' => $action->getId(),
-                'type' => $action->getType()
+                'type' => $action->getType(),
             ];
         }, $actions);
 
@@ -67,5 +69,4 @@ trait PromotionSessionTrait
     public function printReduction()
     {
     }
-
 }

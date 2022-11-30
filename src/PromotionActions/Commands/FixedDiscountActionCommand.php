@@ -1,9 +1,8 @@
 <?php
 
-namespace Marktic\Promotion\PromotionActions\Commands;
+declare(strict_types=1);
 
-use Marktic\Promotion\Promotions\Models\PromotionInterface;
-use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
+namespace Marktic\Promotion\PromotionActions\Commands;
 
 class FixedDiscountActionCommand extends DiscountActionCommand
 {

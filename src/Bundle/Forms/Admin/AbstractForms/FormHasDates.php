@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Forms\Admin\AbstractForms;
 
 trait FormHasDates
@@ -22,6 +24,7 @@ trait FormHasDates
         if ($fromElement->hasValue() && $toElement->hasValue()) {
             if ($fromElement->getUnix() > $toElement->getUnix()) {
                 $toElement->addError($this->getModelMessage('valid_to.to-small'));
+
                 return;
             }
         }

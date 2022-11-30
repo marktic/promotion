@@ -11,7 +11,6 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class ValidatePromotionExclusivity implements ValidatesPromotion
 {
-
     public function validate(
         PromotionSubjectInterface $promotionSubject,
         PromotionInterface $promotion
@@ -20,7 +19,7 @@ class ValidatePromotionExclusivity implements ValidatesPromotion
             return ValidationResult::valid();
         }
         $promotions = $promotionSubject->getPromotions();
-        if (count($promotions) > 0) {
+        if (\count($promotions) > 0) {
             return ValidationResult::invalid(
                 'Only one promotion can be active at a time'
             );

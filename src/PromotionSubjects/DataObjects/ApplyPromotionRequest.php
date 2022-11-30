@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionSubjects\DataObjects;
 
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
@@ -18,39 +20,26 @@ class ApplyPromotionRequest
 
     protected array $appliedActions = [];
 
-
     public static function create(): self
     {
         return new self();
     }
 
-    /**
-     * @return PromotionSubjectInterface
-     */
     public function getSubject(): PromotionSubjectInterface
     {
         return $this->subject;
     }
 
-    /**
-     * @param PromotionSubjectInterface $subject
-     */
     public function setSubject(PromotionSubjectInterface $subject): void
     {
         $this->subject = $subject;
     }
 
-    /**
-     * @return PromotionInterface
-     */
     public function getPromotion(): PromotionInterface
     {
         return $this->promotion;
     }
 
-    /**
-     * @param PromotionInterface $promotion
-     */
     public function setPromotion(PromotionInterface $promotion): void
     {
         $this->promotion = $promotion;
@@ -61,9 +50,6 @@ class ApplyPromotionRequest
         return $this->promotionCode;
     }
 
-    /**
-     * @param PromotionCodeInterface $promotionCode
-     */
     public function setPromotionCode(PromotionCodeInterface $promotionCode): void
     {
         $this->promotionCode = $promotionCode;
@@ -71,7 +57,7 @@ class ApplyPromotionRequest
 
     public function hasPromotionCode(): bool
     {
-        return $this->promotionCode !== null;
+        return null !== $this->promotionCode;
     }
 
     /**
@@ -82,13 +68,8 @@ class ApplyPromotionRequest
         return $this->appliedActions;
     }
 
-    /**
-     * @param array $appliedActions
-     */
     public function setAppliedActions(array $appliedActions): void
     {
         $this->appliedActions = $appliedActions;
     }
-
-
 }

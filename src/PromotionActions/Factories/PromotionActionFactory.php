@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionActions\Factories;
 
 use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
@@ -10,8 +12,7 @@ use Nip\Records\AbstractModels\RecordManager;
 
 class PromotionActionFactory implements PromotionActionFactoryInterface
 {
-
-    /** @var RecordManager|PromotionActions */
+    /* @var RecordManager|PromotionActions */
     private $actionsRepository;
 
     /**
@@ -48,7 +49,6 @@ class PromotionActionFactory implements PromotionActionFactoryInterface
 
     public function create(string $type, array $configuration): PromotionActionInterface
     {
-        /** @var PromotionActionInterface $action */
         $action = $this->createNew();
         $action->setType($type);
         $action->setConfiguration($configuration);
@@ -60,6 +60,4 @@ class PromotionActionFactory implements PromotionActionFactoryInterface
     {
         return $this->actionsRepository->getNewRecord();
     }
-
-
 }

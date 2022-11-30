@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionActions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\HasConfigurationInterface;

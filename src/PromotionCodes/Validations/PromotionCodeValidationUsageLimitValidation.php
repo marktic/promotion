@@ -17,7 +17,7 @@ class PromotionCodeValidationUsageLimitValidation implements PromotionCodeValida
     ): ValidationResult {
         $usageLimit = $promotionCoupon->getUsageLimit();
 
-        if ($usageLimit !== null && $promotionCoupon->getUsed() >= $usageLimit) {
+        if (null !== $usageLimit && $promotionCoupon->getUsed() >= $usageLimit) {
             return ValidationResult::invalid(
                 TranslatableMessage::create('mkt_promotion_codes.messages.form.register.bad-count')
             );

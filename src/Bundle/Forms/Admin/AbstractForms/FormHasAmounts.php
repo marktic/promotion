@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Forms\Admin\AbstractForms;
 
 use Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies;
@@ -48,12 +50,14 @@ trait FormHasAmounts
     protected function getAmountElement($type = null): ?AbstractElement
     {
         $name = $type ? 'amounts[' . $type . ']' : 'amount';
+
         return $this->getElement($name);
     }
 
     protected function getDataFromModelForAmount($type = null)
     {
         $configuration = $this->getModelAmounts()->getConfiguration();
+
         return $configuration->getWithCurrency('amount', $type);
     }
 
@@ -74,10 +78,11 @@ trait FormHasAmounts
         $value = $input->getValue();
         if (!is_numeric($value)) {
             $input->addError(PromotionModels::promotionActions()->getMessage('form.amount.nan'));
+
             return;
         }
 
-        if ($this->amountType() == 'percentage' && abs($value) > 100) {
+        if ('percentage' == $this->amountType() && abs($value) > 100) {
             $input->addError(PromotionModels::promotionActions()->getMessage('form.amount.percentage-toobig'));
         }
     }
@@ -114,14 +119,15 @@ trait FormHasAmounts
     protected function getPromotionCurrenciesCodes(): array
     {
         $currencies = $this->hasPromotionCurrencies() ? $this->currencies : [null];
+
         return array_map(function ($currency) {
-            return is_object($currency) ? $currency->code : $currency;
+            return \is_object($currency) ? $currency->code : $currency;
         }, $currencies);
     }
 
     protected function hasPromotionCurrencies(): bool
     {
-        return is_countable($this->currencies) && count($this->currencies) > 0;
+        return is_countable($this->currencies) && \count($this->currencies) > 0;
     }
 
     protected function amountType(): string

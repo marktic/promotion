@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Base\Models\Behaviours\HasId;
 
 trait RecordHasId
@@ -13,6 +15,6 @@ trait RecordHasId
 
     public function setId($id): void
     {
-        $this->id = intval($id);
+        $this->id = (int) $id;
     }
 }

@@ -1,18 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionCodes\Validations;
 
-use DateInterval;
-use DateTime;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
 use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationDurationLimitValidation;
 
 class PromotionCodeDurationLimitValidationTest extends AbstractValidationTest
 {
-    /**
-     * @test
-     */
-    public function code_with_null_dates_is_eligible()
+    public function testCodeWithNullDatesIsEligible()
     {
         $code = $this->generateCode();
         $this->assertChecker($code, true);
@@ -32,70 +29,52 @@ class PromotionCodeDurationLimitValidationTest extends AbstractValidationTest
 
     protected function generateDate($days = null): ?string
     {
-        if ($days === null) {
+        if (null === $days) {
             return null;
         }
 
-        $now = new DateTime();
-        $interval = new DateInterval('P' . abs($days) . 'D');
+        $now = new \DateTime();
+        $interval = new \DateInterval('P' . abs($days) . 'D');
         if ($days < 0) {
             $now = $now->sub($interval);
         } else {
             $now = $now->add($interval);
         }
+
         return $now->format('Y-m-d');
     }
 
-
-    /**
-     * @test
-     */
-    public function code_with_null_start_is_eligible()
+    public function testCodeWithNullStartIsEligible()
     {
         $code = $this->generateCode(null, 4);
         $this->assertChecker($code, true);
     }
 
-    /**
-     * @test
-     */
-    public function code_with_past_start_is_eligible()
+    public function testCodeWithPastStartIsEligible()
     {
         $code = $this->generateCode(-1, 4);
         $this->assertChecker($code, true);
     }
 
-    /**
-     * @test
-     */
-    public function code_with_future_to_is_not_eligible()
+    public function testCodeWithFutureToIsNotEligible()
     {
         $code = $this->generateCode(1, 4);
         $this->assertChecker($code, false);
     }
 
-    /**
-     * @test
-     */
-    public function code_with_null_end_is_eligible()
+    public function testCodeWithNullEndIsEligible()
     {
         $code = $this->generateCode(-1);
         $this->assertChecker($code, true);
     }
 
-    /**
-     * @test
-     */
-    public function code_with_past_end_is_not_eligible()
+    public function testCodeWithPastEndIsNotEligible()
     {
         $code = $this->generateCode(-3, -1);
         $this->assertChecker($code, false);
     }
 
-    /**
-     * @test
-     */
-    public function code_with_future_end_is_eligible()
+    public function testCodeWithFutureEndIsEligible()
     {
         $code = $this->generateCode(-1, 4);
         $this->assertChecker($code, true);

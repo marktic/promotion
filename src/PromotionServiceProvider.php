@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
@@ -15,8 +17,7 @@ use Marktic\Promotion\PromotionRules\Services\RuleConditionsServiceInterface;
 use Marktic\Promotion\Utility\PackageConfig;
 
 /**
- * Class PromotionSeviceProvider
- * @package ByTIC\NotifierBuilder
+ * Class PromotionSeviceProvider.
  */
 class PromotionServiceProvider extends BaseBootableServiceProvider
 {
@@ -38,7 +39,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
     public function migrations(): ?string
     {
         if (PackageConfig::shouldRunMigrations()) {
-            return dirname(__DIR__) . '/migrations/';
+            return \dirname(__DIR__) . '/migrations/';
         }
 
         return null;
@@ -52,7 +53,6 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         $translator = $this->getContainer()->get('translator');
         $folder = __DIR__ . '/Bundle/Resources/lang/';
         $languages = $this->getContainer()->get('translation.languages');
-
 
         foreach ($languages as $language) {
             $path = $folder . $language;
@@ -80,7 +80,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
                 ActionCommandsService::class,
                 RuleConditionsServiceInterface::class,
                 static::SERVICE_RULE_CONDITIONS,
-                PromotionCodesRepositoryInterface::class
+                PromotionCodesRepositoryInterface::class,
             ],
             parent::provides()
         );
@@ -118,6 +118,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
                 $service->addFromConfig(
                     PackageConfig::rulesCondition()
                 );
+
                 return $service;
             },
             true

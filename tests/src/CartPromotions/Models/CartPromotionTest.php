@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\CartPromotions\Models;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
@@ -10,7 +12,7 @@ class CartPromotionTest extends AbstractRecordTest
 {
     use RecordHasValidityTestTrait;
 
-    public function test_getType()
+    public function testGetType()
     {
         $record = new CartPromotion();
         $record->type = 'automatic';

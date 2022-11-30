@@ -11,12 +11,11 @@ class ValidationResult
     protected bool $valid;
 
     /**
-     * @var null|string|TranslatableMessage
+     * @var string|TranslatableMessage|null
      */
     protected $message = null;
 
     /**
-     * @param bool $valid
      * @param null $message
      */
     public function __construct(bool $valid, $message = null)
@@ -42,16 +41,16 @@ class ValidationResult
 
     public function isValid(): bool
     {
-        return $this->valid == true;
+        return true == $this->valid;
     }
 
     public function isInvalid(): bool
     {
-        return $this->valid == false;
+        return false == $this->valid;
     }
 
     public function message(): ?string
     {
-        return (string)$this->message;
+        return (string) $this->message;
     }
 }

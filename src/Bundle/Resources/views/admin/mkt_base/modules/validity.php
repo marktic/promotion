@@ -1,25 +1,25 @@
-<?php
+<?php declare(strict_types=1);
 
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/** @var View $this */
-/** @var RecordHasValidity $item */
+/* @var View $this */
+/* @var RecordHasValidity $item */
 $validFrom = $item->getValidFrom();
 $validTo = $item->getValidTo();
 ?>
 <div>
     <div>
         <span class="text-muted">
-            <?= PromotionModels::promotions()->getLabel('valid_from') ?>:
+            <?= PromotionModels::promotions()->getLabel('valid_from'); ?>:
         </span>
-        <?= $validFrom ?>
+        <?= $validFrom; ?>
     </div>
     <div>
         <span class="text-muted">
-            <?= PromotionModels::promotions()->getLabel('valid_to') ?>:
+            <?= PromotionModels::promotions()->getLabel('valid_to'); ?>:
         </span>
-        <?= $validTo ?>
+        <?= $validTo; ?>
     </div>
 </div>

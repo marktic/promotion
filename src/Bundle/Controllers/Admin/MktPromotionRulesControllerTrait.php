@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies;
@@ -12,8 +14,8 @@ use Nip\Utility\Url;
 
 /**
  * @method CartPromotion getModelFromRequest()
- * @method checkAndSetForeignModelInRequest()
- * @method setAfterUrl()
+ * @method               checkAndSetForeignModelInRequest()
+ * @method               setAfterUrl()
  */
 trait MktPromotionRulesControllerTrait
 {
@@ -44,6 +46,7 @@ trait MktPromotionRulesControllerTrait
 
     /**
      * @param PromotionPoolWithCurrencies|Record $pool
+     *
      * @return void
      */
     protected function checkPoolAccess($pool)

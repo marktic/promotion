@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Utility;
 
 use ByTIC\PackageBase\Utility\ModelFinder;
@@ -14,8 +16,7 @@ use Nip\Records\RecordManager;
 use Psr\Container\ContainerInterface;
 
 /**
- * Class PromotionModels
- * @package Marktic\Promotion\Utility
+ * Class PromotionModels.
  */
 class PromotionModels extends ModelFinder
 {
@@ -70,7 +71,7 @@ class PromotionModels extends ModelFinder
         $container->set(
             PromotionCodesRepositoryInterface::class,
             function () {
-                return PromotionModels::promotionCodes();
+                return self::promotionCodes();
             },
             true
         );

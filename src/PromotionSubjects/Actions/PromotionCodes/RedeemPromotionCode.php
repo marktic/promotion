@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionSubjects\Actions\PromotionCodes;
 
 use Marktic\Promotion\CartPromotions\Actions\RunPromotionValidations;

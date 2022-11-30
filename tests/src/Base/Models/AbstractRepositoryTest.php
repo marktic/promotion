@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\Base\Models;
 
-use Exception;
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\PromotionActions\Models\PromotionActions;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
@@ -11,13 +12,11 @@ use Marktic\Promotion\PromotionSessions\Models\PromotionSessions;
 use Marktic\Promotion\Tests\AbstractTest;
 use Marktic\Promotion\Utility\PromotionModels;
 
-use const TEST_FIXTURE_PATH;
-
 abstract class AbstractRepositoryTest extends AbstractTest
 {
-    public function test_getTable_fromConfig()
+    public function testGetTableFromConfig()
     {
-        $config = require TEST_FIXTURE_PATH . '/config/mkt_promotion.php';
+        $config = require \TEST_FIXTURE_PATH . '/config/mkt_promotion.php';
         $this->loadConfig($config);
 
         $class = $this->getRepositoryClass();
@@ -31,13 +30,14 @@ abstract class AbstractRepositoryTest extends AbstractTest
     protected function newRepository()
     {
         $class = $this->getRepositoryClass();
+
         return new $class();
     }
 
     abstract protected function getRepositoryClass(): string;
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     protected function getRepositoryKey(): string
     {
@@ -58,6 +58,6 @@ abstract class AbstractRepositoryTest extends AbstractTest
                 return PromotionModels::PROMOTION_SESSIONS;
         }
 
-        throw new Exception('Repository key not found');
+        throw new \Exception('Repository key not found');
     }
 }

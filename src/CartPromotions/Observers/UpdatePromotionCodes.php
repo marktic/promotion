@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\CartPromotions\Observers;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
@@ -14,9 +16,6 @@ class UpdatePromotionCodes
      */
     protected $cartPromotion;
 
-    /**
-     * @param $cartPromotion
-     */
     public function __construct($cartPromotion)
     {
         $this->cartPromotion = $cartPromotion;
@@ -30,7 +29,7 @@ class UpdatePromotionCodes
 
     protected function execute()
     {
-        if ($this->cartPromotion->getType() !== CouponCode::NAME) {
+        if (CouponCode::NAME !== $this->cartPromotion->getType()) {
             return;
         }
 
@@ -43,8 +42,9 @@ class UpdatePromotionCodes
         if ($count > 1) {
             return;
         }
-        if ($count == 0) {
+        if (0 == $count) {
             $this->createFromPromotion($codes);
+
             return;
         }
 
@@ -63,6 +63,7 @@ class UpdatePromotionCodes
 
     /**
      * @param PromotionCode $code
+     *
      * @return void
      */
     protected function updateFromPromotion($code)

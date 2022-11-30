@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Base\Models\Behaviours\HasActions;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
@@ -20,6 +22,6 @@ trait RepositoryHasPromotionActions
 
     protected function initRelationsPromotionActions()
     {
-        $this->hasMany(CartPromotions::RELATION_ACTIONS, ['class' => get_class(PromotionModels::promotionActions())]);
+        $this->hasMany(CartPromotions::RELATION_ACTIONS, ['class' => \get_class(PromotionModels::promotionActions())]);
     }
 }

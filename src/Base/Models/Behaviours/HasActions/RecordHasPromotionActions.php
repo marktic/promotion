@@ -1,14 +1,13 @@
 <?php
 
-namespace Marktic\Promotion\Base\Models\Behaviours\HasActions;
+declare(strict_types=1);
 
+namespace Marktic\Promotion\Base\Models\Behaviours\HasActions;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Nip\Records\Collections\Collection;
 
-/**
- */
 trait RecordHasPromotionActions
 {
     public function hasPromotionActions(): bool

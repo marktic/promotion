@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionActions\Commands;
 
 use Marktic\Promotion\Base\Configurations\ModelConfiguration;
@@ -21,5 +23,4 @@ interface PromotionActionCommandInterface
     ): void;
 
     public function describeConfiguration(ModelConfiguration $configuration): string;
-
 }

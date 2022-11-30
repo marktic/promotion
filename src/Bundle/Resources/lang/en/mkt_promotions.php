@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'mkt_promotions.labels.title' => 'Promotions',
     'mkt_promotions.labels.title.singular' => 'Promotion',
@@ -30,7 +32,6 @@ return [
 
     'mkt_promotions.messages.recalculate' => 'Numar de folosiri recalculat',
 
-
     'mkt_promotions.messages.form.code.exists' => 'Cod existent. Va rugam sa folositi un cod unic.',
     'mkt_promotions.messages.form.quantity.bad' => '',
     'mkt_promotions.messages.form.amount.nan' => 'Valoarea trebuie să fie numerica',
@@ -39,5 +40,4 @@ return [
 
     'mkt_promotions.messages.entry-remove.dnx' => 'Eroare stergere discount. Cod de discount invalid',
     'mkt_promotions.messages.entry-remove.success' => 'Discount sters cu succes',
-
 ];

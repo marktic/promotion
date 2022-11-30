@@ -1,13 +1,12 @@
 <?php
 
-namespace Marktic\Promotion\Base\Models\Behaviours\HasRules;
+declare(strict_types=1);
 
+namespace Marktic\Promotion\Base\Models\Behaviours\HasRules;
 
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRule;
 use Nip\Records\Collections\Collection;
 
-/**
- */
 trait RecordHasPromotionRules
 {
     public function hasPromotionRules(): bool

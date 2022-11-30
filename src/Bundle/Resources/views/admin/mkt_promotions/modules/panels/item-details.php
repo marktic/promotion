@@ -1,15 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 use ByTIC\AdminBase\Screen\Actions\Dto\ButtonAction;
 use ByTIC\AdminBase\Widgets\Cards\Card;
 use ByTIC\Icons\Icons;
 use Nip\View\View;
 
-/** @var View $this */
+/* @var View $this */
 ?>
 
-<?=
-Card::make()
+<?= Card::make()
     ->withView($this)
     ->withIcon(Icons::list_ul())
     ->withTitle(translator()->trans('details'))

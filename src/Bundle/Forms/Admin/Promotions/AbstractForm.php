@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Forms\Admin\Promotions;
 
 use Marktic\Promotion\Bundle\Forms\Admin\AbstractForms\FormHasCode;
@@ -7,14 +9,12 @@ use Marktic\Promotion\Bundle\Forms\Admin\AbstractForms\FormHasDates;
 use Marktic\Promotion\Bundle\Forms\Admin\AbstractForms\FormHasUsage;
 use Marktic\Promotion\Bundle\Library\Form\FormModel;
 use Marktic\Promotion\Utility\PromotionModels;
-use Nip_Form_Element_RadioGroup;
-
 
 abstract class AbstractForm extends FormModel
 {
     use FormHasCode;
-    use FormHasUsage;
     use FormHasDates;
+    use FormHasUsage;
 
     public function initialize()
     {
@@ -36,7 +36,7 @@ abstract class AbstractForm extends FormModel
     {
         $this->addRadioGroup('exclusive', PromotionModels::promotions()->getLabel('exclusive'), true);
 
-        /** @var Nip_Form_Element_RadioGroup $exclusiveElement */
+        /* @var \Nip_Form_Element_RadioGroup $exclusiveElement */
         $exclusiveElement = $this->getElement('exclusive');
         $exclusiveElement->addOption('no', translator()->trans('no'));
         $exclusiveElement->addOption('yes', translator()->trans('yes'));

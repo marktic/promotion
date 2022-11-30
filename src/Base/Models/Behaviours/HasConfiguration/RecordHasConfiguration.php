@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Base\Models\Behaviours\HasConfiguration;
 
 use ByTIC\DataObjects\Casts\Metadata\AsMetadataObject;
@@ -17,7 +19,7 @@ trait RecordHasConfiguration
      */
     public function setConfiguration($configuration): void
     {
-        if (is_array($configuration)) {
+        if (\is_array($configuration)) {
             $configuration = json_encode($configuration);
         }
         $this->setPropertyValue('configuration', $configuration);

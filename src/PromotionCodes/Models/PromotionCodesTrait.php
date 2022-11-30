@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionCodes\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasPromotion\RepositoryHasPromotion;
@@ -14,7 +16,6 @@ trait PromotionCodesTrait
     use TimestampableManagerTrait;
 
     /**
-     * @param string $code
      * @return PromotionCode|Record
      */
     public function findOneByCode(string $code): ?PromotionCodeInterface

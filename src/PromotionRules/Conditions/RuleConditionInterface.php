@@ -11,9 +11,7 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 interface RuleConditionInterface
 {
     /**
-     * @param PromotionSubjectInterface $subject
-     * @param array| ModelConfiguration $configuration
-     * @return ValidationResult
+     * @param array|ModelConfiguration $configuration
      */
     public function validate(PromotionSubjectInterface $subject, $configuration): ValidationResult;
 

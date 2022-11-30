@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionActions\Commands;
 
 use Marktic\Pricing\PriceAdjustments\Contracts\PriceAdjustment as PriceAdjustmentContract;
@@ -24,6 +26,7 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
     ): bool {
         $adjustment = $this->createPriceAdjustment($subject, $configuration, $promotion);
         $adjustment->save();
+
         return true;
     }
 
@@ -35,7 +38,6 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         // TODO: Implement revert() method.
     }
 
-
     public function describeConfiguration(ModelConfiguration $configuration): string
     {
         $return = [];
@@ -46,7 +48,8 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         foreach ($currencies as $currency => $value) {
             $return[] = $this->describeConfigurationValue($currency, $value);
         }
-        return implode(" | ", $return);
+
+        return implode(' | ', $return);
     }
 
     protected function createPriceAdjustment(
@@ -68,6 +71,7 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
             ->get();
         $adjustment->setPropertyValue('value', $configuration['amount'] ?? null);
         $adjustment->getConfiguration()->set('value_c', $configuration['amount_c'] ?? []);
+
         return $adjustment;
     }
 

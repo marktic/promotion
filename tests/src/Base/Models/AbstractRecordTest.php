@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\Base\Models;
 
 use Marktic\Promotion\Tests\AbstractTest;
@@ -11,6 +13,7 @@ abstract class AbstractRecordTest extends AbstractTest
     {
         $class = $this->getRecordClass();
         $record = new $class();
+
         return $record;
     }
 

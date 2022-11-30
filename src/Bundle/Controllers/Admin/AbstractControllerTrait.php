@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use Nip\Controllers\Response\ResponsePayload;
@@ -17,6 +19,7 @@ trait AbstractControllerTrait
         $class = $this->getModelFormClass($model, $action);
         $form = new $class();
         $form->setModel($model);
+
         return $form;
     }
 

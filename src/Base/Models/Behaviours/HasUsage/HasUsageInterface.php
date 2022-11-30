@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Base\Models\Behaviours\HasUsage;
 
 interface HasUsageInterface
 {
-
     public function getUsageLimit(): ?int;
 
     public function setUsageLimit(?int $usageLimit): void;
@@ -16,5 +17,4 @@ interface HasUsageInterface
     public function incrementUsed(): void;
 
     public function decrementUsed(): void;
-
 }

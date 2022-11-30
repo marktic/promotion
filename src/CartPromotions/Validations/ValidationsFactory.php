@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\CartPromotions\Validations;
 
 use Marktic\Promotion\Base\Validations\CompositeValidatePromotion;

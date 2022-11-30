@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionActions\Services;
 
 use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
@@ -8,7 +10,7 @@ use Marktic\Promotion\Tests\AbstractTest;
 
 class ActionCommandsServiceTest extends AbstractTest
 {
-    public function test_all()
+    public function testAll()
     {
         $service = new ActionCommandsService();
         $commands = $service->all();

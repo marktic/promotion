@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionSubjects\Models;
 
 use Marktic\Promotion\Utility\PromotionModels;
@@ -22,9 +24,9 @@ trait PromotionSubjectRepositoryTrait
         $this->morphMany(
             'PromotionSessions',
             [
-                'class' => get_class(PromotionModels::promotionSessions()),
+                'class' => \get_class(PromotionModels::promotionSessions()),
                 'morphPrefix' => 'subject',
-                'morphTypeField' => 'subject'
+                'morphTypeField' => 'subject',
             ]
         );
     }

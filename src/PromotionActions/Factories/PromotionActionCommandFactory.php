@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\PromotionActions\Factories;
 
-use InvalidArgumentException;
 use Marktic\Promotion\PromotionActions\Commands\PromotionActionCommandInterface;
 use Marktic\Promotion\PromotionActions\DataObjects\PromotionActionType;
 
@@ -22,7 +23,7 @@ class PromotionActionCommandFactory implements PromotionActionCommandFactoryInte
             return $command;
         }
 
-        throw new InvalidArgumentException(sprintf('Invalid action type "%s"', $type));
+        throw new \InvalidArgumentException(sprintf('Invalid action type "%s"', $type));
     }
 
     protected function tryCreateFromClasses($type)
@@ -32,6 +33,7 @@ class PromotionActionCommandFactory implements PromotionActionCommandFactoryInte
         }
 
         $class = $this->classes[$type];
+
         return new $class();
     }
 }

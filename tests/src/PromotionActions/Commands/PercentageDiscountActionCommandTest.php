@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionActions\Commands;
 
 use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
 
 class PercentageDiscountActionCommandTest extends AbstractDiscountActionCommandTest
 {
-
-    public function test_describeConfiguration()
+    public function testDescribeConfiguration()
     {
         $this->describeConfigurationOutputs(
             ['amount' => 10, 'amount_c' => ['EUR' => 13, 'RON' => 14]],

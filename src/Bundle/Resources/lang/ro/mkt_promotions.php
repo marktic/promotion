@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'mkt_promotions.labels.title' => 'Promoții',
     'mkt_promotions.labels.title.singular' => 'Promoție',
@@ -44,5 +46,4 @@ return [
 
     'mkt_promotions.messages.entry-remove.dnx' => 'Eroare stergere discount. Cod de discount invalid',
     'mkt_promotions.messages.entry-remove.success' => 'Discount sters cu succes',
-
 ];

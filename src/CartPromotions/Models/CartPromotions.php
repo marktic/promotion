@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\CartPromotions\Models;
 
 use Marktic\Promotion\Base\Models\Traits\CommonRecordsTrait;
 use Nip\Records\RecordManager;
 
 /**
- * Class Events
- * @package Marktic\Promotion\Models\CartPromotions
+ * Class Events.
  */
 class CartPromotions extends RecordManager
 {
@@ -22,6 +23,4 @@ class CartPromotions extends RecordManager
     public const RELATION_ACTIONS = 'PromotionActions';
     public const RELATION_RULES = 'PromotionRules';
     public const RELATION_SESSIONS = 'PromotionSessions';
-
-
 }
