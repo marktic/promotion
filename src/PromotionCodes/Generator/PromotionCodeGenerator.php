@@ -15,7 +15,7 @@ class PromotionCodeGenerator
 {
     protected PromotionCodesRepositoryInterface $repository;
 
-    public function __construct(PromotionCodesRepositoryInterface $repository)
+    public function __construct(PromotionCodesRepositoryInterface $repository = null)
     {
         $this->repository = $repository ?? PromotionModels::promotionCodes();
     }
