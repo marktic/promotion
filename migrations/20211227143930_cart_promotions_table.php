@@ -48,6 +48,7 @@ final class CartPromotionsTable extends AbstractMigration
         $table
             ->addIndex(['pool_id'])
             ->addIndex(['pool'])
+            ->addIndex(['type'])
             ->addIndex(['priority'])
             ->addIndex(['code'], ['unique' => true]);
 

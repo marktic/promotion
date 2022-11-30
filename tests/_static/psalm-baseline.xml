@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+  <file src="src/Bundle/Forms/Admin/PromotionSubjects/RedeemPromotionCodeForm.php">
+    <UndefinedDocblockClass occurrences="2">
+      <code>$this-&gt;getModel()</code>
+      <code>$this-&gt;getModel()</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_base/modules/validity.php">
+    <UndefinedDocblockClass occurrences="3">
+      <code>$item</code>
+      <code>$item</code>
+      <code>$validFrom</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotion_actions/modules/lists/promotion.php">
+    <InvalidScope occurrences="2">
+      <code>$this-&gt;get('promotion_actions')</code>
+    </InvalidScope>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotion_codes/modules/lists/promotion.php">
+    <InvalidScope occurrences="2">
+      <code>$this-&gt;get('promotion_codes')</code>
+      <code>$this-&gt;load('/mkt_base/modules/validity', ['item' =&gt; $item])</code>
+    </InvalidScope>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotion_rules/modules/lists/promotion.php">
+    <InvalidScope occurrences="2">
+      <code>$this-&gt;get('promotion_rules')</code>
+    </InvalidScope>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotion_sessions/modules/lists/promotion.php">
+    <InvalidScope occurrences="1">
+      <code>$this</code>
+    </InvalidScope>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotions/modules/DEL_item-form.php">
+    <InvalidScope occurrences="1">
+      <code>$this</code>
+    </InvalidScope>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotions/modules/item-row.php">
+    <InvalidScope occurrences="2">
+      <code>$this-&gt;load('/mkt_base/modules/validity', ['item' =&gt; $item])</code>
+      <code>$this-&gt;load('/mkt_promotion_actions/modules/lists/promotion', ['actions' =&gt; $actions])</code>
+    </InvalidScope>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotions/modules/item/details.php">
+    <InvalidScope occurrences="1">
+      <code>$this-&gt;get('item')</code>
+    </InvalidScope>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotions/pool_index.php">
+    <InvalidScope occurrences="1">
+      <code>$this-&gt;get('modelManager')</code>
+    </InvalidScope>
+  </file>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotions/view.php">
+    <UndefinedDocblockClass occurrences="1">
+      <code>$this-&gt;Flash()</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="tests/fixtures/application/models/PromotionSubjects/PromotionSubject.php">
+    <UnimplementedInterfaceMethod occurrences="1">
+      <code>PromotionSubject</code>
+    </UnimplementedInterfaceMethod>
+  </file>
+  <file src="tests/src/AbstractTest.php">
+    <UndefinedConstant occurrences="1">
+      <code>TEST_FIXTURE_PATH</code>
+    </UndefinedConstant>
+  </file>
+  <file src="tests/src/Base/Models/AbstractRepositoryTest.php">
+    <UndefinedConstant occurrences="1">
+      <code>TEST_FIXTURE_PATH</code>
+    </UndefinedConstant>
+  </file>
+  <file src="tests/src/Base/Models/Behaviours/HasConfiguration/RecordHasConfigurationTestTrait.php">
+    <UndefinedClass occurrences="3">
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="6">
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="tests/src/Base/Models/Behaviours/HasValidity/RecordHasValidityTestTrait.php">
+    <UndefinedClass occurrences="10">
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="12">
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="tests/src/CartPromotions/Models/CartPromotionTest.php">
+    <InaccessibleProperty occurrences="1">
+      <code>$record-&gt;type</code>
+    </InaccessibleProperty>
+  </file>
+</files>

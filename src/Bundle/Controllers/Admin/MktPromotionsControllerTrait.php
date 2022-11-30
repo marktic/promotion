@@ -3,10 +3,11 @@
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
-use Marktic\Promotion\Bundle\Forms\Admin\Promotions\BaseForm;
-use Marktic\Promotion\Bundle\Forms\Admin\Promotions\DiscountForm;
+use Marktic\Promotion\Bundle\Forms\Admin\Promotions\AutomaticForm;
+use Marktic\Promotion\Bundle\Forms\Admin\Promotions\CouponCodeForm;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
+use Marktic\Promotion\CartPromotions\Models\Types\CouponCode;
 use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\FixedPriceActionCommand;
 use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
@@ -99,16 +100,12 @@ trait MktPromotionsControllerTrait
 
     protected function getModelFormClass($model, $action = null): string
     {
-        $type = $this->getRequest()->get('action_type');
+        $type = $this->getRequest()->get('type');
 
-        switch ($type) {
-            case PercentageDiscountActionCommand::NAME:
-            case FixedDiscountActionCommand::NAME:
-            case FixedPriceActionCommand::NAME:
-            return DiscountForm::class;
+        if ($type == CouponCode::NAME) {
+            return CouponCodeForm::class;
         }
-
-        return BaseForm::class;
+        return AutomaticForm::class;
     }
 
     /**

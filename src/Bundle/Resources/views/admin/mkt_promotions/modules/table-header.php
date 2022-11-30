@@ -11,7 +11,7 @@ use Nip\View\View;
     <th><?= translator()->trans('type'); ?></th>
     <th><?= translator()->trans('code'); ?></th>
     <th><?= translator()->trans('uses'); ?></th>
-    <th><?= PromotionModels::promotions()->getLabel('exclusive'); ?></th>
+    <th><?= PromotionModels::promotionActions()->getLabel('title'); ?></th>
     <th><?= translator()->trans('date'); ?></th>
 </tr>
 </thead>

@@ -3,6 +3,7 @@
 namespace Marktic\Promotion\CartPromotions\Observers;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
+use Marktic\Promotion\CartPromotions\Models\Types\CouponCode;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCode;
 use Marktic\Promotion\Utility\PromotionModels;
 
@@ -29,6 +30,10 @@ class UpdatePromotionCodes
 
     protected function execute()
     {
+        if ($this->cartPromotion->getType() !== CouponCode::NAME) {
+            return;
+        }
+
         if (empty($this->cartPromotion->getCode())) {
             return;
         }
