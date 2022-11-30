@@ -24,7 +24,7 @@ class ApplyPromotion
         $this->actionSessions = $actionSessions ?? new CreateSessionForPromotionApplication();
     }
 
-    public function apply(ApplyPromotionRequest $applyPromotionRequest)
+    public function apply(ApplyPromotionRequest $applyPromotionRequest): void
     {
         $appliedPromotions = $this->applyActions($applyPromotionRequest);
 
@@ -66,7 +66,7 @@ class ApplyPromotion
         }
     }
 
-    protected function getActionCommandFor(PromotionActionInterface $promotionAction): PromotionActionCommandInterface
+    protected function getActionCommandFor(PromotionActionInterface $promotionAction): PromotionActionCommandInterface|null
     {
         return $this->actionService->forAction($promotionAction);
     }

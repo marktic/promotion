@@ -15,7 +15,7 @@ class PromotionCode extends Record implements PromotionCodeInterface
     use CommonRecordTrait;
     use PromotionCodeTrait;
 
-    public function getRegistry()
+    public function getRegistry(): void
     {
         // TODO: Implement getRegistry() method.
     }

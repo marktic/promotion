@@ -44,7 +44,7 @@ trait RecordHasValidity
         $this->setPropertyValue('valid_to', $date);
     }
 
-    public function registerValidityCast()
+    public function registerValidityCast(): void
     {
         $this->casts = array_merge($this->casts, [
             'valid_to' => 'datetime',

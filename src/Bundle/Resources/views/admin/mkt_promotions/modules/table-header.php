@@ -3,7 +3,7 @@
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/* @var View $this */
+/** @var View $this */
 ?>
 <thead>
 <tr>

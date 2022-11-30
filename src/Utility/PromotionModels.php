@@ -66,7 +66,7 @@ class PromotionModels extends ModelFinder
         return static::getModels(self::PROMOTION_SESSIONS, PromotionSessions::class);
     }
 
-    public static function registerInContainer(ContainerInterface $container)
+    public static function registerInContainer(ContainerInterface $container): void
     {
         $container->set(
             PromotionCodesRepositoryInterface::class,

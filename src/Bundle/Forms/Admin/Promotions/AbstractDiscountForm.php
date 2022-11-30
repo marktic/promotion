@@ -15,12 +15,18 @@ abstract class AbstractDiscountForm extends AbstractForm
     use FormHasAmounts;
     protected $promotionAction = null;
 
+    /**
+     * @return void
+     */
     public function getDataFromModel()
     {
         parent::getDataFromModel();
         $this->getDataFromModelForAmounts();
     }
 
+    /**
+     * @return void
+     */
     public function processValidation()
     {
         parent::processValidation();
@@ -28,12 +34,18 @@ abstract class AbstractDiscountForm extends AbstractForm
         $this->validateAmounts();
     }
 
+    /**
+     * @return void
+     */
     public function saveToModel()
     {
         parent::saveToModel();
         $this->saveToModelAmounts();
     }
 
+    /**
+     * @return void
+     */
     public function saveModel()
     {
         parent::saveModel();

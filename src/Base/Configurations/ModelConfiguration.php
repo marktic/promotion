@@ -19,7 +19,7 @@ class ModelConfiguration extends Metadata
         return $this->get($this->encodeCurrencyKey($name, $currency), $default);
     }
 
-    public function setWithCurrency($name, $value, $currency = null)
+    public function setWithCurrency($name, $value, $currency = null): void
     {
         $this->set($this->encodeCurrencyKey($name, $currency), $value);
     }
@@ -38,7 +38,7 @@ class ModelConfiguration extends Metadata
         return PackageConfig::defaultCurrencyCode('EUR');
     }
 
-    protected function encodeCurrencyKey($name, $currency)
+    protected function encodeCurrencyKey(string $name, $currency): string
     {
         return $name . '_c.' . $currency;
     }

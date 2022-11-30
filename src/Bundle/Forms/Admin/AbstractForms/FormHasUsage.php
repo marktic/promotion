@@ -9,25 +9,25 @@ use Nip\Form\Elements\AbstractElement;
 
 trait FormHasUsage
 {
-    protected function initUsage()
+    protected function initUsage(): void
     {
         $this->initUsageLimit();
         $this->initUses();
     }
 
-    protected function initUsageLimit()
+    protected function initUsageLimit(): void
     {
         $this->addNumber('usage_limit', PromotionModels::promotions()->getLabel('usage_limit'), true);
         $this->getUsageLimitElement()->setAttrib('min', '0');
     }
 
-    protected function initUses()
+    protected function initUses(): void
     {
         $this->addNumber('used', translator()->trans('uses'), false);
         $this->getUsedElement()->setAttrib('readonly', 'readonly');
     }
 
-    protected function validateUsageLimit()
+    protected function validateUsageLimit(): void
     {
         if (!$this->getUsageLimitElement()->isError()) {
             if (!is_numeric($this->getUsageLimitElement()->getValue())) {

@@ -21,12 +21,12 @@ trait RecordHasPromotion
         $this->promotion_id = $promotion_id;
     }
 
-    public function getPromotionPool()
+    public function getPromotionPool(): \Nip\Records\AbstractModels\Record|\Marktic\Promotion\Base\Models\PromotionPools\PromotionPoolWithCurrencies
     {
         return $this->getPromotion()->getPromotionPool();
     }
 
-    public function populateFromPromotion(PromotionInterface $promotion)
+    public function populateFromPromotion(PromotionInterface $promotion): void
     {
         $this->setPromotionId($promotion->id);
         $this->getRelation('Promotion')->setResults($promotion);

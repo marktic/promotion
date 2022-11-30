@@ -32,23 +32,29 @@ abstract class AbstractForm extends FormModel
         $this->addButton('save', translator()->trans('submit'));
     }
 
-    protected function initExclusive()
+    protected function initExclusive(): void
     {
         $this->addRadioGroup('exclusive', PromotionModels::promotions()->getLabel('exclusive'), true);
 
-        /* @var \Nip_Form_Element_RadioGroup $exclusiveElement */
+        /** @var \Nip_Form_Element_RadioGroup $exclusiveElement */
         $exclusiveElement = $this->getElement('exclusive');
         $exclusiveElement->addOption('no', translator()->trans('no'));
         $exclusiveElement->addOption('yes', translator()->trans('yes'));
         $exclusiveElement->getRenderer()->setSeparator('');
     }
 
+    /**
+     * @return void
+     */
     public function saveToModel()
     {
         parent::saveToModel();
         $this->saveToModelDates();
     }
 
+    /**
+     * @return void
+     */
     public function processValidation()
     {
         parent::processValidation();

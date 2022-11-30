@@ -9,7 +9,7 @@ use Marktic\Promotion\Tests\Base\Models\AbstractRepositoryTest;
 
 class PromotionSessionsTest extends AbstractRepositoryTest
 {
-    public function testGetController()
+    public function testGetController(): void
     {
         $repository = $this->newRepository();
         static::assertSame('mkt_promotion_sessions', $repository->getController());

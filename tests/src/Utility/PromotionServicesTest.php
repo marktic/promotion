@@ -9,7 +9,7 @@ use Marktic\Promotion\Utility\PromotionServices;
 
 class PromotionServicesTest extends AbstractTest
 {
-    public function testActionCommandsSingleton()
+    public function testActionCommandsSingleton(): void
     {
         $this->loadServiceProvider();
 

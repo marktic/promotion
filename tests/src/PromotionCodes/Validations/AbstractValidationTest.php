@@ -10,7 +10,7 @@ use Marktic\Promotion\Tests\Fixtures\Application\Models\PromotionSubjects\Promot
 
 abstract class AbstractValidationTest extends AbstractTest
 {
-    protected function assertChecker($code, $result)
+    protected function assertChecker(\Marktic\Promotion\PromotionCodes\Models\PromotionCode $code, bool $result): void
     {
         $subject = new PromotionSubject();
         $checker = $this->generateChecker();

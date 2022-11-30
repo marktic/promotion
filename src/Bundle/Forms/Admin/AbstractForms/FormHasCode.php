@@ -6,11 +6,14 @@ namespace Marktic\Promotion\Bundle\Forms\Admin\AbstractForms;
 
 trait FormHasCode
 {
-    protected function initCode()
+    protected function initCode(): void
     {
         $this->addInput('code', translator()->trans('code'), false);
     }
 
+    /**
+     * @return void
+     */
     protected function validateCode()
     {
         $codeElement = $this->getElement('code');

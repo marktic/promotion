@@ -24,18 +24,27 @@ abstract class AbstractForm extends FormModel
         $this->addButton('save', translator()->trans('submit'));
     }
 
+    /**
+     * @return void
+     */
     public function getDataFromModel()
     {
         parent::getDataFromModel();
         $this->getDataFromModelForAmounts();
     }
 
+    /**
+     * @return void
+     */
     public function saveToModel()
     {
         parent::saveToModel();
         $this->saveToModelAmounts();
     }
 
+    /**
+     * @return void
+     */
     public function processValidation()
     {
         parent::processValidation();

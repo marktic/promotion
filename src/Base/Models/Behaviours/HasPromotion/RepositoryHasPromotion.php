@@ -8,7 +8,7 @@ use Marktic\Promotion\Utility\PromotionModels;
 
 trait RepositoryHasPromotion
 {
-    protected function initRelationsPromotion()
+    protected function initRelationsPromotion(): void
     {
         $this->belongsTo('Promotion', ['class' => \get_class(PromotionModels::promotions())]);
     }

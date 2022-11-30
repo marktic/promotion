@@ -8,7 +8,7 @@ use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
 
 class FixedDiscountActionCommandTest extends AbstractDiscountActionCommandTest
 {
-    public function testDescribeConfiguration()
+    public function testDescribeConfiguration(): void
     {
         $this->describeConfigurationOutputs(
             ['amount' => 10, 'amount_c' => ['EUR' => 13, 'RON' => 14]],

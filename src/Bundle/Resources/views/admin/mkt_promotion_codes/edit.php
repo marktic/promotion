@@ -2,6 +2,6 @@
 
 use Nip\View\View;
 
-/* @var View $this */
+/** @var View $this */
 
 ?><?= $this->load('/abstract/edit'); ?>

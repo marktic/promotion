@@ -25,7 +25,7 @@ trait RecordHasConfiguration
         $this->setPropertyValue('configuration', $configuration);
     }
 
-    protected function registerCastConfiguration()
+    protected function registerCastConfiguration(): void
     {
         $this->casts = array_merge($this->casts, [
             'configuration' => AsMetadataObject::class . ':json,' . ModelConfiguration::class,

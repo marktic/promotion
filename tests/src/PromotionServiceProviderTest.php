@@ -12,7 +12,7 @@ use Marktic\Promotion\PromotionServiceProvider;
  */
 class PromotionServiceProviderTest extends AbstractTest
 {
-    public function testRegisterRuleConditionsService()
+    public function testRegisterRuleConditionsService(): void
     {
         $this->loadConfigFromFixture('mkt_promotion');
         $provider = $this->loadServiceProvider();

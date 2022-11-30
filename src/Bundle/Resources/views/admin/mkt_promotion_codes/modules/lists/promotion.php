@@ -4,7 +4,7 @@ use ByTIC\Icons\Icons;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/* @var View $this */
+/** @var View $this */
 $items ??= $this->get('promotion_codes');
 $type ??= 'view';
 ?>

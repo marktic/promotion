@@ -16,7 +16,7 @@ class PromotionSessionTest extends AbstractRecordTest
 {
     use RecordHasConfigurationTestTrait;
 
-    public function testSetAppliedActions()
+    public function testSetAppliedActions(): void
     {
         $promotionSession = $this->newRecordInstance();
         $actions = [

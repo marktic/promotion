@@ -14,14 +14,14 @@ use Nip\Container\Utility\Container;
  */
 abstract class AbstractTest extends TestCase
 {
-    protected function loadConfig($data = [])
+    protected function loadConfig($data = []): void
     {
         $config = config();
         $configNew = new Config(['mkt_promotion' => $data], true);
         Container::container()->set('config', $config->merge($configNew));
     }
 
-    protected function loadConfigFromFixture($name)
+    protected function loadConfigFromFixture(string $name): void
     {
         $config = require TEST_FIXTURE_PATH . '/config/' . $name . '.php';
         $this->loadConfig($config);
@@ -37,7 +37,7 @@ abstract class AbstractTest extends TestCase
         return $provider;
     }
 
-    protected function loadFakeTranslator()
+    protected function loadFakeTranslator(): void
     {
         $translator = \Mockery::mock('translator');
         $translator->shouldReceive('trans')->andReturnArg(0);

@@ -11,7 +11,7 @@ use Marktic\Promotion\Tests\Base\Models\AbstractRepositoryTest;
 
 class CartPromotionsTest extends AbstractRepositoryTest
 {
-    public function testGetTypes()
+    public function testGetTypes(): void
     {
         $repository = new CartPromotions();
         $types = $repository->getTypes();

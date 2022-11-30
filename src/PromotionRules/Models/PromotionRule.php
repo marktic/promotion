@@ -21,7 +21,7 @@ class PromotionRule extends Record implements PromotionRuleInterface
         $this->registerCastConfiguration();
     }
 
-    public function getRegistry()
+    public function getRegistry(): void
     {
         // TODO: Implement getRegistry() method.
     }

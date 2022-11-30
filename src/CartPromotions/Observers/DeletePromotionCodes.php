@@ -18,13 +18,13 @@ class DeletePromotionCodes
         $this->cartPromotion = $cartPromotion;
     }
 
-    public static function for($cartPromotion)
+    public static function for($cartPromotion): void
     {
         $observer = new self($cartPromotion);
         $observer->execute();
     }
 
-    protected function execute()
+    protected function execute(): void
     {
         $codes = $this->cartPromotion->getPromotionCodes();
         $codes->delete();

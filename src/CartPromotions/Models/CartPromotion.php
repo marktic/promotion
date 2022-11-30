@@ -16,6 +16,9 @@ class CartPromotion extends Record implements PromotionInterface
     use CartPromotionTrait;
     use CommonRecordTrait;
 
+    /**
+     * @return void
+     */
     public function getRegistry()
     {
         // TODO: Implement getRegistry() method.

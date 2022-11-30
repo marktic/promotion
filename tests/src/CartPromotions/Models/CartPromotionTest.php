@@ -12,7 +12,7 @@ class CartPromotionTest extends AbstractRecordTest
 {
     use RecordHasValidityTestTrait;
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $record = new CartPromotion();
         $record->type = 'automatic';

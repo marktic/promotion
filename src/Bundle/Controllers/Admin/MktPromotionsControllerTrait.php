@@ -56,7 +56,7 @@ trait MktPromotionsControllerTrait
 
     public function addNewModel(): \Nip\Records\AbstractModels\Record
     {
-        /* @var CartPromotion $item */
+        /** @var CartPromotion $item */
         $item = parent::addNewModel();
 
         $item->setPool($this->getRequest()->get('pool'));
@@ -76,7 +76,7 @@ trait MktPromotionsControllerTrait
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function parseRequest()
     {

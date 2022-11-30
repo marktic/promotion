@@ -13,10 +13,10 @@ use Marktic\Promotion\CartPromotions\Models\Types\CouponCode;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/* @var View $this */
+/** @var View $this */
 $actions = ActionsCollectionsFactory::from($actions ?? []);
 
-/* @var CartPromotions $modelManager */
+/** @var CartPromotions $modelManager */
 $modelManager = $this->get('modelManager');
 
 $addURLParams = [

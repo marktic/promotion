@@ -14,7 +14,7 @@ use Marktic\Promotion\Utility\PromotionModels;
 
 abstract class AbstractRepositoryTest extends AbstractTest
 {
-    public function testGetTableFromConfig()
+    public function testGetTableFromConfig(): void
     {
         $config = require \TEST_FIXTURE_PATH . '/config/mkt_promotion.php';
         $this->loadConfig($config);
@@ -27,7 +27,7 @@ abstract class AbstractRepositoryTest extends AbstractTest
         self::assertSame($config['tables'][$repositoryKey], $repository->getTable());
     }
 
-    protected function newRepository()
+    protected function newRepository(): object
     {
         $class = $this->getRepositoryClass();
 

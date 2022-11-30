@@ -17,7 +17,7 @@ trait FormHasAmounts
 {
     protected $currencies;
 
-    protected function initAmounts()
+    protected function initAmounts(): void
     {
         $this->initPromotionCurrencies();
         $currencies = $this->getPromotionCurrenciesCodes();
@@ -26,7 +26,7 @@ trait FormHasAmounts
         }
     }
 
-    protected function initAmount($type = null)
+    protected function initAmount($type = null): void
     {
         $name = $type ? 'amounts[' . $type . ']' : 'amount';
 
@@ -36,7 +36,7 @@ trait FormHasAmounts
         $input->setAttrib('min', '0');
     }
 
-    protected function getDataFromModelForAmounts()
+    protected function getDataFromModelForAmounts(): void
     {
         $this->initAmounts();
         $currencies = $this->getPromotionCurrenciesCodes();
@@ -61,7 +61,7 @@ trait FormHasAmounts
         return $configuration->getWithCurrency('amount', $type);
     }
 
-    protected function validateAmounts()
+    protected function validateAmounts(): void
     {
         $currencies = $this->getPromotionCurrenciesCodes();
         foreach ($currencies as $currency) {
@@ -69,6 +69,9 @@ trait FormHasAmounts
         }
     }
 
+    /**
+     * @return void
+     */
     protected function validateAmount($type)
     {
         $input = $this->getAmountElement($type);
@@ -87,7 +90,7 @@ trait FormHasAmounts
         }
     }
 
-    protected function saveToModelAmounts()
+    protected function saveToModelAmounts(): void
     {
         $currencies = $this->getPromotionCurrenciesCodes();
         foreach ($currencies as $currency) {
@@ -96,18 +99,18 @@ trait FormHasAmounts
         }
     }
 
-    protected function saveToModelAmount($amount, $type)
+    protected function saveToModelAmount($amount, $type): void
     {
         $configuration = $this->getModelAmounts()->getConfiguration();
         $configuration->setWithCurrency('amount', $amount, $type);
     }
 
-    protected function getModelAmounts()
+    protected function getModelAmounts(): \Marktic\Promotion\PromotionActions\Models\PromotionAction
     {
         return $this->getModel();
     }
 
-    protected function initPromotionCurrencies()
+    protected function initPromotionCurrencies(): void
     {
         $pool = $this->getModel()->getPromotionPool();
         if (!method_exists($pool, PromotionPoolWithCurrencies::CURRENCIES_METHOD)) {

@@ -22,7 +22,7 @@ class ActionHtml
         $this->action = $action;
     }
 
-    public static function for($action)
+    public static function for($action): self
     {
         return new self($action);
     }
@@ -44,12 +44,15 @@ class ActionHtml
         );
     }
 
-    protected function renderTypeLabel()
+    protected function renderTypeLabel(): string
     {
         return PromotionModels::promotionActions()->translate('type.' . $this->action->getType());
     }
 
-    protected function renderConfiguration()
+    /**
+     * @return false|string
+     */
+    protected function renderConfiguration(): string|false
     {
         return json_encode($this->action->getConfiguration()->jsonSerialize());
     }

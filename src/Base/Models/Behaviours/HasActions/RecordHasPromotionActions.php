@@ -15,14 +15,14 @@ trait RecordHasPromotionActions
         return $this->getPromotionActions()->count() > 0;
     }
 
-    /**
-     * @return Collection|PromotionAction[]
-     */
-    public function getPromotionActions()
+    public function getPromotionActions(): \Nip\Records\AbstractModels\Record|\Nip\Records\Collections\Collection
     {
         return $this->getRelation(CartPromotions::RELATION_ACTIONS)->getResults();
     }
 
+    /**
+     * @return void
+     */
     public function setPromotionActions($promotionRules)
     {
         $this->getRelation(CartPromotions::RELATION_ACTIONS)->setResults($promotionRules);

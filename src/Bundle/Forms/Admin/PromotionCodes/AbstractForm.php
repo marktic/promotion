@@ -28,6 +28,9 @@ abstract class AbstractForm extends FormModel
         $this->addButton('save', translator()->trans('submit'));
     }
 
+    /**
+     * @return void
+     */
     public function processValidation()
     {
         parent::processValidation();
@@ -37,6 +40,9 @@ abstract class AbstractForm extends FormModel
         $this->validateDates();
     }
 
+    /**
+     * @return void
+     */
     public function saveToModel()
     {
         parent::saveToModel();

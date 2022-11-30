@@ -10,7 +10,7 @@ use Marktic\Promotion\Tests\AbstractTest;
 
 abstract class AbstractDiscountActionCommandTest extends AbstractTest
 {
-    protected function describeConfigurationOutputs($config = [], $output = '')
+    protected function describeConfigurationOutputs(array $config = [], string $output = ''): void
     {
         $configuration = new ModelConfiguration($config);
         $command = $this->newCommand();

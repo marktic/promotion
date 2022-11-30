@@ -9,13 +9,17 @@ use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationDuration
 
 class PromotionCodeDurationLimitValidationTest extends AbstractValidationTest
 {
-    public function testCodeWithNullDatesIsEligible()
+    public function testCodeWithNullDatesIsEligible(): void
     {
         $code = $this->generateCode();
         $this->assertChecker($code, true);
     }
 
-    protected function generateCode($from = null, $to = null): PromotionCode
+    /**
+     * @psalm-param -3|-1|1|null $from
+     * @psalm-param -1|4|null $to
+     */
+    protected function generateCode(int|null $from = null, int|null $to = null): PromotionCode
     {
         $code = new PromotionCode();
 
@@ -44,37 +48,37 @@ class PromotionCodeDurationLimitValidationTest extends AbstractValidationTest
         return $now->format('Y-m-d');
     }
 
-    public function testCodeWithNullStartIsEligible()
+    public function testCodeWithNullStartIsEligible(): void
     {
         $code = $this->generateCode(null, 4);
         $this->assertChecker($code, true);
     }
 
-    public function testCodeWithPastStartIsEligible()
+    public function testCodeWithPastStartIsEligible(): void
     {
         $code = $this->generateCode(-1, 4);
         $this->assertChecker($code, true);
     }
 
-    public function testCodeWithFutureToIsNotEligible()
+    public function testCodeWithFutureToIsNotEligible(): void
     {
         $code = $this->generateCode(1, 4);
         $this->assertChecker($code, false);
     }
 
-    public function testCodeWithNullEndIsEligible()
+    public function testCodeWithNullEndIsEligible(): void
     {
         $code = $this->generateCode(-1);
         $this->assertChecker($code, true);
     }
 
-    public function testCodeWithPastEndIsNotEligible()
+    public function testCodeWithPastEndIsNotEligible(): void
     {
         $code = $this->generateCode(-3, -1);
         $this->assertChecker($code, false);
     }
 
-    public function testCodeWithFutureEndIsEligible()
+    public function testCodeWithFutureEndIsEligible(): void
     {
         $code = $this->generateCode(-1, 4);
         $this->assertChecker($code, true);

@@ -27,7 +27,7 @@ trait PromotionSessionTrait
         return 'Promotion Session';
     }
 
-    public function populateFromSubject(PromotionSubjectInterface $subject)
+    public function populateFromSubject(PromotionSubjectInterface $subject): void
     {
         $this->setPropertyValue('subject_id', $subject->getId());
         $this->setPropertyValue('subject', $subject->getManager()->getMorphName());
@@ -50,6 +50,9 @@ trait PromotionSessionTrait
         $this->getConfiguration()->set('applied_actions', $actions);
     }
 
+    /**
+     * @return void
+     */
     public function setPromotionCode(?PromotionCodeInterface $promotionCode)
     {
         if (!($promotionCode instanceof PromotionCodeInterface)) {
@@ -62,11 +65,11 @@ trait PromotionSessionTrait
         );
     }
 
-    public function printValue()
+    public function printValue(): void
     {
     }
 
-    public function printReduction()
+    public function printReduction(): void
     {
     }
 }

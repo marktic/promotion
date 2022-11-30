@@ -20,7 +20,7 @@ abstract class FormModel extends \Nip\Form\FormModel
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function submited()
     {

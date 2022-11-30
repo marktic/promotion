@@ -12,7 +12,7 @@ use Nip\Records\Locator\ModelLocator;
 
 class PromotionFactoriesTest extends AbstractTest
 {
-    public function testItCreatesPromotionFactory()
+    public function testItCreatesPromotionFactory(): void
     {
         $this->loadServiceProvider();
         ModelLocator::set(\Marktic\Promotion\PromotionActions\Models\PromotionActions::class, new PromotionActions());

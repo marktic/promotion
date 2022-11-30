@@ -21,7 +21,7 @@ class PromotionAction extends Record implements PromotionActionInterface
         $this->registerCastConfiguration();
     }
 
-    public function getRegistry()
+    public function getRegistry(): void
     {
         // TODO: Implement getRegistry() method.
     }

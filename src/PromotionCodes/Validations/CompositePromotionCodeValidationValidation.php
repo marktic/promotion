@@ -11,7 +11,7 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class CompositePromotionCodeValidationValidation implements PromotionCodeValidation
 {
-    /* @var PromotionCodeValidation[] */
+    /** @var PromotionCodeValidation[] */
     private array $eligibilityCheckers;
 
     /**

@@ -17,7 +17,7 @@ use Marktic\Promotion\Tests\Fixtures\Application\Models\PromotionSubjects\Promot
 
 class RedeemPromotionCodeTest extends AbstractTest
 {
-    public function testInvalidPromotionsThrowsException()
+    public function testInvalidPromotionsThrowsException(): void
     {
         $promotion = new CartPromotion();
 

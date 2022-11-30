@@ -5,8 +5,8 @@ use Marktic\Promotion\Utility\PromotionModels;
 use Marktic\Promotion\Utility\PromotionServices;
 use Nip\View\View;
 
-/* @var View $this */
-/* @var PromotionAction $item */
+/** @var View $this */
+/** @var PromotionAction $item */
 $configuration = $item->getConfiguration();
 $command = PromotionServices::actionCommands()->forAction($item);
 ?>

@@ -15,4 +15,11 @@
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <InvalidScope>
+            <errorLevel type="suppress">
+                <directory name="src/Bundle/Resources/views"/>
+            </errorLevel>
+        </InvalidScope>
+    </issueHandlers>
 </psalm>

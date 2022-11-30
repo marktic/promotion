@@ -6,12 +6,15 @@ namespace Marktic\Promotion\Bundle\Forms\Admin\AbstractForms;
 
 trait FormHasDates
 {
-    protected function initDates()
+    protected function initDates(): void
     {
         $this->addDateinput('valid_from', translator()->trans('valid_from'), false)
             ->addDateinput('valid_to', translator()->trans('valid_to'), false);
     }
 
+    /**
+     * @return void
+     */
     protected function validateDates()
     {
         $fromElement = $this->getElement('valid_from');
@@ -30,7 +33,7 @@ trait FormHasDates
         }
     }
 
-    protected function saveToModelDates()
+    protected function saveToModelDates(): void
     {
         $toElement = $this->getElement('valid_to');
 

@@ -10,7 +10,7 @@ use Nip\I18n\TranslatableMessage;
 
 class ValidationResultTest extends AbstractTest
 {
-    public function testCanReceiveTranslatableMessages()
+    public function testCanReceiveTranslatableMessages(): void
     {
         $response = ValidationResult::invalid(TranslatableMessage::create('test'));
 

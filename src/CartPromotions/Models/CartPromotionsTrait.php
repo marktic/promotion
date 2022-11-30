@@ -22,32 +22,35 @@ trait CartPromotionsTrait
     use RepositoryHasPromotionRules;
     use TimestampableManagerTrait;
 
-    protected function bootCartPromotionsTrait()
+    protected function bootCartPromotionsTrait(): void
     {
         static::created(function ($event) {
-            /* @var Event $event */
+            /** @var Event $event */
             $model = $event->getRecord();
             event(new CartPromotionCreated($model));
             UpdatePromotionCodes::for($model);
         });
 
         static::deleting(function ($event) {
-            /* @var Event $event */
+            /** @var Event $event */
             DeletePromotionCodes::for($event->getRecord());
         });
         static::updating(function ($event) {
-            /* @var Event $event */
+            /** @var Event $event */
             UpdatePromotionCodes::for($event->getRecord());
         });
     }
 
+    /**
+     * @return void
+     */
     protected function initRelations()
     {
         parent::initRelations();
         $this->initRelationsPromotions();
     }
 
-    protected function initRelationsPromotions()
+    protected function initRelationsPromotions(): void
     {
         $this->initRelationsPromotionPool();
         $this->initRelationsPromotionCodes();
@@ -56,17 +59,17 @@ trait CartPromotionsTrait
         $this->initRelationsPromotionSessions();
     }
 
-    protected function initRelationsPromotionPool()
+    protected function initRelationsPromotionPool(): void
     {
         $this->morphTo(CartPromotions::RELATION_POOL, ['morphPrefix' => 'pool', 'morphTypeField' => 'pool']);
     }
 
-    protected function initRelationsPromotionCodes()
+    protected function initRelationsPromotionCodes(): void
     {
         $this->hasMany(CartPromotions::RELATION_CODES, ['class' => \get_class(PromotionModels::promotionCodes())]);
     }
 
-    protected function initRelationsPromotionSessions()
+    protected function initRelationsPromotionSessions(): void
     {
         $this->hasMany(CartPromotions::RELATION_SESSIONS, ['class' => \get_class(PromotionModels::promotionSessions())]);
     }

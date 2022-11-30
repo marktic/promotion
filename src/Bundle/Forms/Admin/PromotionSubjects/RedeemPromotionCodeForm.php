@@ -18,7 +18,7 @@ use Nip\Records\Record;
 class RedeemPromotionCodeForm extends FormModel
 {
     /**
-     * @param PromotionSubjectInterface|Record $subject
+     * @param PromotionSubjectInterface $subject
      *
      * @return RedeemPromotionCodeForm
      */
@@ -40,6 +40,9 @@ class RedeemPromotionCodeForm extends FormModel
         $this->addButton('save', PromotionModels::promotionCodes()->getLabel('form.apply-btn'));
     }
 
+    /**
+     * @return void
+     */
     public function processValidation()
     {
         parent::processValidation();
@@ -56,10 +59,16 @@ class RedeemPromotionCodeForm extends FormModel
         }
     }
 
+    /**
+     * @return void
+     */
     public function process()
     {
     }
 
+    /**
+     * @return void
+     */
     protected function getDataFromModel()
     {
         $this->setAction($this->getModel()->compileURL('redeemPromotionCode'));

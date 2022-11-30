@@ -10,7 +10,7 @@ use Marktic\Promotion\Tests\AbstractTest;
 
 class ActionCommandsServiceTest extends AbstractTest
 {
-    public function testAll()
+    public function testAll(): void
     {
         $service = new ActionCommandsService();
         $commands = $service->all();

@@ -45,6 +45,9 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         return null;
     }
 
+    /**
+     * @return void
+     */
     protected function registerResources()
     {
         if (false === $this->getContainer()->has('translator')) {
@@ -62,7 +65,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         }
     }
 
-    protected function registerCommands()
+    protected function registerCommands(): void
     {
 //        $this->commands(
 //        );
@@ -86,7 +89,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         );
     }
 
-    protected function registerActionFactory()
+    protected function registerActionFactory(): void
     {
         $this->getContainer()->alias(
             PromotionActionFactory::class,
@@ -94,7 +97,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         );
     }
 
-    protected function registerActionCommandsFactory()
+    protected function registerActionCommandsFactory(): void
     {
         $this->getContainer()->alias(
             PromotionActionCommandFactory::class,
@@ -102,12 +105,12 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         );
     }
 
-    protected function registerActionCommandsService()
+    protected function registerActionCommandsService(): void
     {
         $this->getContainer()->set(ActionCommandsService::class, ActionCommandsService::class, true);
     }
 
-    protected function registerRuleConditionsService()
+    protected function registerRuleConditionsService(): void
     {
         $this->getContainer()->set(RuleConditionsServiceInterface::class, RuleConditionsService::class, true);
 
@@ -125,7 +128,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
         );
     }
 
-    protected function registerModels()
+    protected function registerModels(): void
     {
     }
 }

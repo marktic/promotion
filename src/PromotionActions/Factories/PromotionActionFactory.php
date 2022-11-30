@@ -12,7 +12,7 @@ use Nip\Records\AbstractModels\RecordManager;
 
 class PromotionActionFactory implements PromotionActionFactoryInterface
 {
-    /* @var RecordManager|PromotionActions */
+    /** @var RecordManager|PromotionActions */
     private $actionsRepository;
 
     /**

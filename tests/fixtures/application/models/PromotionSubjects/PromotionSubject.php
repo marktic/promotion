@@ -20,4 +20,9 @@ class PromotionSubject implements PromotionSubjectInterface
     {
         return 100;
     }
+
+    public function getCurrencyCode(): ?string
+    {
+        return 'RON';
+    }
 }

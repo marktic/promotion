@@ -6,8 +6,8 @@ use Marktic\Promotion\Utility\PromotionModels;
 use Marktic\Promotion\Utility\PromotionServices;
 use Nip\View\View;
 
-/* @var View $this */
-/* @var PromotionRule $item */
+/** @var View $this */
+/** @var PromotionRule $item */
 $configuration = $item->getConfiguration();
 $condition = PromotionServices::ruleConditions()->forRule($item);
 $actionUrl = $item->compileURL('edit');

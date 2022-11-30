@@ -5,7 +5,7 @@ use ByTIC\AdminBase\Widgets\Cards\Card;
 use ByTIC\Icons\Icons;
 use Nip\View\View;
 
-/* @var View $this */
+/** @var View $this */
 ?>
 
 <?= Card::make()

@@ -12,7 +12,7 @@ class PromotionCodeUsageLimitValidationTest extends AbstractValidationTest
     /**
      * @dataProvider data_is_eligible
      */
-    public function testCodeIsEligible($used, $limit, $result)
+    public function testCodeIsEligible($used, $limit, $result): void
     {
         $code = $this->generateCode($used, $limit);
         $this->assertChecker($code, $result);

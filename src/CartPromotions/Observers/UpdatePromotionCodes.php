@@ -21,12 +21,15 @@ class UpdatePromotionCodes
         $this->cartPromotion = $cartPromotion;
     }
 
-    public static function for($cartPromotion)
+    public static function for($cartPromotion): void
     {
         $observer = new self($cartPromotion);
         $observer->execute();
     }
 
+    /**
+     * @return void
+     */
     protected function execute()
     {
         if (CouponCode::NAME !== $this->cartPromotion->getType()) {
@@ -52,7 +55,7 @@ class UpdatePromotionCodes
         $this->updateFromPromotion($codes->current());
     }
 
-    protected function createFromPromotion($codes)
+    protected function createFromPromotion(array|\Nip\Records\Collections\Collection $codes): void
     {
         $code = PromotionModels::promotionCodes()->getNew();
         $code->populateFromPromotion($this->cartPromotion);
@@ -78,7 +81,7 @@ class UpdatePromotionCodes
         }
     }
 
-    protected function copyDataFromPromotion($code)
+    protected function copyDataFromPromotion(PromotionCode $code): void
     {
         $fields = ['code', 'usage_limit', 'valid_from', 'valid_to'];
         foreach ($fields as $field) {

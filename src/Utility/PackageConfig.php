@@ -21,12 +21,20 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
         return __DIR__ . '/../../config/mkt_promotion.php';
     }
 
-    public static function tableName($name, $default = null)
+    /**
+     * @param null|string $default
+     */
+    public static function tableName(string $name, string|null $default = null)
     {
         return static::instance()->get('tables.' . $name, $default);
     }
 
-    public static function defaultCurrencyCode($default = null)
+    /**
+     * @param null|string $default
+     *
+     * @psalm-param 'EUR'|null $default
+     */
+    public static function defaultCurrencyCode(string|null $default = null)
     {
         return static::instance()->get('currencies.default', $default);
     }

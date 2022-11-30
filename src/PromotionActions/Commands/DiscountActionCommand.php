@@ -75,7 +75,10 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         return $adjustment;
     }
 
-    protected function describeConfigurationValue($label, $value, $prefix = '', $suffix = ''): string
+    /**
+     * @psalm-param 'Base' $label
+     */
+    protected function describeConfigurationValue(string $label, $value, $prefix = '', $suffix = ''): string
     {
         return $label . ': ' . $prefix . $value . $suffix;
     }

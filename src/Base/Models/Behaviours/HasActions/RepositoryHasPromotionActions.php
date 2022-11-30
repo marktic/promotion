@@ -20,7 +20,7 @@ trait RepositoryHasPromotionActions
         $this->initRelationsPromotionRules();
     }
 
-    protected function initRelationsPromotionActions()
+    protected function initRelationsPromotionActions(): void
     {
         $this->hasMany(CartPromotions::RELATION_ACTIONS, ['class' => \get_class(PromotionModels::promotionActions())]);
     }

@@ -31,7 +31,7 @@ trait PromotionSessionsTrait
     }
 
     /**
-     * @param PromotionSubjectInterface|Record $subject
+     * @param \Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface $subject
      */
     public function queryWhereSubject(PromotionSubjectInterface $subject): array
     {
@@ -41,19 +41,22 @@ trait PromotionSessionsTrait
         ];
     }
 
+    /**
+     * @return void
+     */
     protected function initRelations()
     {
         parent::initRelations();
         $this->initRelationsTrait();
     }
 
-    protected function initRelationsTrait()
+    protected function initRelationsTrait(): void
     {
         $this->initRelationsPromotion();
         $this->initRelationsSubject();
     }
 
-    protected function initRelationsSubject()
+    protected function initRelationsSubject(): void
     {
         $this->morphTo(
             PromotionSessions::RELATION_SUBJECT,

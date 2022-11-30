@@ -2,7 +2,7 @@
 
 use Nip\View\View;
 
-/* @var View $this */
+/** @var View $this */
 $actions ??= $this->get('promotion_actions');
 $type ??= 'view';
 ?>

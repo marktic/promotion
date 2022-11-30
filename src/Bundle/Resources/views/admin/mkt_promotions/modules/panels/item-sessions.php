@@ -5,7 +5,7 @@ use ByTIC\Icons\Icons;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/* @var View $this */
+/** @var View $this */
 $repository = PromotionModels::promotionSessions();
 ?>
 <?= Card::make()

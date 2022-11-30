@@ -12,7 +12,7 @@ use Marktic\Promotion\Tests\Fixtures\Application\Models\PromotionSubjects\Promot
 
 class CheckValidPromotionCodeTest extends AbstractTest
 {
-    public function testShouldThrowErrorIfCodeNotFound()
+    public function testShouldThrowErrorIfCodeNotFound(): void
     {
         self::expectException(InvalidPromotionalCode::class);
 

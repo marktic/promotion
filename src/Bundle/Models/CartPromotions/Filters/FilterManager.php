@@ -11,6 +11,9 @@ use Nip\Records\Filters\FilterManager as CommonFilterManager;
  */
 class FilterManager extends CommonFilterManager
 {
+    /**
+     * @return void
+     */
     public function init()
     {
         parent::init();

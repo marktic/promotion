@@ -49,7 +49,7 @@ class FindAndValidatePromotionCode
     /**
      * @throws InvalidPromotionalCode
      */
-    protected function findPromotionCode($promotionCode)
+    protected function findPromotionCode(string $promotionCode): \Marktic\Promotion\PromotionCodes\Models\PromotionCode|\Nip\Records\AbstractModels\Record
     {
         $promotionCode = $this->promotionCodeRepository->findOneByCode($promotionCode);
 
@@ -63,7 +63,7 @@ class FindAndValidatePromotionCode
     /**
      * @throws InvalidPromotionalCode
      */
-    protected function validatePromotionCode(PromotionSubjectInterface $subject, PromotionCodeInterface $promotionCode)
+    protected function validatePromotionCode(PromotionSubjectInterface $subject, PromotionCodeInterface $promotionCode): void
     {
         $checker = $this->buildEligibilityChecker();
         $response = $checker->validate($subject, $promotionCode);

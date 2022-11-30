@@ -36,13 +36,16 @@ class RuleConditionsService implements RuleConditionsServiceInterface
         return $this->items[$name];
     }
 
-    public function addFromConfig($classes)
+    public function addFromConfig($classes): void
     {
         foreach ($classes as $class) {
             $this->add(new $class());
         }
     }
 
+    /**
+     * @return void
+     */
     public function add(RuleConditionInterface $condition)
     {
         $this->items[$this->keyFor($condition)] = $condition;

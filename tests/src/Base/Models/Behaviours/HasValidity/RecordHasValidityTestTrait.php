@@ -10,7 +10,7 @@ use Nip\Records\AbstractModels\Record;
 
 trait RecordHasValidityTestTrait
 {
-    public function test_getValidCast()
+    public function test_getValidCast(): void
     {
         /** @var Record|RecordHasValidity $record */
         $record = $this->newRecordInstance();
@@ -35,7 +35,7 @@ trait RecordHasValidityTestTrait
 
     abstract protected function newRecordInstance(): Record;
 
-    public function test_setValidity()
+    public function test_setValidity(): void
     {
         /** @var Record|RecordHasValidity $record */
         $record = $this->newRecordInstance();

@@ -4,10 +4,10 @@ use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\View\View;
 
-/* @var View $this */
+/** @var View $this */
 $promotion_repository = PromotionModels::promotions();
 
-/* @var CartPromotion $item */
+/** @var CartPromotion $item */
 $item = $this->get('item');
 ?>
 <table class="details table table-striped table-sm">

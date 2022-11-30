@@ -17,13 +17,16 @@ trait PromotionRulesTrait
     use RepositoryHasPromotion;
     use TimestampableManagerTrait;
 
+    /**
+     * @return void
+     */
     protected function initRelations()
     {
         parent::initRelations();
         $this->initRelationsTrait();
     }
 
-    protected function initRelationsTrait()
+    protected function initRelationsTrait(): void
     {
         $this->initRelationsPromotion();
     }

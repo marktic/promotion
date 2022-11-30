@@ -21,7 +21,7 @@ class PromotionSession extends Record
         $this->registerCastConfiguration();
     }
 
-    public function getRegistry()
+    public function getRegistry(): void
     {
         // TODO: Implement getRegistry() method.
     }

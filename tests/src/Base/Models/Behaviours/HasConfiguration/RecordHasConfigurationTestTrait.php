@@ -13,7 +13,7 @@ trait RecordHasConfigurationTestTrait
     /**
      * @dataProvider data_getConfiguration
      */
-    public function test_getConfiguration($input, $expected)
+    public function test_getConfiguration($input, $expected): void
     {
         /** @var Record|RecordHasConfiguration $record */
         $record = $this->newRecordInstance();
@@ -26,7 +26,12 @@ trait RecordHasConfigurationTestTrait
 
     abstract protected function newRecordInstance(): Record;
 
-    public function data_getConfiguration()
+    /**
+     * @return (null|string|string[])[][]
+     *
+     * @psalm-return array{0: array{0: null, 1: array<empty, empty>}, 1: array{0: '{}', 1: array<empty, empty>}, 2: array{0: '{"foo":"bar"}', 1: array{foo: 'bar'}}, 3: array{0: '{"foo":"bar","bar":"foo"}', 1: array{foo: 'bar', bar: 'foo'}}}
+     */
+    public function data_getConfiguration(): array
     {
         return [
             [null, []],
@@ -36,7 +41,7 @@ trait RecordHasConfigurationTestTrait
         ];
     }
 
-    public function test_setConfiguration()
+    public function test_setConfiguration(): void
     {
         /** @var Record|RecordHasConfiguration $record */
         $record = $this->newRecordInstance();

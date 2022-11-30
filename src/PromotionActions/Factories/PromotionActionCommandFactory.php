@@ -26,7 +26,7 @@ class PromotionActionCommandFactory implements PromotionActionCommandFactoryInte
         throw new \InvalidArgumentException(sprintf('Invalid action type "%s"', $type));
     }
 
-    protected function tryCreateFromClasses($type)
+    protected function tryCreateFromClasses(string $type): object|null
     {
         if (!isset($this->classes[$type])) {
             return null;

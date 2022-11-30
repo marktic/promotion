@@ -26,20 +26,28 @@ class ActionCommandsService
         $this->factory = $factory ?? new PromotionActionCommandFactory();
     }
 
-    public function forAction($action): ?PromotionActionCommandInterface
+    public function forAction(\Marktic\Promotion\PromotionActions\Models\PromotionActionInterface $action): ?PromotionActionCommandInterface
     {
         $this->bootCommands();
 
         return $this->commands[$action->getType()] ?? null;
     }
 
-    public function all(): array
+    /**
+     * @return PromotionActionCommandInterface[]|null
+     *
+     * @psalm-return array<PromotionActionCommandInterface>|null
+     */
+    public function all(): array|null
     {
         $this->bootCommands();
 
         return $this->commands;
     }
 
+    /**
+     * @return void
+     */
     protected function bootCommands()
     {
         if (null !== $this->commands) {
