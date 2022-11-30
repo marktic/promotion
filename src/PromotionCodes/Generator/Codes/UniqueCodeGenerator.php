@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\PromotionCodes\Generator\Codes;
 
+use Marktic\Promotion\PromotionCodes\Generator\Instruction\CodeGeneratorInstruction;
 use Marktic\Promotion\PromotionCodes\Generator\Instruction\CodeGeneratorInstructionInterface;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
 use Marktic\Promotion\Utility\PromotionModels;
@@ -24,22 +25,22 @@ class UniqueCodeGenerator
         $this->repository = $repository ?? PromotionModels::promotionCodes();
     }
 
-    public static function oneFor(CodeGeneratorInstructionInterface $instruction): string
+    public static function oneFor(CodeGeneratorInstructionInterface $instruction = null): string
     {
         $codes = static::generate($instruction, 1);
 
         return current($codes);
     }
 
-    public static function manyFor(CodeGeneratorInstructionInterface $instruction, int $count = 1): array
+    public static function manyFor(CodeGeneratorInstructionInterface $instruction = null, int $count = 1): array
     {
         return static::generate($instruction, $count);
     }
 
-    protected static function generate(CodeGeneratorInstructionInterface $instruction, int $count = 1)
+    protected static function generate(CodeGeneratorInstructionInterface $instruction = null, int $count = 1)
     {
         $self = new self();
-        $self->instruction = $instruction;
+        $self->instruction = $instruction ?? CodeGeneratorInstruction::default();
 
         return $self->generateCodes($count);
     }

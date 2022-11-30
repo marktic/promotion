@@ -13,6 +13,7 @@ use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotion;
 abstract class AbstractDiscountForm extends AbstractForm
 {
     use FormHasAmounts;
+
     protected $promotionAction = null;
 
     /**

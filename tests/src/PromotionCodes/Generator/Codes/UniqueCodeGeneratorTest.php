@@ -16,7 +16,7 @@ class UniqueCodeGeneratorTest extends TestCase
         $generator->shouldAllowMockingProtectedMethods();
         $generator->shouldReceive('findExistingCodes')->andReturn(['existing']);
 
-        $instruction = new CodeGeneratorInstruction();
+        $instruction = CodeGeneratorInstruction::default();
         $generator->setInstruction($instruction);
 
         $codes = $generator->generateCodes(10);
@@ -36,7 +36,7 @@ class UniqueCodeGeneratorTest extends TestCase
         $generator->shouldReceive('generateUniqueCode')
             ->andReturn('A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11');
 
-        $instruction = new CodeGeneratorInstruction();
+        $instruction = CodeGeneratorInstruction::default();
         $generator->setInstruction($instruction);
 
         $codes = $generator->generateCodes(4);

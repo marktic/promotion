@@ -12,6 +12,15 @@ class CodeGeneratorInstruction implements CodeGeneratorInstructionInterface
 
     protected ?string $suffix = null;
 
+    final protected function __construct()
+    {
+    }
+
+    final public static function default(): static
+    {
+        return new static();
+    }
+
     public function getPrefix(): ?string
     {
         return $this->prefix;

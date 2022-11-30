@@ -7,42 +7,16 @@
     </UndefinedDocblockClass>
   </file>
   <file src="src/Bundle/Resources/views/admin/mkt_base/modules/validity.php">
-    <UndefinedGlobalVariable occurrences="2">
+    <UndefinedDocblockClass occurrences="3">
       <code>$item</code>
       <code>$item</code>
-    </UndefinedGlobalVariable>
+      <code>$validFrom</code>
+    </UndefinedDocblockClass>
   </file>
-  <file src="src/Bundle/Resources/views/admin/mkt_promotion_actions/modules/item/edit.php">
-    <UndefinedGlobalVariable occurrences="4">
-      <code>$item</code>
-      <code>$item</code>
-      <code>$item</code>
-      <code>$item</code>
-    </UndefinedGlobalVariable>
-  </file>
-  <file src="src/Bundle/Resources/views/admin/mkt_promotion_actions/modules/item/view.php">
-    <UndefinedGlobalVariable occurrences="3">
-      <code>$item</code>
-      <code>$item</code>
-      <code>$item</code>
-    </UndefinedGlobalVariable>
-  </file>
-  <file src="src/Bundle/Resources/views/admin/mkt_promotion_rules/modules/item/edit.php">
-    <UndefinedGlobalVariable occurrences="2">
-      <code>$item</code>
-      <code>$item</code>
-    </UndefinedGlobalVariable>
-  </file>
-  <file src="src/Bundle/Resources/views/admin/mkt_promotion_rules/modules/item/view.php">
-    <UndefinedGlobalVariable occurrences="2">
-      <code>$item</code>
-      <code>$item</code>
-    </UndefinedGlobalVariable>
-  </file>
-  <file src="tests/fixtures/application/models/PromotionSubjects/PromotionSubject.php">
-    <UnimplementedInterfaceMethod occurrences="1">
-      <code>PromotionSubject</code>
-    </UnimplementedInterfaceMethod>
+  <file src="src/Bundle/Resources/views/admin/mkt_promotions/view.php">
+    <UndefinedDocblockClass occurrences="1">
+      <code>$this-&gt;Flash()</code>
+    </UndefinedDocblockClass>
   </file>
   <file src="tests/src/AbstractTest.php">
     <UndefinedConstant occurrences="1">
@@ -51,7 +25,7 @@
   </file>
   <file src="tests/src/Base/Models/AbstractRepositoryTest.php">
     <UndefinedConstant occurrences="1">
-      <code>\TEST_FIXTURE_PATH</code>
+      <code>TEST_FIXTURE_PATH</code>
     </UndefinedConstant>
   </file>
   <file src="tests/src/Base/Models/Behaviours/HasConfiguration/RecordHasConfigurationTestTrait.php">
