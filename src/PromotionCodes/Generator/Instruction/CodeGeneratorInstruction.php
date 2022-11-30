@@ -12,7 +12,6 @@ class CodeGeneratorInstruction implements CodeGeneratorInstructionInterface
 
     protected ?string $suffix = null;
 
-
     public function getPrefix(): ?string
     {
         return $this->prefix;

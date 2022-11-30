@@ -13,26 +13,11 @@ use Nip\Records\Collections\Collection;
 
 class PromotionCodeGenerator
 {
-    public const MIN_LENGTH = 8;
-
     protected PromotionCodesRepositoryInterface $repository;
 
-    /**
-     * @param PromotionCodesRepositoryInterface $repository
-     */
     public function __construct(PromotionCodesRepositoryInterface $repository)
     {
         $this->repository = $repository ?? PromotionModels::promotionCodes();
-    }
-
-    public function generateUniqueCode(CodeGeneratorInstruction $instruction): string
-    {
-        $code = $this->generateCode($instruction);
-        while ($this->repository->findOneByCode($code)) {
-            $code = $this->generateCode($instruction);
-        }
-
-        return $code;
     }
 
     public function generateOne(CodeGeneratorInstruction $instructions): Record|PromotionCodeInterface
@@ -45,4 +30,3 @@ class PromotionCodeGenerator
         return $this->repository->newCollection();
     }
 }
-

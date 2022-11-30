@@ -11,13 +11,10 @@ trait FormHasCode
         $this->addInput('code', translator()->trans('code'), false);
     }
 
-    /**
-     * @return void
-     */
     protected function validateCode(): void
     {
         $codeElement = $this->getElement('code');
-        if (!is_object($codeElement) || $codeElement->isError() || false === $codeElement->hasValue()) {
+        if (!\is_object($codeElement) || $codeElement->isError() || false === $codeElement->hasValue()) {
             return;
         }
 

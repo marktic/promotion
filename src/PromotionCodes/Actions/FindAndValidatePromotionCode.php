@@ -15,10 +15,7 @@ use Marktic\Promotion\PromotionCodes\Validations\PromotionCodeValidationUsageLim
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\I18n\TranslatableMessage;
-
 use Nip\Records\AbstractModels\Record;
-
-use function is_object;
 
 class FindAndValidatePromotionCode
 {
@@ -58,10 +55,8 @@ class FindAndValidatePromotionCode
     {
         $promotionCode = $this->promotionCodeRepository->findOneByCode($promotionCode);
 
-        if (!is_object($promotionCode)) {
-            throw new InvalidPromotionalCode(
-                (string)TranslatableMessage::create('mkt_promotion_codes.messages.form.register.dnx')
-            );
+        if (!\is_object($promotionCode)) {
+            throw new InvalidPromotionalCode((string) TranslatableMessage::create('mkt_promotion_codes.messages.form.register.dnx'));
         }
 
         return $promotionCode;

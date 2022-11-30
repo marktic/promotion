@@ -17,6 +17,6 @@ trait HasDatabaseConnectionTrait
      */
     protected function newDbConnection()
     {
-        return \app('db')->connection(PackageConfig::databaseConnection());
+        return app('db')->connection(PackageConfig::databaseConnection());
     }
 }

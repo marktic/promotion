@@ -24,10 +24,10 @@ class UniqueCodeGenerator
         $this->repository = $repository ?? PromotionModels::promotionCodes();
     }
 
-
     public static function oneFor(CodeGeneratorInstructionInterface $instruction): string
     {
         $codes = static::generate($instruction, 1);
+
         return current($codes);
     }
 
@@ -40,12 +40,10 @@ class UniqueCodeGenerator
     {
         $self = new self();
         $self->instruction = $instruction;
+
         return $self->generateCodes($count);
     }
 
-    /**
-     * @param CodeGeneratorInstructionInterface $instruction
-     */
     public function setInstruction(CodeGeneratorInstructionInterface $instruction): void
     {
         $this->instruction = $instruction;
@@ -59,8 +57,9 @@ class UniqueCodeGenerator
             $rawCodes = $this->generateRawCodes($remaining + 3);
             $rawCodes = $this->eliminateExistingCodes($rawCodes);
             $this->codes = array_merge($this->codes, $rawCodes);
-            $remaining = $count - count($this->codes);
+            $remaining = $count - \count($this->codes);
         }
+
         return array_splice($this->codes, 0, $count);
     }
 
@@ -69,21 +68,24 @@ class UniqueCodeGenerator
         $existingCodes = $this->findExistingCodes($codes);
 
         $this->existing = array_merge($this->existing, $existingCodes);
+
         return array_diff($codes, $this->existing, $this->codes);
     }
 
     protected function findExistingCodes($codes)
     {
         $existingRecords = $this->repository->findByField('code', $codes);
+
         return $existingRecords->pluck('code')->toArray();
     }
 
     protected function generateRawCodes(int $count)
     {
         $codes = [];
-        while (count($codes) < $count) {
+        while (\count($codes) < $count) {
             $codes[] = $this->generateUniqueCode();
         }
+
         return $codes;
     }
 

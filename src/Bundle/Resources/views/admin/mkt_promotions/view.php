@@ -3,7 +3,6 @@
 use Nip\View\View;
 
 /** @var View $this */
-
 ?>
 <div class="d-grid gap-3">
     <?= $this->Flash()->render($this->get('controller')); ?>

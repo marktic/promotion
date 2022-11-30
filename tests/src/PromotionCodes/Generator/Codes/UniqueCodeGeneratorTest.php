@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionCodes\Generator\Codes;
 
 use Marktic\Promotion\PromotionCodes\Generator\Codes\UniqueCodeGenerator;
@@ -8,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class UniqueCodeGeneratorTest extends TestCase
 {
-    public function test_generate_many()
+    public function testGenerateMany()
     {
         $generator = \Mockery::mock(UniqueCodeGenerator::class)->makePartial();
         $generator->shouldAllowMockingProtectedMethods();
@@ -22,17 +24,17 @@ class UniqueCodeGeneratorTest extends TestCase
 
         foreach ($codes as $code) {
             static::assertIsString($code);
-            static::assertSame($instruction->getCodeLength(), strlen($code));
+            static::assertSame($instruction->getCodeLength(), \strlen($code));
         }
     }
 
-    public function test_generat_with_existing()
+    public function testGeneratWithExisting()
     {
         $generator = \Mockery::mock(UniqueCodeGenerator::class)->makePartial();
         $generator->shouldAllowMockingProtectedMethods();
-        $generator->shouldReceive('findExistingCodes')->andReturn(['A1','A2','A5','A6'],[]);
+        $generator->shouldReceive('findExistingCodes')->andReturn(['A1', 'A2', 'A5', 'A6'], []);
         $generator->shouldReceive('generateUniqueCode')
-            ->andReturn('A1','A2','A3','A4','A5','A6','A7','A8','A9','A10','A11');
+            ->andReturn('A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11');
 
         $instruction = new CodeGeneratorInstruction();
         $generator->setInstruction($instruction);
@@ -40,6 +42,6 @@ class UniqueCodeGeneratorTest extends TestCase
         $codes = $generator->generateCodes(4);
         static::assertCount(4, $codes);
 
-        self::assertSame(['A3','A4','A7','A8'], $codes);
+        self::assertSame(['A3', 'A4', 'A7', 'A8'], $codes);
     }
 }

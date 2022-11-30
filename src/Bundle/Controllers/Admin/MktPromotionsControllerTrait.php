@@ -60,7 +60,7 @@ trait MktPromotionsControllerTrait
         $item = parent::addNewModel();
 
         $item->setPool($this->getRequest()->get('pool'));
-        $item->setPoolId(intval($this->getRequest()->get('pool_id')));
+        $item->setPoolId((int) ($this->getRequest()->get('pool_id')));
         $item->setTypeObject($this->getRequest()->get('type'));
 
         $actionType = $this->getRequest()->get('action_type');

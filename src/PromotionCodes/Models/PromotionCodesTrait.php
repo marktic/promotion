@@ -20,9 +20,6 @@ trait PromotionCodesTrait
         return $this->findOneByField('code', $code) ?? null;
     }
 
-    /**
-     * @return void
-     */
     protected function initRelations(): void
     {
         parent::initRelations();

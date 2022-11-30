@@ -4,8 +4,8 @@ use Marktic\Promotion\Bundle\Models\PromotionSessions\PromotionSession;
 use Nip\View\View;
 
 /**
- * @var View $this
- * @var null|PromotionSession[] $items
+ * @var View                    $this
+ * @var PromotionSession[]|null $items
  */
 $items ??= $this->get('promotion_sessions');
 $type ??= 'view';
