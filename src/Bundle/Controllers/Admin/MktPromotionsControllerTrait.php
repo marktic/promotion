@@ -23,7 +23,7 @@ trait MktPromotionsControllerTrait
     use AbstractControllerTrait;
     use HasModelLister;
 
-    public function poolIndex()
+    public function poolIndex(): void
     {
         $this->doModelsListing();
 
@@ -60,7 +60,8 @@ trait MktPromotionsControllerTrait
         $item = parent::addNewModel();
 
         $item->setPool($this->getRequest()->get('pool'));
-        $item->setPoolId($this->getRequest()->get('pool_id'));
+        $item->setPoolId(intval($this->getRequest()->get('pool_id')));
+        $item->setTypeObject($this->getRequest()->get('type'));
 
         $actionType = $this->getRequest()->get('action_type');
         $promotionAction = PromotionFactories::actions()->create($actionType, []);

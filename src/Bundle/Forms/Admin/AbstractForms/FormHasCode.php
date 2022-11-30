@@ -14,10 +14,10 @@ trait FormHasCode
     /**
      * @return void
      */
-    protected function validateCode()
+    protected function validateCode(): void
     {
         $codeElement = $this->getElement('code');
-        if ($codeElement->isError() || false === $codeElement->hasValue()) {
+        if (!is_object($codeElement) || $codeElement->isError() || false === $codeElement->hasValue()) {
             return;
         }
 
