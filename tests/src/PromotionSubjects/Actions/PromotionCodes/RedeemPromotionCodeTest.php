@@ -10,7 +10,7 @@ use Marktic\Promotion\CartPromotions\Actions\RunPromotionValidations;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\PromotionCodes\Actions\FindAndValidatePromotionCode;
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
-use Marktic\Promotion\PromotionSubjects\Actions\ApplyPromotion;
+use Marktic\Promotion\Promotions\Applicator\PromotionApplicator;
 use Marktic\Promotion\PromotionSubjects\Actions\PromotionCodes\RedeemPromotionCode;
 use Marktic\Promotion\Tests\AbstractTest;
 use Marktic\Promotion\Tests\Fixtures\Application\Models\PromotionSubjects\PromotionSubject;
@@ -30,7 +30,7 @@ class RedeemPromotionCodeTest extends AbstractTest
         $promotionValidations = \Mockery::mock(RunPromotionValidations::class)->makePartial();
         $promotionValidations->shouldReceive('execute')->once()->andReturn(ValidationResult::invalid('invalid'));
 
-        $applyPromotion = \Mockery::mock(ApplyPromotion::class)->makePartial();
+        $applyPromotion = \Mockery::mock(PromotionApplicator::class)->makePartial();
 
         $redeemPromotionCode = new RedeemPromotionCode(
             $promotionCodeValidations,

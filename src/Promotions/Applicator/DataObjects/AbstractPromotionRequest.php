@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\PromotionSubjects\DataObjects;
+namespace Marktic\Promotion\Promotions\Applicator\DataObjects;
 
 use Marktic\Promotion\PromotionActions\Models\PromotionAction;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
@@ -10,7 +10,7 @@ use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
-class ApplyPromotionRequest
+class AbstractPromotionRequest
 {
     protected PromotionSubjectInterface $subject;
 
@@ -18,11 +18,9 @@ class ApplyPromotionRequest
 
     protected ?PromotionCodeInterface $promotionCode = null;
 
-    protected array $appliedActions = [];
-
-    public static function create(): self
+    public static function create(): static
     {
-        return new self();
+        return new static();
     }
 
     public function getSubject(): PromotionSubjectInterface
@@ -58,18 +56,5 @@ class ApplyPromotionRequest
     public function hasPromotionCode(): bool
     {
         return null !== $this->promotionCode;
-    }
-
-    /**
-     * @return PromotionActionInterface[]|PromotionAction[]
-     */
-    public function getAppliedActions(): array
-    {
-        return $this->appliedActions;
-    }
-
-    public function setAppliedActions(array $appliedActions): void
-    {
-        $this->appliedActions = $appliedActions;
     }
 }

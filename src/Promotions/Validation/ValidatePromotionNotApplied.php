@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\Promotions\Validations;
+namespace Marktic\Promotion\Promotions\Validation;
 
 use Marktic\Promotion\Base\Validations\ValidatesPromotion;
 use Marktic\Promotion\Base\Validations\ValidationResult;

@@ -25,4 +25,9 @@ class RunPromotionValidations
     ): ValidationResult {
         return $this->promotionValidation->validate($promotionSubject, $promotion);
     }
+
+    public function isEligible(PromotionSubjectInterface $subject, PromotionInterface $promotion): bool
+    {
+        return $this->execute($subject, $promotion)->isValid();
+    }
 }

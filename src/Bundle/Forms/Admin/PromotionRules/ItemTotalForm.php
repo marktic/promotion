@@ -11,7 +11,7 @@ class ItemTotalForm extends AbstractForm
 {
     protected $configs = [
         ItemTotalRuleCondition::CONF_MIN_ITEMS,
-        ItemTotalRuleCondition::CONF_MIN_ITEMS,
+        ItemTotalRuleCondition::CONF_MAX_ITEMS,
     ];
     protected $repository;
 

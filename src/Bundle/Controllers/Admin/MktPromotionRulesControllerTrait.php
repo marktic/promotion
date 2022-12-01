@@ -23,8 +23,6 @@ trait MktPromotionRulesControllerTrait
 {
     use AbstractControllerTrait;
 
-    use MktPromotionRulesControllerTrait;
-
     public function edit()
     {
         $item = $this->getModelFromRequest();

@@ -8,25 +8,25 @@ use Marktic\Promotion\CartPromotions\Actions\RunPromotionValidations;
 use Marktic\Promotion\PromotionCodes\Actions\FindAndValidatePromotionCode;
 use Marktic\Promotion\PromotionCodes\Exceptions\InvalidPromotionalCode;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
+use Marktic\Promotion\Promotions\Applicator\DataObjects\ApplyPromotionRequest;
+use Marktic\Promotion\Promotions\Applicator\PromotionApplicator;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
-use Marktic\Promotion\PromotionSubjects\Actions\ApplyPromotion;
-use Marktic\Promotion\PromotionSubjects\DataObjects\ApplyPromotionRequest;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 class RedeemPromotionCode
 {
     protected ?FindAndValidatePromotionCode $promotionCodeValidator;
     protected RunPromotionValidations $promotionValidator;
-    protected ApplyPromotion $promotionApplicator;
+    protected PromotionApplicator $promotionApplicator;
 
     public function __construct(
         ?FindAndValidatePromotionCode $promotionCodeValidator = null,
         ?RunPromotionValidations $promotionValidator = null,
-        ?ApplyPromotion $promotionApplicator = null
+        ?PromotionApplicator $promotionApplicator = null
     ) {
         $this->promotionCodeValidator = $promotionCodeValidator ?? new FindAndValidatePromotionCode();
         $this->promotionValidator = $promotionValidator ?? new RunPromotionValidations();
-        $this->promotionApplicator = $promotionApplicator ?? new ApplyPromotion();
+        $this->promotionApplicator = $promotionApplicator ?? new PromotionApplicator();
     }
 
     /**
