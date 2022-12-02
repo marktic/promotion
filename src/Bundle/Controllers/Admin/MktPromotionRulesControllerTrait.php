@@ -9,7 +9,7 @@ use Marktic\Promotion\Bundle\Forms\Admin\PromotionRules\BaseForm;
 use Marktic\Promotion\Bundle\Forms\Admin\PromotionRules\ItemTotalForm;
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRule;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
-use Marktic\Promotion\PromotionRules\Conditions\ItemTotalRuleCondition;
+use Marktic\Promotion\PromotionRules\Conditions\ItemQuantityRuleCondition;
 use Nip\Controllers\Response\ResponsePayload;
 use Nip\Records\Record;
 use Nip\Utility\Url;
@@ -62,7 +62,7 @@ trait MktPromotionRulesControllerTrait
      */
     protected function getModelFormClass($model, $action = null): string
     {
-        if (ItemTotalRuleCondition::NAME == $model->getType()) {
+        if (ItemQuantityRuleCondition::NAME == $model->getType()) {
             return ItemTotalForm::class;
         }
 

@@ -10,18 +10,19 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 trait RevertPromotion
 {
-    public function revertFor(PromotionSubjectInterface $subject, PromotionInterface $promotion)
+    public function revertFor(PromotionSubjectInterface $subject, PromotionInterface $promotion): void
     {
-        $request = RevertPromotionRequest::create();
-        $request->setSubject($subject);
-        $request->setPromotion($promotion);
+        $request = $this->createRequest(RevertPromotionRequest::class, $subject, $promotion);
         $this->revert($request);
     }
 
     public function revert(RevertPromotionRequest $applyPromotionRequest): void
     {
-        $this->revertActions($applyPromotionRequest);
-        $this->revertPromotion($applyPromotionRequest);
+        $requests = $this->unpackRequest($applyPromotionRequest);
+        foreach ($requests as $request) {
+            $this->revertActions($request);
+            $this->revertPromotion($request);
+        }
     }
 
     protected function revertActions(RevertPromotionRequest $applyPromotionRequest): void

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\PromotionActions\Models\PromotionActions;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodes;
-use Marktic\Promotion\PromotionRules\Conditions\ItemTotalRuleCondition;
+use Marktic\Promotion\PromotionRules\Conditions\ItemQuantityRuleCondition;
 use Marktic\Promotion\PromotionRules\Models\PromotionRules;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSessions;
 use Marktic\Promotion\Utility\PromotionModels;
@@ -31,7 +31,7 @@ return [
     ],
     'rules' => [
         'conditions' => [
-            ItemTotalRuleCondition::class,
+            ItemQuantityRuleCondition::class,
         ],
     ],
 ];

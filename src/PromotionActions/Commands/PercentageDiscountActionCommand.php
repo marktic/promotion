@@ -16,14 +16,4 @@ class PercentageDiscountActionCommand extends DiscountActionCommand
         return parent::describeConfigurationValue($label, $value, $prefix, $suffix);
     }
 
-    protected function createPriceAdjustment(
-        PromotionSubjectInterface $subject,
-        array $configuration,
-        PromotionInterface $promotion
-    ) {
-        $adjustment = parent::createPriceAdjustment($subject, $configuration, $promotion);
-        $adjustment->modifiesPercentage();
-
-        return $adjustment;
-    }
 }

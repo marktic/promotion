@@ -57,12 +57,12 @@ trait HasPriceAdjustment
     protected function getPriceAdjustmentModification(): string
     {
         switch (static::NAME) {
-            case PercentageDiscountActionCommand::NAME:
-                return PriceAdjustmentContract::MODIFICATION_PERCENTAGE;
             case FixedDiscountActionCommand::NAME:
                 return PriceAdjustmentContract::MODIFICATION_AMOUNT;
             case FixedPriceActionCommand::NAME:
                 return PriceAdjustmentContract::MODIFICATION_FIXED;
+            case PercentageDiscountActionCommand::NAME:
+                return PriceAdjustmentContract::MODIFICATION_PERCENTAGE;
             default:
                 throw new \Exception('Unknown discount type');
         }

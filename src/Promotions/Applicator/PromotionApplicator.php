@@ -8,5 +8,6 @@ class PromotionApplicator extends AbstractPromotionApplicator
 {
     use Behaviours\ApplyPromotion;
     use Behaviours\RevertPromotion;
+    use Behaviours\HasRequests;
 
 }

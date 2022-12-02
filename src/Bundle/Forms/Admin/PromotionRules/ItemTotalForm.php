@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Bundle\Forms\Admin\PromotionRules;
 
-use Marktic\Promotion\PromotionRules\Conditions\ItemTotalRuleCondition;
+use Marktic\Promotion\PromotionRules\Conditions\ItemQuantityRuleCondition;
 use Marktic\Promotion\Utility\PromotionModels;
 
 class ItemTotalForm extends AbstractForm
 {
     protected $configs = [
-        ItemTotalRuleCondition::CONF_MIN_ITEMS,
-        ItemTotalRuleCondition::CONF_MAX_ITEMS,
+        ItemQuantityRuleCondition::CONF_MIN_ITEMS,
+        ItemQuantityRuleCondition::CONF_MAX_ITEMS,
     ];
     protected $repository;
 
@@ -30,7 +30,7 @@ class ItemTotalForm extends AbstractForm
     {
         $this->addNumber(
             $name,
-            $this->repository->getLabel('rule.' . ItemTotalRuleCondition::NAME . '.' . $name),
+            $this->repository->getLabel('rule.' . ItemQuantityRuleCondition::NAME . '.' . $name),
             true
         );
     }

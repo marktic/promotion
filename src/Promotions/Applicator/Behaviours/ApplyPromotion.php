@@ -10,21 +10,22 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
 trait ApplyPromotion
 {
-        public function applyFor(PromotionSubjectInterface $subject, PromotionInterface $promotion): void
+    public function applyFor(PromotionSubjectInterface $subject, PromotionInterface $promotion): void
     {
-        $request = ApplyPromotionRequest::create();
-        $request->setSubject($subject);
-        $request->setPromotion($promotion);
-
+        $request = $this->createRequest(ApplyPromotionRequest::class, $subject, $promotion);
         $this->apply($request);
     }
 
     public function apply(ApplyPromotionRequest $applyPromotionRequest): void
     {
-        $appliedActions = $this->applyActions($applyPromotionRequest);
+        $requests = $this->unpackRequest($applyPromotionRequest);
 
-        if (\count($appliedActions)) {
-            $this->applyPromotion($applyPromotionRequest);
+        foreach ($requests as $request) {
+            $appliedActions = $this->applyActions($request);
+
+            if (\count($appliedActions)) {
+                $this->applyPromotion($request);
+            }
         }
     }
 
