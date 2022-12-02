@@ -12,6 +12,6 @@ trait PromotionSubjectBundleTrait
 
     public function getPromotionSubjectCount(): int
     {
-        return count($this->getPromotionSubjects());
+        return \count($this->getPromotionSubjects());
     }
 }

@@ -29,5 +29,4 @@ trait CanDescribe
     {
         return $label . ': ' . $prefix . $value . $suffix;
     }
-
 }

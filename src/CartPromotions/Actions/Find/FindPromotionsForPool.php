@@ -16,9 +16,6 @@ class FindPromotionsForPool
 
     protected string|null|array $type = null;
 
-    /**
-     * @param $pool
-     */
     final protected function __construct($pool, $repository = null)
     {
         $this->pool = $pool;
@@ -33,6 +30,7 @@ class FindPromotionsForPool
     public function withType($type): static
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -52,6 +50,7 @@ class FindPromotionsForPool
         if ($this->type) {
             $params['where'][] = ['type = ?', $this->type];
         }
+
         return $params;
     }
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\PromotionActions\Commands;
 
-
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 
@@ -36,11 +35,6 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         array $configuration,
         PromotionInterface $promotion
     ): void {
-        foreach ($subject->getItems() as $item) {
-            $this->removePriceAdjustment($subject, $promotion);
-        }
+        $this->removePriceAdjustment($subject, $promotion);
     }
-
-
-
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionRules\Conditions;
 
 use Marktic\Promotion\PromotionRules\Conditions\ItemTotalRuleCondition;
@@ -9,13 +11,11 @@ use PHPUnit\Framework\TestCase;
 class ItemTotalRuleConditionTest extends TestCase
 {
     /**
-     * @param $amount
-     * @param $config
-     * @param $resultBool
      * @return void
+     *
      * @dataProvider data_validate
      */
-    public function test_validate($amount, $config, $resultBool)
+    public function testValidate($amount, $config, $resultBool)
     {
         $condition = new ItemTotalRuleCondition();
         $subject = $this->createMock(PromotionSubjectInterface::class);
@@ -69,6 +69,7 @@ class ItemTotalRuleConditionTest extends TestCase
             [ItemTotalRuleCondition::CONF_MIN_AMOUNT => 10.00, ItemTotalRuleCondition::CONF_MAX_AMOUNT => 20.00],
             false,
         ];
+
         return $return;
     }
 }

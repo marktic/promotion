@@ -29,7 +29,7 @@ class PromotionProcessor
     public function process(PromotionSubjectInterface $subject): void
     {
         foreach ($subject->getPromotions() as $promotion) {
-            if ($promotion->getType() !== Automatic::NAME) {
+            if (Automatic::NAME !== $promotion->getType()) {
                 continue;
             }
             $this->applicator->revertFor($subject, $promotion);
@@ -51,6 +51,4 @@ class PromotionProcessor
             }
         }
     }
-
 }
-

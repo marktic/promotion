@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Promotions\Applicator\DataObjects;
 
-use Marktic\Promotion\PromotionActions\Models\PromotionAction;
-use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodeInterface;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;

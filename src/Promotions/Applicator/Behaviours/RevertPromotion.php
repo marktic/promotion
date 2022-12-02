@@ -32,7 +32,7 @@ trait RevertPromotion
         foreach ($promotion->getPromotionActions() as $action) {
             $this
                 ->getActionCommandfor($action)
-                ->revert($applyPromotionRequest->getSubject(), (array)$action->getConfiguration(), $promotion);
+                ->revert($applyPromotionRequest->getSubject(), (array) $action->getConfiguration(), $promotion);
         }
     }
 

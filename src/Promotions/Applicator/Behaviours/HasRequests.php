@@ -15,6 +15,7 @@ trait HasRequests
         $request = $class::create();
         $request->setSubject($subject);
         $request->setPromotion($promotion);
+
         return $request;
     }
 
@@ -32,6 +33,7 @@ trait HasRequests
             $newRequest->setSubject($subject);
             $array[] = $newRequest;
         }
+
         return $array;
     }
 }

@@ -1,22 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Marktic\Promotion\Tests\PromotionRules\Conditions;
 
 use Marktic\Promotion\PromotionRules\Conditions\ItemQuantityRuleCondition;
 use Marktic\Promotion\PromotionSubjects\Models\CountablePromotionSubjectInterface;
-use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 use PHPUnit\Framework\TestCase;
 
 class ItemQuantityRuleConditionTest extends TestCase
 {
     /**
-     * @param $value
-     * @param $config
-     * @param $resultBool
      * @return void
+     *
      * @dataProvider data_validate
      */
-    public function test_validate($value, $config, $resultBool)
+    public function testValidate($value, $config, $resultBool)
     {
         $condition = new ItemQuantityRuleCondition();
         $subject = $this->createMock(CountablePromotionSubjectInterface::class);
@@ -70,6 +69,7 @@ class ItemQuantityRuleConditionTest extends TestCase
             [ItemQuantityRuleCondition::CONF_MIN_ITEMS => 10, ItemQuantityRuleCondition::CONF_MAX_ITEMS => 20],
             false,
         ];
+
         return $return;
     }
 }

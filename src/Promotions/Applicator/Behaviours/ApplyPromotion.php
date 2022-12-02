@@ -36,7 +36,7 @@ trait ApplyPromotion
         foreach ($promotion->getPromotionActions() as $action) {
             $result = $this
                 ->getActionCommandfor($action)
-                ->execute($applyPromotionRequest->getSubject(), (array)$action->getConfiguration(), $promotion);
+                ->execute($applyPromotionRequest->getSubject(), (array) $action->getConfiguration(), $promotion);
             if ($result) {
                 $applyPromotionRequest->addAppliedAction($action);
             }

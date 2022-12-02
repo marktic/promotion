@@ -10,7 +10,6 @@ use Marktic\Promotion\PromotionSubjects\Models\PromotionSubjectInterface;
 interface PreQualifiedPromotionsProviderInterface
 {
     /**
-     * @param PromotionSubjectInterface $promotionSubject
      * @return PromotionInterface[]
      */
     public function getPromotionsFor(PromotionSubjectInterface $promotionSubject): array;

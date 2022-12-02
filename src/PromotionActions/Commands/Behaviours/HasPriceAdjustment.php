@@ -53,7 +53,6 @@ trait HasPriceAdjustment
         ]);
     }
 
-
     protected function getPriceAdjustmentModification(): string
     {
         switch (static::NAME) {

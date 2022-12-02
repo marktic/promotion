@@ -11,9 +11,7 @@ use Marktic\Promotion\Base\Models\Behaviours\HasRules\HasRulesInterface;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\HasUsageInterface;
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\HasValidityInterface;
 
-interface PromotionInterface extends
-    HasRulesInterface, HasActionsInterface, HasUsageInterface, HasValidityInterface,
-    HasCodeInterface, HasIdInterface
+interface PromotionInterface extends HasRulesInterface, HasActionsInterface, HasUsageInterface, HasValidityInterface, HasCodeInterface, HasIdInterface
 {
     public function getName(): ?string;
 
