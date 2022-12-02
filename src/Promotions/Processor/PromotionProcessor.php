@@ -23,7 +23,7 @@ class PromotionProcessor
     ) {
         $this->promotionProvider = $promotionProvider;
         $this->applicator = $applicator ?? new PromotionApplicator();
-        $this->promotionValidator = $promotionValidator;
+        $this->promotionValidator = $promotionValidator ?? new RunPromotionValidations();
     }
 
     public function process(PromotionSubjectInterface $subject): void

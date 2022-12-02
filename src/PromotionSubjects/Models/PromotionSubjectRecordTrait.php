@@ -11,8 +11,7 @@ use Nip\Records\Collections\Collection;
 use Nip\Records\Relations\Relation;
 
 /**
- * @method PromotionSession[] getPromotionSessions()
- * @method Relation           getRelation($name)
+ * @method Relation getRelation($name)
  */
 trait PromotionSubjectRecordTrait
 {
@@ -27,6 +26,11 @@ trait PromotionSubjectRecordTrait
     }
 
     public function getPromotions(): Collection
+    {
+        return $this->getPromotionSessions()->loadRelation('Promotion');
+    }
+
+    public function getPromotionSessions(): Collection|null
     {
         return $this->getRelation('PromotionSessions')->getResults();
     }

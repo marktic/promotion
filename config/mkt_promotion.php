@@ -8,6 +8,7 @@ use Marktic\Promotion\Bundle\Models\PromotionCodes\PromotionCodes;
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRules;
 use Marktic\Promotion\Bundle\Models\PromotionSessions\PromotionSessions;
 use Marktic\Promotion\PromotionRules\Conditions\ItemQuantityRuleCondition;
+use Marktic\Promotion\PromotionRules\Conditions\ItemTotalRuleCondition;
 use Marktic\Promotion\Utility\PromotionModels;
 
 return [
@@ -35,6 +36,7 @@ return [
     'rules' => [
         'conditions' => [
             ItemQuantityRuleCondition::class,
+            ItemTotalRuleCondition::class,
         ],
     ],
 ];
