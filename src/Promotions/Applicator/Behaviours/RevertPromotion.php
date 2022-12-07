@@ -47,12 +47,13 @@ trait RevertPromotion
     protected function revertPromotionSessions(RevertPromotionRequest $applyPromotionRequest): void
     {
         $subject = $applyPromotionRequest->getSubject();
-        $subject->getPromotionSessions()
-            ->each(function (PromotionSession $promotionSession) use ($applyPromotionRequest) {
-                if ($promotionSession->promotion_id === $applyPromotionRequest->getPromotion()->id) {
-                    $promotionSession->delete();
-                }
-            });
+        $promotionSessions = $subject->getPromotionSessions();
+        foreach ($promotionSessions as $promotionSession) {
+            if ($promotionSession->promotion_id === $applyPromotionRequest->getPromotion()->id) {
+                $promotionSessions->remove($promotionSession);
+                $promotionSession->delete();
+            }
+        }
     }
 
     protected function revertPromotionCount(RevertPromotionRequest $applyPromotionRequest): void

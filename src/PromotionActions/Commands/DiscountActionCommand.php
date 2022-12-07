@@ -27,6 +27,9 @@ abstract class DiscountActionCommand implements PromotionActionCommandInterface
         $adjustment = $this->createPriceAdjustment($subject, $configuration, $promotion);
         $adjustment->save();
 
+        $subject->getRelation('PriceAdjustments')
+            ->getResults()->add($adjustment);
+
         return true;
     }
 
