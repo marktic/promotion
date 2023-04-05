@@ -1,10 +1,12 @@
 <?php declare(strict_types=1);
 
+use ByTIC\Models\SmartProperties\Properties\Statuses\Generic;
 use Marktic\Promotion\Bundle\Models\PromotionSessions\PromotionSession;
+use Nip\Records\Record;
 use Nip\View\View;
 
 /**
- * @var View                    $this
+ * @var View $this
  * @var PromotionSession[]|null $items
  */
 $items ??= $this->get('promotion_sessions');
@@ -13,6 +15,7 @@ $type ??= 'view';
 <table class="table">
     <thead>
     <tr>
+        <th></th>
         <th>
             SUBJECT
         </th>
@@ -29,7 +32,15 @@ $type ??= 'view';
         <?php $subject = $item->getPromotionSubject(); ?>
         <tr>
             <td>
-                <?php if ($subject instanceof \Nip\Records\Record) { ?>
+                <?php
+                $status = method_exists($subject, 'getStatus') ? $subject->getStatus() : null;
+                $statusHtml = $status instanceof Generic ? $status->getLabelHTML(true) : '';
+                ?>
+                <?= $statusHtml; ?>
+            </td>
+            <td>
+                <?php if ($subject instanceof Record) { ?>
+
                     <a href="<?= $subject->getURL(); ?>">
                         <?= $subject->getName(); ?>
                     </a>

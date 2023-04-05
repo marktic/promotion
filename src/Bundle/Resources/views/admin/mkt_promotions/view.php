@@ -19,10 +19,10 @@ use Nip\View\View;
         </div>
     </div>
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <?= $this->load('modules/panels/item-codes'); ?>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-8">
             <?= $this->load('modules/panels/item-sessions'); ?>
         </div>
     </div>
