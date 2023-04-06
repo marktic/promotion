@@ -33,14 +33,13 @@ $type ??= 'view';
         <tr>
             <td>
                 <?php
-                $status = method_exists($subject, 'getStatus') ? $subject->getStatus() : null;
+                $status = $subject && method_exists($subject, 'getStatus') ? $subject->getStatus() : null;
                 $statusHtml = $status instanceof Generic ? $status->getLabelHTML(true) : '';
                 ?>
                 <?= $statusHtml; ?>
             </td>
             <td>
                 <?php if ($subject instanceof Record) { ?>
-
                     <a href="<?= $subject->getURL(); ?>">
                         <?= $subject->getName(); ?>
                     </a>
