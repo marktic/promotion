@@ -10,6 +10,7 @@ use Marktic\Promotion\Bundle\Forms\Admin\Promotions\CouponCodeForm;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\CartPromotions\Models\Types\CouponCode;
+use Marktic\Promotion\Promotions\Actions\Usage\RecalculatePromotionUsage;
 use Marktic\Promotion\Utility\PromotionFactories;
 use Marktic\Promotion\Utility\PromotionModels;
 use Marktic\Promotion\Utility\PromotionServices;
@@ -52,6 +53,16 @@ trait MktPromotionsControllerTrait
             'promotion_codes' => $promotionCodes,
             'promotion_sessions' => $promotionSessions,
         ]);
+    }
+
+    public function recalculateUses()
+    {
+        $promotion = $this->getModelFromRequest();
+        RecalculatePromotionUsage::for($promotion)->handle();
+        $this->flashRedirect(
+            $this->getModelManager()->getMessage('recalculate'),
+            $promotion->compileURL('view'),
+        );
     }
 
     public function addNewModel(): \Nip\Records\AbstractModels\Record
