@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Base\Models\Behaviours\HasConfiguration;
 
-use Marktic\Promotion\Base\Configurations\ModelConfiguration;
+use ByTIC\DataObjects\Casts\Metadata\Metadata;
 
 interface HasConfigurationInterface
 {
-    public function getConfiguration(): ModelConfiguration;
+    public function getConfiguration(): Metadata;
 }

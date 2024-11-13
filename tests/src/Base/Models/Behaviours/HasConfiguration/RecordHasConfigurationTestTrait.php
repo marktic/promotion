@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Tests\Base\Models\Behaviours\HasConfiguration;
 
-use Marktic\Promotion\Base\Configurations\ModelConfiguration;
+use ByTIC\DataObjects\Casts\Metadata\Metadata;
 use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfiguration;
 use Nip\Records\AbstractModels\Record;
 
@@ -20,7 +20,7 @@ trait RecordHasConfigurationTestTrait
         $record->fill(['configuration' => $input]);
 
         $configuration = $record->getConfiguration();
-        self::assertInstanceOf(ModelConfiguration::class, $configuration);
+        self::assertInstanceOf(Metadata::class, $configuration);
         self::assertSame($expected, $configuration->toArray());
     }
 
@@ -48,7 +48,7 @@ trait RecordHasConfigurationTestTrait
 
         $record->setConfiguration(['foo' => 'bar']);
         $configuration = $record->getConfiguration();
-        self::assertInstanceOf(ModelConfiguration::class, $configuration);
+        self::assertInstanceOf(Metadata::class, $configuration);
         self::assertSame(['foo' => 'bar'], $configuration->toArray());
         self::assertSame('{"foo":"bar"}', $record->getPropertyRaw('configuration'));
 

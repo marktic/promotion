@@ -7,6 +7,7 @@ namespace Marktic\Promotion\CartPromotions\Models;
 use Marktic\Promotion\Base\Models\Behaviours\HasActions\RecordHasPromotionActions;
 use Marktic\Promotion\Base\Models\Behaviours\HasCode\RecordHasCode;
 use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
+use Marktic\Promotion\Base\Models\Behaviours\HasPool\RecordHasPool;
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\RecordHasPromotionRules;
 use Marktic\Promotion\Base\Models\Behaviours\HasUsage\RecordHasUsage;
 use Marktic\Promotion\Base\Models\Behaviours\HasValidity\RecordHasValidity;
@@ -32,15 +33,12 @@ trait CartPromotionTrait
 
     use RecordHasCode;
     use RecordHasId;
+    use RecordHasPool;
     use RecordHasPromotionActions;
     use RecordHasPromotionRules;
     use RecordHasUsage;
     use RecordHasValidity;
     use TimestampableTrait;
-
-    protected ?string $pool = null;
-
-    protected ?int $pool_id = null;
 
     protected ?string $name = null;
 
@@ -97,25 +95,5 @@ trait CartPromotionTrait
     public function setExclusive(?bool $exclusive): void
     {
         $this->exclusive = (true === $exclusive);
-    }
-
-    public function getPool(): ?string
-    {
-        return $this->pool;
-    }
-
-    public function setPool(?string $pool): void
-    {
-        $this->pool = $pool;
-    }
-
-    public function getPoolId(): ?int
-    {
-        return $this->pool_id;
-    }
-
-    public function setPoolId(?int $pool_id): void
-    {
-        $this->pool_id = $pool_id;
     }
 }

@@ -9,6 +9,7 @@ use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotions;
 use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionActions;
 use Marktic\Promotion\Bundle\Models\PromotionCodes\PromotionCodes;
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRules;
+use Marktic\Promotion\GiftCards\Models\GiftCards;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
 use Marktic\Promotion\PromotionServiceProvider;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSessions;
@@ -25,6 +26,8 @@ class PromotionModels extends ModelFinder
     public const PROMOTION_CODES = 'promotion_codes';
     public const PROMOTION_RULES = 'promotion_rules';
     public const PROMOTION_SESSIONS = 'promotion_sessions';
+
+    public const GIFT_CARDS = 'gift_cards';
 
     /**
      * @return CartPromotions|RecordManager
@@ -64,6 +67,11 @@ class PromotionModels extends ModelFinder
     public static function promotionSessions()
     {
         return static::getModels(self::PROMOTION_SESSIONS, PromotionSessions::class);
+    }
+
+    public static function giftCards()
+    {
+        return static::getModels(self::GIFT_CARDS, GiftCards::class);
     }
 
     public static function registerInContainer(ContainerInterface $container): void

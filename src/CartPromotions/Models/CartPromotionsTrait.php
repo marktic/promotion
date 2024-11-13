@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Promotion\CartPromotions\Models;
 
 use Marktic\Promotion\Base\Models\Behaviours\HasActions\RepositoryHasPromotionActions;
+use Marktic\Promotion\Base\Models\Behaviours\HasPool\RepositoryHasPool;
 use Marktic\Promotion\Base\Models\Behaviours\HasRules\RepositoryHasPromotionRules;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\CartPromotions\Events\CartPromotionCreated;
@@ -17,7 +18,7 @@ use Nip\Records\EventManager\Events\Event;
 trait CartPromotionsTrait
 {
     use Behaviours\HasType\HasTypeRepository;
-
+    use RepositoryHasPool;
     use RepositoryHasPromotionActions;
     use RepositoryHasPromotionRules;
     use TimestampableManagerTrait;
@@ -57,11 +58,6 @@ trait CartPromotionsTrait
         $this->initRelationsPromotionActions();
         $this->initRelationsPromotionRules();
         $this->initRelationsPromotionSessions();
-    }
-
-    protected function initRelationsPromotionPool(): void
-    {
-        $this->morphTo(CartPromotions::RELATION_POOL, ['morphPrefix' => 'pool', 'morphTypeField' => 'pool']);
     }
 
     protected function initRelationsPromotionCodes(): void
