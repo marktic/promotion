@@ -29,6 +29,8 @@ class PromotionModels extends ModelFinder
 
     public const GIFT_CARDS = 'gift_cards';
 
+    public const GIFT_PRODUCTS = 'gift_products';
+
     /**
      * @return CartPromotions|RecordManager
      */
