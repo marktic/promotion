@@ -18,6 +18,7 @@ trait GiftProductTrait
 {
     use RecordHasId;
     use RecordHasPool;
+    use Behaviours\HasType\HasTypeRecord;
     use RecordHasConfiguration;
     use TimestampableTrait;
 

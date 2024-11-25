@@ -12,6 +12,7 @@ use Marktic\Promotion\Utility\PromotionModels;
 trait GiftProductsTrait
 {
     use RepositoryHasPool;
+    use Behaviours\HasType\HasTypeRepository;
     use TimestampableManagerTrait;
 
     /**

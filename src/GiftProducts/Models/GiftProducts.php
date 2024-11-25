@@ -17,5 +17,5 @@ class GiftProducts extends RecordManager implements RepositoryHasPoolInterface
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_gift_products';
-    public const CONTROLLER = 'mkt_gift_products';
+    public const CONTROLLER = 'mkt_promotion-gift_products';
 }

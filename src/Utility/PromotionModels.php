@@ -10,6 +10,7 @@ use Marktic\Promotion\Bundle\Models\PromotionActions\PromotionActions;
 use Marktic\Promotion\Bundle\Models\PromotionCodes\PromotionCodes;
 use Marktic\Promotion\Bundle\Models\PromotionRules\PromotionRules;
 use Marktic\Promotion\GiftCards\Models\GiftCards;
+use Marktic\Promotion\GiftProducts\Models\GiftProducts;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
 use Marktic\Promotion\PromotionServiceProvider;
 use Marktic\Promotion\PromotionSessions\Models\PromotionSessions;
@@ -74,6 +75,11 @@ class PromotionModels extends ModelFinder
     public static function giftCards()
     {
         return static::getModels(self::GIFT_CARDS, GiftCards::class);
+    }
+
+    public static function giftProducts()
+    {
+        return static::getModels(self::GIFT_PRODUCTS, GiftProducts::class);
     }
 
     public static function registerInContainer(ContainerInterface $container): void

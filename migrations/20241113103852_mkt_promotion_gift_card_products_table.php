@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class MktPromotionGiftProductsTable extends AbstractMigration
+final class MktPromotionGiftCardProductsTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -28,6 +28,7 @@ final class MktPromotionGiftProductsTable extends AbstractMigration
         $table
             ->addColumn('pool_id', 'integer', ['null' => true])
             ->addColumn('pool', 'string', ['null' => true])
+            ->addColumn('type', 'string', ['null' => false])
             ->addColumn('configuration', 'json', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
@@ -41,19 +42,6 @@ final class MktPromotionGiftProductsTable extends AbstractMigration
         $table
             ->addIndex(['pool_id'])
             ->addIndex(['pool'])
-            ->save();
-
-        $table
-            ->addForeignKey(
-                'promotion_id',
-                'mkt_promotions',
-                'id',
-                [
-                    'constraint' => 'mkt_promotions_gifts_promotion_id',
-                    'delete' => 'NO_ACTION',
-                    'update' => 'NO_ACTION',
-                ]
-            )
             ->save();
     }
 }
