@@ -23,7 +23,7 @@ trait ActionHasPool
     {
         $this->poolRecord = $poolRecord;
         $this->pool = $poolRecord->getManager()->getMorphName();
-        $this->pool_id = $poolRecord->getId();
+        $this->pool_id = method_exists($poolRecord, 'getId') ? $poolRecord->getId() : $poolRecord->id;
         return $this;
     }
 

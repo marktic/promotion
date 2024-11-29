@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Marktic\Promotion\GiftProducts\Actions;
 
 use Bytic\Actions\Action;
+use Bytic\Actions\Behaviours\Entities\HasRepository;
+use Bytic\Actions\Behaviours\Entities\HasResultRecordTrait;
 use Bytic\Actions\Behaviours\HasSubject\HasSubject;
-use Marktic\Billing\Base\Actions\Behaviours\HasResultRecordTrait;
 use Marktic\Promotion\Base\Actions\Behaviours\ActionHasPool;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
 use Marktic\Promotion\GiftProducts\Models\Types\CouponCard;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\Records\AbstractModels\RecordManager;
-use Sportic\Waiver\Base\Actions\Behaviours\HasRepository;
 
 /**
  * @property GiftProduct $resultRecord
@@ -42,10 +42,17 @@ class CreateGiftProduct extends Action
         return $this->getResultRecord();
     }
 
+    public function create()
+    {
+        $record = $this->getResultRecord();
+        $record->save();
+        return $record;
+    }
+
     protected function populateResultRecord()
     {
         $this->resultRecord->populateFromPoolRecord($this->poolRecord);
-        $this->resultRecord->type = $this->type;
+        $this->resultRecord->setType($this->type);
     }
 
     protected function generateRepository(): RecordManager
@@ -53,4 +60,3 @@ class CreateGiftProduct extends Action
         return PromotionModels::giftProducts();
     }
 }
-

@@ -2,7 +2,7 @@
 
 namespace Marktic\Promotion\Tests\GiftCards\Models;
 
-use Marktic\Promotion\GiftCards\DataObjects\GiftCardConfiguration;
+use Marktic\Promotion\GiftCards\DataObjects\GiftProductConfiguration;
 use Marktic\Promotion\GiftCards\Models\GiftCard;
 use Marktic\Promotion\Tests\Base\Models\AbstractRecordTest;
 use Marktic\Promotion\Tests\Base\Models\Behaviours\HasConfiguration\RecordHasConfigurationTestTrait;
@@ -25,7 +25,7 @@ class GiftCardTest extends AbstractRecordTest
     {
         $record = $this->newRecordInstance(['configuration' => '{}']);
         $configuration = $record->getConfiguration();
-        self::assertInstanceOf(GiftCardConfiguration::class, $configuration);
+        self::assertInstanceOf(GiftProductConfiguration::class, $configuration);
         self::assertNull($configuration->getSender());
         self::assertNull($configuration->getRecipient());
 
@@ -37,7 +37,7 @@ class GiftCardTest extends AbstractRecordTest
         $record->setConfiguration($configurationArray);
 
         $configuration = $record->getConfiguration();
-        self::assertInstanceOf(GiftCardConfiguration::class, $configuration);
+        self::assertInstanceOf(GiftProductConfiguration::class, $configuration);
         self::assertSame('John', $configuration->getSender()->getFirstName());
         self::assertSame('Sende', $configuration->getSender()->getLastName());
         self::assertSame('john@yahoo.com', $configuration->getSender()->getEmail());

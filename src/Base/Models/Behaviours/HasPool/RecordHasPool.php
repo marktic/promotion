@@ -17,7 +17,9 @@ trait RecordHasPool
     public function populateFromPoolRecord($poolRecord): static
     {
         $this->setPool($poolRecord->getManager()->getMorphName());
-        $this->setPoolId($poolRecord->getId());
+        $this->setPoolId(
+            method_exists($poolRecord, 'getId') ? $poolRecord->getId() : $poolRecord->id
+        );
         return $this;
     }
 
