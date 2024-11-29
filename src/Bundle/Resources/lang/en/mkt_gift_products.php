@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'mkt_gift_products.labels.title' => 'GiftCard Products',
+    'mkt_promotion-gift_products.labels.title' => 'GiftCard Products',
 ];

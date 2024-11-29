@@ -14,6 +14,13 @@ trait RecordHasPool
 
     protected ?int $pool_id = null;
 
+    public function populateFromPoolRecord($poolRecord): static
+    {
+        $this->setPool($poolRecord->getManager()->getMorphName());
+        $this->setPoolId($poolRecord->getId());
+        return $this;
+    }
+
     public function getPool(): ?string
     {
         return $this->pool;
