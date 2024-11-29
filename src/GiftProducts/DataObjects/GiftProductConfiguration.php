@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\GiftCards\DataObjects;
+namespace Marktic\Promotion\GiftProducts\DataObjects;
 
 use ByTIC\DataObjects\Casts\Metadata\Metadata;
 

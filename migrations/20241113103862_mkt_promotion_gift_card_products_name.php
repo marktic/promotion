@@ -22,7 +22,7 @@ final class MktPromotionGiftCardProductsName extends AbstractMigration
         $table_name = 'mkt_gift_products';
         $table = $this->table($table_name);
         $table
-            ->addColumn('name', 'string', ['null' => true,'before' => 'pool_id'])
+            ->addColumn('name', 'string', ['null' => true, 'after' => 'id'])
             ->save();
     }
 }

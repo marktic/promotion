@@ -9,7 +9,7 @@ use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Promotion\Base\Models\Behaviours\HasName\RecordHasName;
 use Marktic\Promotion\Base\Models\Behaviours\HasPool\RecordHasPool;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
-use Marktic\Promotion\GiftCards\DataObjects\GiftProductConfiguration;
+use Marktic\Promotion\GiftProducts\DataObjects\GiftProductConfiguration;
 
 /**
  * Trait GiftCardProductTrait.
