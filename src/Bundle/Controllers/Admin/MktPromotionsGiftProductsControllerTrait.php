@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
-use Marktic\Promotion\Bundle\Forms\Admin\Promotions\AutomaticForm;
-use Marktic\Promotion\Bundle\Forms\Admin\Promotions\CouponCodeForm;
+use Marktic\Promotion\Bundle\Forms\Admin\GiftProducts\ValueCardForm;
+use Marktic\Promotion\Bundle\Forms\Admin\GiftProducts\CouponCardForm;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
 use Marktic\Promotion\GiftProducts\Models\Types\CouponCard;
 use Marktic\Promotion\Utility\PromotionServices;
@@ -84,10 +84,10 @@ trait MktPromotionsGiftProductsControllerTrait
         $type = $this->getRequest()->get('type');
 
         if (CouponCard::NAME == $type) {
-            return CouponCodeForm::class;
+            return CouponCardForm::class;
         }
 
-        return AutomaticForm::class;
+        return ValueCardForm::class;
     }
 
     /**
