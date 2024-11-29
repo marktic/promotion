@@ -6,6 +6,7 @@ namespace Marktic\Promotion\Base\Models\Behaviours\HasPool;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
+use Nip\Utility\Number;
 
 trait RecordHasPool
 {
@@ -18,7 +19,9 @@ trait RecordHasPool
     {
         $this->setPool($poolRecord->getManager()->getMorphName());
         $this->setPoolId(
-            method_exists($poolRecord, 'getId') ? $poolRecord->getId() : $poolRecord->id
+            Number::intVal(
+                method_exists($poolRecord, 'getId') ? $poolRecord->getId() : $poolRecord->id
+            )
         );
         return $this;
     }

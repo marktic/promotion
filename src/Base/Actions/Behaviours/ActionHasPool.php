@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Promotion\Base\Actions\Behaviours;
 
 use Nip\Records\Record;
+use Nip\Utility\Number;
 
 trait ActionHasPool
 {
@@ -23,7 +24,7 @@ trait ActionHasPool
     {
         $this->poolRecord = $poolRecord;
         $this->pool = $poolRecord->getManager()->getMorphName();
-        $this->pool_id = method_exists($poolRecord, 'getId') ? $poolRecord->getId() : $poolRecord->id;
+        $this->pool_id = Number::intVal(method_exists($poolRecord, 'getId') ? $poolRecord->getId() : $poolRecord->id);
         return $this;
     }
 
