@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class MktPromotionGiftCardProductsName extends AbstractMigration
+final class MktPromotionGiftCardProductsDescription extends AbstractMigration
 {
     /**
      * Change Method.
