@@ -8,9 +8,11 @@ use ByTIC\Controllers\Behaviors\Models\HasModelLister;
 use Marktic\Promotion\Bundle\Controllers\Admin\AbstractControllerTrait;
 use Marktic\Promotion\Bundle\Forms\Admin\GiftProducts\ValueCardForm;
 use Marktic\Promotion\Bundle\Forms\Admin\GiftProducts\CouponCardForm;
+use Marktic\Promotion\GiftProducts\Actions\PriceCalculatorGiftProduct;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
 use Marktic\Promotion\GiftProducts\Models\Types\CouponCard;
 use Marktic\Promotion\Utility\PromotionServices;
+use Nip\Container\Utility\Container;
 use Nip\Records\Record;
 
 /**
@@ -28,6 +30,7 @@ trait MktPromotionsGiftProductsControllerTrait
         $this->payload()->with([
             'pool' => $this->getRequest()->get('pool'),
             'pool_id' => $this->getRequest()->get('pool_id'),
+            'priceCalculator' => $this->getPriceCalculator(),
         ]);
     }
 
@@ -85,5 +88,11 @@ trait MktPromotionsGiftProductsControllerTrait
     protected function checkPoolAccess($pool)
     {
         $this->checkAndSetForeignModelInRequest($pool);
+    }
+
+    protected function getPriceCalculator()
+    {
+        $container = Container::container();
+        return $container->get(PriceCalculatorGiftProduct::class);
     }
 }
