@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Marktic\Promotion\Base\Models\Behaviours\HasPool;
 
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
+use Marktic\Promotion\PromotionPools\Models\PromotionPoolsRecordTrait;
 use Marktic\Promotion\Promotions\Models\PromotionInterface;
 use Nip\Utility\Number;
 
+/**
+ * @method PromotionPoolsRecordTrait getPromotionPool()
+ */
 trait RecordHasPool
 {
 

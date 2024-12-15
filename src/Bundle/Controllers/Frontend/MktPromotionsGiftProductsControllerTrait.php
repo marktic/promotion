@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace Marktic\Promotion\Bundle\Controllers\Frontend;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
-use Marktic\Promotion\Bundle\Controllers\Admin\AbstractControllerTrait;
-use Marktic\Promotion\Bundle\Forms\Admin\GiftProducts\ValueCardForm;
-use Marktic\Promotion\Bundle\Forms\Admin\GiftProducts\CouponCardForm;
+use Marktic\Promotion\Bundle\Forms\Frontend\GiftCards\BuyForm;
+use Marktic\Promotion\GiftCards\Actions\GenerateForProduct;
 use Marktic\Promotion\GiftProducts\Actions\PriceCalculatorGiftProduct;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
-use Marktic\Promotion\GiftProducts\Models\Types\CouponCard;
-use Marktic\Promotion\Utility\PromotionServices;
 use Nip\Container\Utility\Container;
 use Nip\Records\Record;
 
@@ -34,13 +31,20 @@ trait MktPromotionsGiftProductsControllerTrait
         ]);
     }
 
-    public function view()
+    public function buy()
     {
-        parent::view();
+        $giftProduct = $this->getModelFromRequest();
 
-        $promotion = $this->getModelFromRequest();
+        $giftCard = GenerateForProduct::for($giftProduct)->handle();
+        $form = $this->getModelForm($giftCard);
+        if ($form->execute()) {
+            $this->buyRedirect($giftProduct);
+        }
 
         $this->payload()->with([
+            'giftProduct' => $giftProduct,
+            'form' => $form,
+            'priceCalculator' => $this->getPriceCalculator(),
         ]);
     }
 
@@ -95,4 +99,14 @@ trait MktPromotionsGiftProductsControllerTrait
         $container = Container::container();
         return $container->get(PriceCalculatorGiftProduct::class);
     }
+
+    protected function getModelFormClass($model, $action = null): string
+    {
+        if ($action == 'buy') {
+            return BuyForm::class;
+        }
+
+        return parent::getModelFormClass($model, $action);
+    }
+
 }
