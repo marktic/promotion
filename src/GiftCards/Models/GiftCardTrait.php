@@ -10,6 +10,7 @@ use Marktic\Promotion\Base\Models\Behaviours\HasPool\RecordHasPool;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Promotion\GiftCards\DataObjects\GiftCardConfiguration;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
+use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
 
 /**
  * Trait GiftCardTrait.
@@ -20,6 +21,7 @@ trait GiftCardTrait
 {
     use RecordHasId;
     use RecordHasPool;
+    use HasUuidRecordTrait;
     use RecordHasConfiguration;
     use TimestampableTrait;
 

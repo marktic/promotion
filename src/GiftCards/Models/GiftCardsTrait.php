@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\GiftCards\Models;
 
-use Marktic\Promotion\Base\Models\Behaviours\HasActions\RepositoryHasPromotionActions;
 use Marktic\Promotion\Base\Models\Behaviours\HasPool\RepositoryHasPool;
-use Marktic\Promotion\Base\Models\Behaviours\HasRules\RepositoryHasPromotionRules;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Promotion\GiftCards\Events\GiftCardCreated;
 use Marktic\Promotion\GiftCards\Observers\DeletePromotionCodes;
@@ -14,10 +12,12 @@ use Marktic\Promotion\GiftCards\Observers\UpdatePromotionCodes;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\Records\EventManager\Events\Event;
+use Nip\Records\Traits\HasUuid\HasUuidRecordManagerTrait;
 
 trait GiftCardsTrait
 {
     use RepositoryHasPool;
+    use HasUuidRecordManagerTrait;
     use TimestampableManagerTrait;
 
     /**
@@ -39,5 +39,10 @@ trait GiftCardsTrait
     protected function generateTable(): string
     {
         return PackageConfig::tableName(PromotionModels::GIFT_CARDS, GiftCards::TABLE);
+    }
+
+    public function getUrlPK()
+    {
+        return 'uuid';
     }
 }
