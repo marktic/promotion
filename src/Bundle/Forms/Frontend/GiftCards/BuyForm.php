@@ -44,16 +44,7 @@ class BuyForm extends AbstractForm
     {
         parent::saveToModel();
 
-        $configuration = $this->getModel()->getConfiguration();
-        foreach (GiftCardParty::TYPES as $type) {
-            $partyData = [];
-            foreach (self::PARTY_FIELDS as $field) {
-                $name = $this->generatePartyFieldName($type, $field);
-                $partyData[$field] = $this->getElement($name)->getValue('model');
-            }
-            $party = $configuration->getParty($type);
-            $party->populateFromArray($partyData);
-        }
+        $this->saveToModelConfiguration();
     }
 
 
@@ -65,5 +56,24 @@ class BuyForm extends AbstractForm
     protected function generatePartyFieldName($type, $field): string
     {
         return 'party_' . $type . '_' . $field;
+    }
+
+    /**
+     * @return void
+     */
+    protected function saveToModelConfiguration(): void
+    {
+        $configuration = $this->getModel()->getConfiguration();
+        foreach (GiftCardParty::TYPES as $type) {
+            $partyData = [];
+            foreach (self::PARTY_FIELDS as $field) {
+                $name = $this->generatePartyFieldName($type, $field);
+                $partyData[$field] = $this->getElement($name)->getValue('model');
+            }
+            $party = $configuration->getParty($type);
+            $party->populateFromArray($partyData);
+        }
+
+        $this->getModel()->setConfiguration($configuration);
     }
 }

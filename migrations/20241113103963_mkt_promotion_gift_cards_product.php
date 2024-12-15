@@ -22,7 +22,7 @@ final class MktPromotionGiftCardsProduct extends AbstractMigration
         $table_name = 'mkt_gift_cards';
         $table = $this->table($table_name);
         $table
-            ->addColumn('product_id', 'integer', ['after' => 'id'])
+            ->addColumn('product_id', 'integer', ['after' => 'id', 'signed' => false, 'null' => true])
             ->save();
 
         $table
@@ -34,7 +34,11 @@ final class MktPromotionGiftCardsProduct extends AbstractMigration
                 'product_id',
                 'mkt_gift_products',
                 'id',
-                ['constraint' => 'mkt_gift_cards_mkt_gift_products_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
+                [
+                    'constraint' => 'mkt_gift_cards_mkt_gift_products_id',
+                    'delete' => 'NO_ACTION',
+                    'update' => 'NO_ACTION'
+                ]
             )
             ->save();
     }

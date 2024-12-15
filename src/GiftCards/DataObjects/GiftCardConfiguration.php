@@ -14,7 +14,7 @@ class GiftCardConfiguration extends Metadata
     public function __construct(object|array $array = [], int $flags = 0, string $iteratorClass = "ArrayIterator")
     {
         foreach (GiftCardParty::TYPES as $type) {
-            $array[$type] = GiftCardParty::from($array[$type] ?? null);
+            $array[$type] = GiftCardParty::from($array[$type] ?? []);
         }
         parent::__construct($array, $flags, $iteratorClass);
     }
