@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\GiftProducts\Models;
 
+use ByTIC\MediaLibrary\HasMedia\HasMediaTrait;
 use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfiguration;
 use Marktic\Promotion\Base\Models\Behaviours\HasDescription\RecordHasDescription;
 use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
@@ -24,6 +25,7 @@ trait GiftProductTrait
     use RecordHasPool;
     use Behaviours\HasType\HasTypeRecord;
     use RecordHasConfiguration;
+    use HasMediaTrait;
     use TimestampableTrait;
 
     protected function castConfigurationClass(): string

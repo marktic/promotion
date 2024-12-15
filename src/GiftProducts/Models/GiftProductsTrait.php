@@ -13,6 +13,7 @@ trait GiftProductsTrait
 {
     use RepositoryHasPool;
     use Behaviours\HasType\HasTypeRepository;
+    use \ByTIC\MediaLibrary\HasMedia\HasMediaRecordsTrait;
     use TimestampableManagerTrait;
 
     /**
@@ -22,6 +23,7 @@ trait GiftProductsTrait
     {
         parent::initRelations();
         $this->initRelationsPromotions();
+        $this->initRelationsMedia();
     }
 
     protected function initRelationsPromotions(): void

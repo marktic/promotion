@@ -15,7 +15,7 @@ $items = $items ?? ($this->get('items') ?? []);
     <?php return; ?>
 <?php endif; ?>
 
-<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="row row-cols-1 row-cols-xs-2 row-cols-md-3 row-cols-lg-4 g-4">
     <?php foreach ($items as $item) : ?>
         <div class="col">
             <?= $this->load('/mkt_promotion-gift_products/modules/item/card', ['item' => $item]) ?>

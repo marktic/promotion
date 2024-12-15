@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Promotion;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
+use Marktic\Promotion\GiftProducts\Models\GiftProducts;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactoryInterface;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactory;
@@ -15,6 +16,8 @@ use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsService;
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsServiceInterface;
 use Marktic\Promotion\Utility\PackageConfig;
+use Marktic\Promotion\Utility\PromotionModels;
+use Nip\Records\Locator\ModelLocator;
 
 /**
  * Class PromotionSeviceProvider.
@@ -130,5 +133,6 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
 
     protected function registerModels(): void
     {
+        ModelLocator::set(GiftProducts::TABLE, PromotionModels::giftProducts());
     }
 }
