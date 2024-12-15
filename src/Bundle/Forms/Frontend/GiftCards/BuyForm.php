@@ -6,10 +6,15 @@ namespace Marktic\Promotion\Bundle\Forms\Frontend\GiftCards;
 
 
 use Marktic\Promotion\GiftCards\DataObjects\GiftCardParty;
+use Marktic\Promotion\GiftCards\Models\GiftCard;
 use Marktic\Promotion\Utility\PromotionModels;
 
+/**
+ * @method GiftCard getModel()
+ */
 class BuyForm extends AbstractForm
 {
+    protected const PARTY_FIELDS = ['first_name', 'last_name', 'email'];
     public const ID = 'mkt-promotion-giftProducts-buyForm';
 
     public function initialize()
@@ -25,25 +30,40 @@ class BuyForm extends AbstractForm
 
     protected function initializePartyFields($type)
     {
-        $name = 'party_' . $type . '_first_name';
-        $this->addText(
-            $name,
-            $this->getModelManager()->getLabel('form.' . $name),
-        );
-        $name = 'party_' . $type . '_last_name';
-        $this->addText(
-            $name,
-            $this->getModelManager()->getLabel('form.' . $name),
-        );
-        $name = 'party_' . $type . '_email';
-        $this->addText(
-            $name,
-            $this->getModelManager()->getLabel('form.' . $name),
-        );
+        foreach (self::PARTY_FIELDS as $field) {
+            $name = $this->generatePartyFieldName($type, $field);
+            $this->addInput(
+                $name,
+                $this->getModelManager()->getLabel('form.' . $name),
+                true
+            );
+        }
     }
+
+    public function saveToModel(): void
+    {
+        parent::saveToModel();
+
+        $configuration = $this->getModel()->getConfiguration();
+        foreach (GiftCardParty::TYPES as $type) {
+            $partyData = [];
+            foreach (self::PARTY_FIELDS as $field) {
+                $name = $this->generatePartyFieldName($type, $field);
+                $partyData[$field] = $this->getElement($name)->getValue('model');
+            }
+            $party = $configuration->getParty($type);
+            $party->populateFromArray($partyData);
+        }
+    }
+
 
     public function getModelManager()
     {
         return PromotionModels::giftCards();
+    }
+
+    protected function generatePartyFieldName($type, $field): string
+    {
+        return 'party_' . $type . '_' . $field;
     }
 }

@@ -27,6 +27,10 @@ class GiftCardConfiguration extends Metadata
         parent::offsetSet($key, $value);
     }
 
+    public function getParty($type): ?GiftCardParty
+    {
+        return $this->get($type);
+    }
 
     public function getSender(): ?GiftCardParty
     {

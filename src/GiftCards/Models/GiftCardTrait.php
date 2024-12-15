@@ -14,6 +14,7 @@ use Marktic\Promotion\GiftProducts\Models\GiftProduct;
 /**
  * Trait GiftCardTrait.
  * @method GiftProduct getGiftProduct()
+ * @method GiftCardConfiguration getConfiguration()
  */
 trait GiftCardTrait
 {
