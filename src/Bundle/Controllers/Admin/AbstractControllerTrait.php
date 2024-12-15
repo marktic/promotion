@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
+use ByTIC\Controllers\Behaviors\HasForms;
+use Marktic\Promotion\Bundle\Library\View\ViewUtility;
 use Nip\Controllers\Response\ResponsePayload;
 use Nip\View\View;
 
@@ -13,22 +15,12 @@ use Nip\View\View;
 trait AbstractControllerTrait
 {
     use \Nip\Controllers\Traits\AbstractControllerTrait;
-
-    public function getModelForm($model, $action = null)
-    {
-        $class = $this->getModelFormClass($model, $action);
-        $form = new $class();
-        $form->setModel($model);
-
-        return $form;
-    }
+    use HasForms;
 
     public function registerViewPaths(View $view): void
     {
         parent::registerViewPaths($view);
 
-        $path = __DIR__ . '/../../Resources/views/admin';
-        $view->addPath($path);
-        $view->addPath($path, 'MarkticPromotion');
+        ViewUtility::registerViewPaths($view, 'admin');
     }
 }
