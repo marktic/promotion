@@ -10,8 +10,15 @@ use Serializable;
 
 class GiftCardParty implements JsonSerializable, Serializable
 {
-    use SerializableTrait;
+    public const TYPE_SENDER = 'sender';
+    public const TYPE_RECIPIENT = 'recipient';
 
+    public const TYPES = [
+        self::TYPE_SENDER,
+        self::TYPE_RECIPIENT,
+    ];
+
+    use SerializableTrait;
 
     protected ?string $first_name = null;
     protected ?string $last_name = null;

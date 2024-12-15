@@ -32,6 +32,8 @@ trait GiftCardsTrait
     protected function initRelationsPromotions(): void
     {
         $this->initRelationsPromotionPool();
+
+        $this->belongsTo('GiftProduct', ['class' => \get_class(PromotionModels::giftProducts())]);
     }
 
     protected function generateTable(): string
