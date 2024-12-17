@@ -20,6 +20,11 @@ trait MktPromotionsGiftCardsControllerTrait
     use AbstractControllerTrait;
     use HasModelLister;
 
+    public function paymentRedirect()
+    {
+                
+    }
+
     public function thankYou()
     {
         $giftCard = $this->getModelFromRequest();

@@ -39,7 +39,7 @@ trait MktPromotionsGiftProductsControllerTrait
         $giftCard = GenerateForProduct::for($giftProduct)->handle();
         $form = $this->getModelForm($giftCard);
         if ($form->execute()) {
-            $this->buyRedirect($giftCard);
+            $this->paymentRedirect($giftCard);
         }
 
         $this->payload()->with([
@@ -110,10 +110,10 @@ trait MktPromotionsGiftProductsControllerTrait
         return parent::getModelFormClass($model, $action);
     }
 
-    protected function buyRedirect(GiftCard $giftProduct)
+    protected function paymentRedirect(GiftCard $giftProduct)
     {
         $this->redirect(
-            $giftProduct->compileURL('thankYou'),
+            $giftProduct->compileURL('paymentRedirect'),
         );
     }
 
