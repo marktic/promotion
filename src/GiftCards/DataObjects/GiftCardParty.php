@@ -38,7 +38,7 @@ class GiftCardParty implements JsonSerializable, Serializable
 
     private static function fromArray(GiftCardParty|array $recipient)
     {
-        $party = new self();
+        $party = new static();
         $party->populateFromArray($recipient);
         return $party;
     }

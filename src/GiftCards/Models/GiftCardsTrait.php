@@ -33,12 +33,20 @@ trait GiftCardsTrait
     {
         $this->initRelationsPromotionPool();
 
-        $this->belongsTo('GiftProduct', ['class' => \get_class(PromotionModels::giftProducts())]);
+        $this->belongsTo(
+            'GiftProduct',
+            ['class' => \get_class(PromotionModels::giftProducts()), 'fk' => 'product_id'],
+        );
     }
 
     protected function generateTable(): string
     {
         return PackageConfig::tableName(PromotionModels::GIFT_CARDS, GiftCards::TABLE);
+    }
+
+    public function generateMorphName(): string
+    {
+        return GiftCards::CONTROLLER;
     }
 
     public function getUrlPK()

@@ -17,5 +17,5 @@ class GiftCards extends RecordManager implements RepositoryHasPoolInterface
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_gift_cards';
-    public const CONTROLLER = 'mkt_gift_cards';
+    public const CONTROLLER = 'mkt_promotion-gift_cards';
 }
