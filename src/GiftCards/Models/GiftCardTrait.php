@@ -25,8 +25,14 @@ trait GiftCardTrait
     use RecordHasConfiguration;
     use TimestampableTrait;
 
+    public function getUuid()
+    {
+        return $this->getPropertyRaw('uuid');
+    }
+
     protected function castConfigurationClass(): string
     {
         return GiftCardConfiguration::class;
     }
+
 }

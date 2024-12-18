@@ -110,5 +110,14 @@ class GiftCardParty implements JsonSerializable, Serializable
     {
         return $this->toArray();
     }
+
+    public function toHTML()
+    {
+        $html = '';
+        $html .= '<strong>'.$this->first_name . ' ' . $this->last_name.'</strong><br />';
+        $html .= '<a href="mailto:'.$this->email.'">'.$this->email.'</a><br />';
+        $html .= '<a href="tel:'.$this->phone.'">'.$this->phone.'</a><br />';
+        return $html;
+    }
 }
 
