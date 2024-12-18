@@ -35,6 +35,10 @@ trait GiftCardsTrait
             'GiftProduct',
             ['class' => \get_class(PromotionModels::giftProducts()), 'fk' => 'product_id'],
         );
+
+        $this->belongsTo('Promotion', ['class' => \get_class(PromotionModels::promotions()), 'fk' => 'promotion_id']);
+        $this->belongsTo('PromotionCode', ['class' => \get_class(PromotionModels::promotionCodes()), 'fk' => 'code_id']
+        );
     }
 
     protected function generateTable(): string

@@ -41,6 +41,26 @@ trait BuyFormTrait
         }
     }
 
+    protected function getDataFromModel()
+    {
+        parent::getDataFromModel();
+        $configuration = $this->getModel()->getConfiguration();
+        foreach (GiftCardParty::TYPES as $type) {
+            $party = $configuration->getParty($type);
+            $this->getDataFromModelPartyFields($party, $type);
+        }
+    }
+
+    protected function getDataFromModelPartyFields(GiftCardParty $party, $type): void
+    {
+        $data = $party->toArray();
+        foreach (self::PARTY_FIELDS as $field) {
+            $name = $this->generatePartyFieldName($type, $field);
+            $element = $this->getElement($name);
+            $element->getDataFromModel($data[$field] ?? null);
+        }
+    }
+
     public function saveToModel(): void
     {
         parent::saveToModel();

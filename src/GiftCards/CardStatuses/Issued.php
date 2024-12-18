@@ -11,6 +11,11 @@ class Issued extends AbstractStatus
 {
     public const NAME = 'issued';
 
+    public function canGeneratePromotion(): bool
+    {
+        return true;
+    }
+
     /** @noinspection PhpMissingParentCallCommonInspection
      * @inheritDoc
      */

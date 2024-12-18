@@ -10,6 +10,11 @@ abstract class AbstractStatus extends Generic
 {
     public const NAME = null;
 
+    public function canGeneratePromotion(): bool
+    {
+        return false;
+    }
+
     protected function generateName(): string
     {
         return static::NAME;

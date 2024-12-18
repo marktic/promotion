@@ -9,6 +9,8 @@ use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfigura
 use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Promotion\Base\Models\Behaviours\HasPool\RecordHasPool;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableTrait;
+use Marktic\Promotion\Bundle\Models\CartPromotions\CartPromotion;
+use Marktic\Promotion\Bundle\Models\PromotionCodes\PromotionCode;
 use Marktic\Promotion\GiftCards\DataObjects\GiftCardConfiguration;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
 use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
@@ -17,6 +19,8 @@ use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
  * Trait GiftCardTrait.
  * @method GiftProduct getGiftProduct()
  * @method GiftCardConfiguration getConfiguration()
+ * @method CartPromotion getPromotion()
+ * @method PromotionCode getPromotionCode()
  */
 trait GiftCardTrait
 {
@@ -29,12 +33,24 @@ trait GiftCardTrait
 
     public function getName()
     {
-        return $this->getManager()->getLabel('title.singular'). ' ' . $this->getUuid();
+        return $this->getManager()->getLabel('title.singular') . ' ' . $this->getUuid();
     }
 
     public function getUuid()
     {
         return $this->getPropertyRaw('uuid');
+    }
+
+    public function hasPromotionCode(): bool
+    {
+        if (empty($this->code_id)) {
+            return false;
+        }
+        $promotionCode = $this->getPromotionCode();
+        if (!is_object($promotionCode)) {
+            return false;
+        }
+        return true;
     }
 
     protected function castConfigurationClass(): string

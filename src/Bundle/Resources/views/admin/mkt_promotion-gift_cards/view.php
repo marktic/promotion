@@ -13,10 +13,13 @@ use Nip\View\View;
             <?= $this->load('modules/panels/item-details'); ?>
         </div>
         <div class="col-md-4">
-            <?= $this->load('modules/panels/item-party', ['type' => GiftCardParty::TYPE_SENDER]); ?>
+            <div class="d-grid gap-3">
+                <?= $this->load('modules/panels/item-party', ['type' => GiftCardParty::TYPE_SENDER]); ?>
+                <?= $this->load('modules/panels/item-party', ['type' => GiftCardParty::TYPE_RECIPIENT]); ?>
+            </div>
         </div>
         <div class="col-md-4">
-            <?= $this->load('modules/panels/item-party', ['type' => GiftCardParty::TYPE_RECIPIENT]); ?>
+            <?= $this->load('modules/panels/item-promotion'); ?>
         </div>
     </div>
 </div>

@@ -6,6 +6,8 @@ namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
 use Marktic\Promotion\Bundle\Forms\Admin\GiftCards\DetailsForm;
+use Marktic\Promotion\GiftCards\Actions\GeneratePromotionForGiftCard;
+use Marktic\Promotion\GiftCards\Exceptions\PromotionCode\PromotionCodeGenerationException;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
 use Marktic\Promotion\Utility\PromotionServices;
 use Nip\Records\Record;
@@ -33,10 +35,31 @@ trait MktPromotionsGiftCardsControllerControllerTrait
     {
         parent::view();
 
-        $promotion = $this->getModelFromRequest();
+        $giftCard = $this->getModelFromRequest();
 
         $this->payload()->with([
+            'promotion' => $giftCard->getPromotion(),
+            'promotion_code' => $giftCard->getPromotionCode(),
         ]);
+    }
+
+    public function createCode()
+    {
+        $giftCard = $this->getModelFromRequest();
+
+        try {
+            GeneratePromotionForGiftCard::for($giftCard)->handle();
+            $this->flashRedirect(
+                $this->getModelManager()->getMessage('promotion_code.generated'),
+                $giftCard->getURL(),
+            );
+        } catch (PromotionCodeGenerationException $exception) {
+            $this->flashRedirect(
+                $exception->getMessage(),
+                $giftCard->getURL(),
+                'error'
+            );
+        }
     }
 
     public function addNewModel(): \Nip\Records\AbstractModels\Record

@@ -18,4 +18,6 @@ return [
     'mkt_promotion-gift_cards.labels.form.party_recipient_first_name' => 'Destinatar: Prenume',
     'mkt_promotion-gift_cards.labels.form.party_recipient_last_name' => 'Destinatar: Nume',
     'mkt_promotion-gift_cards.labels.form.party_recipient_email' => 'Destinatar: Email',
+
+    'mkt_promotion-gift_products.messages.promotion_code.dnx' => 'Codul de promovare nu a fost creat',
 ];
