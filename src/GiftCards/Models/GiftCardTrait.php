@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\GiftCards\Models;
 
+use ByTIC\Models\SmartProperties\RecordsTraits\HasStatus\RecordTrait as HasStatusRecordTrait;
 use Marktic\Promotion\Base\Models\Behaviours\HasConfiguration\RecordHasConfiguration;
 use Marktic\Promotion\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Promotion\Base\Models\Behaviours\HasPool\RecordHasPool;
@@ -23,6 +24,7 @@ trait GiftCardTrait
     use RecordHasPool;
     use HasUuidRecordTrait;
     use RecordHasConfiguration;
+    use HasStatusRecordTrait;
     use TimestampableTrait;
 
     public function getUuid()

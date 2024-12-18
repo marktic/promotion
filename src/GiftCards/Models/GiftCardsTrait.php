@@ -4,20 +4,18 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\GiftCards\Models;
 
+use ByTIC\Models\SmartProperties\RecordsTraits\HasStatus\RecordsTrait as HasStatusRecordsTrait;
 use Marktic\Promotion\Base\Models\Behaviours\HasPool\RepositoryHasPool;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
-use Marktic\Promotion\GiftCards\Events\GiftCardCreated;
-use Marktic\Promotion\GiftCards\Observers\DeletePromotionCodes;
-use Marktic\Promotion\GiftCards\Observers\UpdatePromotionCodes;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
-use Nip\Records\EventManager\Events\Event;
 use Nip\Records\Traits\HasUuid\HasUuidRecordManagerTrait;
 
 trait GiftCardsTrait
 {
     use RepositoryHasPool;
     use HasUuidRecordManagerTrait;
+    use HasStatusRecordsTrait;
     use TimestampableManagerTrait;
 
     /**
@@ -53,4 +51,21 @@ trait GiftCardsTrait
     {
         return 'uuid';
     }
+
+    /**
+     * @return string
+     */
+    public function getStatusesDirectory(): string
+    {
+        return dirname(__FILE__, 2) . DIRECTORY_SEPARATOR . 'CardStatuses';
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusNamespace()
+    {
+        return '\Marktic\Promotion\GiftCards\CardStatuses\\';
+    }
+
 }
