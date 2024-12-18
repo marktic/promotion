@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 use Phinx\Util\Literal;
-
-final class MktPromotionGiftCardsCluj extends AbstractMigration
+final class MktPromotionGiftCardsStatus extends AbstractMigration
 {
     /**
      * Change Method.

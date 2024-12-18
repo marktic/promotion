@@ -9,8 +9,8 @@ use Nip\View\View;
 <tr>
     <th>ID</th>
     <th><?= PromotionModels::giftProducts()->getLabel('title.singular'); ?></th>
-    <th><?= PromotionModels::giftProducts()->getLabel('sender'); ?></th>
-    <th><?= PromotionModels::giftProducts()->getLabel('recipient'); ?></th>
+    <th><?= PromotionModels::giftCards()->getLabel('sender'); ?></th>
+    <th><?= PromotionModels::giftCards()->getLabel('recipient'); ?></th>
     <th><?= translator()->trans('status'); ?></th>
     <th><?= translator()->trans('date'); ?></th>
 </tr>

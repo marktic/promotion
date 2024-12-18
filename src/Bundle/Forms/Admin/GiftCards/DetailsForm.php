@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Promotion\Bundle\Forms\Frontend\GiftCards;
+namespace Marktic\Promotion\Bundle\Forms\Admin\GiftCards;
 
 
 use Marktic\Promotion\Bundle\Forms\AbstractBase\GiftCards\BuyFormTrait;
@@ -11,7 +11,7 @@ use Marktic\Promotion\GiftCards\Models\GiftCard;
 /**
  * @method GiftCard getModel()
  */
-class BuyForm extends AbstractForm
+class DetailsForm extends AbstractForm
 {
     use BuyFormTrait;
 

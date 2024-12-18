@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Promotion\Bundle\Controllers\Admin;
 
 use ByTIC\Controllers\Behaviors\Models\HasModelLister;
+use Marktic\Promotion\Bundle\Forms\Admin\GiftCards\DetailsForm;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
 use Marktic\Promotion\Utility\PromotionServices;
 use Nip\Records\Record;
@@ -44,7 +45,7 @@ trait MktPromotionsGiftCardsControllerControllerTrait
         $item = parent::addNewModel();
 
         $item->setPool($this->getRequest()->get('pool'));
-        $item->setPoolId((int) $this->getRequest()->get('pool_id'));
+        $item->setPoolId((int)$this->getRequest()->get('pool_id'));
 
         return $item;
     }
@@ -75,16 +76,10 @@ trait MktPromotionsGiftCardsControllerControllerTrait
         }
     }
 
-//    protected function getModelFormClass($model, $action = null): string
-//    {
-//        $type = $this->getRequest()->get('type');
-//
-//        if (CouponCard::NAME == $type) {
-//            return CouponCardForm::class;
-//        }
-//
-//        return ValueCardForm::class;
-//    }
+    protected function getModelFormClass($model, $action = null): string
+    {
+        return DetailsForm::class;
+    }
 
     /**
      * @param GiftProduct $item
@@ -104,5 +99,17 @@ trait MktPromotionsGiftCardsControllerControllerTrait
     protected function checkPoolAccess($pool)
     {
         $this->checkAndSetForeignModelInRequest($pool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function getUrlModelKey($key = false)
+    {
+        if (false === $key) {
+            return ['uuid', 'uuid'];
+        }
+
+        return parent::getUrlModelKey();
     }
 }

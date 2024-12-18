@@ -23,7 +23,7 @@ $configuration = $item->getConfiguration();
     <td><?= $configuration->getSender()->toHTML(); ?></td>
     <td><?= $configuration->getRecipient()->toHTML(); ?></td>
     <td>
-        STATUS
+        <?= $item->getStatus()->getLabelHTML(); ?>
     </td>
     <td>
         <?= $item->created_at; ?>

@@ -27,6 +27,11 @@ trait GiftCardTrait
     use HasStatusRecordTrait;
     use TimestampableTrait;
 
+    public function getName()
+    {
+        return $this->getManager()->getLabel('title.singular'). ' ' . $this->getUuid();
+    }
+
     public function getUuid()
     {
         return $this->getPropertyRaw('uuid');
