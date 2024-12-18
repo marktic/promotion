@@ -10,16 +10,18 @@ use Nip\View\View;
 
     <div class="row">
         <div class="col-md-4">
-            <?= $this->load('modules/panels/item-details'); ?>
+            <?= $this->load('/mkt_promotion-gift_cards/modules/panels/item-details'); ?>
         </div>
         <div class="col-md-4">
             <div class="d-grid gap-3">
-                <?= $this->load('modules/panels/item-party', ['type' => GiftCardParty::TYPE_SENDER]); ?>
-                <?= $this->load('modules/panels/item-party', ['type' => GiftCardParty::TYPE_RECIPIENT]); ?>
+                <?= $this->load('/mkt_promotion-gift_cards/modules/panels/item-party', ['type' => GiftCardParty::TYPE_SENDER]); ?>
+                <?= $this->load('/mkt_promotion-gift_cards/modules/panels/item-party', ['type' => GiftCardParty::TYPE_RECIPIENT]); ?>
             </div>
         </div>
         <div class="col-md-4">
-            <?= $this->load('modules/panels/item-promotion'); ?>
+            <div class="d-grid gap-3">
+                <?= $this->load('/mkt_promotion-gift_cards/modules/panels/item-promotion'); ?>
+            </div>
         </div>
     </div>
 </div>
