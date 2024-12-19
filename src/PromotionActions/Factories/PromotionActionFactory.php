@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Promotion\PromotionActions\Factories;
 
 use Marktic\Promotion\PromotionActions\Commands\FixedDiscountActionCommand;
+use Marktic\Promotion\PromotionActions\Commands\PercentageDiscountActionCommand;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
 use Marktic\Promotion\PromotionActions\Models\PromotionActions;
 use Marktic\Promotion\Utility\PromotionModels;
@@ -42,7 +43,7 @@ class PromotionActionFactory implements PromotionActionFactoryInterface
     public function createPercentageDiscount(float $percentage): PromotionActionInterface
     {
         return $this->create(
-            FixedDiscountActionCommand::NAME,
+            PercentageDiscountActionCommand::NAME,
             ['amount' => $percentage]
         );
     }

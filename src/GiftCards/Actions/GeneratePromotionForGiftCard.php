@@ -36,6 +36,9 @@ class GeneratePromotionForGiftCard extends Action
     {
         $promotion = $this->createPromotionRecord();
         $code = $this->createPromotionCodeRecord($promotion);
+
+        $this->getSubject()->setPromotionCodeId($code->id);
+        $this->getSubject()->save();
     }
 
     protected function guardAlreadyHasPromotion()
@@ -73,7 +76,6 @@ class GeneratePromotionForGiftCard extends Action
         }
         $promotion = CreatePromotionForGiftProduct::for($this->getSubject()->getGiftProduct())->handle();
         $this->getSubject()->setPromotionId($promotion->id);
-        $this->getSubject()->save();
         return $promotion;
     }
 

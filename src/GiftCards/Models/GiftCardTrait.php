@@ -71,6 +71,12 @@ trait GiftCardTrait
         return $this;
     }
 
+    public function setPromotionCodeId(?int $id)
+    {
+        $this->setPropertyValue('code_id', $id);
+        return $this;
+    }
+
     protected function castConfigurationClass(): string
     {
         return GiftCardConfiguration::class;
