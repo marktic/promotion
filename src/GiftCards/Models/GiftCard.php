@@ -30,4 +30,5 @@ class GiftCard extends Record
     {
         // TODO: Implement getRegistry() method.
     }
+
 }

@@ -19,6 +19,7 @@ return [
     'mkt_promotion-gift_cards.labels.form.party_recipient_last_name' => 'Recipient Last Name',
     'mkt_promotion-gift_cards.labels.form.party_recipient_email' => 'Recipient Email',
 
-    'mkt_promotion-gift_products.messages.promotion_code.dnx' => 'Promotion code not created',
+    'mkt_promotion-gift_cards.messages.promotion_code.dnx' => 'Promotion code not created',
+    'mkt_promotion-gift_cards.messages.promotion_code.generated' => 'Promotion code generated',
     'mkt_promotion-gift_cards.messages.edit' => 'Gift Card saved',
 ];

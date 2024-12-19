@@ -53,6 +53,24 @@ trait GiftCardTrait
         return true;
     }
 
+    public function hasPromotion(): bool
+    {
+        if (empty($this->promotion_id)) {
+            return false;
+        }
+        $promotion = $this->getPromotion();
+        if (!is_object($promotion)) {
+            return false;
+        }
+        return true;
+    }
+
+    public function setPromotionId($id): self
+    {
+        $this->setPropertyValue('promotion_id', $id);
+        return $this;
+    }
+
     protected function castConfigurationClass(): string
     {
         return GiftCardConfiguration::class;

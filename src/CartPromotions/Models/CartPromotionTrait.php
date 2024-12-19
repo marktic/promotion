@@ -38,6 +38,7 @@ trait CartPromotionTrait
     use RecordHasPromotionRules;
     use RecordHasUsage;
     use RecordHasValidity;
+    use \ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait;
     use TimestampableTrait;
 
     protected ?string $name = null;
@@ -95,5 +96,26 @@ trait CartPromotionTrait
     public function setExclusive(?bool $exclusive): void
     {
         $this->exclusive = (true === $exclusive);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function insert()
+    {
+        $this->serializeOptions();
+
+        return parent::insert();
+    }
+
+
+    /**
+     * @inheritdoc
+     */
+    public function update()
+    {
+        $this->serializeOptions();
+
+        return parent::update();
     }
 }
