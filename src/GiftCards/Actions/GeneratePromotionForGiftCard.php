@@ -87,17 +87,19 @@ class GeneratePromotionForGiftCard extends Action
     {
         $codes = $promotion->getPromotionCodes();
         $UniqueCode = $this->generateCodeForCard();
+        $code = null;
         if ($codes->count() == 1) {
             $firstCode = $codes->first();
             if (Str::startsWith($firstCode->getCode(), CreatePromotionForGiftProduct::CODE_PREFIX)) {
-                $firstCode->setCode($UniqueCode);
-                $firstCode->save();
-                return $firstCode;
+                $code = $firstCode;
             }
         }
-        $code = PromotionModels::promotionCodes()->getNew();
-        $code->setPromotionId($promotion->id);
+        if ($code === null) {
+            $code = PromotionModels::promotionCodes()->getNew();
+            $code->setPromotionId($promotion->id);
+        }
         $code->setCode($UniqueCode);
+        $code->setUsageLimit(1);
         $code->save();
         return $code;
     }
