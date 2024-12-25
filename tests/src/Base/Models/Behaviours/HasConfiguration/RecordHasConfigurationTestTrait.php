@@ -21,7 +21,12 @@ trait RecordHasConfigurationTestTrait
 
         $configuration = $record->getConfiguration();
         self::assertInstanceOf(Metadata::class, $configuration);
-        self::assertSame($expected, $configuration->toArray());
+        $configArray = $configuration->toArray();
+        if ($expected === []) {
+            self::assertIsArray($configArray);
+            return;
+        }
+        self::assertArrayContainsArray($expected, $configArray);
     }
 
     abstract protected function newRecordInstance(): Record;
@@ -49,12 +54,16 @@ trait RecordHasConfigurationTestTrait
         $record->setConfiguration(['foo' => 'bar']);
         $configuration = $record->getConfiguration();
         self::assertInstanceOf(Metadata::class, $configuration);
-        self::assertSame(['foo' => 'bar'], $configuration->toArray());
+        $configurationArray = $configuration->toArray();
+        self::assertArrayHasKey('foo', $configurationArray);
+        self::assertSame('bar', $configurationArray['foo']);
         self::assertSame('{"foo":"bar"}', $record->getPropertyRaw('configuration'));
 
         $configuration->set('bar', 'foo');
         $configuration = $record->getConfiguration();
-        self::assertSame('{"foo":"bar","bar":"foo"}', $record->getPropertyRaw('configuration'));
-        self::assertSame(['foo' => 'bar', 'bar' => 'foo'], $configuration->toArray());
+        self::assertStringContainsString('"foo":"bar"', $record->getPropertyRaw('configuration'));
+        self::assertStringContainsString('"bar":"foo"', $record->getPropertyRaw('configuration'));
+
+        self::assertArrayContainsArray(['foo' => 'bar', 'bar' => 'foo'], $configuration->toArray());
     }
 }

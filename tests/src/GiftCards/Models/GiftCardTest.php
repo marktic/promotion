@@ -2,7 +2,7 @@
 
 namespace Marktic\Promotion\Tests\GiftCards\Models;
 
-use Marktic\Promotion\GiftCards\DataObjects\GiftProductConfiguration;
+use Marktic\Promotion\GiftCards\DataObjects\GiftCardConfiguration;
 use Marktic\Promotion\GiftCards\Models\GiftCard;
 use Marktic\Promotion\Tests\Base\Models\AbstractRecordTest;
 use Marktic\Promotion\Tests\Base\Models\Behaviours\HasConfiguration\RecordHasConfigurationTestTrait;
@@ -25,19 +25,29 @@ class GiftCardTest extends AbstractRecordTest
     {
         $record = $this->newRecordInstance(['configuration' => '{}']);
         $configuration = $record->getConfiguration();
-        self::assertInstanceOf(GiftProductConfiguration::class, $configuration);
-        self::assertNull($configuration->getSender());
-        self::assertNull($configuration->getRecipient());
+        self::assertInstanceOf(GiftCardConfiguration::class, $configuration);
+        self::assertTrue($configuration->getSender()->isNull());
+        self::assertTrue($configuration->getRecipient()->isNull());
 
         $record = $this->newRecordInstance();
         $configurationArray = [
-            'sender' => ['first_name' => 'John', 'last_name' => 'Sende', 'email' => 'john@yahoo.com', 'phone' => '123456'],
-            'recipient' => ['first_name' => 'Jane', 'last_name' => 'Reci', 'email' => 'jane@yahoo.com', 'phone' => '654321'],
+            'sender' => [
+                'first_name' => 'John',
+                'last_name' => 'Sende',
+                'email' => 'john@yahoo.com',
+                'phone' => '123456'
+            ],
+            'recipient' => [
+                'first_name' => 'Jane',
+                'last_name' => 'Reci',
+                'email' => 'jane@yahoo.com',
+                'phone' => '654321'
+            ],
         ];
         $record->setConfiguration($configurationArray);
 
         $configuration = $record->getConfiguration();
-        self::assertInstanceOf(GiftProductConfiguration::class, $configuration);
+        self::assertInstanceOf(GiftCardConfiguration::class, $configuration);
         self::assertSame('John', $configuration->getSender()->getFirstName());
         self::assertSame('Sende', $configuration->getSender()->getLastName());
         self::assertSame('john@yahoo.com', $configuration->getSender()->getEmail());

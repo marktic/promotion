@@ -92,6 +92,11 @@ class GiftCardParty implements JsonSerializable, Serializable
         $this->phone = $phone;
     }
 
+    public function isNull(): bool
+    {
+        return $this->first_name === null && $this->last_name === null && $this->email === null && $this->phone === null;
+    }
+
     public function toArray(): array
     {
         return [
@@ -114,9 +119,9 @@ class GiftCardParty implements JsonSerializable, Serializable
     public function toHTML()
     {
         $html = '';
-        $html .= '<strong>'.$this->first_name . ' ' . $this->last_name.'</strong><br />';
-        $html .= '<a href="mailto:'.$this->email.'">'.$this->email.'</a><br />';
-        $html .= '<a href="tel:'.$this->phone.'">'.$this->phone.'</a><br />';
+        $html .= '<strong>' . $this->first_name . ' ' . $this->last_name . '</strong><br />';
+        $html .= '<a href="mailto:' . $this->email . '">' . $this->email . '</a><br />';
+        $html .= '<a href="tel:' . $this->phone . '">' . $this->phone . '</a><br />';
         return $html;
     }
 }

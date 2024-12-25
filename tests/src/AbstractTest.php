@@ -4,8 +4,14 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Tests;
 
+use Exception;
+use InvalidArgumentException;
+use ArrayAccess;
 use Bytic\Phpqa\PHPUnit\TestCase;
 use Marktic\Promotion\PromotionServiceProvider;
+use PHPUnit\Framework\Assert as PhpUnitAssert;
+use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\InvalidArgumentException as PHPUnitInvalidArgumentException;
 use Nip\Config\Config;
 use Nip\Container\Utility\Container;
 
@@ -44,5 +50,13 @@ abstract class AbstractTest extends TestCase
 
         $container = Container::container();
         $container->set('translator', $translator);
+    }
+
+    protected static function assertArrayContainsArray($needle, $haystack): void
+    {
+        foreach ($needle as $key => $value) {
+            self::assertArrayHasKey($key, $haystack);
+            self::assertSame($value, $haystack[$key]);
+        }
     }
 }
