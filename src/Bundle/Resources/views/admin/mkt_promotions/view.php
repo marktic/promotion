@@ -9,21 +9,21 @@ use Nip\View\View;
 
     <div class="row">
         <div class="col-md-4">
-            <?= $this->load('modules/panels/item-details'); ?>
+            <?= $this->load('/mkt_promotions/modules/panels/item-details'); ?>
         </div>
         <div class="col-md-4">
-            <?= $this->load('modules/panels/item-actions'); ?>
+            <?= $this->load('/mkt_promotions/modules/panels/item-actions'); ?>
         </div>
         <div class="col-md-4">
-            <?= $this->load('modules/panels/item-rules'); ?>
+            <?= $this->load('/mkt_promotions/modules/panels/item-rules'); ?>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <?= $this->load('modules/panels/item-codes'); ?>
+            <?= $this->load('/mkt_promotions/modules/panels/item-codes'); ?>
         </div>
         <div class="col-md-8">
-            <?= $this->load('modules/panels/item-sessions'); ?>
+            <?= $this->load('/mkt_promotions/modules/panels/item-sessions'); ?>
         </div>
     </div>
 
