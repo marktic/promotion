@@ -83,7 +83,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
             [
                 PromotionActionFactoryInterface::class,
                 PromotionActionCommandFactoryInterface::class,
-                ActionCommandsService::class,
+//                ActionCommandsService::class,
                 RuleConditionsServiceInterface::class,
                 static::SERVICE_RULE_CONDITIONS,
                 PromotionCodesRepositoryInterface::class,
@@ -110,7 +110,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
 
     protected function registerActionCommandsService(): void
     {
-        $this->getContainer()->set(ActionCommandsService::class, ActionCommandsService::class, true);
+//        $this->getContainer()->set(ActionCommandsService::class, ActionCommandsService::class, true);
     }
 
     protected function registerRuleConditionsService(): void
