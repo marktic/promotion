@@ -31,7 +31,6 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
     public function register()
     {
         parent::register();
-        $this->registerResources();
         $this->registerModels();
         $this->registerActionFactory();
         $this->registerActionCommandsFactory();
