@@ -9,7 +9,7 @@ use Marktic\Promotion\PromotionActions\DataObjects\PromotionActionType;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionCommandFactoryInterface;
 
-class ActionCommandsService
+class ActionCommandsService implements ActionCommandsServiceInterface
 {
     protected PromotionActionCommandFactoryInterface $factory;
 

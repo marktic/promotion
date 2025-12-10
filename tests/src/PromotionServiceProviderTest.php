@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\Tests;
 
+use Marktic\Promotion\PromotionActions\Services\ActionCommandsService;
+use Marktic\Promotion\PromotionActions\Services\ActionCommandsServiceInterface;
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsService;
 use Marktic\Promotion\PromotionServiceProvider;
 
@@ -22,5 +24,14 @@ class PromotionServiceProviderTest extends AbstractTest
         self::assertInstanceOf(RuleConditionsService::class, $service);
 
         self::assertGreaterThanOrEqual(1, \count($service->all()));
+    }
+
+    public function test_registerActionCommandsService()
+    {
+        $this->loadConfigFromFixture('mkt_promotion');
+        $provider = $this->loadServiceProvider();
+
+        $service = $provider->getContainer()->get(ActionCommandsServiceInterface::class);
+        self::assertInstanceOf(ActionCommandsService::class, $service);
     }
 }

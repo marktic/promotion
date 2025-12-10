@@ -12,6 +12,7 @@ use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactory;
 use Marktic\Promotion\PromotionActions\Factories\PromotionActionFactoryInterface;
 use Marktic\Promotion\PromotionActions\Models\PromotionActionInterface;
 use Marktic\Promotion\PromotionActions\Services\ActionCommandsService;
+use Marktic\Promotion\PromotionActions\Services\ActionCommandsServiceInterface;
 use Marktic\Promotion\PromotionCodes\Models\PromotionCodesRepositoryInterface;
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsService;
 use Marktic\Promotion\PromotionRules\Services\RuleConditionsServiceInterface;
@@ -67,7 +68,7 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
             [
                 PromotionActionFactoryInterface::class,
                 PromotionActionCommandFactoryInterface::class,
-//                ActionCommandsService::class,
+                ActionCommandsServiceInterface::class,
                 RuleConditionsServiceInterface::class,
                 static::SERVICE_RULE_CONDITIONS,
                 PromotionCodesRepositoryInterface::class,
@@ -94,7 +95,11 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
 
     protected function registerActionCommandsService(): void
     {
-        $this->getContainer()->set(ActionCommandsService::class, ActionCommandsService::class, true);
+        $this->getContainer()->add(
+            ActionCommandsServiceInterface::class,
+            ActionCommandsService::class,
+            true
+        );
     }
 
     protected function registerRuleConditionsService(): void
