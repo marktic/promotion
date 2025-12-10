@@ -78,23 +78,23 @@ class PromotionServiceProvider extends BaseBootableServiceProvider
 
     protected function registerActionFactory(): void
     {
-        $this->getContainer()->alias(
-            PromotionActionFactory::class,
-            PromotionActionFactoryInterface::class
+        $this->getContainer()->set(
+            PromotionActionFactoryInterface::class,
+            PromotionActionFactory::class
         );
     }
 
     protected function registerActionCommandsFactory(): void
     {
-        $this->getContainer()->alias(
-            PromotionActionCommandFactory::class,
-            PromotionActionCommandFactoryInterface::class
+        $this->getContainer()->set(
+            PromotionActionCommandFactoryInterface::class,
+            PromotionActionCommandFactory::class
         );
     }
 
     protected function registerActionCommandsService(): void
     {
-//        $this->getContainer()->set(ActionCommandsService::class, ActionCommandsService::class, true);
+        $this->getContainer()->set(ActionCommandsService::class, ActionCommandsService::class, true);
     }
 
     protected function registerRuleConditionsService(): void

@@ -2,6 +2,7 @@
 
 namespace Marktic\Promotion\Tests\GiftCards\Models;
 
+use Marktic\Promotion\GiftCards\CardStatuses\Draft;
 use Marktic\Promotion\GiftCards\DataObjects\GiftCardConfiguration;
 use Marktic\Promotion\GiftCards\Models\GiftCard;
 use Marktic\Promotion\Tests\Base\Models\AbstractRecordTest;
@@ -16,9 +17,15 @@ class GiftCardTest extends AbstractRecordTest
     use RecordHasPoolTestTrait;
     use RecordHasConfigurationTestTrait;
 
-    protected function getRecordClass(): string
+    public function test_getDefaultStatus()
     {
-        return GiftCard::class;
+        $record = $this->newRecordInstance(['status' => null]);
+        $status = $record->getStatus();
+        self::assertSame(Draft::NAME, $status->getName());
+
+        $record = $this->newRecordInstance(['status' => '']);
+        $status = $record->getStatus();
+        self::assertSame(Draft::NAME, $status->getName());
     }
 
     public function test_getConfigurationParties(): void
@@ -57,5 +64,10 @@ class GiftCardTest extends AbstractRecordTest
 
         $json = json_encode($record->getConfiguration());
         self::assertSame(json_encode($configurationArray), $json);
+    }
+
+    protected function getRecordClass(): string
+    {
+        return GiftCard::class;
     }
 }

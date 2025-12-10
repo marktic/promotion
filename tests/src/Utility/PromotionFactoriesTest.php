@@ -15,8 +15,8 @@ class PromotionFactoriesTest extends AbstractTest
     public function testItCreatesPromotionFactory(): void
     {
         $this->loadServiceProvider();
-        ModelLocator::set(\Marktic\Promotion\PromotionActions\Models\PromotionActions::class, new PromotionActions());
-        ModelLocator::set(PromotionActions::class, new PromotionActions());
+//        ModelLocator::set(\Marktic\Promotion\PromotionActions\Models\PromotionActions::class, new PromotionActions());
+//        ModelLocator::set(PromotionActions::class, new PromotionActions());
 
         $promotionFactory = PromotionFactories::actions();
 

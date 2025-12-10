@@ -7,6 +7,7 @@ namespace Marktic\Promotion\GiftCards\Models;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasStatus\RecordsTrait as HasStatusRecordsTrait;
 use Marktic\Promotion\Base\Models\Behaviours\HasPool\RepositoryHasPool;
 use Marktic\Promotion\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
+use Marktic\Promotion\GiftCards\CardStatuses\Draft;
 use Marktic\Promotion\Utility\PackageConfig;
 use Marktic\Promotion\Utility\PromotionModels;
 use Nip\Records\Traits\HasUuid\HasUuidRecordManagerTrait;
@@ -62,6 +63,11 @@ trait GiftCardsTrait
     public function getStatusesDirectory(): string
     {
         return dirname(__FILE__, 2) . DIRECTORY_SEPARATOR . 'CardStatuses';
+    }
+
+    public function getDefaultStatus(): string
+    {
+        return Draft::NAME;
     }
 
     /**
