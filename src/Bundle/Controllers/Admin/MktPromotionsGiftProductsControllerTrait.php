@@ -10,6 +10,7 @@ use Marktic\Promotion\Bundle\Forms\Admin\GiftProducts\CouponCardForm;
 use Marktic\Promotion\GiftProducts\Models\GiftProduct;
 use Marktic\Promotion\GiftProducts\Models\Types\CouponCard;
 use Marktic\Promotion\Utility\PromotionServices;
+use ByTIC\MediaLibraryModule\MediaModule;
 use Nip\Records\Record;
 
 /**
@@ -35,10 +36,13 @@ trait MktPromotionsGiftProductsControllerTrait
     {
         parent::view();
 
-        $promotion = $this->getModelFromRequest();
+        $item = $this->getModelFromRequest();
 
         $this->payload()->with([
+            'uploadURL' => $item->getAsyncUploadGalleryURL()
         ]);
+
+        MediaModule::initAssets();
     }
 
     public function addNewModel(): \Nip\Records\AbstractModels\Record
@@ -47,8 +51,8 @@ trait MktPromotionsGiftProductsControllerTrait
         $item = parent::addNewModel();
 
         $item->setPool($this->getRequest()->get('pool'));
-        $item->setPoolId((int) $this->getRequest()->get('pool_id'));
-        $item->setTypeObject($this->getRequest()->get('type', ));
+        $item->setPoolId((int)$this->getRequest()->get('pool_id'));
+        $item->setTypeObject($this->getRequest()->get('type'));
 
         return $item;
     }

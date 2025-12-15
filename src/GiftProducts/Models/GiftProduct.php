@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Marktic\Promotion\GiftProducts\Models;
 
+use ByTIC\MediaLibrary\HasMedia\Interfaces\HasMedia;
 use Marktic\Promotion\Base\Models\Traits\CommonRecordTrait;
 use Nip\Records\Record;
 
 /**
  * Class GiftCardProduct.
  */
-class GiftProduct extends Record
+class GiftProduct extends Record implements HasMedia
 {
     use GiftProductTrait;
     use CommonRecordTrait;
