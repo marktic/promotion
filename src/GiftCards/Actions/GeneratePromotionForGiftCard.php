@@ -23,7 +23,6 @@ class GeneratePromotionForGiftCard extends Action
 {
     use HasSubject;
 
-
     public function handle()
     {
         $this->guardAlreadyHasPromotion();
@@ -85,19 +84,19 @@ class GeneratePromotionForGiftCard extends Action
      */
     protected function createPromotionCodeRecord($promotion)
     {
-        $codes = $promotion->getPromotionCodes();
+//        $codes = $promotion->getPromotionCodes();
         $UniqueCode = $this->generateCodeForCard();
-        $code = null;
-        if ($codes->count() == 1) {
-            $firstCode = $codes->first();
-            if (Str::startsWith($firstCode->getCode(), CreatePromotionForGiftProduct::CODE_PREFIX)) {
-                $code = $firstCode;
-            }
-        }
-        if ($code === null) {
-            $code = PromotionModels::promotionCodes()->getNew();
-            $code->setPromotionId($promotion->id);
-        }
+//        $code = null;
+//        if ($codes->count() == 1) {
+//            $firstCode = $codes->first();
+//            if (Str::startsWith($firstCode->getCode(), CreatePromotionForGiftProduct::CODE_PREFIX)) {
+//                $code = $firstCode;
+//            }
+//        }
+//        if ($code === null) {
+        $code = PromotionModels::promotionCodes()->getNew();
+        $code->setPromotionId($promotion->id);
+//        }
         $code->setCode($UniqueCode);
         $code->setUsageLimit(1);
         $code->save();
