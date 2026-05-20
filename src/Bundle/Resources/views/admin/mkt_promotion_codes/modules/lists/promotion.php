@@ -7,7 +7,32 @@ use Nip\View\View;
 /** @var View $this */
 $items ??= $this->get('promotion_codes');
 $type ??= 'view';
+$promotion = $this->get('item');
 ?>
+<?php if ($promotion) { ?>
+    <div class="mb-2 d-flex flex-wrap gap-2 align-items-end">
+        <a href="<?= $promotion->compileURL('createCode'); ?>" class="btn btn-sm btn-outline-primary">
+            <?= translator()->trans('create'); ?>
+        </a>
+        <form method="post" action="<?= $promotion->compileURL('generateCodes'); ?>" class="d-flex flex-wrap gap-2 align-items-end">
+            <div>
+                <label class="form-label mb-0" for="codes_count"><?= translator()->trans('number'); ?></label>
+                <input type="number" class="form-control form-control-sm" id="codes_count" name="codes_count" value="10" min="1" max="1000">
+            </div>
+            <div>
+                <label class="form-label mb-0" for="codes_format"><?= translator()->trans('format'); ?></label>
+                <input type="text" class="form-control form-control-sm" id="codes_format" name="codes_format" value="{code}">
+            </div>
+            <div>
+                <label class="form-label mb-0" for="codes_length"><?= translator()->trans('length'); ?></label>
+                <input type="number" class="form-control form-control-sm" id="codes_length" name="codes_length" value="8" min="1" max="64">
+            </div>
+            <button type="submit" class="btn btn-sm btn-outline-secondary">
+                <?= translator()->trans('generate'); ?>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 <table class="table">
     <thead>
     <tr>
