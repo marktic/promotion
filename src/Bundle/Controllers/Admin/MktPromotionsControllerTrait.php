@@ -10,8 +10,8 @@ use Marktic\Promotion\Bundle\Forms\Admin\Promotions\CouponCodeForm;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\CartPromotions\Models\Types\CouponCode;
-use Marktic\Promotion\PromotionCodes\Generator\Codes\UniqueCodeGenerator;
-use Marktic\Promotion\PromotionCodes\Generator\Instruction\CodeGeneratorInstruction;
+use Marktic\Promotion\PromotionCodes\Actions\CreatePromotionCode;
+use Marktic\Promotion\PromotionCodes\Actions\GeneratePromotionCodes;
 use Marktic\Promotion\Promotions\Actions\Usage\RecalculatePromotionUsage;
 use Marktic\Promotion\Utility\PromotionFactories;
 use Marktic\Promotion\Utility\PromotionModels;
@@ -70,7 +70,7 @@ trait MktPromotionsControllerTrait
     public function createCode(): void
     {
         $promotion = $this->getModelFromRequest();
-        $this->generateCodesForPromotion($promotion, 1, '{code}', 8);
+        CreatePromotionCode::for($promotion)->handle();
 
         $this->flashRedirect(
             'Promotion code generated.',
@@ -87,11 +87,11 @@ trait MktPromotionsControllerTrait
         $length = (int) $this->getRequest()->get('codes_length', 8);
         $format = trim((string) $this->getRequest()->get('codes_format', '{code}'));
 
-        $count = max(1, min(1000, $count));
-        $length = max(1, min(64, $length));
-        $format = '' === $format ? '{code}' : $format;
-
-        $generatedCodes = $this->generateCodesForPromotion($promotion, $count, $format, $length);
+        $generatedCodes = GeneratePromotionCodes::for($promotion)
+            ->withCount($count)
+            ->withFormat($format)
+            ->withLength($length)
+            ->handle();
 
         $this->flashRedirect(
             sprintf('Generated %d promotion codes.', $generatedCodes),
@@ -172,43 +172,5 @@ trait MktPromotionsControllerTrait
     protected function checkPoolAccess($pool)
     {
         $this->checkAndSetForeignModelInRequest($pool);
-    }
-
-    protected function generateCodesForPromotion(CartPromotion $promotion, int $count, string $format, int $length): int
-    {
-        [$prefix, $suffix] = $this->extractCodePattern($format);
-
-        $instruction = CodeGeneratorInstruction::default();
-        $instruction->setCodeLength($length);
-        $instruction->setPrefix($prefix);
-        $instruction->setSuffix($suffix);
-
-        $codes = UniqueCodeGenerator::manyFor($instruction, $count);
-        foreach ($codes as $generatedCode) {
-            $code = PromotionModels::promotionCodes()->getNew();
-            $code->populateFromPromotion($promotion);
-            $code->setCode($generatedCode);
-            $code->setUsageLimit($promotion->getUsageLimit());
-            $code->setUsed(0);
-            $code->setValidFrom($promotion->getValidFrom());
-            $code->setValidTo($promotion->getValidTo());
-            $code->save();
-        }
-
-        return count($codes);
-    }
-
-    protected function extractCodePattern(string $format): array
-    {
-        $placeholder = '{code}';
-        $position = strpos($format, $placeholder);
-        if (false === $position) {
-            return [$format, null];
-        }
-
-        $prefix = substr($format, 0, $position);
-        $suffix = substr($format, $position + strlen($placeholder));
-
-        return [$prefix, $suffix];
     }
 }
