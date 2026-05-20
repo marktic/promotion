@@ -10,6 +10,8 @@ use Marktic\Promotion\Bundle\Forms\Admin\Promotions\CouponCodeForm;
 use Marktic\Promotion\CartPromotions\Models\CartPromotion;
 use Marktic\Promotion\CartPromotions\Models\CartPromotions;
 use Marktic\Promotion\CartPromotions\Models\Types\CouponCode;
+use Marktic\Promotion\PromotionCodes\Actions\CreatePromotionCode;
+use Marktic\Promotion\PromotionCodes\Actions\GeneratePromotionCodes;
 use Marktic\Promotion\Promotions\Actions\Usage\RecalculatePromotionUsage;
 use Marktic\Promotion\Utility\PromotionFactories;
 use Marktic\Promotion\Utility\PromotionModels;
@@ -62,6 +64,39 @@ trait MktPromotionsControllerTrait
         $this->flashRedirect(
             $this->getModelManager()->getMessage('recalculate'),
             $promotion->compileURL('view'),
+        );
+    }
+
+    public function createCode(): void
+    {
+        $promotion = $this->getModelFromRequest();
+        CreatePromotionCode::for($promotion)->handle();
+
+        $this->flashRedirect(
+            'Promotion code generated.',
+            $promotion->compileURL('view'),
+            'success'
+        );
+    }
+
+    public function generateCodes(): void
+    {
+        $promotion = $this->getModelFromRequest();
+
+        $count = (int) $this->getRequest()->get('codes_count', 1);
+        $length = (int) $this->getRequest()->get('codes_length', 8);
+        $format = trim((string) $this->getRequest()->get('codes_format', '{code}'));
+
+        $generatedCodes = GeneratePromotionCodes::for($promotion)
+            ->withCount($count)
+            ->withFormat($format)
+            ->withLength($length)
+            ->handle();
+
+        $this->flashRedirect(
+            sprintf('Generated %d promotion codes.', $generatedCodes),
+            $promotion->compileURL('view'),
+            'success'
         );
     }
 
