@@ -9,31 +9,36 @@ use Nip\View\View;
 /** @var View $this */
 /** @var \Marktic\Promotion\CartPromotions\Models\CartPromotion $item */
 $item = $this->get('item');
+$codes ??= $this->get('promotion_codes');
+
 $codesRepository = PromotionModels::promotionCodes();
 $modalId = 'promotionCodesGenerateModal-' . (int) $item->id;
-?>
-<?php
+
+$modalAction = ButtonAction::make()
+        ->setUrl('#' . $modalId)
+        ->addHtmlClass('btn-xs js-open-generate-codes-modal')
+        ->setLabel(translator()->trans('generate'));
+$modalAction->setHtmlAttributes(
+                ['data-bs-toggle' => 'modal', 'data-bs-target' => '#' . $modalId]
+        );
 $card = Card::make()
     ->withView($this)
     ->withIcon(Icons::list_ul())
-    ->withTitle($codesRepository->getLabel('title'))
+        ->withTitle(
+                $codesRepository->getLabel('title')
+                .' <small class="badge text-white text-bg-secondary"> '.count($codes ?? []).'</small>'
+        )
     ->addHeaderTool(
         ButtonAction::make()
             ->setUrl($item->compileURL('createCode'))
             ->addHtmlClass('btn-xs')
             ->setLabel(translator()->trans('create'))
     )
-    ->addHeaderTool(
-        ButtonAction::make()
-            ->setUrl('#' . $modalId)
-            ->addHtmlClass('btn-xs js-open-generate-codes-modal')
-            ->setLabel(translator()->trans('generate'))
-    )
+    ->addHeaderTool($modalAction)
     ->wrapBody(false)
     ->withViewContent('/mkt_promotion_codes/modules/lists/promotion', ['type' => 'edit']);
 ?>
 <?= $card; ?>
-
 <div class="modal fade" id="<?= $modalId; ?>" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -64,16 +69,3 @@ $card = Card::make()
         </div>
     </div>
 </div>
-
-<script>
-    document.querySelectorAll('.js-open-generate-codes-modal').forEach(function (button) {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-            var selector = button.getAttribute('href');
-            var modalElement = selector ? document.querySelector(selector) : null;
-            if (modalElement && window.bootstrap && window.bootstrap.Modal) {
-                window.bootstrap.Modal.getOrCreateInstance(modalElement).show();
-            }
-        });
-    });
-</script>
